@@ -44,6 +44,11 @@ RUN chmod -R 755 /var/www/html
 # Ejecuta composer install para instalar las dependencias de PHP
 RUN if [ -f composer.json ]; then composer install --no-interaction --optimize-autoloader --no-dev; fi
 
+RUN apt-get install nano -y
+
+# Copia el archivo de configuración de Apache y habilítalo
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+
 # Actualiza los paquetes
 RUN apt-get update && apt-get upgrade -y
 
