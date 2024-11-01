@@ -54,7 +54,7 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img style="max-height: 150px; max-width: 150px;" src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="Logo" class="img-fluid" />
+                    <img style="max-height: 100px; max-width: 260px;" src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="Logo" class="img-fluid" />
                 </a>
                 <button class="menu-icon-container">
                     <span class="menu-icon"></span>
@@ -144,7 +144,7 @@
                     <div>
                         <div class="navbar-mobile__top">
                             <a href="index.html">
-                                <img src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="brand"
+                                <img src="{{asset('public/frontend/dist/images/logo/logo4.png')}}" alt="brand"
                                     class="img-fluid" />
                             </a>
                             <div>

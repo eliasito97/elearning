@@ -38,16 +38,42 @@
             </div>
             <div class="col-lg-6">
                 <div class="about-intro__textContent">
-                    <h2 class="font-title--md mb-3">A Great Place to Grow.</h2>
+                    <h2 class="font-title--md mb-3">Un buen lugar para crecer.</h2>
                     <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
-                        Vestibulum efficitur accumsan sapien ut lacinia. Sed euismod ullamcorper rhoncus. Phasellus
-                        interdum rutrum nisi ut lacinia. Nulla et sapien at turpis viverra. Cras odio ex, posuere id
-                        est
-                        et, viverra
-                        condimentum felis
+                        iLEARN ACADEMY es una plataforma de
+                        aprendizaje en línea diseñada para
+                        ofrecer apoyo académico integral a
+                        estudiantes de pregrado, comenzando
+                        con cursos en Ciencias Jurídicas, pero con
+                        la meta de expandirnos a otras disciplinas,
+                        proporcionando contenido educativo
+                        accesible y de alta calidad.
+                    </p>
+                    <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
+                        iLEARN ACADEMY ofrece una
+                        combinación única de calidad educativa,
+                        accesibilidad y soporte personalizado. Sus
+                        cursos son impartidos por expertos en
+                        cada área utilizando tecnología avanzada
+                        para garantizar una experiencia de
+                        aprendizaje interactiva y efectiva.
+                    </p>
+                    <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
+                        iLEARN ACADEMY se destaca por tener
+                        un enfoque centrado en el estudiante, con
+                        tutorías personalizadas y una plataforma
+                        tecnológica intuitiva que facilita el
+                        aprendizaje.
                     </p>
                     <p class="text-secondary">
-                        congue quis non odio. Aliquam sem ligula, commodo quis ipsum mattis, lacinia cursus magna.
+                        PÚBLICO OBJETIVO:
+                        El público objetivo de iLEARN ACADEMY
+                        son estudiantes de pregrado que buscan
+                        la excelencia académica a través de una
+                        plataforma educativa confiable, accesible,
+                        y de alta calidad, que realmente se
+                        preocupe por el éxito académico de sus
+                        estudiantes.
                     </p>
                 </div>
             </div>
@@ -62,25 +88,29 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-feature dark-feature">
-                    <h5 class="text-white font-title--sm">Who We Are</h5>
+                    <h5 class="text-white font-title--sm">Visión</h5>
                     <p class="text-lowblack">
-                        Suspendisse potenti. Pellentesque augue ligula, dictum at pretium eu, fermentum sit amet
-                        risus.
-                        Maecenas congue feugiat libero, sed euismod urna congue eleifend. Maecenas et gravida felis.
-                        Vivamus iaculis
-                        tellus sit amet egestas luctus. Phasellus urna eros.
+                        iLEARN ACADEMY tiene como visión ser la
+                        plataforma referente en cuanto a
+                        excelencia académica, innovación
+                        tecnológica y confianza, caracterizada por
+                        su apertura a los retos educativos del siglo
+                        21, respondiendo a ellos con soluciones
+                        innovadoras.
                     </p>
                 </div>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
                 <div class="about-feature">
-                    <h5 class="font-title--sm">Our Mission</h5>
+                    <h5 class="font-title--sm">Misión</h5>
                     <p class="text-secondary">
-                        Maecenas consectetur ultrices tortor, eget efficitur tortor finibus at. Sed convallis
-                        efficitur
-                        turpis, eget dapibus magna. Nam euismod lacus ac nulla vehicula aliquam.Curabitur efficitur
-                        vehicula sagittis.
-                        Cras convallis tellus ac quam efficitur viverra. Maecenas consectetur
+                        iLEARN ACADEMY tiene como misión el
+                        profundizar en el conocimiento de sus
+                        estudiantes, con lo último en tecnología
+                        de aprendizaje, calidad en educación,
+                        accesibilidad económica y soporte
+                        personalizado para ayudarles a alcanzar
+                        sus objetivos académicos.
                     </p>
                 </div>
             </div>

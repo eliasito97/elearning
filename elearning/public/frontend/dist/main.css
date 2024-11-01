@@ -15254,7 +15254,7 @@ button:focus {
 }
 
 .button--primary {
-  background-color: #1089ff;
+  background-color: black;
 }
 
 .button--primary:hover {
