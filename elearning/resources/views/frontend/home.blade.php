@@ -11,14 +11,14 @@
         <div class="row">
             <div class="col-lg-7 mb-lg-0 order-2 order-lg-0 d-flex align-items-center">
                 <div class="banner-two-start">
-                    <h1 class="font-title--lg">Unlock Knowledge Anywhere, Anytime with Experts.</h1>
+                    <h1 class="font-title--lg">{{__('Unlock Knowledge Anywhere, Anytime with Experts.') }}</h1>
                     <p>
-                       Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.
+                        {{ __('Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.') }}
                     </p>
                     <form>
                         <div class="banner-input">
                             <div class="main-input">
-                                <input type="text" placeholder="what do you want to learn today..." />
+                                <input type="text" placeholder="{{__('what do you want to learn today...')}}" />
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                     stroke-linejoin="round" class="feather feather-search">
@@ -27,7 +27,7 @@
                                 </svg>
                             </div>
                             <div class="search-button">
-                                <button class="button button-lg button--primary">Search</button>
+                                <button class="button button-lg button--primary">{{__('Search')}}</button>
                             </div>
                         </div>
                     </form>
@@ -46,7 +46,7 @@
 <!-- Browse Categories Starts Here -->
 <section class="section browse-categories">
     <div class="container">
-        <h2 class="font-title--md text-center mb-0">Browse Course with Top Categories</h2>
+        <h2 class="font-title--md text-center mb-0">{{__('Browse Course with Top Categories')}}</h2>
         <div class="browse-categories__wrapper position-relative">
             <div class="categories--box">
                 @forelse ($category as $cat)
@@ -63,7 +63,7 @@
                     </div>
                     <div class="browse-categories-item-text">
                         <h6 class="font-title--card"><a href="#">{{$cat->category_name}}</a></h6>
-                        <p>{{ $courseCount }} Courses</p>
+                        <p>{{ $courseCount }} {{__('Courses')}}</p>
                     </div>
                 </div>
                 @empty
@@ -72,7 +72,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
-                <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-5">Browse all Courses</a>
+                <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-5">{{__('Browse all Courses')}}</a>
             </div>
         </div>
     </div>
@@ -90,7 +90,7 @@
             <div class="col-lg-12">
                 <div class="featured-popular-courses-heading d-flex align-content-center justify-content-between">
                     <div class="main-heading">
-                        <h3 class="font-title--md">Our Popular Courses</h3>
+                        <h3 class="font-title--md">{{__('Our Popular Courses')}}</h3>
                     </div>
                     <div class="nav-button featured-popular-courses-tabs">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -98,35 +98,35 @@
                                 <button class="nav-link active ps-0" id="pills-all-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all"
                                     aria-selected="true">
-                                    All
+                                    {{__('All')}}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-design-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-design" type="button" role="tab" aria-controls="pills-design"
                                     aria-selected="false">
-                                    Design
+                                    {{__('Design')}}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-dev-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-dev" type="button" role="tab" aria-controls="pills-dev"
                                     aria-selected="false">
-                                    Development
+                                    {{__('Development')}}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="pills-bus-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-bus" type="button" role="tab" aria-controls="pills-bus"
                                     aria-selected="false">
-                                    Business
+                                    {{__('Business')}}
                                 </button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link me-0" id="pills-its-tab" data-bs-toggle="pill"
                                     data-bs-target="#pills-its" type="button" role="tab" aria-controls="pills-its"
                                     aria-selected="false">
-                                    IT & Software
+                                    {{__('IT & Software')}}
                                 </button>
                             </li>
                         </ul>
@@ -182,14 +182,14 @@
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
                                                     alt="location" />
                                             </div>
-                                            <span>{{$pc->lesson?$pc->lesson:0}} Lesson</span>
+                                            <span>{{$pc->lesson?$pc->lesson:0}} {{__('Lesson')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
                                                     alt="clock" />
                                             </div>
-                                            <span>{{$pc->duration?$pc->duration:0}} Hours</span>
+                                            <span>{{$pc->duration?$pc->duration:0}} {{__('Hours')}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -198,15 +198,14 @@
                         @empty
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
-                                <h3>No Courses Available</h3>
+                                <h3>{{__('No Courses Available')}}</h3>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">Browse all
-                                Courses</a>
+                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Browse all Courses')}}</a>
                         </div>
                     </div>
                 </div>
@@ -252,13 +251,13 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$dc->lesson?$dc->lesson:0}} Lesson</span>
+                                            <span>{{$dc->lesson?$dc->lesson:0}} {{__('Lesson')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}" alt="clock" />
                                             </div>
-                                            <span>{{$dc->duration?$dc->duration:0}} Hours</span>
+                                            <span>{{$dc->duration?$dc->duration:0}} {{__('Hours')}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -267,15 +266,14 @@
                         @empty
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
-                                <h3>No Courses Available</h3>
+                                <h3>{{__('No Courses Available')}}</h3>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">Browse all
-                                Courses</a>
+                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Browse all Courses')}}</a>
                         </div>
                     </div>
                 </div>
@@ -322,13 +320,13 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$dv->lesson?$dv->lesson:0}} Lesson</span>
+                                            <span>{{$dv->lesson?$dv->lesson:0}} {{__('Lesson')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}" alt="clock" />
                                             </div>
-                                            <span>{{$dv->duration?$dv->duration:0}} Hours</span>
+                                            <span>{{$dv->duration?$dv->duration:0}} {{__('Hours')}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -337,15 +335,14 @@
                         @empty
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
-                                <h3>No Courses Available</h3>
+                                <h3>{{__('No Courses Available')}}</h3>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">Browse all
-                                Courses</a>
+                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Browse all Courses')}}</a>
                         </div>
                     </div>
                 </div>
@@ -392,13 +389,13 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$bc->lesson?$bc->lesson:0}} Lesson</span>
+                                            <span>{{$bc->lesson?$bc->lesson:0}} {{__('Lesson')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}" alt="clock" />
                                             </div>
-                                            <span>{{$bc->duration?$bc->duration:0}} Hours</span>
+                                            <span>{{$bc->duration?$bc->duration:0}} {{__('Hours')}}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -407,15 +404,14 @@
                         @empty
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
-                                <h3>No Courses Available</h3>
+                                <h3>{{__('No Courses Available')}}</h3>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">Browse all
-                                Courses</a>
+                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Browse all Courses')}}</a>
                         </div>
                     </div>
                 </div>
@@ -462,7 +458,7 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$ic->lesson?$ic->lesson:0}} Lesson</span>
+                                            <span>{{$ic->lesson?$ic->lesson:0}} {{__('Lesson')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
@@ -477,15 +473,14 @@
                         @empty
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
-                                <h3>No Courses Available</h3>
+                                <h3>{{__('No Courses Available')}}</h3>
                             </div>
                         </div>
                         @endforelse
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">Browse all
-                                Courses</a>
+                            <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Browse all Courses')}}</a>
                         </div>
                     </div>
                 </div>
@@ -499,10 +494,10 @@
     </div>
 </section>
 
-{{-- Why You'll Learn With Eduguard --}}
+{{-- Why You'll Learn With i Learn Academy --}}
 <section class="section feature section section--bg-offwhite-one">
     <div class="container">
-        <h2 class="font-title--md text-center">Why You'll Learn with Eduguard</h2>
+        <h2 class="font-title--md text-center">{{__('Why Youll Learn with iLearn Academy')}}</h2>
         <div class="row">
             <div class="col-lg-4 col-md-6">
                 <div class="cardFeature">

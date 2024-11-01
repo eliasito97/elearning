@@ -38,42 +38,18 @@
             </div>
             <div class="col-lg-6">
                 <div class="about-intro__textContent">
-                    <h2 class="font-title--md mb-3">Un buen lugar para crecer.</h2>
+                    <h2 class="font-title--md mb-3">{{__('A good place to grow') }}</h2>
                     <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
-                        iLEARN ACADEMY es una plataforma de
-                        aprendizaje en línea diseñada para
-                        ofrecer apoyo académico integral a
-                        estudiantes de pregrado, comenzando
-                        con cursos en Ciencias Jurídicas, pero con
-                        la meta de expandirnos a otras disciplinas,
-                        proporcionando contenido educativo
-                        accesible y de alta calidad.
+                        {{__('iLEARN ACADEMY is an online learning platform designed to offer comprehensive academic support to undergraduate students, starting with courses in Legal Sciences, but with the goal of expanding to other disciplines, providing accessible and high quality educational content.')}}
                     </p>
                     <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
-                        iLEARN ACADEMY ofrece una
-                        combinación única de calidad educativa,
-                        accesibilidad y soporte personalizado. Sus
-                        cursos son impartidos por expertos en
-                        cada área utilizando tecnología avanzada
-                        para garantizar una experiencia de
-                        aprendizaje interactiva y efectiva.
+                        {{__('iLEARN ACADEMY offers a unique combination of educational quality, accessibility and personalized support. Its courses are taught by experts in each area using advanced technology to ensure an interactive and effective learning experience.') }}
                     </p>
                     <p class="mt-2 mt-lg-1 mb-2 mb-lg-4 text-secondary">
-                        iLEARN ACADEMY se destaca por tener
-                        un enfoque centrado en el estudiante, con
-                        tutorías personalizadas y una plataforma
-                        tecnológica intuitiva que facilita el
-                        aprendizaje.
+                        {{__('iLEARN ACADEMY stands out for having a student-centered approach, with personalized tutoring and an intuitive technological platform that facilitates learning.')}}
                     </p>
                     <p class="text-secondary">
-                        PÚBLICO OBJETIVO:
-                        El público objetivo de iLEARN ACADEMY
-                        son estudiantes de pregrado que buscan
-                        la excelencia académica a través de una
-                        plataforma educativa confiable, accesible,
-                        y de alta calidad, que realmente se
-                        preocupe por el éxito académico de sus
-                        estudiantes.
+                        {{__('TARGET AUDIENCE: iLEARN ACADEMYs target audience is undergraduate students who seek academic excellence through a reliable, accessible, and high quality educational platform that truly cares about the academic success of its students.')}}
                     </p>
                 </div>
             </div>
@@ -88,29 +64,17 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="about-feature dark-feature">
-                    <h5 class="text-white font-title--sm">Visión</h5>
+                    <h5 class="text-white font-title--sm">{{__('Vision') }}</h5>
                     <p class="text-lowblack">
-                        iLEARN ACADEMY tiene como visión ser la
-                        plataforma referente en cuanto a
-                        excelencia académica, innovación
-                        tecnológica y confianza, caracterizada por
-                        su apertura a los retos educativos del siglo
-                        21, respondiendo a ellos con soluciones
-                        innovadoras.
+                        {{__('iLEARN ACADEMYs vision is to be the benchmark platform for academic excellence, technological innovation and trust, characterized by its openness to the educational challenges of the 21st century, responding to them with innovative solutions.')}}
                     </p>
                 </div>
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
                 <div class="about-feature">
-                    <h5 class="font-title--sm">Misión</h5>
+                    <h5 class="font-title--sm">{{__('Mission') }}</h5>
                     <p class="text-secondary">
-                        iLEARN ACADEMY tiene como misión el
-                        profundizar en el conocimiento de sus
-                        estudiantes, con lo último en tecnología
-                        de aprendizaje, calidad en educación,
-                        accesibilidad económica y soporte
-                        personalizado para ayudarles a alcanzar
-                        sus objetivos académicos.
+                        {{__('iLEARN ACADEMYs mission is to deepen the knowledge of its students, with the latest in learning technology, quality education, affordability and personalized support to help them achieve their academic goals.')}}
                     </p>
                 </div>
             </div>
