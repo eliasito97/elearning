@@ -513,12 +513,14 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h5 class="font-title--xs">250k online course</h5>
+                    <h5 class="font-title--xs">{{ $course->count() }} {{__('Online course')}}</h5>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed commodo enim Fusce sed.
+                        {{ __('Choose from over') }} {{$course->count()}} {{ __('Online courses to learn from scratch or develop the most in-demand skills for technology jobs.') }}
+
                     </p>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-6">
                 <div class="cardFeature">
                     <div class="cardFeature__icon cardFeature__icon--bg-b">
@@ -541,10 +543,9 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h5 class="font-title--xs">Expert Instructors</h5>
+                    <h5 class="font-title--xs">{{ __('Expert Instructors') }}</h5>
                     <p>
-                        Vivamus interdum neque massa, eget mattis mi gravida eget. Donec et dictum justo. Vivamus
-                        interdum.
+                        {{__('At our platform, we pride ourselves on having a team of expert instructors who are passionate about teaching and committed to your success. Each instructor brings a wealth of knowledge and real-world experience in their respective fields, ensuring that you receive the highest quality education.')}}
                     </p>
                 </div>
             </div>
@@ -560,10 +561,9 @@
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h5 class="font-title--xs">Lifetime Access</h5>
+                    <h5 class="font-title--xs">{{__('Lifetime Access')}}</h5>
                     <p>
-                        Vivamus cursus libero quis lobortis mattis. Suspendisse in malesuada mi. Maecenas vel
-                        euismod turpis.
+                       {{__('When you enroll in our courses, you gain lifetime access to all the materials and resources provided. This means you can revisit the content whenever you need to refresh your knowledge or dive deeper into specific topics.')}}
                     </p>
                 </div>
             </div>
