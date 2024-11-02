@@ -578,42 +578,39 @@
             <div class="col-lg-6 order-2 order-lg-0">
                 <div class="learning-rules-starts">
                     <h2 class="font-title--md">
-                        Eduguard Simple <br class="d-none d-md-block" />
-                        Learning Steps
+                        {{__('ilearn Academy Simple')}} <br class="d-none d-md-block" />
+                        {{__('Learning Steps')}}
                     </h2>
                     <div class="learning-rules__wrapper">
                         <div class="learning-rules-item">
                             <div class="item-number"><span>01.</span></div>
                             <div class="item-text">
-                                <h6>Make Your Own Place.</h6>
+                                <h6>{{__('Make Your Own Place.')}}</h6>
                                 <p>
-                                    Fusce dictum, velit eu placerat consectetur, ante nisl auctor magna, sit amet
-                                    fringilla urna nibh a risus.
+                                    {{__('Our platform empowers you to create your own learning environment tailored to your unique needs. Customize your workspace, set personal goals, and choose the courses that inspire you. With tools designed to support individual progress, you have the freedom to shape your learning experience.')}}
                                 </p>
                             </div>
                         </div>
                         <div class="learning-rules-item">
                             <div class="item-number"><span>02.</span></div>
                             <div class="item-text">
-                                <h6>Find Best Course With Better Filtter.</h6>
+                                <h6>{{__('Find Best Course With Better Filtter.')}}</h6>
                                 <p>
-                                    Morbi id est a risus sollicitudin maximus. Fusce lorem neque, tincidunt vel
-                                    rhoncus eget, convallis ullamcorper sem.
+                                    {{__('Discover the perfect course for your goals with our enhanced filtering system. Our platform makes it easy to sort and find courses based on categories, skill levels, duration, ratings, and more. With our smart filter, you can focus on exactly what you need—whether youre looking for beginner basics or advanced expertise.')}}
                                 </p>
                             </div>
                         </div>
                         <div class="learning-rules-item">
                             <div class="item-number"><span>03.</span></div>
                             <div class="item-text">
-                                <h6>And Become a Master in Your Field.</h6>
+                                <h6>{{__('Become an Expert in Your Field.')}}</h6>
                                 <p>
-                                    Sed pulvinar dignissim neque, ac consectetur urna tincidunt vel. Sed congue
-                                    nulla sed tempus ultrices.
+                                    {{__('Our courses are designed to help you build deep expertise in your chosen field. From foundational knowledge to advanced skills, each course is crafted to give you the tools and insights you need to excel. Learn from experienced instructors and take advantage of resources that cater to your growth.')}}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button button-lg button--primary">Start Learning</a>
+                    <a href="#" class="button button-lg button--primary">{{__('Start Learning')}}</a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-0">
@@ -644,14 +641,13 @@
     <div class="container about-services-area">
         <div class="row">
             <div class="col-lg-6 text-center mx-auto">
-                <h2 class="font-title--md">What Our Students Says About our Services</h2>
+                <h2 class="font-title--md">{{__('What Our Students Says About our Services')}}</h2>
             </div>
         </div>
-        <div class="testimonial testimonial--one testimonial__slider--one">
+        <div class="testimonial testimonial--one testimonial__slider--one"  style="height: 325px" >
             <div class="testimonial__item">
                 <p>
-                    “Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a
-                    efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis.“
+                    {{__('iLearn Academy has transformed my learning experience. The classes are interactive, and the instructors are very professional. Thanks to them, I have improved my math skills and now feel more confident in my exams.')}}
                 </p>
                 <div class="testimonial__user-wrapper d-flex justify-content-between">
                     <div class="testimonial__user d-flex align-items-center">
@@ -659,7 +655,7 @@
                             <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-01.png')}}" alt="Client" />
                         </div>
                         <div class="testimonial__user-info">
-                            <h6>Sheikh Rashed</h6>
+                            <h6>{{__('Juan Pérez')}}</h6>
                             <span class="font-para--md">UI/UX Student</span>
                         </div>
                     </div>
@@ -714,8 +710,7 @@
             </div>
             <div class="testimonial__item">
                 <p>
-                    “Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a
-                    efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis.“
+                    {{__('I highly recommend iLearn Academy. The platform is user-friendly, and the content is well-structured. I have learned a lot about programming and have been able to apply what I learned to real projects.')}}
                 </p>
                 <div class="testimonial__user-wrapper d-flex justify-content-between">
                     <div class="testimonial__user d-flex align-items-center">
@@ -723,7 +718,7 @@
                             <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-02.png')}}" alt="Client" />
                         </div>
                         <div class="testimonial__user-info">
-                            <h6>Dev Zakir</h6>
+                            <h6>{{__('Carlos López')}}</h6>
                             <span class="font-para--md">UI/UX Student</span>
                         </div>
                     </div>
@@ -778,8 +773,7 @@
             </div>
             <div class="testimonial__item">
                 <p>
-                    “Nam hendrerit quam eu neque egestas, nec lobortis enim rutrum. Quisque ligula tortor, mollis a
-                    efficitur vitae, imperdiet et mauris. Nam in orci quis risus dapibus mollis.“
+                   {{__('The experience at iLearn Academy has been amazing. The resources available are abundant and diverse. Plus, the technical support is always there to help with any questions I have. I will definitely be back for more courses!')}}
                 </p>
                 <div class="testimonial__user-wrapper d-flex justify-content-between">
                     <div class="testimonial__user d-flex align-items-center">
@@ -787,7 +781,7 @@
                             <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-03.png')}}" alt="Client" />
                         </div>
                         <div class="testimonial__user-info">
-                            <h6>Dev Kate</h6>
+                            <h6>{{__('María González')}}</h6>
                             <span class="font-para--md">UI/UX Student</span>
                         </div>
                     </div>
@@ -853,11 +847,10 @@
         <div class="row mb-40">
             <div class="col-lg-6 mx-auto text-center brands-area-two-heading">
                 <h4>
-                    Over 30,000+ Schools & College Learning With Us.
+                    {{__('Over 30,000+ Schools & College Learning With Us.')}}
                 </h4>
                 <p>
-                    Proin euismod elementum dolor, non iaculis velit mollis sed. In eleifend urna sit amet purus
-                    congue.
+                   {{__('Join a thriving community of over 30,000 schools and colleges that trust us for their educational needs.')}}
                 </p>
             </div>
         </div>
@@ -899,7 +892,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 position-relative">
-                <h3 class="text-center mb-40 font-title--md">Meet Our Best Instructor</h3>
+                <h3 class="text-center mb-40 font-title--md">{{__('Meet Our Best Instructors')}}</h3>
                 <div class="ourinstructor__wrapper mt-lg-5 mt-0">
                     <div class="ourinstructor-active">
                         @forelse ($instructor as $i)
@@ -996,53 +989,52 @@
 <section class="section section--bg-offwhite-three latest-events-featured main-events-featured">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <h3 class="font-title--md">Latest Events</h3>
-            </div>
+            <h3 class="font-title--md">{{__('Latest Events')}}</h3>
         </div>
-        <div class="row">
-            <div class="col-12 position-relative px-0 mx-0">
-                <div class="eventsSlider">
-                    @forelse ($course as $c)
+    </div>
+    <div class="row">
+        <div class="col-12 position-relative px-0 mx-0">
+            <div class="eventsSlider">
+                @forelse ($course as $c)
                     <div class="contentCard contentCard--event contentCard--space">
                         <div class="contentCard-top">
                             <a href="#"><img src="{{asset('public/uploads/courses/'.$c->image)}}" alt="images"
-                                    class="img-fluid" /></a>
+                                             class="img-fluid" /></a>
                         </div>
                         <div class="contentCard-bottom">
                             <h5>
                                 <a href="{{route('courseDetails', encryptor('encrypt', $c->id))}}"
-                                    class="font-title--card">{{$c->title_en}}</a>
+                                   class="font-title--card">{{$c->title_en}}</a>
                             </h5>
                             <div class="contentCard-more">
                                 <div class="d-flex align-items-center">
                                     <div class="icon">
                                         <img src="{{asset('public/frontend/dist/images/icon/location.png')}}"
-                                            alt="location" />
+                                             alt="location" />
                                     </div>
                                     <span>Chicago, Illinois</span>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="icon">
                                         <img src="{{asset('public/frontend/dist/images/icon/calendar.png')}}"
-                                            alt="calendar" />
+                                             alt="calendar" />
                                     </div>
                                     <span>29th jan, 2020</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @empty
-                    @endforelse
-                </div>
+                @empty
+                @endforelse
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-lg-5 mt-5">Browse all
-                    events</a>
-            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-lg-5 mt-5">Browse all
+                events</a>
         </div>
+    </div>
     </div>
     <div class="main-events-featured-shape">
         <img src="{{asset('public/frontend/dist/images/shape/triangel3.png')}}" alt="shape" class="img-fluid shape01" />
@@ -1057,7 +1049,7 @@
                 <div class="main-become-instructor-item me-12">
                     <div class="main-image">
                         <img src="{{asset('public/frontend/dist/images/event/image01.png')}}" alt="image"
-                            class="img-fluid" />
+                             class="img-fluid" />
                     </div>
                     <div class="main-text">
                         <h6 class="font-title--sm">Become an Instructor</h6>
@@ -1075,7 +1067,7 @@
                 <div class="main-become-instructor-item ms-12 mb-0">
                     <div class="main-image">
                         <img src="{{asset('public/frontend/dist/images/event/image02.png')}}" alt="image"
-                            class="img-fluid" />
+                             class="img-fluid" />
                     </div>
                     <div class="main-text">
                         <h6 class="font-title--sm">Use Eduguard For Business</h6>
@@ -1125,13 +1117,14 @@
 
 @push('scripts')
 
-<script>
-    function drop() {
-                    const dropBox = document.querySelector(".categoryDrop");
-                    const arrow = document.querySelector(".select-button button svg");
-                    arrow.classList.toggle("appear");
-                    dropBox.classList.toggle("appear");
-                }
-</script>
+    <script>
+        function drop() {
+            const dropBox = document.querySelector(".categoryDrop");
+            const arrow = document.querySelector(".select-button button svg");
+            arrow.classList.toggle("appear");
+            dropBox.classList.toggle("appear");
+        }
+    </script>
 
 @endpush
+<div class="col-lg-12">
