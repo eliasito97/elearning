@@ -27,6 +27,7 @@ use App\Http\Controllers\WatchCourseController as watchCourse;
 use App\Http\Controllers\LessonController as lesson;
 use App\Http\Controllers\EnrollmentController as enrollment;
 use App\Http\Controllers\EventController as event;
+use App\Http\Controllers\AboutController;
 
 /* students */
 use App\Http\Controllers\Students\AuthController as sauth;
@@ -57,7 +58,7 @@ Route::middleware(['checkauth'])->prefix('admin')->group(function () {
 });
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function () {
-    Route::resource('user', user::class); 
+    Route::resource('user', user::class);
     Route::resource('role', role::class);
     Route::resource('student', student::class);
     Route::resource('instructor', instructor::class);
@@ -72,7 +73,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function () {
     Route::resource('question', question::class);
     Route::resource('option', option::class);
     Route::resource('answer', answer::class);
-    Route::resource('review', review::class); 
+    Route::resource('review', review::class);
     Route::resource('discussion', discussion::class);
     Route::resource('message', message::class);
     Route::resource('coupon', coupon::class);
@@ -103,7 +104,7 @@ Route::middleware(['checkstudent'])->prefix('students')->group(function () {
 // frontend pages
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse'); 
+Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse');
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');
 Route::get('watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
 Route::get('instructorProfile/{id}', [instructor::class, 'frontShow'])->name('instructorProfile');
@@ -126,10 +127,11 @@ Route::post('/payment/ssl/cancel', [sslcz::class, 'cancel'])->name('payment.ssl.
 
 
 
+Route::get('about', [AboutController::class, 'index'])->name('about');
 
-Route::get('/about', function () {
-    return view('frontend.about');
-})->name('about');
+//Route::get('/about', function () {
+//    return view('frontend.about');
+//})->name('about');
 
 Route::get('/contact', function () {
     return view('frontend.contact');

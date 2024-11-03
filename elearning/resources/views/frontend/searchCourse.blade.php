@@ -13,10 +13,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">{{__('Home')}}</a>
+                    <a href="index.html" class="fs-6 text-secondary">{{__('Homepage')}}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="course-search.html" class="fs-6 text-secondary">{{__('course')}}</a>
+                    <a href="course-search.html" class="fs-6 text-secondary">{{__('Courses')}}</a>
                 </li>
             </ol>
         </nav>
@@ -113,7 +113,7 @@
                                             <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            {{$course->count()}}
+                                            {{$allCourse->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
@@ -122,7 +122,7 @@
                                             <label> {{__('Basic')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            {{$course1->count()}}
+                                            {{$coursedifficulty1->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
@@ -131,7 +131,7 @@
                                             <label> {{__('Intermediate')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            {{$course2->count()}}
+                                            {{$coursedifficulty2->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
@@ -140,7 +140,7 @@
                                             <label> {{__('Advanced')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            {{$course3->count()}}
+                                            {{$coursedifficulty3->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
@@ -149,7 +149,7 @@
                                             <label> {{__('Expert')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            {{$course4->count()}}
+                                            {{$coursedifficulty4->count()}}
                                         </p>
                                     </div>
                                 </form>
@@ -161,7 +161,7 @@
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Price
+                                {{__('Price')}}
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
@@ -201,7 +201,7 @@
                         <h2 class="accordion-header" id="ratingAcc">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#ratingCollapse" aria-expanded="false" aria-controls="ratingCollapse">
-                                Rating
+                                {{__('Rating')}}
                             </button>
                         </h2>
                         <div id="ratingCollapse" class="accordion-collapse collapse" aria-labelledby="ratingAcc"
@@ -211,25 +211,16 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> All </label>
+                                            <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            1,54,750
+                                            {{$allCourse->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 1 Star and higher </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> 2 Star and higher </label>
+                                            <label> {{__('1 Star')}} </label>
                                         </div>
                                         <p class="check-details">
                                             45,770
@@ -238,7 +229,7 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 3 Star and higher </label>
+                                            <label> {{__('2 Stars')}} </label>
                                         </div>
                                         <p class="check-details">
                                             45,770
@@ -247,7 +238,7 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 4 Star and higher </label>
+                                            <label> {{__('3 Stars')}} </label>
                                         </div>
                                         <p class="check-details">
                                             45,770
@@ -256,7 +247,16 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 5 Star </label>
+                                            <label> {{__('4 Stars')}} </label>
+                                        </div>
+                                        <p class="check-details">
+                                            45,770
+                                        </p>
+                                    </div>
+                                    <div class="accordion-body__item">
+                                        <div class="check-box">
+                                            <input type="checkbox" class="checkbox-primary" />
+                                            <label> {{__('5 Stars')}} </label>
                                         </div>
                                         <p class="check-details">
                                             45,770
@@ -272,7 +272,7 @@
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#durationCollapse" aria-expanded="false"
                                 aria-controls="durationCollapse">
-                                Duration
+                                {{__('Duration')}}
                             </button>
                         </h2>
                         <div id="durationCollapse" class="accordion-collapse collapse" aria-labelledby="durationAcc"
@@ -282,46 +282,46 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> All </label>
+                                            <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            1,54,750
+                                            {{$allCourse->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 0 - 5 minutes </label>
+                                            <label> {{__('0 - 5 minutes')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            45,770
+                                            {{$courseDuration1->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 5 - 10 minutes </label>
+                                            <label> {{__('5 - 10 minutes')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            35,790
+                                            {{$courseDuration2->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 10 - 15 minutes </label>
+                                            <label> {{__('10 - 15 minutes')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            5,770
+                                            {{$courseDuration3->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> 15+ minutes </label>
+                                            <label> {{__('15+ minutes')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            765
+                                            {{$courseDuration4->count()}}
                                         </p>
                                     </div>
                                 </form>
@@ -335,17 +335,17 @@
                 <div class="event-search-results">
                     <div class="event-search-results-heading">
                         <div class="nice-select" tabindex="0">
-                            <span class="current">Most Viewed</span>
+                            <span class="current">{{__('Most Viewed')}}</span>
                             <ul class="list">
                                 <li data-value="Nothing" data-display="category" class="option selected focus">
-                                    Nothing
+                                    {{__('Nothing')}}
                                 </li>
-                                <li data-value="1" class="option">Some option</li>
-                                <li data-value="2" class="option">Another option</li>
-                                <li data-value="4" class="option">Potato</li>
+                                <li data-value="1" class="option">{{__('Some option')}}</li>
+                                <li data-value="2" class="option">{{__('Another option')}}</li>
+{{--                                <li data-value="4" class="option">Potato</li>--}}
                             </ul>
                         </div>
-                        <p>{{$course->count()}} results found.</p>
+                        <p>{{$course->count()}} {{__('results found.')}}</p>
                         <button class="button button-lg button--primary button--primary-filter d-lg-none" id="filter">
                             <span>
                                 <svg width="19" height="16" viewBox="0 0 19 16" fill="none"
@@ -370,7 +370,7 @@
                                         stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                             </span>
-                            Filter
+                            {{__('Filter')}}
                         </button>
                     </div>
                 </div>
@@ -408,28 +408,28 @@
                                             <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
                                                 alt="star" />
                                         </div>
-                                        <span>4.5</span>
+                                            <span>{{$c->difficulty}}</span>
                                     </div>
-                                    <div class="eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
+{{--                                    <div class="eye d-flex align-items-center">--}}
+{{--                                        <div class="icon">--}}
+{{--                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"--}}
+{{--                                                alt="eye" />--}}
+{{--                                        </div>--}}
+{{--                                        <span>24,517</span>--}}
+{{--                                    </div>--}}
                                     <div class="book d-flex align-items-center">
                                         <div class="icon">
                                             <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
                                                 alt="location" />
                                         </div>
-                                        <span>{{$c->lesson}} Lesson</span>
+                                        <span>{{$c->lesson}} {{__('Lessons')}}</span>
                                     </div>
                                     <div class="clock d-flex align-items-center">
                                         <div class="icon">
                                             <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
                                                 alt="clock" />
                                         </div>
-                                        <span>{{$c->duration}} Hours</span>
+                                        <span>{{$c->duration}} {{__('Hours')}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -438,7 +438,7 @@
                     @empty
                     <div class="col-md-6 mb-4">
                         <div class="contentCard contentCard--course">
-                            <h3>No Course Found</h3>
+                            <h3>{{__('No Course Found')}}</h3>
                         </div>
                     </div>
                     @endforelse
