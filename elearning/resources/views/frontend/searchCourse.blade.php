@@ -13,10 +13,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">Home</a>
+                    <a href="index.html" class="fs-6 text-secondary">{{__('Home')}}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="course-search.html" class="fs-6 text-secondary">course</a>
+                    <a href="course-search.html" class="fs-6 text-secondary">{{__('course')}}</a>
                 </li>
             </ol>
         </nav>
@@ -32,9 +32,9 @@
                 <div class="event-search-bar">
                     <form action="#">
                         <div class="form-input-group">
-                            <input type="text" class="form-control" placeholder="Search Course..." />
+                            <input type="text" class="form-control" placeholder="{{__('Search Course...')}}" />
                             <button class="button button-lg button--primary" type="submit" id="button-addon2">
-                                Search
+                                {{__('Search')}}
                             </button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -56,7 +56,7 @@
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#categoryCollapse" aria-expanded="true"
                                 aria-controls="categoryCollapse">
-                                Category
+                                {{__('Category')}}
                             </button>
                         </h2>
                         <div id="categoryCollapse" class="accordion-collapse collapse show"
@@ -68,7 +68,7 @@
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" name="category" value=""
                                                 {{!$selectedCategories ? 'checked' : '' }}>
-                                            <label> All </label>
+                                            <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
                                             {{$allCourse->count()}}
@@ -90,7 +90,7 @@
                                     </div>
                                     @empty
                                     @endforelse
-                                    <button type="submit" class="btn btn-primary">Apply Filter</button>
+                                    <button type="submit" class="btn btn-primary">{{__('Apply Filter')}}</button>
                                 </form>
                             </div>
                         </div>
@@ -100,7 +100,7 @@
                         <h2 class="accordion-header" id="levelAcc">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#levelCollapse" aria-expanded="false" aria-controls="levelCollapse">
-                                Level
+                                {{__('Level')}}
                             </button>
                         </h2>
                         <div id="levelCollapse" class="accordion-collapse collapse" aria-labelledby="levelAcc"
@@ -110,37 +110,46 @@
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> All </label>
+                                            <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            1,54,750
+                                            {{$course->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> Intermediate </label>
+                                            <label> {{__('Basic')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            35,790
+                                            {{$course1->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> Advanced </label>
+                                            <label> {{__('Intermediate')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            5,770
+                                            {{$course2->count()}}
                                         </p>
                                     </div>
                                     <div class="accordion-body__item">
                                         <div class="check-box">
                                             <input type="checkbox" class="checkbox-primary" />
-                                            <label> Expert </label>
+                                            <label> {{__('Advanced')}} </label>
                                         </div>
                                         <p class="check-details">
-                                            765
+                                            {{$course3->count()}}
+                                        </p>
+                                    </div>
+                                    <div class="accordion-body__item">
+                                        <div class="check-box">
+                                            <input type="checkbox" class="checkbox-primary" />
+                                            <label> {{__('Expert')}} </label>
+                                        </div>
+                                        <p class="check-details">
+                                            {{$course4->count()}}
                                         </p>
                                     </div>
                                 </form>

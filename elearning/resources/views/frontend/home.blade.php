@@ -1,3 +1,7 @@
+@php
+    use Carbon\Carbon;
+    Carbon::setLocale('es');
+@endphp
 @extends('frontend.layouts.app')
 @section('title', 'Home')
 @section('footer-class') footer--two @endsection
@@ -47,7 +51,7 @@
 <section class="section browse-categories">
     <div class="container">
         <h2 class="font-title--md text-center mb-0">{{__('Browse Course with Top Categories')}}</h2>
-        <div class="browse-categories__wrapper position-relative">
+        <div class="browse-categories__wrapper position-relative" style="height: 250px">
             <div class="categories--box">
                 @forelse ($category as $cat)
                 @php
@@ -993,7 +997,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 position-relative px-0 mx-0">
+        <div class="col-12 events">
             <div class="eventsSlider">
                 @forelse ($course as $c)
                     <div class="contentCard contentCard--event contentCard--space">
@@ -1012,14 +1016,14 @@
                                         <img src="{{asset('public/frontend/dist/images/icon/location.png')}}"
                                              alt="location" />
                                     </div>
-                                    <span>Chicago, Illinois</span>
+                                    <span>{{__('Bolivia')}}</span>
                                 </div>
                                 <div class="d-flex align-items-center">
                                     <div class="icon">
                                         <img src="{{asset('public/frontend/dist/images/icon/calendar.png')}}"
                                              alt="calendar" />
                                     </div>
-                                    <span>29th jan, 2020</span>
+                                    <span>{{ $c->start_from ? \Carbon\Carbon::parse($c->start_from)->translatedFormat('j \d\e F \d\e Y') : 'Fecha no disponible' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -1031,8 +1035,7 @@
     </div>
     <div class="row">
         <div class="col-lg-12 text-center">
-            <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-lg-5 mt-5">Browse all
-                events</a>
+            <a href="{{route('searchCourse')}}" class="button button-lg button--primary mt-lg-5 mt-5">{{__('Browse all events')}}</a>
         </div>
     </div>
     </div>
@@ -1052,13 +1055,12 @@
                              class="img-fluid" />
                     </div>
                     <div class="main-text">
-                        <h6 class="font-title--sm">Become an Instructor</h6>
+                        <h6 class="font-title--sm">{{__('Become an Instructor')}}</h6>
                         <p>
-                            Praesent ultricies nulla ac congue bibendum. Aliquam tempor euismod purus posuere
-                            gravida. Praesent augue sapien, vulputate eu imperdiet eget, tempor at enim.
+                        {{__('Join our community of passionate educators and share your expertise with learners around the world. As an instructor on our platform, you have the opportunity to create and deliver courses that inspire and empower students. Whether you are a seasoned educator or an expert in your field, we provide the tools and support you need to succeed.')}}
                         </p>
                         <div class="text-center">
-                            <a href="become-instructor.html" class="green-btn">Apply as Instructor</a>
+                            <a href="become-instructor.html" class="green-btn">{{__('Apply as Instructor')}}</a>
                         </div>
                     </div>
                 </div>
@@ -1070,13 +1072,12 @@
                              class="img-fluid" />
                     </div>
                     <div class="main-text">
-                        <h6 class="font-title--sm">Use Eduguard For Business</h6>
+                        <h6 class="font-title--sm">{{__('iLearn Academy for Business')}}</h6>
                         <p>
-                            Praesent ultricies nulla ac congue bibendum. Aliquam tempor euismod purus posuere
-                            gravida. Praesent augue sapien, vulputate eu imperdiet eget, tempor at enim.
+                        {{__('Unlock the potential of your workforce with iLearn Academy for Business. Our platform offers tailored courses designed to enhance skills and drive performance across various industries. Whether you are looking to upskill your team or onboard new employees, our comprehensive curriculum provides the tools needed for success.')}}
                         </p>
                         <div class="text-center">
-                            <a href="#" class="green-btn">Get Eduguard For Business</a>
+                            <a href="#" class="green-btn">{{__('Get Eduguard For Business')}}</a>
                         </div>
                     </div>
                 </div>
@@ -1094,16 +1095,15 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="newsletter-area">
-                    <h4>Subscribe our Newsletter</h4>
+                    <h4>{{__('Subscribe to our Academy')}}</h4>
                     <p class="mt-2 mb-lg-4 mb-3">
-                        Duis posuere maximus arcu eu tincidunt. Nam rutrum, nibh vitae tempus venenatis, ex tortor
-                        ultricies magna, et faucibus magna eros quis arcu.
+                     {{__('Join our vibrant learning community by subscribing to our academy today! With a subscription, you gain access to a wide range of courses that cater to various interests and skill levels. Whether you are looking to advance your career, explore new hobbies, or enhance your knowledge, our academy has something for everyone.')}}
                     </p>
                     <form>
                         <div class="input-group">
-                            <input type="email" class="form-control border-lowBlack" placeholder="Your email" />
+                            <input type="email" class="form-control border-lowBlack" placeholder="{{__('Your email')}}" />
                             <button class="button button-lg button--primary" type="button">
-                                Subscribe
+                                {{__('Subscribe')}}
                             </button>
                         </div>
                     </form>
@@ -1127,4 +1127,3 @@
     </script>
 
 @endpush
-<div class="col-lg-12">

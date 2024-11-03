@@ -32962,3 +32962,10 @@ body {
 .text-button a {
   margin-bottom: 30px;
 }
+
+/*css elias*/
+.events{
+    padding-left: 200px !important ;
+    padding-right: 200px !important;
+
+}

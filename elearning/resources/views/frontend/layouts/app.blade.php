@@ -63,13 +63,13 @@
                 <div class="collapse navbar-collapse d-none d-xl-block d-none d-xl-block" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                            <a class="nav-link" aria-current="page" href="{{route('home')}}">{{__('Homepage')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{route('searchCourse')}}">Courses</a>
+                            <a class="nav-link" aria-current="page" href="{{route('searchCourse')}}">{{__('Courses')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{route('about')}}">About</a>
+                            <a class="nav-link" aria-current="page" href="{{route('about')}}">{{__('About')}}</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="http://localhost:8081/">
@@ -77,10 +77,10 @@
                             </a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">Contact</a>
+                            <a class="nav-link" href="{{route('contact')}}">{{__('Contact')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('dashboard')}}">Admin</a>
+                            <a class="nav-link" href="{{route('dashboard')}}">{{__('Admin')}}</a>
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between rightContent">
@@ -96,7 +96,7 @@
                                 <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                                 <div class="overlay-content">
                                     <div>
-                                        <input type="text" placeholder="Search.." name="search" />
+                                        <input type="text" placeholder="{{__('Search')}}" name="search" />
                                         <button type="button">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2"
@@ -118,7 +118,7 @@
                                     fill="#ffffff"></path>
                             </svg>
                             <span class="badge bg-primary">{{ count((array) session('cart')) }}</span>
-                            <span class="visually-hidden">Items Added</span>
+                            <span class="visually-hidden">{{__('Items Added')}}</span>
                         </a>
                         @if(request()->session()->get('studentLogin'))
                         <div class="dropdown user-image ms-3" id="imageDropdown">
@@ -127,14 +127,14 @@
                                     alt="Student Profile" height="48" width="48"/>
                             </a>
                             <div class="dropdown-content">
-                                <a href="{{route('student_profile')}}">Profile</a>
-                                <a href="{{route('studentdashboard')}}">Dashboard</a>
-                                <a href="{{route('studentlogOut')}}" class="text-danger">Logout</a>
+                                <a href="{{route('student_profile')}}">{{__('Profile')}}</a>
+                                <a href="{{route('studentdashboard')}}">{{__('Dashboard')}}</a>
+                                <a href="{{route('studentlogOut')}}" class="text-danger">{{__('Logout')}}</a>
                             </div>
                         </div>
                         @else
-                        <a href="{{route('studentLogin')}}" class="button button--text">Sign in</a>
-                        <a href="{{route('studentRegister')}}" class="button button--dark">Sign Up</a>
+                        <a href="{{route('studentLogin')}}" class="button button--text">{{__('Sign in')}}</a>
+                        <a href="{{route('studentRegister')}}" class="button button--dark">{{__('Sign Up')}}</a>
                         @endif
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                                     </svg>
                                     {{-- <span class="badge bg-primary">2</span> --}}
                                     <span class="badge bg-primary">{{ count((array) session('cart')) }}</span>
-                                    <span class="visually-hidden">Items Added</span>
+                                    <span class="visually-hidden">{{__('Items Added')}}</span>
                                 </a>
                                 <button class="navbar-mobile--cross">
                                     <svg width="20" height="19" viewBox="0 0 20 19" fill="currentColor"
@@ -174,22 +174,22 @@
                             <ul class="navbar-mobile__menu-list">
                                 <li class="active navbar-mobile__menu-item">
                                     <a href="{{route('home')}}">
-                                        <span class="navbar-mobile__menu-link"> Home</span>
+                                        <span class="navbar-mobile__menu-link">{{__('Homepage')}}</span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('searchCourse')}}">
-                                        <span class="navbar-mobile__menu-link"> Courses </span>
+                                        <span class="navbar-mobile__menu-link"> {{__('Courses')}} </span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('about')}}">
-                                        <span class="navbar-mobile__menu-link"> About </span>
+                                        <span class="navbar-mobile__menu-link"> {{__('About')}} </span>
                                     </a>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="#">
-                                        <span class="navbar-mobile__menu-link"> Pages </span>
+                                        <span class="navbar-mobile__menu-link"> {{__('Pages')}} </span>
                                         <span class="navbar-mobile__menu-dropicon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -200,15 +200,15 @@
                                         </span>
                                     </a>
                                     <ul class="navbar-mobile__menu-dropmenu">
-                                        <li><a href="{{route('searchCourse')}}">Courses</a></li>
-                                        <li><a href="{{route('student_profile')}}">Student Profile</a></li>
-                                        <li><a href="{{route('about')}}">About</a></li>
-                                        <li><a href="{{route('contact')}}">Contact</a></li>
+                                        <li><a href="{{route('searchCourse')}}">{{__('Courses')}} </a></li>
+                                        <li><a href="{{route('student_profile')}}">{{__('Student Profile')}} </a></li>
+                                        <li><a href="{{route('about')}}">{{__('About')}} </a></li>
+                                        <li><a href="{{route('contact')}}">{{__('Contact')}} </a></li>
                                     </ul>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
                                     <a href="{{route('contact')}}">
-                                        <span class="navbar-mobile__menu-link"> Contact </span>
+                                        <span class="navbar-mobile__menu-link"> {{__('Contact')}} </span>
                                     </a>
                                 </li>
                             </ul>
@@ -294,15 +294,14 @@
                 <div class="col-lg-6">
                     <div class="footer__wrapper">
                         <div class="footer__wrapper_logo">
-                            <img src="{{asset('public/frontend/dist/images/logo/footerlogo.png')}}" alt="logo"
+                            <img src="{{asset('public/frontend/dist/images/logo/logo4.png')}}" alt="logo"
                                 class="img-fluid" />
                         </div>
-                        <p>
-                            Duis posuere maximus arcu eu tincidunt. Nam rutrum, nibh vitae tempus venenatis, ex tortor
-                            ultricies magna.
+                        <p style="margin-top: -30px; margin-left: 40px;">
+                            {{__('Learning without limits, your future begins here.')}}
                         </p>
                         <div class="footer__wrapper_social d-none d-lg-block">
-                            <ul>
+                            <ul style="padding-left: 38px">
                                 <li>
                                     <a href="#">
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -370,34 +369,34 @@
                 </div>
                 <div class="col-lg-2 col-sm-4 col-6">
                     <div class="footer__list">
-                        <h6>Company</h6>
+                        <h6>{{__('Company')}}</h6>
                         <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="course-search.html">Courses</a></li>
-                            <li><a href="#">career</a></li>
-                            <li><a href="#">Affiliate</a></li>
+                            <li><a href="about.html">{{__('About Us')}}</a></li>
+                            <li><a href="course-search.html">{{__('Courses')}}</a></li>
+                            <li><a href="#">{{__('career')}}</a></li>
+                            <li><a href="#">{{__('Affiliate')}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-4 col-6">
                     <div class="footer__list">
-                        <h6>Support</h6>
+                        <h6>{{__('Support')}}</h6>
                         <ul>
-                            <li><a href="#">Help &amp; Supports </a></li>
-                            <li><a href="#">Pravacy Polocy</a></li>
-                            <li><a href="faq.html">FAQs</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
+                            <li><a href="#">{{__('Help & Supports')}} </a></li>
+                            <li><a href="#">{{__('Privacy Policy')}}</a></li>
+                            <li><a href="faq.html">{{__('FAQs')}}</a></li>
+                            <li><a href="contact.html">{{__('Contact Us')}}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-sm-4 col-6">
                     <div class="footer__list">
-                        <h6>Quick Links</h6>
+                        <h6>{{__('Quick Links')}}</h6>
                         <ul>
-                            <li><a href="event-search.html">Events</a></li>
-                            <li><a href="become-instructor.html">Become a Instructor</a></li>
-                            <li><a href="#">Partnerships</a></li>
-                            <li><a href="#">Get the app</a></li>
+                            <li><a href="event-search.html">{{__('Events')}}</a></li>
+                            <li><a href="become-instructor.html">{{__('Become an Instructor')}}</a></li>
+                            <li><a href="#">{{__('Partnerships')}}</a></li>
+{{--                            <li><a href="#">{{__('Get the app')}}</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -474,11 +473,11 @@
             <div class="container">
                 <div class="footer__bottom-content">
                     <div class="footer__bottom_copyright">
-                        <p>© 2021 - Eduguard. All rights reserved</p>
+                        <p>{{__('© 2024 - ilearn academy. All rights reserved')}}</p>
                     </div>
                     <div class="footer__bottom_topbutton">
                         <a href="#">
-                            Go To Top
+                                {{__('Go To Top')}}
                             <div class="icon ms-2">
                                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
