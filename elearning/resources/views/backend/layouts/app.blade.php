@@ -28,13 +28,17 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
+        <div class="nav-header" style="background-color: black">
             <a href="{{route('home')}}" class="brand-logo">
-                <img class="logo-abbr" src="{{asset('public/images/logo-white.png')}}" alt="">
-                <img class="logo-compact" src="{{asset('public/images/d-logo.png')}}" alt="">
-                <img class="brand-title" src="{{asset('public/images/d-logo.png')}}" alt="">
-            </a>
 
+                <img src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="images"
+                     class="brand-title" style="margin-left: 0px; max-width: 200px;"/>
+{{--                <img src="{{asset('public/frontend/dist/images/logo/logo5.png')}}" alt="images"--}}
+{{--                         class="logo-abbr" />--}}
+{{--                    <img src="{{asset('public/frontend/dist/images/logo/logo6.png')}}" alt="images"--}}
+{{--                         class="logo-compact" />--}}
+
+            </a>
             <div class="nav-control">
                 <div class="hamburger">
                     <span class="line"></span><span class="line"></span><span class="line"></span>
@@ -59,7 +63,7 @@
                                 </span>
                                 <div class="dropdown-menu p-0 m-0">
                                     <form>
-                                        <input class="form-control" type="search" placeholder="Search"
+                                        <input class="form-control" type="search" placeholder="{{__('Search')}}"
                                             aria-label="Search">
                                     </form>
                                 </div>
@@ -379,18 +383,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     <script>
-        @if(Session::has('success'))  
-    				toastr.success("{{ Session::get('success') }}");  
-    		@endif  
-    		@if(Session::has('info'))  
-    				toastr.info("{{ Session::get('info') }}");  
-    		@endif  
-    		@if(Session::has('warning'))  
-    				toastr.warning("{{ Session::get('warning') }}");  
-    		@endif  
-    		@if(Session::has('error'))  
-    				toastr.error("{{ Session::get('error') }}");  
-    		@endif  
+        @if(Session::has('success'))
+    				toastr.success("{{ Session::get('success') }}");
+    		@endif
+    		@if(Session::has('info'))
+    				toastr.info("{{ Session::get('info') }}");
+    		@endif
+    		@if(Session::has('warning'))
+    				toastr.warning("{{ Session::get('warning') }}");
+    		@endif
+    		@if(Session::has('error'))
+    				toastr.error("{{ Session::get('error') }}");
+    		@endif
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     {!! Toastr::message() !!}

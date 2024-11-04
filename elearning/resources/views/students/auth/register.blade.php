@@ -9,28 +9,28 @@
         <div class="row align-items-center justify-content-md-center">
             <div class="col-lg-5 order-2 order-lg-0">
                 <div class="signup-area-textwrapper">
-                    <h2 class="font-title--md mb-0">Sign Up</h2>
-                    <p class="mt-2 mb-lg-4 mb-3">Already have account? <a href="{{route('studentLogin')}}" class="text-black-50">Sign In</a></p>
+                    <h2 class="font-title--md mb-0">{{__('Sign up')}}</h2>
+                    <p class="mt-2 mb-lg-4 mb-3">{{__('Already have an account?')}} <a href="{{route('studentLogin')}}" class="text-black-50">{{__('Sign in')}}</a></p>
                     <form action="{{route('studentRegister.store','studentdashboard')}}" method="POST">
                         @csrf
                         <div class="form-element">
-                                <label for="name">Full Name</label>
-                                <input type="text" placeholder="Enter Your Name" id="name" value="{{old('name')}}" name="name" />
+                                <label for="name">{{__('Full Name')}}</label>
+                                <input type="text" placeholder="{{__('Enter your Full Name')}}" id="name" value="{{old('name')}}" name="name" />
                                 @if($errors->has('name'))
                                     <small class="d-block text-danger">{{$errors->first('name')}}</small>
                                 @endif
                         </div>
                         <div class="form-element">
-                                <label for="email">Email</label>
-                                <input type="email" placeholder="example@email.com" id="email" value="{{old('email')}}" name="email" />
+                                <label for="email">{{__('Your email')}}</label>
+                                <input type="email" placeholder="{{__('example@email.com')}}" id="email" value="{{old('email')}}" name="email" />
                                 @if($errors->has('email'))
                                     <small class="d-block text-danger">{{$errors->first('email')}}</small>
                                 @endif
                         </div>
                         <div class="form-element">
-                            <label for="password" class="w-100" style="text-align: left;">password</label>
+                            <label for="password" class="w-100" style="text-align: left;">{{__('password')}}</label>
                             <div class="form-alert-input">
-                                <input type="password" placeholder="Type here..." id="password"  name="password"/>
+                                <input type="password" placeholder="{{__('Type here...')}}" id="password"  name="password"/>
                                 <div class="form-alert-icon" onclick="showPassword('password',this)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -45,10 +45,9 @@
                             </div>
                         </div>
                         <div class="form-element">
-                            <label for="password_confirmation" class="w-100" style="text-align: left;">Confirm
-                                password</label>
+                            <label for="password_confirmation" class="w-100" style="text-align: left;">{{__('Confirm password')}}</label>
                             <div class="form-alert-input">
-                                <input type="password" placeholder="Type here..." name="password_confirmation" id="password_confirmation" />
+                                <input type="password" placeholder="{{__('Type here...')}}" name="password_confirmation" id="password_confirmation" />
                                 <div class="form-alert-icon" onclick="showPassword('password_confirmation',this)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -61,12 +60,12 @@
                         </div>
                         <div class="form-element d-flex align-items-center terms">
                             <input class="checkbox-primary me-1" type="checkbox" id="agree" />
-                            <label for="agree" class="text-secondary mb-0">Accept the <a href="#"
-                                    style="text-decoration: underline;">Terms</a> and <a href="#"
-                                    style="text-decoration: underline;">Privacy Policy</a></label>
+                            <label for="agree" class="text-secondary mb-0">{{__('Accept the')}} <a href="#"
+                                    style="text-decoration: underline;">{{__('Terms')}}</a> {{__('and')}} <a href="#"
+                                    style="text-decoration: underline;">{{__('Privacy Policy')}}</a></label>
                         </div>
                         <div class="form-element">
-                            <button type="submit" class="button button-lg button--primary w-100">Sign UP</button>
+                            <button type="submit" class="button button-lg button--primary w-100">{{__('Sign up')}}</button>
                         </div>
                     </form>
                 </div>
@@ -74,7 +73,7 @@
             <div class="col-lg-7 order-1 order-lg-0">
                 <div class="signup-area-image">
                     <img src="{{asset('public/frontend/dist/images/signup/Illustration.png')}}" alt="Illustration Image"
-                        class="img-fluid" /> 
+                        class="img-fluid" />
                 </div>
             </div>
         </div>

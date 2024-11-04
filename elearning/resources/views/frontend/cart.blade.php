@@ -22,7 +22,7 @@
         @if (session('cart'))
         <div class="row">
             <div class="col-lg-8">
-                <h6 class="cart-area__label">{{count(session('cart', []))}} Courses in Cart</h6>
+                <h6 class="cart-area__label">{{count(session('cart', []))}} {{__('Courses in Cart')}}</h6>
                 @php $total = 0 @endphp
                 @if (session('cart'))
                 @foreach (session('cart') as $id => $details)
@@ -52,32 +52,32 @@
                 @endif
             </div>
             <div class="col-lg-4">
-                <h6 class="cart-area__label">Summery</h6>
+                <h6 class="cart-area__label">{{__('Summary')}}</h6>
                 <div class="summery-wizard">
                     <div class="summery-wizard-text pt-0">
-                        <h6>Subtotal</h6>
+                        <h6>{{__('Subtotal')}}</h6>
                         <p> {{'৳' . number_format((float) session('cart_details')['cart_total'] , 2)}}</p>
                     </div>
                     <div class="summery-wizard-text">
-                        <h6>Coupon Discount ({{session('cart_details')['discount'] ?? 0.00}}%)</h6>
+                        <h6>{{__('Coupon Discount')}} ({{session('cart_details')['discount'] ?? 0.00}}%)</h6>
                         <p>{{'৳' . number_format((float) isset(session('cart_details')['discount_amount']) ? session('cart_details')['discount_amount']: 0.00 , 2)}}</p>
                     </div>
                     <div class="summery-wizard-text">
-                        <h6>Taxes (15%)</h6>
+                        <h6>{{__('Taxes (15%)')}}</h6>
                         <p> {{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>
                     </div>
                     <div class="total-wizard">
-                        <h6 class="font-title--card">Total:</h6>
+                        <h6 class="font-title--card">{{__('Total:')}}</h6>
                         <p class="font-title--card">{{'৳' . number_format((float) session('cart_details')['total_amount'] , 2)}}</p>
                     </div>
                     <form action="{{route('coupon_check')}}" method="post">
                         @csrf
                         <a href="{{route('checkout')}}"
-                            class="button button-lg button--primary form-control mb-lg-3">Checkout</a>
-                        <label for="coupon">Apply Coupon</label>
+                            class="button button-lg button--primary form-control mb-lg-3">{{__('Checkout')}}</a>
+                        <label for="coupon">{{__('Apply Coupon')}}</label>
                         <div class="cart-input">
-                            <input type="text" name="coupon" class="form-control" placeholder="Coupon Code" id="coupon" />
-                            <button type="submit" class="sm-button">Apply</button>
+                            <input type="text" name="coupon" class="form-control" placeholder="{{__('Coupon Code')}}" id="coupon" />
+                            <button type="submit" class="sm-button">{{__('Apply')}}</button>
                         </div>
                     </form>
                 </div>
@@ -86,8 +86,8 @@
         @else
         <section class="section cart-area pb-0">
             <div class="container text-center">
-                <h1>Your Cart is Empty</h1>
-                <h5>No Courses in Your Cart Yet</h5>
+                <h1>{{__('Your Cart is Empty')}}</h1>
+                <h5>{{__('No Courses in Your Cart Yet')}}</h5>
             </div>
         </section>
         @endif
