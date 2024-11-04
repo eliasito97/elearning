@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Edit Role</h4>
+                    <h4>{{__('Edit Role')}}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">Roles</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.create')}}">Add Role</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Homepage')}}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">{{__('Roles')}}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.create')}}">{{__('Add Role')}}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{__('Basic Info')}}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('role.update',encryptor('encrypt',$role->id))}}" method="post" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Identity (only Alpha Character)</label>
+                                        <label class="form-label">{{__('Identity (only Alpha Character)')}}</label>
                                         <input type="text" class="form-control" name="Identity"
                                             value="{{old('Identity',$role->identity)}}">
                                     </div>
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">{{__('Name')}}</label>
                                         <input type="text" class="form-control" name="Name" value="{{old('Name',$role->name)}}">
                                     </div>
                                     @if($errors->has('Name'))
@@ -60,8 +60,8 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Save</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">{{__('Save')}}</button>
+                                    <button type="submit" class="btn btn-light">{{__('Cancel')}}</button>
                                 </div>
                             </div>
                         </form>

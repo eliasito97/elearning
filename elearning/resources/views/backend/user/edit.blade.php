@@ -23,14 +23,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Add User</h4>
+                    <h4>{{__('Add User')}}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('user.index')}}">Users</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit User</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Homepage')}}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('user.index')}}">{{ __('Users') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">{{ __('Edit User') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{ __('Basic Info') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('user.update', encryptor('encrypt', $user->id))}}" method="post"
@@ -50,7 +50,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Name</label>
+                                        <label class="form-label">{{ __('Names') }}</label>
                                         <input type="text" class="form-control" name="userName_en"
                                             value="{{old('userName_en', $user->name_en)}}">
                                     </div>
@@ -60,14 +60,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">নাম (বাংলায়)</label>
+                                        <label class="form-label">{{ __('Last Name') }}</label>
                                         <input type="text" class="form-control" name="userName_bn"
                                             value="{{old('userName_bn', $user->name_bn)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Phone Number</label>
+                                        <label class="form-label">{{ __('Phone Number') }}</label>
                                         <input type="tel" class="form-control" name="contactNumber_en"
                                             value="{{old('contactNumber_en', $user->contact_en)}}">
                                     </div>
@@ -77,14 +77,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">ফোন নাম্বার (বাংলায়)</label>
+                                        <label class="form-label">{{ __('Pais') }}</label>
                                         <input type="tel" class="form-control" name="contactNumber_bn"
                                             value="{{old('contactNumber_bn', $user->contact_bn)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Email</label>
+                                        <label class="form-label">{{ __('Email') }}</label>
                                         <input type="email" class="form-control" name="emailAddress"
                                             value="{{old('emailAddress', $user->email)}}">
                                     </div>
@@ -94,14 +94,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Role</label>
+                                        <label class="form-label">{{ __('Role') }}</label>
                                         <select class="form-control" name="roleId">
                                             @forelse ($role as $r)
                                             <option value="{{$r->id}}" {{old('roleId', $user->role_id) ==
                                                 $r->id?'selected':''}}>
                                                 {{$r->name}}</option>
                                             @empty
-                                            <option value="">No Role Found</option>
+                                            <option value="">{{ __('No Role Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -111,7 +111,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Full Access</label>
+                                        <label class="form-label">{{ __('Full Access') }}</label>
                                         <select class="form-control" name="fullAccess">
                                             <option value="0" @if(old('fullAccess', $user->full_access)==0) selected
                                                 @endif>No</option>
@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">{{ __('Status') }}</label>
                                         <select class="form-control" name="status">
                                             <option value="1" @if(old('status', $user->status)==1) selected
                                                 @endif>Active</option>

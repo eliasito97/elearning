@@ -8730,6 +8730,7 @@ a.text-dark:hover, a.text-dark:focus {
   cursor: pointer; }
 
 * {
+  color:white !important;
   outline: none;
   padding: 0; }
   *::after {
@@ -24114,6 +24115,7 @@ table.dataTable tfoot th {
     border-color: #383c46;
     color: #fff; }
 .dataTables_wrapper .dataTables_length {
+    color: white !important;
   margin-bottom: 15px; }
   .dataTables_wrapper .dataTables_length .bootstrap-select {
     width: 80px !important;

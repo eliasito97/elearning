@@ -6,7 +6,7 @@
 
 	var dlabSettingsOptions = {
 		typography: "roboto",
-        version: "light",
+        version: "dark",
         layout: "Vertical",
         headerBg: "color_1",
         navheaderBg: "color_11",
@@ -17,13 +17,13 @@
         containerLayout: "full",
         direction: direction
 	};
-	
+
 	jQuery(document).ready(function(){
-		new dlabSettings(dlabSettingsOptions); 
+		new dlabSettings(dlabSettingsOptions);
 	});
-		
+
 	jQuery(window).on('resize',function(){
-		new dlabSettings(dlabSettingsOptions); 
-	});     
-	
+		new dlabSettings(dlabSettingsOptions);
+	});
+
 })(jQuery);

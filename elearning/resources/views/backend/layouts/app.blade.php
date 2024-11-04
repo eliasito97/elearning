@@ -31,7 +31,7 @@
         <div class="nav-header" style="background-color: black">
             <a href="{{route('home')}}" class="brand-logo">
 
-                <img src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="images"
+                <img src="{{asset('public/frontend/dist/images/logo/logo.png')}}" alt="images"
                      class="brand-title" style="margin-left: 0px; max-width: 200px;"/>
 {{--                <img src="{{asset('public/frontend/dist/images/logo/logo5.png')}}" alt="images"--}}
 {{--                         class="logo-abbr" />--}}
@@ -152,7 +152,7 @@
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>
-                                        <span class="ml-2">Profile</span>
+                                        <span class="ml-2">{{__('Profile')}}</span>
                                     </a>
                                     <a href="email-inbox.html" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -163,7 +163,7 @@
                                             </path>
                                             <polyline points="22,6 12,13 2,6"></polyline>
                                         </svg>
-                                        <span class="ml-2">Inbox </span>
+                                        <span class="ml-2">{{__('Inbox')}}</span>
                                     </a>
                                     <a href="{{route('logOut')}}" class="dropdown-item ai-icon">
                                         <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
@@ -174,7 +174,7 @@
                                             <polyline points="16 17 21 12 16 7"></polyline>
                                             <line x1="21" y1="12" x2="9" y2="12"></line>
                                         </svg>
-                                        <span class="ml-2">Logout </span>
+                                        <span class="ml-2">{{__('Logout')}} </span>
                                     </a>
                                 </div>
                             </li>
@@ -194,62 +194,61 @@
         <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
-                    <li class="nav-label first">Admin Panel</li>
+                    <li class="nav-label first">{{__('Admin Panel')}}</li>
                     <li><a class="ai-icon" href="{{route('dashboard')}}" aria-expanded="false">
                             <i class="las la-tachometer-alt"></i>
-                            <span class="nav-text">Dashboard</span>
+                            <span class="nav-text">{{__('Dashboard')}}</span>
                         </a>
                     </li>
                     <li><a class="ai-icon" href="{{route('home')}}" aria-expanded="false">
                             <i class="las la-home"></i>
-                            <span class="nav-text">Home</span>
+                            <span class="nav-text">{{__('Homepage')}}</span>
                         </a>
                     </li>
-                    <li class="nav-label">Main Menu</li>
+                    <li class="nav-label">{{__('Main Menu')}}</li>
                     <li><a class="" href="{{route('role.index')}}" aria-expanded="false">
                             <i class="las la-cog"></i>
-                            <span class="nav-text">Permissions</span>
+                            <span class="nav-text">{{__('Permissions')}}</span>
                         </a>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="la la-universal-access"></i>
-                            <span class="nav-text">Roles</span>
+                            <span class="nav-text">{{__('Roles')}}</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('user.index')}}"><i class="la la-users"></i>Users</a></li>
+                            <li><a href="{{route('user.index')}}"><i class="la la-users"></i>{{__('Users')}}</a></li>
                             <li><a href="{{route('instructor.index')}}"><i
-                                        class="las la-chalkboard-teacher"></i>Instructors</a>
+                                        class="las la-chalkboard-teacher"></i>{{__('Instructors')}}</a>
                             </li>
-                            <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>Students</a></li>
+                            <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>{{__('Students')}}</a></li>
                         </ul>
                     </li>
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="las la-school"></i>
-                            <span class="nav-text">Courses</span>
+                            <span class="nav-text">{{__('Courses')}}</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('courseCategory.index')}}"><i class="la la-list"></i>Course
-                                    Category</a>
+                            <li><a href="{{route('courseCategory.index')}}"><i class="la la-list"></i>{{__('Course Category')}}</a>
                             </li>
-                            <li><a href="{{route('courseList')}}"><i class="las la-school"></i>Courses List</a></li>
-                            <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>All Courses</a></li>
-                            <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>Lessons</a></li>
-                            <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>Materials</a></li>
+                            <li><a href="{{route('courseList')}}"><i class="las la-school"></i>{{__('Courses List')}}</a></li>
+                            <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>{{__('All Courses')}}</a></li>
+                            <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>{{__('Lessons')}}</a></li>
+                            <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>{{__('Materials')}}</a></li>
                         </ul>
                     </li>
                     <li><a class="" href="{{route('enrollment.index')}}" aria-expanded="false">
                             <i class="las la-bullseye"></i>
-                            <span class="nav-text">Enrollments</span>
+                            <span class="nav-text">{{__('Enrollments')}}</span>
                         </a>
                     </li>
                     <li><a class="" href="{{route('event.index')}}" aria-expanded="false">
                             <i class="las la-icons"></i>
-                            <span class="nav-text">Events</span>
+                            <span class="nav-text">{{__('Events')}}</span>
                         </a>
                     </li>
                     <li><a class="" href="{{route('coupon.index')}}" aria-expanded="false">
                             <i class="las la-tags"></i>
-                            <span class="nav-text">Coupons</span>
+                            <span class="nav-text">{{__('Coupons')}}</span>
                         </a>
                     </li>
                     {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
@@ -301,26 +300,26 @@
         <div class="dlabnav">
         <div class="dlabnav-scroll">
             <ul class="metismenu" id="menu">
-                <li class="nav-label first">Instructor Panel</li>
+                <li class="nav-label first">{{__('Instructor Panel')}}</li>
                 <li><a class="ai-icon" href="{{route('dashboard')}}" aria-expanded="false">
-                        <i class="las la-tachometer-alt"></i> <span class="nav-text">Dashboard</span>
+                        <i class="las la-tachometer-alt"></i> <span class="nav-text">{{__('Dashboard')}}</span>
                     </a>
                 </li>
                 <li><a class="ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="las la-home"></i><span class="nav-text">Home</span>
+                        <i class="las la-home"></i><span class="nav-text">{{__('Homepage')}}</span>
                     </a>
                 </li>
-                <li class="nav-label">Main Menu</li>
+                <li class="nav-label">{{__('Main Menu')}}</li>
                 <li><a href="{{route('instructor.index')}}">
-                        <i class="las la-chalkboard-teacher"></i>Instructors List
+                        <i class="las la-chalkboard-teacher"></i>{{__('Instructors List')}}
                     </a>
                 </li>
-                <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>Students List</a></li>
-                <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>All Courses</a></li>
-                <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>Course Lessons</a></li>
-                <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>Course Materials</a></li>
-                <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>Coupons</a></li>
-                <li><a href="{{route('enrollment.index')}}"><i class="las la-bullseye"></i>Enrollments</a></li>
+                <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>{{__('Students List')}}</a></li>
+                <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>{{__('All Courses')}}</a></li>
+                <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>{{__('Course Lessons')}}</a></li>
+                <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>{{__('Course Materials')}}</a></li>
+                <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>{{__('Coupons')}}</a></li>
+                <li><a href="{{route('enrollment.index')}}"><i class="las la-bullseye"></i>{{__('Enrollments')}}</a></li>
             </ul>
         </div>
         </div>
@@ -344,7 +343,7 @@
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2020</p>
+                <p>{{__('Copyright © Designed & Developed by ')}}<a href="#" target="_blank">{{__(' Ilearning Academy')}}</a>{{__('2024')}} </p>
             </div>
         </div>
         <!--**********************************
@@ -376,7 +375,7 @@
     <!-- Svganimation scripts -->
     <script src="{{asset('public/vendor/svganimation/vivus.min.js')}}"></script>
     <script src="{{asset('public/vendor/svganimation/svg.animation.js')}}"></script>
-    <script src="{{asset('public/js/styleSwitcher.js')}}"></script>
+{{--    <script src="{{asset('public/js/styleSwitcher.js')}}"></script>--}}
 
     @stack('scripts')
     {{-- TOASTER --}}

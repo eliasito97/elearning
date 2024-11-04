@@ -167,18 +167,67 @@
     "Subscribe": "Suscribirse",
     "Total Students":"Total de estudiantes",
     "New Students": "Nuevos estudiantes",
-    "Total Course": "Total de cursos"
-
-
-
-
-
-
-
-
-
-
-
-
-
+    "Total Course": "Total de cursos",
+    "Subscription Collection": "Recaudación de suscripciones",
+    "Income/Expense Report": "Informe de ingresos/gastos",
+    "Assign Task": "Asignar tarea",
+    "Task": "Tarea",
+    "Assigned Professors": "Profesores asignados",
+    "Status": "Estado",
+    "Progress": "Progreso",
+    "Inbox": "Bandeja de entrada",
+    "Admin Panel": "Panel de administración",
+    "Permissions": "Permisos",
+    "Roles": "Roles",
+    "Users": "Usuarios",
+    "Instructors": "Instructores",
+    "Students": "Estudiantes",
+    "Course Category": "Categoría de curso",
+    "Courses List": "Lista de cursos",
+    "All Courses": "Todos los cursos",
+    "Materials": "Materiales",
+    "Enrollments": "Inscripciones",
+    "Coupons": "Cupones",
+    "Instructor Panel": "Panel del instructor",
+    "Main Menu": "Menú principal",
+    "Instructors List": "Lista de instructores",
+    "Students List": "Lista de estudiantes",
+    "Course Lessons": "Lecciones del curso",
+    "Course Materials": "Materiales del curso",
+    "Copyright © Designed & Developed by ": "Derechos de autor © Diseñado y desarrollado por",
+    " Ilearning Academy": " Ilearning Academy",
+    "2024": "2024",
+    "All Role": "Todos los roles",
+    "All Role List": "Lista de todos los roles",
+    "Add new": "Agregar nuevo",
+    "Identity": "Identidad",
+    "Action": "Acción",
+    "No User Found": "No se encontraron usuarios",
+    "Add Role": "Agregar rol",
+    "Basic Info": "Información básica",
+    "Identity (only Alpha Character)": "Identidad (solo caracteres alfabéticos)",
+    "Save": "Guardar",
+    "Cancel": "Cancelar",
+    "Submit": "Enviar",
+    "Edit Role": "Editar rol",
+    "User List": "Lista de usuarios",
+    "All User": "Todos los usuarios",
+    "List View": "Vista de lista",
+    "Grid View": "Vista de cuadrícula",
+    "All Students List": "Lista de todos los estudiantes",
+    "Full Access": "Acceso total",
+    "Yes": "Sí",
+    "No": "No",
+    "Active": "Activo",
+    "Inactive": "Inactivo",
+    "Edit": "Editar",
+    "Delete": "Eliminar",
+    "Read More": "Leer más",
+    "Role": "Rol",
+    "Add User": "Agregar usuario",
+    "Edit User": "Editar usuario",
+    "Names" : "Nombres",
+    "Last Name": "Apellidos",
+    "Pais": "Pais",
+    "No Role Found": "No se encontró ningún rol"
 }

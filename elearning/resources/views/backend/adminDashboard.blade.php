@@ -55,8 +55,8 @@
             <div class="col-xl-3 col-xxl-3 col-sm-6">
                 <div class="widget-stat card bg-danger overflow-hidden">
                     <div class="card-header pb-3">
-                        <h3 class="card-title text-white">Fees Collection</h3>
-                        <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i> 3280$</h5>
+                        <h3 class="card-title text-white">{{__('Subscription Collection')}}</h3>
+                        <h5 class="text-white mb-0"><i class="fa fa-caret-up"></i>{{$totalAmount}}</h5>
                     </div>
                     <div class="card-body p-0 mt-1">
                         <span class="peity-line-2" data-width="100%">7,6,8,7,3,8,3,3,6,5,9,2,8</span>
@@ -66,7 +66,7 @@
             <div class="col-xl-6 col-xxl-6 col-sm-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Income/Expense Report</h3>
+                        <h3 class="card-title">{{__('Income/Expense Report')}}</h3>
                     </div>
                     <div class="card-body">
                         <canvas id="barChart_2"></canvas>
@@ -76,7 +76,7 @@
             <div class="col-xl-6 col-xxl-6 col-sm-6">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Income/Expense Report</h3>
+                        <h3 class="card-title">{{__('Income/Expense Report')}}</h3>
                     </div>
                     <div class="card-body">
                         <canvas id="areaChart_1"></canvas>
@@ -86,7 +86,7 @@
             <div class="col-xl-8 col-xxl-8 col-lg-8 col-md-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Assign Task</h5>
+                        <h5 class="card-title">{{__('Assign Task')}}</h5>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -94,10 +94,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Task</th>
-                                        <th scope="col">Assigned Professors</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Progress</th>
+                                        <th scope="col">{{__('Task')}}</th>
+                                        <th scope="col">{{__('Assigned Professors')}}</th>
+                                        <th scope="col">{{__('Status')}}</th>
+                                        <th scope="col">{{__('Progress')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,8 +108,8 @@
                                         <td><span class="badge badge-rounded badge-primary">DONE</span></td>
                                         <td>
                                             <div class="progress">
-                                                <div class="progress-bar" style="width: 70%;" role="progressbar">
-                                                    <span class="sr-only">70% Complete</span>
+                                                <div class="progress-bar" style="width: 50%;" role="progressbar">
+                                                    <span class="sr-only">100% Complete</span>
                                                 </div>
                                             </div>
                                         </td>

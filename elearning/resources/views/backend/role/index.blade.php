@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Role List</h4>
+                    <h4>{{__('All Role')}}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">Roles</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">All Role</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{__('Homepage')}}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">{{__('Roles')}}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">{{__('All Role')}}</a></li>
                 </ol>
             </div>
         </div>
@@ -33,8 +33,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Role List </h4>
-                                <a href="{{route('role.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">{{__('All Role List')}} </h4>
+                                <a href="{{route('role.create')}}" class="btn btn-primary">{{__('Add new')}}</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -73,7 +73,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="7" class="text-center">No User Found</th>
+                                                <th colspan="7" class="text-center">{{__('No User Found')}}</th>
                                             </tr>
                                             @endforelse
                                         </tbody>
