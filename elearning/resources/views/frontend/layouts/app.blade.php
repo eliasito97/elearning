@@ -6,9 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{ENV('APP_NAME')}} | @yield('title', 'Home')</title>
-    <link rel="stylesheet" href="{{asset('public/frontend/dist/main.css')}}" />
+
+    @if (env('DESIGN_VERSION') === 'dark')
+        <link id="theme-link" rel="stylesheet" href="{{ asset('public/frontend/dist/dark-theme.css') }}">
+    @elseif (env('DESIGN_VERSION') === 'light')
+        <link id="theme-link" rel="stylesheet" href="{{ asset('public/frontend/dist/light-theme.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    @endif
     <link rel="icon" type="image/png" href="{{asset('public/frontend/dist/images/favicon/favicon.png')}}" />
     <link rel="stylesheet" href="{{asset('public/frontend/fontawesome-free-5.15.4-web/css/all.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         .dropdown {
             position: relative;
@@ -50,11 +59,12 @@
 
     <!-- Header Starts Here -->
     <header @yield('header-attr')>
-        <nav class="navbar navbar-expand-xl navbar-light bg-transparent" style="background-color: black !important;">
+        <nav class="navbar navbar-expand-xl navbar-light bg-transparent navbar-theme">
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img style="max-height: 100px; max-width: 260px;" src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="Logo" class="img-fluid" />
+{{--                    <img style="max-height: 100px; max-width: 260px;" src="{{asset('public/frontend/dist/images/logo/logo2.png')}}" alt="Logo" class="img-fluid" />--}}
+                    <div class="logo-theme"></div>
                 </a>
                 <button class="menu-icon-container">
                     <span class="menu-icon"></span>
@@ -138,7 +148,10 @@
                         @endif
                     </div>
                 </div>
-
+                <div class="theme-switcher">
+                    <!-- Icono de sol (light) y luna (dark) -->
+                    <i id="themeIcon" class="fas {{ env('DESIGN_VERSION') === 'dark' ? 'fa-moon' : 'fa-sun' }}"></i>
+                </div>
                 {{-- Mobile Navbar --}}
                 <div class="navbar-mobile">
                     <div>
@@ -500,7 +513,11 @@
     <script src="{{asset('public/frontend/src/scss/vendors/plugin/js/jquery.nice-select.min.js')}}"></script>
     <script src="{{asset('public/frontend/src/js/app.js')}}"></script>
     <script src="{{asset('public/frontend/dist/main.js')}}"></script>
-
+    <script src="{{asset('public/frontend/src/js/themeToggle.js')}}"></script>
+    <script>
+        const lightThemeUrl = "{{ asset('public/frontend/dist/light-theme.css') }}";
+        const darkThemeUrl = "{{ asset('public/frontend/dist/dark-theme.css') }}";
+    </script>
     <script>
         function toggleDropdown(event) {
             event.preventDefault();

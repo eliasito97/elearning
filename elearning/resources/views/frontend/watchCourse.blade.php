@@ -8,7 +8,13 @@
     <title>{{ENV('APP_NAME')}} | @yield('title', 'Watch Course')</title>
     <link rel="stylesheet" href="{{asset('public/frontend/src/scss/vendors/plugin/css/video-js.css')}}" />
     <link rel="stylesheet" href="{{asset('public/frontend/src/scss/vendors/plugin/css/star-rating-svg.css')}}" />
-    <link rel="stylesheet" href="{{asset('public/frontend/dist/main.css')}}" />
+    @if (env('DESIGN_VERSION') === 'dark')
+        <link rel="stylesheet" href="{{ asset('public/css/style_dark.css') }}">
+    @elseif (env('DESIGN_VERSION') === 'light')
+        <link rel="stylesheet" href="{{ asset('public/css/style_light.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    @endif
     <link rel="icon" type="image/png" href="{{asset('public/frontend/dist/images/favicon/favicon.png')}}" />
     <link rel="stylesheet" href="{{asset('public/frontend/fontawesome-free-5.15.4-web/css/all.min.css')}}">
     <style>
@@ -418,7 +424,7 @@
 
         function show_video(e){
             let link="{{asset('public/uploads/courses/contents')}}/"+e
-           
+
             var video = document.getElementById('myvideo');
                         video.src = link;
                         video.play();

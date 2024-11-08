@@ -11,7 +11,15 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('public/images/favicon.png')}}">
     <link rel="stylesheet" href="{{asset('public/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
-    <link rel="stylesheet" href="{{asset('public/css/style.css')}}">
+    @if (env('DESIGN_VERSION') === 'dark')
+        <link id="theme-link" rel="stylesheet" href="{{ asset('public/css/style_dark.css') }}">
+    @elseif (env('DESIGN_VERSION') === 'light')
+        <link id="theme-link-light" rel="stylesheet" href="{{ asset('public/css/style_light.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('public/css/main.css') }}">
+    @endif
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
     @stack('styles')
 
@@ -28,11 +36,9 @@
         <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header" style="background-color: black">
+        <div class="nav-header">
             <a href="{{route('home')}}" class="brand-logo">
-
-                <img src="{{asset('public/frontend/dist/images/logo/logo.png')}}" alt="images"
-                     class="brand-title" style="margin-left: 0px; max-width: 200px;"/>
+                <div class="logo-theme"></div>
 {{--                <img src="{{asset('public/frontend/dist/images/logo/logo5.png')}}" alt="images"--}}
 {{--                         class="logo-abbr" />--}}
 {{--                    <img src="{{asset('public/frontend/dist/images/logo/logo6.png')}}" alt="images"--}}
@@ -69,7 +75,10 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="theme-switcher-admin">
+                            <!-- Icono de sol (light) y luna (dark) -->
+                            <i id="themeIcon" class="fa fa-sun" aria-hidden="true" style="cursor:pointer;"></i>
+                        </div>
                         <ul class="navbar-nav header-right">
                             <li class="nav-item dropdown notification_dropdown">
                                 <a class="nav-link bell ai-icon" href="#" role="button" data-toggle="dropdown">
@@ -183,6 +192,7 @@
                 </nav>
             </div>
         </div>
+
         <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
@@ -370,7 +380,17 @@
     <script src="{{asset('public/vendor/global/global.min.js')}}"></script>
     <script src="{{asset('public/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('public/js/custom.min.js')}}"></script>
+    <script>
+        // Pasa la variable DESIGN_VERSION de Laravel al JavaScript
+        window.dlabDesignVersion = "{{ env('DESIGN_VERSION', 'light') }}";
+    </script>
+    <script src="{{asset('js/dashboard-3.js') }}"></script>
     <script src="{{asset('public/js/dlabnav-init.js')}}"></script>
+    <script src="{{asset('public/frontend/src/js/themeToggle.js') }}"></script>
+    <script>
+        const lightThemeUrl = "{{ asset('public/css/style_light.css') }}";
+        const darkThemeUrl = "{{ asset('public/css/style_dark.css') }}";
+    </script>
 
     <!-- Svganimation scripts -->
     <script src="{{asset('public/vendor/svganimation/vivus.min.js')}}"></script>

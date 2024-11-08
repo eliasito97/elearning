@@ -8,7 +8,13 @@
     <title>{{ENV('APP_NAME')}} | @yield('title') </title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('public/images/favicon.png')}}">
-    <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
+    @if (env('DESIGN_VERSION') === 'dark')
+        <link rel="stylesheet" href="{{asset('public/css/style_dark.css')}}">
+    @elseif (env('DESIGN_VERSION') === 'light')
+        <link rel="stylesheet" href="{{ asset('public/css/style_light.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+    @endif
 
 </head>
 
@@ -38,18 +44,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
     <script>
-        @if(Session::has('success'))  
-    				toastr.success("{{ Session::get('success') }}");  
-    		@endif  
-    		@if(Session::has('info'))  
-    				toastr.info("{{ Session::get('info') }}");  
-    		@endif  
-    		@if(Session::has('warning'))  
-    				toastr.warning("{{ Session::get('warning') }}");  
-    		@endif  
-    		@if(Session::has('error'))  
-    				toastr.error("{{ Session::get('error') }}");  
-    		@endif  
+        @if(Session::has('success'))
+    				toastr.success("{{ Session::get('success') }}");
+    		@endif
+    		@if(Session::has('info'))
+    				toastr.info("{{ Session::get('info') }}");
+    		@endif
+    		@if(Session::has('warning'))
+    				toastr.warning("{{ Session::get('warning') }}");
+    		@endif
+    		@if(Session::has('error'))
+    				toastr.error("{{ Session::get('error') }}");
+    		@endif
     </script>
 </body>
 

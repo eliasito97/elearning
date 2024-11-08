@@ -6,7 +6,7 @@
 
 	var dlabSettingsOptions = {
 		typography: "roboto",
-        version: "dark",
+        version: window.dlabDesignVersion || "light",
         layout: "Vertical",
         headerBg: "color_1",
         navheaderBg: "color_11",
