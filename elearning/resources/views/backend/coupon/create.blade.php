@@ -19,14 +19,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Add Coupon</h4>
+                    <h4>{{ __('Add Coupon') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('coupon.index')}}">Coupons</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('coupon.create')}}">Add Coupon</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('coupon.index')}}">{{ __('Coupons') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('coupon.create')}}">{{ __('Add Coupon') }}</a>
                     </li>
                 </ol>
             </div>
@@ -36,7 +36,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Coupon Info</h5>
+                        <h5 class="card-title">{{ __('Coupon Info') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('coupon.store')}}" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Coupon Code</label>
+                                        <label class="form-label">{{ __('Coupon Code') }}</label>
                                         <input type="text" class="form-control" name="code"
                                             value="{{old('code')}}">
                                     </div>
@@ -54,7 +54,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Discount</label>
+                                        <label class="form-label">{{ __('Discount') }}</label>
                                         <input type="text" class="form-control" name="discount"
                                             value="{{old('discount')}}">
                                     </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Valid From</label>
+                                        <label class="form-label">{{ __('Valid From') }}</label>
                                         <input type="date" class="form-control" name="valid_from"
                                             value="{{old('valid_from')}}">
                                     </div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Valid Until</label>
+                                        <label class="form-label">{{ __('Valid Until') }}</label>
                                         <input type="date" class="form-control" name="valid_until"
                                             value="{{old('valid_until')}}">
                                     </div>
@@ -83,8 +83,8 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

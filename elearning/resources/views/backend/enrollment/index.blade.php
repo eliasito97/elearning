@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Enrollments</h4>
+                    <h4>{{ __('Enrollments') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">Enrollments</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">All Enrollment</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">{{ __('Enrollments') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('enrollment.index')}}">{{ __('All Enrollment') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -33,8 +33,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Enrollments List </h4>
-                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">{{ __('All Enrollments List') }} </h4>
+{{--                                <a href="{{route('enrollment.create')}}" class="btn btn-primary">{{ __('Add new') }}</a>--}}
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -66,9 +66,9 @@
                                                 <td><strong>{{$e->course?->price==null?'Free':'৳'.$e->course?->price}}</strong></td>
                                                 <td><strong>{{$e->enrollment_date}}</strong></td>
                                                 <td>
-                                                    <a href="{{route('enrollment.edit', encryptor('encrypt',$e->id))}}"
-                                                        class="btn btn-sm btn-primary" title="Edit"><i
-                                                            class="la la-pencil"></i></a>
+{{--                                                    <a href="{{route('enrollment.edit', encryptor('encrypt',$e->id))}}"--}}
+{{--                                                        class="btn btn-sm btn-primary" title="Edit"><i--}}
+{{--                                                            class="la la-pencil"></i></a>--}}
                                                     <a href="javascript:void(0);" class="btn btn-sm btn-danger"
                                                         title="Delete" onclick="$('#form{{$e->id}}').submit()"><i
                                                             class="la la-trash-o"></i></a>
@@ -82,7 +82,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="6" class="text-center">No Enrollment Found</th>
+                                                <th colspan="6" class="text-center">{{ __('No Enrollment Found') }}</th>
                                             </tr>
                                             @endforelse
                                         </tbody>

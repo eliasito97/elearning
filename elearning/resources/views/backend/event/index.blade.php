@@ -18,14 +18,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Event List</h4>
+                    <h4>{{ __('Event List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('event.index')}}">Events</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('event.index')}}">All Event</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('event.index')}}">{{ __('Events') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('event.index')}}">{{ __('All Event') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -36,15 +36,15 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Events List </h4>
-                                <a href="{{route('event.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">{{ __('All Events List') }} </h4>
+                                <a href="{{route('event.create')}}" class="btn btn-primary">{{ __('Add new') }}</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="example3" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
-                                                <th>{{__('#')}}</th>
+                                                <th>{{__('Image')}}</th>
                                                 <th>{{__('Event Title')}}</th>
                                                 <th>{{__('Topic')}}</th>
                                                 <th>{{__('Location Type')}}</th>
@@ -60,7 +60,7 @@
                                                 <td><strong>{{$e->title}}</strong></td>
                                                 <td><strong>{{$e->topic}}</strong></td>
                                                 <td>{{$e->location}}</td>
-                                                <td>{{ \Carbon\Carbon::parse($e->date)->format('j F, Y, l') }}</td>
+                                                <td>{{ \Carbon\Carbon::parse($e->date)->locale('es')->format('j F, Y, l') }}</td>
                                                 <td>
                                                     <a href="{{route('event.edit', $e->id)}}"
                                                         class="btn btn-sm btn-primary" title="Edit"><i
@@ -77,7 +77,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="6" class="text-center">No Event Found</th>
+                                                <th colspan="6" class="text-center">{{ __('No Event Found') }}</th>
                                             </tr>
                                             @endforelse
                                         </tbody>

@@ -147,7 +147,7 @@
                                                         @else{{__('Inactive')}} @endif</span>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Full Access :</span>
+                                                    <span class="mb-0">{{ __('Full Access') }}</span>
                                                     <span class="badge {{$d->full_access==1?"
                                                         badge-info":"badge-warning"}}">@if($d->full_access==1){{__('Yes')}}
                                                         @else{{__('No')}} @endif</span>

@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Instructor List</h4>
+                    <h4>{{ __('Instructors List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">Instructors</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">All Instructor</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">{{ __('Instructors') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('instructor.index')}}">{{ __('Instructors List') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -31,9 +31,8 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
-                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
+                    <li class="nav-item"><a href="#grid-view" data-toggle="tab" class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -41,8 +40,8 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Instructors List </h4>
-                                <a href="{{route('instructor.create')}}" class="btn btn-primary">+ Add new</a>
+                                <h4 class="card-title">{{ __('Instructors List') }}</h4>
+                                <a href="{{route('instructor.create')}}" class="btn btn-primary">{{ __('Add new') }}</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -91,7 +90,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="7" class="text-center">No Instructor Found</th>
+                                                <th colspan="7" class="text-center">{{ __('No Instructor Found') }}</th>
                                             </tr>
                                             @endforelse
                                         </tbody>
@@ -115,7 +114,7 @@
                                                     <a class="dropdown-item"
                                                         href="{{route('instructor.edit', encryptor('encrypt',$d->id))}}">Edit</a>
                                                     <a class="dropdown-item text-danger"
-                                                        href="javascript:void(0);">Delete</a>
+                                                        href="javascript:void(0);">{{ __('Delete') }}</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -123,29 +122,29 @@
                                     <div class="card-body pt-2">
                                         <div class="text-center">
                                             <div class="profile-photo">
-                                                <img src="{{asset('public/uploads/instructors/'.$d->image)}}" width="100"
+                                                <img src="{{asset('public/uploads/users/'.$d->image)}}" width="100"
                                                     height="100" class="rounded-circle" alt="">
                                             </div>
                                             <h3 class="mt-4 mb-1">{{$d->name_en}}</h3>
                                             <p class="text-muted">{{$d->role?->name}}</p>
                                             <ul class="list-group mb-3 list-group-flush">
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span>Phone No. :</span>
+                                                    <span>{{ __('Phone Number') }}</span>
                                                     <strong>{{$d->contact_en}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Email :</span>
+                                                    <span class="mb-0">{{ __('Email') }}</span>
                                                     <strong>{{$d->email}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Status :</span>
+                                                    <span class="mb-0">{{ __('Status') }}</span>
                                                     <span class="badge {{$d->status==1?"
                                                         badge-success":"badge-danger"}}">@if($d->status==1){{__('Active')}}
                                                         @else{{__('Inactive')}} @endif</span>
                                                 </li>
                                             </ul>
                                             <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                href="about-instructor.html">Read More</a>
+                                                href="about-instructor.html">{{ __('Read More') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -155,7 +154,7 @@
                                 <div class="card card-profile">
                                     <div class="card-body pt-2">
                                         <div class="text-center">
-                                            <p class="mt-3 px-4">Instructor Not Found</p>
+                                            <p class="mt-3 px-4">{{ __('No Instructor Found') }}</p>
                                         </div>
                                     </div>
                                 </div>

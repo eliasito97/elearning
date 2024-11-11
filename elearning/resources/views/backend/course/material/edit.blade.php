@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Edit Course Material</h4>
+                    <h4>{{ __('Edit Course Material') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('material.index')}}">Course Materials</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Course Material</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('material.index')}}">{{ __('Course Materials') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">{{ __('Edit Course Material') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{ __('Basic Info') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('material.update',encryptor('encrypt', $material->id))}}" method="post"
@@ -43,7 +43,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Title</label>
+                                        <label class="form-label">{{ __('Title') }}</label>
                                         <input type="text" class="form-control" name="materialTitle"
                                             value="{{old('materialTitle',$material->title)}}">
                                     </div>
@@ -53,14 +53,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Lesson</label>
+                                        <label class="form-label">{{ __('Lesson') }}</label>
                                         <select class="form-control" name="lessonId">
                                             @forelse ($lesson as $l)
                                             <option value="{{$l->id}}" {{old('lessonId', $material->lesson_id) ==
                                                 $l->id?'selected':''}}>
                                                 {{$l->title}}</option>
                                             @empty
-                                            <option value="">No Course Lesson Found</option>
+                                            <option value="">{{ __('No Course Lesson Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -70,17 +70,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Material Type</label>
+                                        <label class="form-label">{{ __('Material Type') }}</label>
                                         <select class="form-control" name="materialType">
                                             <option value="video" @if(old('materialType', $material->type)=='video' ) selected
-                                                @endif>Video
+                                                @endif>{{ __('Video') }}
                                             </option>
                                             <option value="document" @if(old('materialType', $material->type)=='document' ) selected
-                                                @endif>Document
+                                                @endif>{{ __('Document') }}
                                             </option>
                                             <option value="quiz" @if(old('materialType', $material->type)
                                                 =='quiz' )
-                                                selected @endif>Quiz</option>
+                                                selected @endif>{{ __('Quiz') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('materialType'))
@@ -89,13 +89,13 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Content</label>
+                                        <label class="form-label">{{ __('Content') }}</label>
                                         <input type="file" class="form-control" name="content">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Content Url</label>
+                                        <label class="form-label">{{ __('Content Url') }}</label>
                                         <textarea class="form-control"
                                             name="contentURL">{{old('contentURL',$material->content_url)}}</textarea>
                                     </div>
@@ -104,8 +104,8 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Edit Instructor')
+@section('title', 'Edit Course')
 
 @push('styles')
 <!-- Pick date -->
@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Edit Course</h4>
+                    <h4>{{ __('Edit Course') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Courses</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Course</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">{{ __('Courses') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">{{ __('Edit Course') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{ __('Basic Info') }}</h5>
                     </div>
                     <div class="card-body">
                         @if(fullAccess())
@@ -44,20 +44,20 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label">Status</label>
+                                        <label class="form-label">{{ __('Status') }}</label>
                                         <select class="form-control" name="status">
                                             <option value="0" @if(old('status',$course->status)==0) selected
-                                                @endif>Pending</option>
+                                                @endif>{{ __('Pending') }}</option>
                                             <option value="1" @if(old('status',$course->status)==1) selected
-                                                @endif>Inactive</option>
+                                                @endif>{{ __('Inactive') }}</option>
                                             <option value="2" @if(old('status',$course->status)==2) selected
-                                                @endif>Active</option>
+                                                @endif>{{ __('Active') }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Title</label>
+                                        <label class="form-label">{{ __('Title') }}</label>
                                         <input type="text" class="form-control" name="courseTitle_en"
                                             value="{{old('courseTitle_en',$course->title_en)}}">
                                     </div>
@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Description</label>
+                                        <label class="form-label">{{ __('Description') }}</label>
                                         <textarea class="form-control"
                                             name="courseDescription_en">{{old('courseDescription_en',$course->description_en)}}</textarea>
                                     </div>
@@ -94,14 +94,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Category</label>
+                                        <label class="form-label">{{ __('Category') }}</label>
                                         <select class="form-control" name="categoryId">
                                             @forelse ($courseCategory as $c)
                                             <option value="{{$c->id}}" {{old('categoryId', $course->course_category_id) ==
                                                 $c->id?'selected':''}}>
                                                 {{$c->category_name}}</option>
                                             @empty
-                                            <option value="">No Category Found</option>
+                                            <option value="">{{ __('No Category Found<') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -111,14 +111,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Instructor</label>
+                                        <label class="form-label">{{ __('Instructor') }}</label>
                                         <select class="form-control" name="instructorId">
                                             @forelse ($instructor as $i)
                                             <option value="{{$i->id}}" {{old('instructorId', $course->instructor_id) ==
                                                 $i->id?'selected':''}}>
                                                 {{$i->name_en}}</option>
                                             @empty
-                                            <option value="">No Instructor Found</option>
+                                            <option value="">{{ __('No Instructor Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -128,17 +128,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Type</label>
+                                        <label class="form-label">{{ __('Type') }}</label>
                                         <select class="form-control" name="courseType">
                                             <option value="free" @if(old('courseType', $course->type)=='free' ) selected
-                                                @endif>Free
+                                                @endif> {{ __('Free') }}
                                             </option>
                                             <option value="paid" @if(old('courseType', $course->type)=='paid' ) selected
-                                                @endif>Paid
+                                                @endif> {{ __('Paid') }}
                                             </option>
                                             <option value="subscription" @if(old('courseType', $course->type)
                                                 =='subscription' )
-                                                selected @endif>Subscription-based</option>
+                                                selected @endif> {{ __('Subscription-based') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseType'))
@@ -147,17 +147,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Difficulty</label>
+                                        <label class="form-label">{{ __('Difficulty') }}</label>
                                         <select class="form-control" name="courseDifficulty">
                                             <option value="beginner" @if(old('courseDifficulty', $course->
-                                                difficulty)=='beginner' ) selected @endif>Beginner
+                                                difficulty)=='beginner' ) selected @endif> {{ __('Basic') }}
                                             </option>
                                             <option value="intermediate" @if(old('courseDifficulty', $course->
-                                                difficulty)=='intermediate' ) selected @endif>Intermediate
+                                                difficulty)=='intermediate' ) selected @endif> {{ __('Intermediate') }}
                                             </option>
                                             <option value="advanced" @if(old('courseDifficulty', $course->
                                                 difficulty)=='advanced' )
-                                                selected @endif>Advanced</option>
+                                                selected @endif> {{ __('Advanced') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseDifficulty'))
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Price</label>
+                                        <label class="form-label">{{ __('Price') }}</label>
                                         <input type="number" class="form-control" name="coursePrice"
                                             value="{{old('coursePrice', $course->price)}}">
                                     </div>
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Old Price</label>
+                                        <label class="form-label">{{ __('Old Price') }}</label>
                                         <input type="number" class="form-control" name="courseOldPrice"
                                             value="{{old('courseOldPrice', $course->old_price)}}">
                                     </div>
@@ -186,7 +186,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Subscription Price</label>
+                                        <label class="form-label">{{ __('Subscription Price') }}</label>
                                         <input type="number" class="form-control" name="subscription_price"
                                             value="{{old('subscription_price')}}">
                                     </div>
@@ -197,7 +197,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Start From</label>
+                                        <label class="form-label">{{ __('Start From') }}</label>
                                         <input type="date" class="form-control" name="start_from"
                                             value="{{old('start_from')}}">
                                     </div>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Duration</label>
+                                        <label class="form-label">{{ __('Duration') }}</label>
                                         <input type="number" class="form-control" name="duration"
                                             value="{{old('duration',$course->duration)}}">
                                     </div>
@@ -218,7 +218,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Number of Lesson</label>
+                                        <label class="form-label">{{ __('Number of Lesson') }}</label>
                                         <input type="number" class="form-control" name="lesson"
                                             value="{{old('lesson',$course->lesson)}}">
                                     </div>
@@ -228,7 +228,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Prerequisites</label>
+                                        <label class="form-label">{{ __('Prerequisites') }}</label>
                                         <textarea class="form-control"
                                             name="prerequisites_en">{{old('prerequisites_en',$course->prerequisites_en)}}</textarea>
                                     </div>
@@ -248,7 +248,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Code</label>
+                                        <label class="form-label">{{ __('Course Code') }}</label>
                                         <input type="number" class="form-control" name="course_code"
                                             value="{{old('course_code', $course->course_code)}}">
                                     </div>
@@ -258,7 +258,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Thumbnail Video URL</label>
+                                        <label class="form-label">{{ __('Thumbnail Video URL') }}</label>
                                         <input type="text" class="form-control" name="thumbnail_video"
                                             value="{{old('thumbnail_video',$course->thumbnail_video)}}">
                                     </div>
@@ -268,16 +268,16 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Tag</label>
+                                        <label class="form-label">{{ __('Course Tag') }}</label>
                                         <select class="form-control" name="tag">
                                             <option value="popular" @if(old('tag', $course->tag)=='popular' ) selected
-                                                @endif>Popular
+                                                @endif>{{ __('Popular') }}
                                             </option>
                                             <option value="featured" @if(old('tag', $course->tag)=='featured' ) selected
-                                                @endif>Featured
+                                                @endif>{{ __('Featured') }}
                                             </option>tag
                                             <option value="upcoming" @if(old('tag', $course->tag)=='upcoming' ) selected
-                                                @endif>Upcoming</option>
+                                                @endif>{{ __('Upcoming') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('tag'))
@@ -285,20 +285,20 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">{{ __('Image') }}</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Thumbnail Image</label>
+                                    <label class="form-label">{{ __('Thumbnail Image') }}</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="thumbnail_image">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>
@@ -312,7 +312,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Title</label>
+                                        <label class="form-label">{{ __('Title') }}</label>
                                         <input type="text" class="form-control" name="courseTitle_en"
                                             value="{{old('courseTitle_en',$course->title_en)}}">
                                     </div>
@@ -329,7 +329,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Description</label>
+                                        <label class="form-label">{{ __('Description') }}</label>
                                         <textarea class="form-control"
                                             name="courseDescription_en">{{old('courseDescription_en',$course->description_en)}}</textarea>
                                     </div>
@@ -349,14 +349,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Category</label>
+                                        <label class="form-label">{{ __('Category') }}</label>
                                         <select class="form-control" name="categoryId">
                                             @forelse ($courseCategory as $c)
                                             <option value="{{$c->id}}" {{old('categoryId', $course->course_category_id) ==
                                                 $c->id?'selected':''}}>
-                                                {{$c->category_name}}</option> 
+                                                {{$c->category_name}}</option>
                                             @empty
-                                            <option value="">No Category Found</option>
+                                            <option value="">{{ __('No Category Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -366,14 +366,14 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Instructor</label>
+                                        <label class="form-label">{{ __('Instructor') }}</label>
                                         <select class="form-control" name="instructorId">
                                             @forelse ($instructor as $i)
                                             <option value="{{$i->id}}" {{old('instructorId', $course->instructor_id) ==
                                                 $i->id?'selected':''}}>
                                                 {{$i->name_en}}</option>
                                             @empty
-                                            <option value="">No Instructor Found</option>
+                                            <option value="">{{ __('No Instructor Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -383,17 +383,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Type</label>
+                                        <label class="form-label">{{ __('Type') }}</label>
                                         <select class="form-control" name="courseType">
                                             <option value="free" @if(old('courseType', $course->type)=='free' ) selected
-                                                @endif>Free
+                                                @endif>{{ __('Free') }}
                                             </option>
                                             <option value="paid" @if(old('courseType', $course->type)=='paid' ) selected
-                                                @endif>Paid
+                                                @endif>{{ __('Paid') }}
                                             </option>
                                             <option value="subscription" @if(old('courseType', $course->type)
                                                 =='subscription' )
-                                                selected @endif>Subscription-based</option>
+                                                selected @endif>{{ __('Subscription-based') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseType'))
@@ -402,17 +402,17 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Difficulty</label>
+                                        <label class="form-label">{{ __('Difficulty') }}</label>
                                         <select class="form-control" name="courseDifficulty">
                                             <option value="beginner" @if(old('courseDifficulty', $course->
-                                                difficulty)=='beginner' ) selected @endif>Beginner
+                                                difficulty)=='beginner' ) selected @endif>{{ __('Basic') }}
                                             </option>
                                             <option value="intermediate" @if(old('courseDifficulty', $course->
-                                                difficulty)=='intermediate' ) selected @endif>Intermediate
+                                                difficulty)=='intermediate' ) selected @endif>{{ __('Intermediate') }}
                                             </option>
                                             <option value="advanced" @if(old('courseDifficulty', $course->
                                                 difficulty)=='advanced' )
-                                                selected @endif>Advanced</option>
+                                                selected @endif>{{ __('Advanced') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('courseDifficulty'))
@@ -421,7 +421,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Price</label>
+                                        <label class="form-label">{{ __('Price') }}</label>
                                         <input type="number" class="form-control" name="coursePrice"
                                             value="{{old('coursePrice', $course->price)}}">
                                     </div>
@@ -431,7 +431,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Old Price</label>
+                                        <label class="form-label">{{ __('Old Price') }}</label>
                                         <input type="number" class="form-control" name="courseOldPrice"
                                             value="{{old('courseOldPrice', $course->old_price)}}">
                                     </div>
@@ -441,7 +441,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Subscription Price</label>
+                                        <label class="form-label">{{ __('Subscription Price') }}</label>
                                         <input type="number" class="form-control" name="subscription_price"
                                             value="{{old('subscription_price')}}">
                                     </div>
@@ -452,7 +452,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Start From</label>
+                                        <label class="form-label">{{ __('Start From') }}</label>
                                         <input type="date" class="form-control" name="start_from" value="{{old('start_from')}}">
                                     </div>
                                     @if($errors->has('start_from'))
@@ -462,7 +462,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Duration</label>
+                                        <label class="form-label">{{ __('Duration') }}</label>
                                         <input type="number" class="form-control" name="duration" value="{{old('duration',$course->duration)}}">
                                     </div>
                                     @if($errors->has('duration'))
@@ -471,7 +471,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Number of Lesson</label>
+                                        <label class="form-label">{{ __('Number of Lesson') }}</label>
                                         <input type="number" class="form-control" name="lesson" value="{{old('lesson',$course->lesson)}}">
                                     </div>
                                     @if($errors->has('lesson'))
@@ -480,7 +480,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Prerequisites</label>
+                                        <label class="form-label">{{ __('Prerequisites') }}</label>
                                         <textarea class="form-control"
                                             name="prerequisites_en">{{old('prerequisites_en',$course->prerequisites_en)}}</textarea>
                                     </div>
@@ -500,7 +500,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Code</label>
+                                        <label class="form-label">{{ __('Course Code') }}</label>
                                         <input type="number" class="form-control" name="course_code"
                                             value="{{old('course_code', $course->course_code)}}">
                                     </div>
@@ -510,7 +510,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Thumbnail Video URL</label>
+                                        <label class="form-label">{{ __('Thumbnail Video URL') }}</label>
                                         <input type="text" class="form-control" name="thumbnail_video"
                                             value="{{old('thumbnail_video',$course->thumbnail_video)}}">
                                     </div>
@@ -520,16 +520,16 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Course Tag</label>
+                                        <label class="form-label">{{ __('Course Tag') }}</label>
                                         <select class="form-control" name="tag">
                                             <option value="popular" @if(old('tag', $course->tag)=='popular' ) selected
-                                                @endif>Popular
+                                                @endif> {{ __('Popular') }}
                                             </option>
                                             <option value="featured" @if(old('tag', $course->tag)=='featured' ) selected
-                                                @endif>Featured
+                                                @endif> {{ __('Featured') }}
                                             </option>tag
                                             <option value="upcoming" @if(old('tag', $course->tag)=='upcoming' ) selected
-                                                @endif>Upcoming</option>
+                                                @endif> {{ __('Upcoming') }}</option>
                                         </select>
                                     </div>
                                     @if($errors->has('tag'))
@@ -537,20 +537,20 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">{{ __('Image') }}</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <label class="form-label">Thumbnail Image</label>
+                                    <label class="form-label">{{ __('Thumbnail Image') }}</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="thumbnail_image">
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

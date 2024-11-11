@@ -126,7 +126,7 @@ Route::post('/payment/ssl/notify', [sslcz::class, 'notify'])->name('payment.ssl.
 Route::post('/payment/ssl/cancel', [sslcz::class, 'cancel'])->name('payment.ssl.cancel');
 
 
-
+//about controller
 Route::get('about', [AboutController::class, 'index'])->name('about');
 
 //Route::get('/about', function () {

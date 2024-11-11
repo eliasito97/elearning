@@ -16,31 +16,32 @@
 				barSpacing: 10,
 				barColor: "rgb(200, 255, 135)"
 			});
+
 		}
 	}
 	var sparkLineChart = function(){
-		if(jQuery('#sparkline12').length > 0 ){
+		if(jQuery('#bar1').length > 0 ){
 			//Pie
-			$("#sparkline12").sparkline([24, 61, 51], {
-				type: "pie",
-				height: "100",
-				resize: !0,
-				sliceColors: ["#8d95ff", "#d7daff", "#c7cbff"]
-			});
+			// $("#sparkline12").sparkline([24, 61, 51], {
+			// 	type: "pie",
+			// 	height: "100",
+			// 	resize: !0,
+			// 	sliceColors: ["#8d95ff", "#d7daff", "#c7cbff"]
+			// });
+            $("#bar1").peity("bar", {
+                fill: ["rgb(216, 196, 255)", "rgb(216, 196, 255)", "rgb(216, 196, 255)"],
+                width: "100%",
+                height: "140"
+            });
 
-			$(".bar1").peity("bar", {
-				fill: ["rgb(216, 196, 255)", "rgb(216, 196, 255)", "rgb(216, 196, 255)"],
-				width: "100%",
-				height: "140"
-			});
+            $(".peity-line-2").peity("line", {
+                fill: "#ff3232",
+                stroke: "#fac2c2",
+                width: "100%",
+                strokeWidth: "3",
+                height: "150"
+            });
 
-			$(".peity-line-2").peity("line", {
-				fill: "#ff3232",
-				stroke: "#fac2c2",
-				width: "100%",
-				strokeWidth: "3",
-				height: "150"
-			});
 		}
 	}
 	var barChart = function(){

@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Course List</h4>
+                    <h4>{{ __('Course List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">Instructors</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">All Course</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">{{ __('Instructors') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('course.index')}}">{{ __('All Courses') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="col-lg-12">
                 <div class="row tab-content">
                     <div class="card-header">
-                        <a href="{{route('course.create')}}" class="btn btn-primary">+ Add new</a>
+                        <a href="{{route('course.create')}}" class="btn btn-primary">{{ __('Add new') }}</a>
                     </div>
                     <div class="col-lg-12">
                         <div class="row">
@@ -46,9 +46,9 @@
                                             <div class="dropdown-menu dropdown-menu-right border py-0">
                                                 <div class="py-2">
                                                     <a class="dropdown-item"
-                                                        href="{{route('course.edit', encryptor('encrypt',$d->id))}}">Edit</a>
+                                                        href="{{route('course.edit', encryptor('encrypt',$d->id))}}">{{ __('Edit') }}</a>
                                                     <a class="dropdown-item text-danger" href="javascript:void(0);"
-                                                        onclick="$('#form{{$d->id}}').submit()">Delete</a>
+                                                        onclick="$('#form{{$d->id}}').submit()">{{ __('Delete') }}</a>
                                                     <form id="form{{$d->id}}"
                                                         action="{{route('course.destroy', encryptor('encrypt',$d->id))}}"
                                                         method="post">
@@ -68,29 +68,29 @@
                                             <h3 class="mt-4 mb-1">{{$d->title_en}}</h3>
                                             <ul class="list-group mb-3 list-group-flush">
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span>Difficulty</span>
-                                                    <strong>{{ $d->difficulty == 'beginner' ? __('Beginner') :
+                                                    <span>{{ __('Difficulty') }}</span>
+                                                    <strong>{{ $d->difficulty == 'beginner' ? __('Basic') :
                                                         ($d->difficulty == 'intermediate' ? __('Intermediate') :
                                                         __('Advanced')) }}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Instructor :</span>
+                                                    <span class="mb-0">{{ __('Instructor') }}</span>
                                                     <strong>{{$d->instructor?->name_en}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Category :</span>
+                                                    <span class="mb-0">{{ __('Category') }}</span>
                                                     <strong>{{$d->courseCategory?->category_name}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Price :</span>
+                                                    <span class="mb-0">{{ __('Price') }}</span>
                                                     <strong>{{$d->price?'৳'.$d->price:'Free'}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
-                                                    <span class="mb-0">Status :</span>
-                                                    <span class="badge 
-                                                    @if($d->status == 0) badge-warning 
-                                                    @elseif($d->status == 1) badge-danger 
-                                                    @elseif($d->status == 2) badge-success 
+                                                    <span class="mb-0">{{ __('Status') }}</span>
+                                                    <span class="badge
+                                                    @if($d->status == 0) badge-warning
+                                                    @elseif($d->status == 1) badge-danger
+                                                    @elseif($d->status == 2) badge-success
                                                     @endif">
                                                         @if($d->status == 0) {{__('Pending')}}
                                                         @elseif($d->status == 1) {{__('Inactive')}}
@@ -100,7 +100,7 @@
                                                 </li>
                                             </ul>
                                             <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                href="about-student.html">Read More</a>
+                                                href="about-student.html">{{ __('Read More') }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +110,7 @@
                                 <div class="card card-profile">
                                     <div class="card-body pt-2">
                                         <div class="text-center">
-                                            <p class="mt-3 px-4">Course Not Found</p>
+                                            <p class="mt-3 px-4">{{ __('Course Not Found') }}</p>
                                         </div>
                                     </div>
                                 </div>

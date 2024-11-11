@@ -114,9 +114,9 @@
                                         <label class="form-label">{{ __('Full Access') }}</label>
                                         <select class="form-control" name="fullAccess">
                                             <option value="0" @if(old('fullAccess', $user->full_access)==0) selected
-                                                @endif>No</option>
+                                                @endif>{{ __('No') }}</option>
                                             <option value="1" @if(old('fullAccess', $user->full_access)==1) selected
-                                                @endif>Yes</option>
+                                                @endif>{{ __('Yes') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -125,21 +125,21 @@
                                         <label class="form-label">{{ __('Status') }}</label>
                                         <select class="form-control" name="status">
                                             <option value="1" @if(old('status', $user->status)==1) selected
-                                                @endif>Active</option>
+                                                @endif>{{ __('Active') }}</option>
                                             <option value="0" @if(old('status', $user->status)==0) selected
-                                                @endif>Inactive</option>
+                                                @endif>{{ __('Inactive') }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <label class="form-label">Image</label>
+                                    <label class="form-label">{{ __('Image') }}</label>
                                     <div class="form-group fallback w-100">
                                         <input type="file" class="dropify" data-default-file="" name="image">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Password</label>
+                                        <label class="form-label">{{ __('Password') }}</label>
                                         <input type="password" class="form-control" name="password">
                                     </div>
                                     @if($errors->has('password'))
@@ -147,8 +147,8 @@
                                     @endif
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>
