@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y software-properties-common \
     && apt-get update
 
 # Instala Apache, PHP 8.2 y las extensiones necesarias
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     apache2 \
     php8.2 \
     php8.2-cli \
