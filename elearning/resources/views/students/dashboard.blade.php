@@ -9,8 +9,8 @@
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent mb-0">
-                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">Home</a></li>
-                <li class="breadcrumb-item fs-6 text-secondary" aria-current="page">My Profile</li>
+                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
+                <li class="breadcrumb-item fs-6 text-secondary" aria-current="page">{{ __('My Profile') }}</li>
             </ol>
         </nav>
     </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="enrolled-courses-text">
                                 <h6 class="font-title--xs">{{$enrollment?$enrollment->count():0}}</h6>
-                                <p class="fs-6 mt-1">Enrolled Courses</p>
+                                <p class="fs-6 mt-1">{{ __('Enrolled Courses') }}</p>
                             </div>
                         </div>
                         <div class="completed-courses">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="completed-courses-text">
                                 <h5 class="font-title--xs">0</h5>
-                                <p class="fs-6 mt-1">Completed Courses</p>
+                                <p class="fs-6 mt-1">{{ __('Completed Courses') }}</p>
                             </div>
                         </div>
                     </div>
@@ -79,32 +79,31 @@
                 <div class="nav" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                        aria-selected="true">Dashboard</button>
+                        aria-selected="true">{{ __('Dashboard') }}</button>
 
                     <button class="nav-link" id="nav-coursesall-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-coursesall" type="button" role="tab" aria-controls="nav-coursesall"
-                        aria-selected="false">All Courses</button>
+                        aria-selected="false">{{ __('All Courses') }}</button>
 
                     <button class="nav-link" id="nav-activecourses-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-activecourses" type="button" role="tab" aria-controls="nav-activecourses"
                         aria-selected="false">
-                        Active Courses
+                        {{ __('Active Courses') }}
                     </button>
 
                     <button class="nav-link" id="nav-completedcourses-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-completedcourses" type="button" role="tab"
                         aria-controls="nav-completedcourses" aria-selected="false">
-                        Completed Courses
+                        {{ __('Completed Courses') }}
                     </button>
 
                     <button class="nav-link" id="nav-purchase-tab" data-bs-toggle="tab" data-bs-target="#nav-purchase"
-                        type="button" role="tab" aria-controls="nav-purchase" aria-selected="false">Purchase
-                        History</button>
+                        type="button" role="tab" aria-controls="nav-purchase" aria-selected="false">{{ __('Purchase History') }}</button>
 
                     <button class="nav-link "><a href="{{route('student_profile')}}"
-                            class="text-secondary">Profile</a></button>
+                            class="text-secondary">{{ __('Profile') }}</a></button>
 
-                    <button class="nav-link "><a href="{{route('home')}}" class="text-secondary">Home</a></button>
+                    <button class="nav-link "><a href="{{route('home')}}" class="text-secondary">{{ __('Homepage') }}</a></button>
                 </div>
             </nav>
         </div>
@@ -119,14 +118,12 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-6 col-12 mx-auto text-center">
-                                        <h5 class="font-title--sm">Invest in your career with Us</h5>
+                                        <h5 class="font-title--sm">{{ __('Invest in your career with Us') }}</h5>
                                         <p class="my-4 font-para--lg">
-                                            Duis posuere maximus arcu eu tincidunt. Nam rutrum, nibh vitae tempus
-                                            venenatis, ex tortor ultricies
-                                            magna, et faucibus magna eros quis arcu.
+                                          {{ __('is more than just a slogan at iLearn Academy; it is a genuine commitment. Here, students have the chance to develop practical, relevant skills that transform their professional lives. ') }}
                                         </p>
                                         <a href="{{route('searchCourse')}}"
-                                            class="button button-md button--primary">Let’s Go</a>
+                                            class="button button-md button--primary">{{ __('Let’s Go') }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -158,12 +155,11 @@
                                         </a>
                                         <div class="contentCard-course--status d-flex align-items-center">
                                             <span class="percentage">43%</span>
-                                            <p>Finish</p>
+                                            <p>{{ __('Finish') }}</p>
                                         </div>
                                     </div>
                                     <a class="button button-md button--primary-outline w-100 my-3"
-                                        href="{{route('watchCourse', encryptor('encrypt', $a->course?->id))}}">Watch
-                                        Course</a>
+                                        href="{{route('watchCourse', encryptor('encrypt', $a->course?->id))}}">{{ __('Watch Course') }}</a>
                                     <div class="contentCard-watch--progress">
                                         <span class="percentage" style="width: 43%;"></span>
                                     </div>
@@ -173,12 +169,11 @@
                         @empty
                         <div class="col-12 py-5">
                             <div class="col-md-6 col-12 mx-auto text-center">
-                                <h5 class="font-title--sm">You Haven't Enrolled Any Course Yet...</h5>
+                                <h5 class="font-title--sm">{{ __('You Havent Enrolled Any Course Yet...') }}</h5>
                                 <p class="my-4 font-para--lg">
-                                    Your Course List is Empty!
+                                    {{ __('Your Course List is Empty!') }}
                                 </p>
-                                <a href="{{route('searchCourse')}}" class="button button-md button--primary">Enroll
-                                    Now!</a>
+                                <a href="{{route('searchCourse')}}" class="button button-md button--primary">{{ __('Enroll Now!') }}</a>
                             </div>
                         </div>
                         @endforelse
@@ -502,7 +497,7 @@
                                                     <h6>
                                                         <a href="#">{{$data->title_en}}</a>
                                                     </h6>
-                                                    <p> By 
+                                                    <p> By
                                                         <a href="#">
                                                          {{$data->instructor}}</a>
                                                     </p>
