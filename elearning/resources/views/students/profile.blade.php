@@ -9,8 +9,8 @@
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent mb-0">
-                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">Home</a></li>
-                <li class="breadcrumb-item fs-6 text-secondary" aria-current="page">My Profile</li>
+                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
+                <li class="breadcrumb-item fs-6 text-secondary" aria-current="page">{{ __('My Profile') }}</li>
             </ol>
         </nav>
     </div>
@@ -29,7 +29,7 @@
                         </div>
                         <div class="text">
                             <h5>{{$student_info->name_en}}</h5>
-                            <p>{{$student_info->profession?$student_info->profession:'Student'}}</p>
+                            <p>{{$student_info->profession?$student_info->profession: __('Student')}}</p>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="enrolled-courses-text">
                                 <h6 class="font-title--xs">{{$enrollment?$enrollment->count():0}}</h6>
-                                <p class="fs-6 mt-1">Enrolled Courses</p>
+                                <p class="fs-6 mt-1">{{ __('Enrolled Courses') }}</p>
                             </div>
                         </div>
                         <div class="completed-courses">
@@ -68,7 +68,7 @@
                             </div>
                             <div class="completed-courses-text">
                                 <h5 class="font-title--xs">0</h5>
-                                <p class="fs-6 mt-1">Completed Courses</p>
+                                <p class="fs-6 mt-1">{{ __('Completed Courses') }}</p>
                             </div>
                         </div>
                     </div>
@@ -79,10 +79,10 @@
                 <div class="nav" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
-                        aria-selected="true">My Profile</button>
+                        aria-selected="true">{{ __('My Profile') }}</button>
 
                     <button class="nav-link" id="nav-setting-tab" data-bs-toggle="tab" data-bs-target="#nav-setting"
-                        type="button" role="tab" aria-controls="nav-setting" aria-selected="false">Setting</button>
+                        type="button" role="tab" aria-controls="nav-setting" aria-selected="false">{{ __('Setting') }}</button>
                 </div>
             </nav>
         </div>
@@ -95,18 +95,18 @@
                     <div class="tab-content__profile">
                         <div class="tab-content__profile-content">
                             <div class="about-student">
-                                <h6 class="font-title--card">About Me</h6>
+                                <h6 class="font-title--card">{{ __('About Me') }}</h6>
                                 <p class="font-para--md">
-                                    {{$student_info->bio?$student_info->bio:"Student's Bio"}}
+                                    {{$student_info->bio?$student_info->bio:__('Students Bio')}}
                                 </p>
                             </div>
                         </div>
                         <div class="tab-content__profile-content">
                             <div class="info-student">
-                                <h6 class="font-title--card">{{$student_info->name_en}}'s Information</h6>
+                                <h6 class="font-title--card">{{$student_info->name_en}} {{ __('Information') }}</h6>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>Name</span>
+                                        <span>{{ __('Name') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
                                         <p>{{$student_info->name_en}}</p>
@@ -114,7 +114,7 @@
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>E-mail</span>
+                                        <span>{{ __('Email') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
                                         <p>{{$student_info->email}}</p>
@@ -122,15 +122,15 @@
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>What do you do</span>
+                                        <span>{{ __('Branch') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
-                                        <p>{{$student_info->profession?$student_info->profession:'Student'}}</p>
+                                        <p>{{$student_info->profession?$student_info->profession:__('Students')}}</p>
                                     </dd>
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>Phone Number</span>
+                                        <span>{{ __('Phone Number') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
                                         <p>{{$student_info->contact_en?$student_info->contact_en:'+880'}}</p>
@@ -138,7 +138,7 @@
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>Nationality</span>
+                                        <span>{{ __('Nationality') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
                                         <p>{{$student_info->nationality}}</p>
@@ -155,30 +155,30 @@
                         <div class="col-lg-9 order-2 order-lg-0">
                             <div class="white-bg">
                                 <div class="students-info-form">
-                                    <h6 class="font-title--card">Your Information</h6>
+                                    <h6 class="font-title--card">{{ __('Your Information') }}</h6>
                                     <form action="{{route('student_save_profile')}}" method="post">
                                         @csrf
                                         <div class="row g-3">
                                             <div class="col-lg-6">
-                                                <label for="fullName_en">Full Name</label>
+                                                <label for="fullName_en">{{ __('Full Name') }}</label>
                                                 <input type="text" class="form-control" name="fullName_en"
                                                     value="{{$student_info->name_en}}" placeholder="Enter Your Name" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <label for="dob">Date of Birth</label>
+                                                <label for="dob">{{ __('Date of Birth') }}</label>
                                                 <input type="date" class="form-control" name="dob" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="emailAddress">Email</label>
+                                                <label for="emailAddress">{{ __('Email') }}</label>
                                                 <input type="email" name="emailAddress" class="form-control"
                                                     value="{{$student_info->email}}" placeholder="Enter Your Email" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="profession">What Do You Do</label>
+                                                <label for="profession">{{ __('Branch') }}</label>
                                                 <input type="text" name="profession" class="form-control"
                                                     value="{{$student_info->profession}}"
                                                     placeholder="Enter Your Profession" />
@@ -186,13 +186,13 @@
                                         </div>
                                         <div class="row g-3">
                                             <div class="col-lg-6">
-                                                <label for="contactNumber_en">Phone Number</label>
+                                                <label for="contactNumber_en">{{ __('Phone Number') }}</label>
                                                 <input type="text" class="form-control" name="contactNumber_en"
                                                     value="{{$student_info->contact_en}}"
                                                     placeholder="Enter Your Contact No" />
                                             </div>
                                             <div class="col-lg-6">
-                                                <label for="nationality">Nationality</label>
+                                                <label for="nationality">{{ __('Nationality') }}</label>
                                                 <input type="text" class="form-control" name="nationality"
                                                     value="{{$student_info->nationality}}"
                                                     placeholder="Enter Your Nationality" />
@@ -200,26 +200,25 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="bio">About You</label>
+                                                <label for="bio">{{ __('About You') }}</label>
                                                 <textarea name="bio" class="form-control" rows="5"
                                                     placeholder="About Yourself">{{$student_info->bio}}</textarea>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-lg-end justify-content-center mt-2">
-                                            <button class="button button-lg button--primary" type="submit">Save
-                                                Changes</button>
+                                            <button class="button button-lg button--primary" type="submit"></button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="white-bg mt-4">
                                 <div class="students-info-form">
-                                    <h6 class="font-title--card">Change Password</h6>
+                                    <h6 class="font-title--card">{{ __('Change Password') }}</h6>
                                     <form action="{{route('change_password')}}" method="post">
                                         @csrf
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="current_password">Current Password</label>
+                                                <label for="current_password">{{ __('Current Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="cpass" name="current_password"
                                                         class="form-control" placeholder="Enter Password" />
@@ -238,7 +237,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="password">New Password</label>
+                                                <label for="password">{{ __('New Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="npass" name="password"
                                                         class="form-control" placeholder="Enter Password" />
@@ -257,7 +256,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="password_confirmation">Confirm New Password</label>
+                                                <label for="password_confirmation">{{ __('Confirm New Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="cnpass" name="password_confirmation"
                                                         class="form-control" placeholder="Enter Password" />
@@ -275,8 +274,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-lg-end justify-content-center mt-2">
-                                            <button class="button button-lg button--primary" type="submit">Save
-                                                Changes</button>
+                                            <button class="button button-lg button--primary" type="submit">{{ __('Save Changes') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -295,10 +293,10 @@
                                         <div class="d-flex justify-content-center">
                                             <input type="file" name="image" id="newImageInput">
                                             <button type="button" id="changeImageButton"
-                                                class="button button--primary-outline">CHANGE IMAGE</button>
+                                                class="button button--primary-outline">{{ __('CHANGE IMAGE') }}</button>
                                         </div>
                                     </form>
-                                    <p>Image size should be under 1MB image ratio 200px.</p>
+                                    <p>{{ __('Image size should be under 1MB image ratio 200px.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -319,12 +317,12 @@
     $(document).ready(function() {
             // Hide the file input initially
             $('#newImageInput').hide();
-    
+
             // Trigger the file input when the button is clicked
             $('#changeImageButton').click(function() {
                 $('#newImageInput').click();
             });
-    
+
             // Automatically submit the form when a file is selected
             $('#newImageInput').change(function() {
                 $('#changeImageForm').submit();

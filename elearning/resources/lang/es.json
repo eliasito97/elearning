@@ -181,7 +181,7 @@
     "Roles": "Roles",
     "Users": "Usuarios",
     "Instructors": "Instructores",
-    "Students": "Estudiantes",
+    "Students": "Estudiante",
     "Course Category": "Categoría de curso",
     "Courses List": "Lista de cursos",
     "All Courses": "Todos los cursos",
@@ -234,6 +234,7 @@
     "No Role Found": "No se encontró ningún rol",
     "Notifications": "Notificaciones",
     "New Student List": "Nueva lista de estudiantes",
+    "Student": "Estudiante",
     "Assigned Professor": "Profesor asignado",
     "Branch": "Profesión",
     "Date Of Admit": "Fecha de admisión",
@@ -350,7 +351,18 @@
     "Watch Course": "Ver Curso",
     "You Havent Enrolled Any Course Yet...": "Aún no te has inscrito en ningún curso...",
     "Your Course List is Empty!": "¡Tu lista de cursos está vacía!",
-    "Enroll Now!": "¡Inscríbete ahora!"
-
-
+    "Enroll Now!": "¡Inscríbete ahora!",
+    "Students Bio": "Biografía del Estudiante",
+    "Information": "Información",
+    "Your Information": "Tu Información",
+    "Nationality": "Nacionalidad",
+    "Setting": "Configuración",
+    "About You": "Sobre ti",
+    "Save Changes": "Guardar cambios",
+    "Change Password": "Cambiar contraseña",
+    "Current Password": "Contraseña actual",
+    "New Password": "Nueva contraseña",
+    "Confirm New Password": "Confirmar nueva contraseña",
+    "CHANGE IMAGE": "CAMBIAR IMAGEN",
+    "Image size should be under 1MB image ratio 200px.": "El tamaño de la imagen debe ser inferior a 1MB y la proporción de la imagen debe ser de 200px."
 }
