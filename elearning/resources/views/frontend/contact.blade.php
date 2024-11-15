@@ -41,15 +41,15 @@
                     <ul class="hero__content-location">
                         <li>
                             <span><i class="fas fa-map-marker-alt fa-2x"></i></span>
-                            <p>{{__('Cochabamba, Bolivia')}}</p>
+                            <p>{{__('Cochabamba')}}</p>
                         </li>
                         <li>
                             <span><i class="fas fa-map-marker-alt fa-2x"></i></span>
-                            <p>{{__('La Paz, Bolivia')}}</p>
+                            <p>{{__('La Paz')}}</p>
                         </li>
                         <li>
                             <span><i class="fas fa-map-marker-alt fa-2x"></i></span>
-                            <p>{{__('Santa Cruz, Bolivia')}}</p>
+                            <p>{{__('Santa Cruz')}}</p>
                         </li>
                     </ul>
                 </div>

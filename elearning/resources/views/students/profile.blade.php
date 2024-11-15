@@ -133,7 +133,7 @@
                                         <span>{{ __('Phone Number') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
-                                        <p>{{$student_info->contact_en?$student_info->contact_en:'+880'}}</p>
+                                        <p>{{$student_info->contact_en?$student_info->contact_en:__('without number')}}</p>
                                     </dd>
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
@@ -162,7 +162,7 @@
                                             <div class="col-lg-6">
                                                 <label for="fullName_en">{{ __('Full Name') }}</label>
                                                 <input type="text" class="form-control" name="fullName_en"
-                                                    value="{{$student_info->name_en}}" placeholder="Enter Your Name" />
+                                                    value="{{$student_info->name_en}}" placeholder="{{ __('Enter Your Name') }}" />
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="dob">{{ __('Date of Birth') }}</label>
@@ -173,7 +173,7 @@
                                             <div class="col-12">
                                                 <label for="emailAddress">{{ __('Email') }}</label>
                                                 <input type="email" name="emailAddress" class="form-control"
-                                                    value="{{$student_info->email}}" placeholder="Enter Your Email" />
+                                                    value="{{$student_info->email}}" placeholder="{{ __('Enter Your Email') }}" />
                                             </div>
                                         </div>
                                         <div class="row">
@@ -181,7 +181,7 @@
                                                 <label for="profession">{{ __('Branch') }}</label>
                                                 <input type="text" name="profession" class="form-control"
                                                     value="{{$student_info->profession}}"
-                                                    placeholder="Enter Your Profession" />
+                                                    placeholder="{{ __('Enter Your Profession') }}" />
                                             </div>
                                         </div>
                                         <div class="row g-3">
@@ -189,24 +189,24 @@
                                                 <label for="contactNumber_en">{{ __('Phone Number') }}</label>
                                                 <input type="text" class="form-control" name="contactNumber_en"
                                                     value="{{$student_info->contact_en}}"
-                                                    placeholder="Enter Your Contact No" />
+                                                    placeholder="{{ __('Enter Your Contact No') }}" />
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="nationality">{{ __('Nationality') }}</label>
                                                 <input type="text" class="form-control" name="nationality"
                                                     value="{{$student_info->nationality}}"
-                                                    placeholder="Enter Your Nationality" />
+                                                    placeholder="{{ __('Enter Your Nationality') }}" />
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="bio">{{ __('About You') }}</label>
                                                 <textarea name="bio" class="form-control" rows="5"
-                                                    placeholder="About Yourself">{{$student_info->bio}}</textarea>
+                                                    placeholder="{{ __('About Yourself') }}">{{$student_info->bio}}</textarea>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-lg-end justify-content-center mt-2">
-                                            <button class="button button-lg button--primary" type="submit"></button>
+                                            <button class="button button-lg button--primary" type="submit">{{ __('Save Changes') }}</button>
                                         </div>
                                     </form>
                                 </div>
@@ -221,7 +221,7 @@
                                                 <label for="current_password">{{ __('Current Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="cpass" name="current_password"
-                                                        class="form-control" placeholder="Enter Password" />
+                                                        class="form-control" placeholder="{{ __('Enter Password') }}" />
                                                     <div class="input-icon" onclick="showPassword('cpass',this)">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -240,7 +240,7 @@
                                                 <label for="password">{{ __('New Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="npass" name="password"
-                                                        class="form-control" placeholder="Enter Password" />
+                                                        class="form-control" placeholder="{{ __('Enter Password') }}" />
                                                     <div class="input-icon" onclick="showPassword('npass',this)">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -259,7 +259,7 @@
                                                 <label for="password_confirmation">{{ __('Confirm New Password') }}</label>
                                                 <div class="input-with-icon">
                                                     <input type="password" id="cnpass" name="password_confirmation"
-                                                        class="form-control" placeholder="Enter Password" />
+                                                        class="form-control" placeholder="{{ __('Enter Password') }}" />
                                                     <div class="input-icon" onclick="showPassword('cnpass',this)">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                             viewBox="0 0 24 24" fill="none" stroke="currentColor"

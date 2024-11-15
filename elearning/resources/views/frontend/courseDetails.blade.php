@@ -13,10 +13,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">Home</a>
+                    <a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="fs-6 text-secondary">Course</a>
+                    <a href="#" class="fs-6 text-secondary">{{ __('Course') }}</a>
                 </li>
                 <li class="breadcrumb-item fs-6 text-secondary d-none d-lg-inline-block" aria-current="page">
                     {{ $course->title_en }}
@@ -60,7 +60,7 @@
                             <path d="M9 4.5V9L12 10.5" stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        <p class="font-para--md">{{$course->duration}} Hours</p>
+                        <p class="font-para--md">{{$course->duration}} {{ __('Hours') }}</p>
                     </div>
                 </div>
                 <div class="icon-with-date d-flex align-items-lg-cente mb-0">
@@ -83,7 +83,7 @@
                                 d="M16.5 2.25H12C11.2044 2.25 10.4413 2.56607 9.87868 3.12868C9.31607 3.69129 9 4.45435 9 5.25V15.75C9 15.1533 9.23705 14.581 9.65901 14.159C10.081 13.7371 10.6533 13.5 11.25 13.5H16.5V2.25Z"
                                 stroke="#00AF91" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p class="font-para--md">{{$course->lesson}} Lesson</p>
+                        <p class="font-para--md">{{$course->lesson}} {{ __('Lesson') }}</p>
                     </div>
                 </div>
             </div>
@@ -111,33 +111,33 @@
                         </a>
                     </div>
                     {{-- Tabs --}}
-                    <ul class="nav course-overview-nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <ul class="nav course-overview-nav nav-pills mb-3" id="pills-tab" role="tablist" style="width: 550px !important;">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active font-para--lg" id="pills-courseoverview-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-courseoverview" type="button" role="tab"
                                 aria-controls="pills-courseoverview" aria-selected="true">
-                                Overview
+                                {{ __('Overview') }}
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link font-para--lg" id="pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                                 aria-selected="false">
-                                Curriculum
+                                {{ __('Curriculum') }}
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link font-para--lg" id="pills-c-instructor-tab" data-bs-toggle="pill"
                                 data-bs-target="#pills-c-instructor" type="button" role="tab"
                                 aria-controls="pills-c-instructor" aria-selected="false">
-                                Instructor
+                                {{ __('Instructor') }}
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link me-0 font-para--lg" id="pills-course-review-tab"
                                 data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab"
                                 aria-controls="pills-course-review-tab" aria-selected="false">
-                                Review
+                                {{ __('Review') }}
                             </button>
                         </li>
                     </ul>
@@ -149,19 +149,19 @@
                             aria-labelledby="pills-courseoverview-tab">
                             <div class="row course-overview-main mt-4">
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Description</h6>
+                                    <h6 class="font-title--card">{{ __('Description') }}</h6>
                                     <p class="mb-3 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Requirments</h6>
+                                    <h6 class="font-title--card">{{ __('Requirments') }}</h6>
                                     <p class="mb-2 font-para--lg">{{$course->prerequisites_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item">
-                                    <h6 class="font-title--card">Who This Course is For</h6>
+                                    <h6 class="font-title--card">{{ __('Who This Course is For') }}</h6>
                                     <p class="mb-2 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                                 <div class="course-overview-main-item mb-0">
-                                    <h6 class="font-title--card">What You Will be Learn</h6>
+                                    <h6 class="font-title--card">{{ __('What You Will be Learn') }}</h6>
                                     <p class="mb-2 font-para--lg">{{$course->description_en}}</p>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                                                         stroke="#42414B" stroke-width="2" stroke-linecap="round"
                                                         stroke-linejoin="round" />
                                                 </svg>
-                                                <p class="font-para--lg">Get Started</p>
+                                                <p class="font-para--lg">{{ __('Get Started') }}</p>
                                             </div>
                                             <div class="curriculum-area-top-end">
                                                 <div class="total-lesson">
@@ -197,7 +197,7 @@
                                                             stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
                                                             stroke-linejoin="round" />
                                                     </svg>
-                                                    <p>4 Lesson</p>
+                                                    <p>4 {{ __('Lesson') }}</p>
                                                 </div>
                                                 <div class="total-hours">
                                                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
@@ -327,7 +327,7 @@
                                                             stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
                                                             stroke-linejoin="round" />
                                                     </svg>
-                                                    <p>11 Lesson</p>
+                                                    <p>11 {{ __('Lesson') }}</p>
                                                 </div>
                                                 <div class="total-hours">
                                                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
@@ -457,7 +457,7 @@
                                                             stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
                                                             stroke-linejoin="round" />
                                                     </svg>
-                                                    <p>3 Lesson</p>
+                                                    <p>3 {{ __('Lesson') }}</p>
                                                 </div>
                                                 <div class="total-hours">
                                                     <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
@@ -583,8 +583,7 @@
                                                         href="instructor-profile.html">{{$course->instructor?->name_en}}</a>
                                                 </h6>
                                                 <p class="font-para--md">
-                                                    {{($course->instructor?->designation)?$course->instructor?->designation:'No
-                                                    Designation'}}</p>
+                                                    {{($course->instructor?->designation)?$course->instructor?->designation:__('No Designation') }}</p>
                                                 <div class="d-flex align-items-center instructor-text-bottom">
                                                     <div class="d-flex align-items-center ratings-icon">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -609,15 +608,15 @@
                                                                 stroke-linecap="round" stroke-linejoin="round" />
                                                         </svg>
 
-                                                        <p class="font-para--md">5 Courses</p>
+                                                        <p class="font-para--md">{{$instructor_count}} {{ __('Courses') }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <p class="lead-p font-para--lg">
-                                            {{($course->instructor?->title)?$course->instructor?->title:'No Title'}}</p>
+                                            {{($course->instructor?->title)?$course->instructor?->title:__('No Title') }}</p>
                                         <p class="font-para--md">
-                                            {{($course->instructor?->bio)?$course->instructor?->bio:'No Title'}}</p>
+                                            {{($course->instructor?->bio)?$course->instructor?->bio: __('No Title') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -2323,10 +2322,21 @@
                         <div class="cart__checkout-process">
                             <p class="time-left text-center"><span>5 hours</span> to remaining this price</p>
                             <form action="#">
-                                <a href="{{route('add.to.cart', $course->id)}}"
-                                    class="text-white button button-lg button--primary w-100">Add to Cart</a>
-                                <a href="{{route('checkout')}}"
-                                    class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                <!-- Botón para agregar al carrito -->
+                                <a href="{{ route('add.to.cart', $course->id) }}" class="text-white button button-lg button--primary w-100">Add to Cart</a>
+
+                                <!-- Verificar si el carrito está vacío y redirigir a checkout o agregar al carrito -->
+                                @php
+                                    $cart = session('cart', []); // Obtener el carrito de la sesión
+                                @endphp
+
+                                @if(count($cart) == 0)
+                                    <!-- Si el carrito está vacío, redirige a agregar el ítem -->
+                                    <a href="{{ route('add.to.cart', $course->id) }}" class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                @else
+                                    <!-- Si el carrito no está vacío, redirige al checkout -->
+                                    <a href="{{ route('checkout') }}" class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                @endif
                             </form>
                         </div>
                         <div class="cart__includes-info">

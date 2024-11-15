@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Courses; 
+namespace App\Http\Controllers\Backend\Courses;
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -12,10 +13,10 @@ use App\Models\Instructor;
 use App\Models\Lesson;
 use App\Models\Material;
 use Exception;
-use File; 
+use File;
 
 class CourseController extends Controller
-{ 
+{
     /**
      * Display a listing of the resource.
      */
@@ -50,7 +51,7 @@ class CourseController extends Controller
             $course = new Course;
             $course->title_en = $request->courseTitle_en;
             $course->title_bn = $request->courseTitle_bn;
-            $course->description_en = $request->courseDescription_en; 
+            $course->description_en = $request->courseDescription_en;
             $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
@@ -66,7 +67,7 @@ class CourseController extends Controller
             $course->prerequisites_en = $request->prerequisites_en;
             $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
-            $course->tag = $request->tag; 
+            $course->tag = $request->tag;
             $course->language = 'en';
 
             if ($request->hasFile('image')) {
@@ -94,15 +95,16 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        // 
+        //
     }
 
     public function frontShow($id)
     {
         $course = Course::findOrFail(encryptor('decrypt', $id));
-        // dd($course); 
-        return view('frontend.courseDetails', compact('course'));
-    } 
+        $instructor = Instructor::where('id', $course->instructor_id)->where('status','1')->first();
+        $instructor_count = Course::where('instructor_id', $instructor->id)->Count();
+        return view('frontend.courseDetails', compact('course','instructor_count'));
+    }
 
 
     /**
@@ -116,7 +118,7 @@ class CourseController extends Controller
         return view('backend.course.courses.edit', compact('courseCategory', 'instructor', 'course'));
     }
 
-    /** 
+    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, $id)
@@ -131,7 +133,7 @@ class CourseController extends Controller
             $course->instructor_id = $request->instructorId;
             $course->type = $request->courseType;
             $course->price = $request->coursePrice;
-            $course->old_price = $request->courseOldPrice; 
+            $course->old_price = $request->courseOldPrice;
             $course->subscription_price = $request->subscriptionPrice;
             $course->start_from = $request->start_from;
             $course->duration = $request->duration;
@@ -176,7 +178,7 @@ class CourseController extends Controller
             $course->instructor_id = $request->instructorId;
             $course->type = $request->courseType;
             $course->price = $request->coursePrice;
-            $course->old_price = $request->courseOldPrice; 
+            $course->old_price = $request->courseOldPrice;
             $course->subscription_price = $request->subscriptionPrice;
             $course->start_from = $request->start_from;
             $course->duration = $request->duration;
