@@ -83,7 +83,7 @@
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                     <span class="mb-0">{{ __('Price') }}</span>
-                                                    <strong>{{$d->price?'৳'.$d->price:'Free'}}</strong>
+                                                    <strong>{{$d->price?'Bs '.$d->price:__('Free')}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                     <span class="mb-0">{{ __('Status') }}</span>
@@ -100,7 +100,7 @@
                                                 </li>
                                             </ul>
                                             <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                href="about-student.html">{{ __('Read More') }}</a>
+                                                href="{{route('courseDetails', encryptor('encrypt', $d->id))}}">{{ __('Read More') }}</a>
                                         </div>
                                     </div>
                                 </div>

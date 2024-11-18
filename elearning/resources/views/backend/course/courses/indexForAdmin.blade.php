@@ -59,7 +59,7 @@
                                                 <td><strong>{{$d->instructor?->name_en}}</strong></td>
                                                 <td><strong>{{$d->courseCategory?->category_name}}</strong>
                                                 </td>
-                                                <td><strong>{{$d->price?'৳'.$d->price:'Free'}}</strong></td>
+                                                <td><strong>{{$d->price?'Bs '.$d->price:__('Free')}}</strong></td>
                                                 <td>
                                                     <span class="badge
                                                     @if($d->status == 0) badge-warning

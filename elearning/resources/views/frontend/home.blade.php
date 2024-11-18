@@ -162,8 +162,8 @@
                                             <p class="font-para--md">{{$pc?->instructor->name_en}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$pc->price?'৳'.$pc->price:'Free'}}</span>
-                                            <del>{{$pc->old_price?'৳'.$pc->old_price:''}}</del>
+                                            <span>{{$pc->price?'Bs '.$pc->price:__('Free')}}</span>
+                                            <del>{{$pc->old_price?'Bs'.$pc->old_price:''}}</del>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -172,21 +172,21 @@
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
                                                     alt="star" />
                                             </div>
-                                            <span>4.5</span>
+                                            <span>{{$pc->difficulty}}</span>
                                         </div>
-                                        <div class="eye d-flex align-items-center">
-                                            <div class="icon">
-                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                    alt="eye" />
-                                            </div>
-                                            <span>24,517</span>
-                                        </div>
+{{--                                        <div class="eye d-flex align-items-center">--}}
+{{--                                            <div class="icon">--}}
+{{--                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"--}}
+{{--                                                    alt="eye" />--}}
+{{--                                            </div>--}}
+{{--                                            <span>24,517</span>--}}
+{{--                                        </div>--}}
                                         <div class="book d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
                                                     alt="location" />
                                             </div>
-                                            <span>{{$pc->lesson?$pc->lesson:0}} {{__('Lesson')}}</span>
+                                            <span>{{$pc->lesson?$pc->lesson:0}} {{__('Lessons')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
@@ -234,8 +234,8 @@
                                             <p class="font-para--md">{{$dc?->instructor->name_en}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$dc->price?'৳'.$dc->price:'Free'}}</span>
-                                            <del>{{$dc->old_price?'৳'.$dc->old_price:''}}</del>
+                                            <span>{{$dc->price?'Bs '.$dc->price:__('Free') }}</span>
+                                            <del>{{$dc->old_price?'Bs'.$dc->old_price:''}}</del>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -243,19 +243,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>4.5</span>
+                                            <span>{{$dc->difficulty}}</span>
                                         </div>
-                                        <div class="eye d-flex align-items-center">
-                                            <div class="icon">
-                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />
-                                            </div>
-                                            <span>24,517</span>
-                                        </div>
+{{--                                        <div class="eye d-flex align-items-center">--}}
+{{--                                            <div class="icon">--}}
+{{--                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />--}}
+{{--                                            </div>--}}
+{{--                                            <span>24,517</span>--}}
+{{--                                        </div>--}}
                                         <div class="book d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$dc->lesson?$dc->lesson:0}} {{__('Lesson')}}</span>
+                                            <span>{{$dc->lesson?$dc->lesson:0}} {{__('Lessons')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
@@ -303,8 +303,8 @@
                                             <p class="font-para--md">{{$dv?->instructor->name_en}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$dv->price?'৳'.$dv->price:'Free'}}</span>
-                                            <del>{{$dv->old_price?'৳'.$dv->old_price:''}}</del>
+                                            <span>{{$dv->price?'Bs '.$dv->price:__('Free') }}</span>
+                                            <del>{{$dv->old_price?'Bs'.$dv->old_price:''}}</del>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -312,19 +312,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>4.5</span>
+                                            <span>{{$dv->difficulty}}</span>
                                         </div>
-                                        <div class="eye d-flex align-items-center">
-                                            <div class="icon">
-                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />
-                                            </div>
-                                            <span>24,517</span>
-                                        </div>
+{{--                                        <div class="eye d-flex align-items-center">--}}
+{{--                                            <div class="icon">--}}
+{{--                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />--}}
+{{--                                            </div>--}}
+{{--                                            <span>24,517</span>--}}
+{{--                                        </div>--}}
                                         <div class="book d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$dv->lesson?$dv->lesson:0}} {{__('Lesson')}}</span>
+                                            <span>{{$dv->lesson?$dv->lesson:0}} {{__('Lessons')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
@@ -372,8 +372,8 @@
                                             <p class="font-para--md">{{$bc?->instructor->name_en}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$bc->price?'৳'.$bc->price:'Free'}}</span>
-                                            <del>{{$bc->old_price?'৳'.$bc->old_price:''}}</del>
+                                            <span>{{$bc->price?'Bs '.$bc->price:__('free')}}</span>
+                                            <del>{{$bc->old_price?'Bs'.$bc->old_price:''}}</del>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -381,14 +381,14 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>4.5</span>
+                                            <span>{{$bc->difficulty}}</span>
                                         </div>
-                                        <div class="eye d-flex align-items-center">
-                                            <div class="icon">
-                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />
-                                            </div>
-                                            <span>24,517</span>
-                                        </div>
+{{--                                        <div class="eye d-flex align-items-center">--}}
+{{--                                            <div class="icon">--}}
+{{--                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />--}}
+{{--                                            </div>--}}
+{{--                                            <span>24,517</span>--}}
+{{--                                        </div>--}}
                                         <div class="book d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
@@ -441,8 +441,8 @@
                                             <p class="font-para--md">{{$ic?->instructor->name_en}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$ic->price?'৳'.$ic->price:'Free'}}</span>
-                                            <del>{{$ic->old_price?'৳'.$ic->old_price:''}}</del>
+                                            <span>{{$ic->price?'Bs '.$ic->price:__('Free')}}</span>
+                                            <del>{{$ic->old_price?'Bs'.$ic->old_price:''}}</del>
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -450,19 +450,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>4.5</span>
+                                            <span>{{$ic->difficulty}}</span>
                                         </div>
-                                        <div class="eye d-flex align-items-center">
-                                            <div class="icon">
-                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />
-                                            </div>
-                                            <span>24,517</span>
-                                        </div>
+{{--                                        <div class="eye d-flex align-items-center">--}}
+{{--                                            <div class="icon">--}}
+{{--                                                <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}" alt="eye" />--}}
+{{--                                            </div>--}}
+{{--                                            <span>24,517</span>--}}
+{{--                                        </div>--}}
                                         <div class="book d-flex align-items-center">
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/book.png')}}" alt="location" />
                                             </div>
-                                            <span>{{$ic->lesson?$ic->lesson:0}} {{__('Lesson')}}</span>
+                                            <span>{{$ic->lesson?$ic->lesson:0}} {{__('Lessons')}}</span>
                                         </div>
                                         <div class="clock d-flex align-items-center">
                                             <div class="icon">
@@ -1077,7 +1077,7 @@
                         {{__('Unlock the potential of your workforce with iLearn Academy for Business. Our platform offers tailored courses designed to enhance skills and drive performance across various industries. Whether you are looking to upskill your team or onboard new employees, our comprehensive curriculum provides the tools needed for success.')}}
                         </p>
                         <div class="text-center">
-                            <a href="#" class="green-btn">{{__('Get Eduguard For Business')}}</a>
+                            <a href="#" class="green-btn">{{__('Get Ilearning Academy For Business')}}</a>
                         </div>
                     </div>
                 </div>

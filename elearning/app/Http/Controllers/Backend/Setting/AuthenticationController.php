@@ -27,7 +27,7 @@ class AuthenticationController extends Controller
             $user->email = $request->email;
             $user->password = Hash::make($request->password);
             $user->role_id = 4;
-            // dd($request->all()); 
+            // dd($request->all());
             if ($user->save())
                 return redirect('login')->with('success', 'Successfully Registered');
             else
@@ -48,14 +48,20 @@ class AuthenticationController extends Controller
         try {
             $user = User::where('contact_en', $request->username)->orWhere('email', $request->username)->first();
             if ($user) {
-                if ($user->status == 1) {
+                       if ($user->status == 1 and ($user->role_id == 1 or $user->role_id == 2 or $user->role_id == 3 )) {
                     if (Hash::check($request->password, $user->password)) {
                         $this->setSession($user);
                         return redirect()->route('dashboard')->with('success', 'Successfully Logged In');
                     } else
                         return redirect()->route('login')->with('error', 'Username or Password is wrong!');
-                } else
+                } elseif ($user->status == 1 and $user->role_id == 4)
+                    {
+                    return redirect()->route('studentLogin')->with('error', 'Usted es estudiante');
+                    }
+                elseif ($user->status == 2)
+                {
                     return redirect()->route('login')->with('error', 'You are not an active user! Please contact to Authority');
+                }
             } else
                 return redirect()->route('login')->with('error', 'Username or Password is wrong!');
         } catch (Exception $e) {

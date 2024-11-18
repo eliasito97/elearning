@@ -13,10 +13,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">{{__('Homepage')}}</a>
+                    <a href="{{route('home')}}" class="fs-6 text-secondary">{{__('Homepage')}}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="course-search.html" class="fs-6 text-secondary">{{__('Courses')}}</a>
+                    <a href="{{route('searchCourse')}}" class="fs-6 text-secondary">{{__('Courses')}}</a>
                 </li>
             </ol>
         </nav>
@@ -106,228 +106,208 @@
                         <div id="levelCollapse" class="accordion-collapse collapse" aria-labelledby="levelAcc"
                             data-bs-parent="#sidebarFilter">
                             <div class="accordion-body">
-                                <form action="#">
+                                <form action="{{route('searchCourse')}}" method="get">
+                                    @csrf
                                     <div class="accordion-body__item">
                                         <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
+                                            <input type="checkbox" class="checkbox-primary" name="difficulty" value=""
+                                                {{!$selectedDifficulty ? 'checked' : '' }}>
                                             <label> {{__('All')}} </label>
                                         </div>
                                         <p class="check-details">
                                             {{$allCourse->count()}}
                                         </p>
                                     </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('Basic')}} </label>
+                                    @forelse($DifficultyAll as $diff)
+                                        <div class="accordion-body__item">
+                                            <div class="check-box">
+                                                <input type="checkbox" class="checkbox-primary" name="difficulty[]" value="{{ $diff->difficulty }}"
+                                                    {{ in_array($diff->difficulty, (array) $selectedDifficulty, true) ? 'checked' : '' }}>
+                                                <label> {{$diff->difficulty}} </label>
+                                            </div>
+                                            <p class="check-details">
+                                                {{$diff->count}} <!-- Muestra el conteo de cursos para esta dificultad -->
+                                            </p>
                                         </div>
-                                        <p class="check-details">
-                                            {{$coursedifficulty1->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('Intermediate')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$coursedifficulty2->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('Advanced')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$coursedifficulty3->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('Expert')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$coursedifficulty4->count()}}
-                                        </p>
-                                    </div>
+                                    @empty
+                                    @endforelse
+                                    <button type="submit" class="btn btn-primary">{{__('Apply Filter')}}</button>
                                 </form>
                             </div>
                         </div>
                     </div>
-                    <!-- Search by Price  -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                {{__('Price')}}
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#sidebarFilter">
-                            <div class="accordion-body">
-                                <div class="price-range">
-                                    <div>
-                                        <div class="price-range-block">
-                                            <form class="d-flex price-range-block__inputWrapper" action="#">
-                                                <input type="number" min="0" max="5000"
-                                                    oninput="validity.valid||(value='0');" id="min_price"
-                                                    class="price-range-field"
-                                                    style="width: 105px; height: 50px; border-radius: 4px; padding: 15px;" />
-                                                <span>to</span>
-                                                <input type="number" min="0" max="5000"
-                                                    oninput="validity.valid||(value='5000');" id="max_price"
-                                                    class="price-range-field"
-                                                    style="width: 125px; height: 50px; padding: 15px; border-radius: 4px;" />
-                                                <button class="angle-btn">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-chevron-right">
-                                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                            <div id="slider-range" class="price-filter-range"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Search by Rating  -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="ratingAcc">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#ratingCollapse" aria-expanded="false" aria-controls="ratingCollapse">
-                                {{__('Rating')}}
-                            </button>
-                        </h2>
-                        <div id="ratingCollapse" class="accordion-collapse collapse" aria-labelledby="ratingAcc"
-                            data-bs-parent="#sidebarFilter">
-                            <div class="accordion-body">
-                                <form action="#">
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('All')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$allCourse->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('1 Star')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('2 Stars')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('3 Stars')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('4 Stars')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('5 Stars')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            45,770
-                                        </p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Search by Duration  -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="durationAcc">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#durationCollapse" aria-expanded="false"
-                                aria-controls="durationCollapse">
-                                {{__('Duration')}}
-                            </button>
-                        </h2>
-                        <div id="durationCollapse" class="accordion-collapse collapse" aria-labelledby="durationAcc"
-                            data-bs-parent="#sidebarFilter">
-                            <div class="accordion-body">
-                                <form action="#">
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('All')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$allCourse->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('0 - 5 minutes')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$courseDuration1->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('5 - 10 minutes')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$courseDuration2->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('10 - 15 minutes')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$courseDuration3->count()}}
-                                        </p>
-                                    </div>
-                                    <div class="accordion-body__item">
-                                        <div class="check-box">
-                                            <input type="checkbox" class="checkbox-primary" />
-                                            <label> {{__('15+ minutes')}} </label>
-                                        </div>
-                                        <p class="check-details">
-                                            {{$courseDuration4->count()}}
-                                        </p>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <!-- Search by Price  -->--}}
+{{--                    <div class="accordion-item">--}}
+{{--                        <h2 class="accordion-header" id="headingThree">--}}
+{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
+{{--                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">--}}
+{{--                                {{__('Price')}}--}}
+{{--                            </button>--}}
+{{--                        </h2>--}}
+{{--                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"--}}
+{{--                            data-bs-parent="#sidebarFilter">--}}
+{{--                            <div class="accordion-body">--}}
+{{--                                <div class="price-range">--}}
+{{--                                    <div>--}}
+{{--                                        <div class="price-range-block">--}}
+{{--                                            <form class="d-flex price-range-block__inputWrapper" action="#">--}}
+{{--                                                <input type="number" min="0" max="5000"--}}
+{{--                                                    oninput="validity.valid||(value='0');" id="min_price"--}}
+{{--                                                    class="price-range-field"--}}
+{{--                                                    style="width: 105px; height: 50px; border-radius: 4px; padding: 15px;" />--}}
+{{--                                                <span>to</span>--}}
+{{--                                                <input type="number" min="0" max="5000"--}}
+{{--                                                    oninput="validity.valid||(value='5000');" id="max_price"--}}
+{{--                                                    class="price-range-field"--}}
+{{--                                                    style="width: 125px; height: 50px; padding: 15px; border-radius: 4px;" />--}}
+{{--                                                <button class="angle-btn">--}}
+{{--                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
+{{--                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"--}}
+{{--                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--}}
+{{--                                                        class="feather feather-chevron-right">--}}
+{{--                                                        <polyline points="9 18 15 12 9 6"></polyline>--}}
+{{--                                                    </svg>--}}
+{{--                                                </button>--}}
+{{--                                            </form>--}}
+{{--                                            <div id="slider-range" class="price-filter-range"></div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- Search by Rating  -->--}}
+{{--                    <div class="accordion-item">--}}
+{{--                        <h2 class="accordion-header" id="ratingAcc">--}}
+{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
+{{--                                data-bs-target="#ratingCollapse" aria-expanded="false" aria-controls="ratingCollapse">--}}
+{{--                                {{__('Rating')}}--}}
+{{--                            </button>--}}
+{{--                        </h2>--}}
+{{--                        <div id="ratingCollapse" class="accordion-collapse collapse" aria-labelledby="ratingAcc"--}}
+{{--                            data-bs-parent="#sidebarFilter">--}}
+{{--                            <div class="accordion-body">--}}
+{{--                                <form action="#">--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('All')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$allCourse->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('1 Star')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            45,770--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('2 Stars')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            45,770--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('3 Stars')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            45,770--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('4 Stars')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            45,770--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('5 Stars')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            45,770--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- Search by Duration  -->--}}
+{{--                    <div class="accordion-item">--}}
+{{--                        <h2 class="accordion-header" id="durationAcc">--}}
+{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
+{{--                                data-bs-target="#durationCollapse" aria-expanded="false"--}}
+{{--                                aria-controls="durationCollapse">--}}
+{{--                                {{__('Duration')}}--}}
+{{--                            </button>--}}
+{{--                        </h2>--}}
+{{--                        <div id="durationCollapse" class="accordion-collapse collapse" aria-labelledby="durationAcc"--}}
+{{--                            data-bs-parent="#sidebarFilter">--}}
+{{--                            <div class="accordion-body">--}}
+{{--                                <form action="#">--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('All')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$allCourse->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('0 - 5 minutes')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$courseDuration1->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('5 - 10 minutes')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$courseDuration2->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('10 - 15 minutes')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$courseDuration3->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-body__item">--}}
+{{--                                        <div class="check-box">--}}
+{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
+{{--                                            <label> {{__('15+ minutes')}} </label>--}}
+{{--                                        </div>--}}
+{{--                                        <p class="check-details">--}}
+{{--                                            {{$courseDuration4->count()}}--}}
+{{--                                        </p>--}}
+{{--                                    </div>--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
 
@@ -398,8 +378,8 @@
                                         <p class="font-para--md">{{$c->instructor?->name_en}}</p>
                                     </a>
                                     <div class="price">
-                                        <span>{{$c->price==null?'Free':'৳'.$c->price}}</span>
-                                        <del>{{$c->old_price?'৳'.$c->old_price:''}}</del>
+                                        <span>{{$c->price==null?__('Free'):'Bs'.$c->price}}</span>
+                                        <del>{{$c->old_price?'Bs'.$c->old_price:''}}</del>
                                     </div>
                                 </div>
                                 <div class="contentCard-more">

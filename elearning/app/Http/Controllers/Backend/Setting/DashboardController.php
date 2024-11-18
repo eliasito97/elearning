@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Instructor;
 use App\Models\Payment;
 use App\Models\Student;
 use Carbon\Carbon;
@@ -24,13 +25,15 @@ class DashboardController extends Controller
         $studentforstatus =$this->getstudentsforstatus();
         $studentData = $this->getstudents();
 
+        $acces = User::where('id',currentUserId())->get();
+        $instructor = Instructor::where('id',currentUserId());
          if (fullAccess())
             return view('backend.adminDashboard', compact('user', 'student','course','totalAmount','payments','months','studentData','studentforstatus'));
         else
-        if ($user->role = 'instructor')
-            return view('backend.instructorDashboard');
-        else
-            return view('backend.dashboard');
+        if ($acces[0]->role_id == 3 or $acces[0]->role_id == 2 or $acces[0]->role_id == 1)
+            return redirect()->route('student.index');
+        elseif ($acces[0]->role_id == 4)
+            return redirect()->route('studentLogin')->with('error', 'Usted es estudiante');
 
         //   $user = User::get();
         //   if($user->role = 'instructor')

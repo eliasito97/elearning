@@ -209,102 +209,114 @@
                 <div class="tab-pane fade" id="nav-activecourses" role="tabpanel"
                     aria-labelledby="nav-activecourses-tab">
                     <div class="row">
+                        @forelse ($enrollment as $a)
                         <div class="col-lg-4 col-md-6 col-md-6 mb-4">
                             <div class="contentCard contentCard--watch-course">
                                 <div class="contentCard-top">
                                     <a href="#"><img
-                                            src="{{asset('public/frontend/dist/images/courses/demo-img-04.png')}}"
+                                            src="{{asset('public/uploads/courses/'.$a->course?->image)}}"
                                             alt="images" class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
+                                        <a href="{{route('courseDetails', encryptor('encrypt', $a->course?->id))}}"
+                                           class="font-title--card">{{$a->course?->title_en}}</a>
                                     </h5>
                                     <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                        <a href="instructor-profile.html"
+                                        <a href="{{route('instructorProfile', encryptor('encrypt', $a->course?->instructor->id))}}"
                                             class="contentCard-user d-flex align-items-center">
-                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                                alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
+                                            <img src="{{asset('public/uploads/users/'.$a->course?->instructor?->image)}}"
+                                                alt="client-image" class="rounded-circle" height="34" width="34" />
+                                            <p class="font-para--md">{{$a->course?->instructor?->name_en}}</p>
                                         </a>
                                         <div class="contentCard-course--status d-flex align-items-center">
                                             <span class="percentage">43%</span>
-                                            <p>Finish</p>
+                                            <p>{{ __('Finish') }}</p>
                                         </div>
                                     </div>
-                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch
-                                        Course</a>
+                                    <a class="button button-md button--primary-outline w-100 my-3" href="{{route('watchCourse', encryptor('encrypt', $a->course?->id))}}">{{ __('Watch Course') }}</a>
                                     <div class="contentCard-watch--progress">
                                         <span class="percentage" style="width: 43%;"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">
-                            <div class="contentCard contentCard--watch-course">
-                                <div class="contentCard-top">
-                                    <a href="#"><img
-                                            src="{{asset('public/frontend/dist/images/courses/demo-img-05.png')}}"
-                                            alt="images" class="img-fluid" /></a>
-                                </div>
-                                <div class="contentCard-bottom">
-                                    <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
-                                    </h5>
-                                    <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                        <a href="instructor-profile.html"
-                                            class="contentCard-user d-flex align-items-center">
-                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                                alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
-                                        </a>
-                                        <div class="contentCard-course--status d-flex align-items-center">
-                                            <span class="percentage">43%</span>
-                                            <p>Finish</p>
-                                        </div>
-                                    </div>
-                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch
-                                        Course</a>
-                                    <div class="contentCard-watch--progress">
-                                        <span class="percentage" style="width: 43%;"></span>
-                                    </div>
+
+{{--                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">--}}
+{{--                            <div class="contentCard contentCard--watch-course">--}}
+{{--                                <div class="contentCard-top">--}}
+{{--                                    <a href="#"><img--}}
+{{--                                            src="{{asset('public/frontend/dist/images/courses/demo-img-05.png')}}"--}}
+{{--                                            alt="images" class="img-fluid" /></a>--}}
+{{--                                </div>--}}
+{{--                                <div class="contentCard-bottom">--}}
+{{--                                    <h5>--}}
+{{--                                        <a href="#" class="font-title--card">Chicago International--}}
+{{--                                            Conference on Education</a>--}}
+{{--                                    </h5>--}}
+{{--                                    <div class="contentCard-info d-flex align-items-center justify-content-between">--}}
+{{--                                        <a href="instructor-profile.html"--}}
+{{--                                            class="contentCard-user d-flex align-items-center">--}}
+{{--                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"--}}
+{{--                                                alt="client-image" class="rounded-circle" />--}}
+{{--                                            <p class="font-para--md">Brandon Dias</p>--}}
+{{--                                        </a>--}}
+{{--                                        <div class="contentCard-course--status d-flex align-items-center">--}}
+{{--                                            <span class="percentage">43%</span>--}}
+{{--                                            <p>Finish</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch--}}
+{{--                                        Course</a>--}}
+{{--                                    <div class="contentCard-watch--progress">--}}
+{{--                                        <span class="percentage" style="width: 43%;"></span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">--}}
+{{--                            <div class="contentCard contentCard--watch-course">--}}
+{{--                                <div class="contentCard-top">--}}
+{{--                                    <a href="#"><img--}}
+{{--                                            src="{{asset('public/frontend/dist/images/courses/demo-img-01.png')}}"--}}
+{{--                                            alt="images" class="img-fluid" /></a>--}}
+{{--                                </div>--}}
+{{--                                <div class="contentCard-bottom">--}}
+{{--                                    <h5>--}}
+{{--                                        <a href="#" class="font-title--card">Chicago International--}}
+{{--                                            Conference on Education</a>--}}
+{{--                                    </h5>--}}
+{{--                                    <div class="contentCard-info d-flex align-items-center justify-content-between">--}}
+{{--                                        <a href="instructor-profile.html"--}}
+{{--                                            class="contentCard-user d-flex align-items-center">--}}
+{{--                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"--}}
+{{--                                                alt="client-image" class="rounded-circle" />--}}
+{{--                                            <p class="font-para--md">Brandon Dias</p>--}}
+{{--                                        </a>--}}
+{{--                                        <div class="contentCard-course--status d-flex align-items-center">--}}
+{{--                                            <span class="percentage">43%</span>--}}
+{{--                                            <p>Finish</p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch--}}
+{{--                                        Course</a>--}}
+{{--                                    <div class="contentCard-watch--progress">--}}
+{{--                                        <span class="percentage" style="width: 43%;"></span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+                        @empty
+                            <div class="col-12 py-5">
+                                <div class="col-md-6 col-12 mx-auto text-center">
+                                    <h5 class="font-title--sm">{{ __('You Havent Enrolled Any Course Yet...') }}</h5>
+                                    <p class="my-4 font-para--lg">
+                                        {{ __('Your Course List is Empty!') }}
+                                    </p>
+                                    <a href="{{route('searchCourse')}}" class="button button-md button--primary">{{ __('Enroll Now!') }}</a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">
-                            <div class="contentCard contentCard--watch-course">
-                                <div class="contentCard-top">
-                                    <a href="#"><img
-                                            src="{{asset('public/frontend/dist/images/courses/demo-img-01.png')}}"
-                                            alt="images" class="img-fluid" /></a>
-                                </div>
-                                <div class="contentCard-bottom">
-                                    <h5>
-                                        <a href="#" class="font-title--card">Chicago International
-                                            Conference on Education</a>
-                                    </h5>
-                                    <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                        <a href="instructor-profile.html"
-                                            class="contentCard-user d-flex align-items-center">
-                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                                alt="client-image" class="rounded-circle" />
-                                            <p class="font-para--md">Brandon Dias</p>
-                                        </a>
-                                        <div class="contentCard-course--status d-flex align-items-center">
-                                            <span class="percentage">43%</span>
-                                            <p>Finish</p>
-                                        </div>
-                                    </div>
-                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch
-                                        Course</a>
-                                    <div class="contentCard-watch--progress">
-                                        <span class="percentage" style="width: 43%;"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
                         <div class="col-lg-12 mt-lg-5">
                             <div class="pagination justify-content-center pb-0">
                                 <div class="pagination-group">

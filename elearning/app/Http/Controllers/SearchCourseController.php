@@ -13,22 +13,26 @@ class SearchCourseController extends Controller
 
         $category = CourseCategory::get();
         $selectedCategories = $request->input('categories', []);
+        $selectedDifficulty = $request->input('difficulty', []);
 
-        $course = Course::where('status', 2)->when($selectedCategories, function ($query) use ($selectedCategories) {
+        $course = Course::where('status', 2)
+            ->when($selectedCategories, function ($query) use ($selectedCategories) {
                 $query->whereIn('course_category_id', $selectedCategories);
-            })->get();
-        $coursedifficulty1 = Course::where('status', 2)
-            ->where('difficulty', 'like', 'beginner')
+            })
+            ->when($selectedDifficulty, function ($query1) use ($selectedDifficulty) {
+                if (is_array($selectedDifficulty) && count($selectedDifficulty)) {
+                    $query1->whereIn('difficulty', $selectedDifficulty);
+                } else if (!is_array($selectedDifficulty) && $selectedDifficulty) {
+                    $query1->where('difficulty', 'like', "%$selectedDifficulty%");
+                }
+            })
             ->get();
-        $coursedifficulty2 = Course::where('status', 2)
-        ->where('difficulty', 'like', 'Intermediate')
+//        dd($course);
+        $DifficultyAll = Course::where('status', 2)
+        ->select('difficulty', Course::raw('COUNT(*) as count'))
+        ->groupBy('difficulty')
         ->get();
-        $coursedifficulty3 = Course::where('status', 2)
-            ->where('difficulty', 'like', 'Advanced')
-            ->get();
-        $coursedifficulty4 = Course::where('status', 2)
-            ->where('difficulty', 'like', 'Expert')
-            ->get();
+
         $courseDuration1 = Course::where('status', 2)
             ->whereBetween('duration', [0, 5])
             ->get();
@@ -47,6 +51,6 @@ class SearchCourseController extends Controller
 
         $allCourse = Course::where('status', 2)->get();
 
-        return view('frontend.searchCourse', compact('course', 'category', 'selectedCategories', 'allCourse','coursedifficulty1','coursedifficulty2','coursedifficulty3','coursedifficulty4','courseDuration1','courseDuration2','courseDuration3','courseDuration4'));
+        return view('frontend.searchCourse', compact('course', 'category', 'selectedCategories', 'allCourse','courseDuration1','courseDuration2','courseDuration3','courseDuration4','selectedDifficulty','DifficultyAll'));
     }
 }

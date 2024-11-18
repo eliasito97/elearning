@@ -26443,7 +26443,7 @@ header #search-nav.appear {
 }
 
 .event-info .courseCard--wrapper {
-  margin-top: -110px;
+  margin-top: -95px;
 }
 
 .event-info .eventCard--wrapper {
@@ -27592,17 +27592,31 @@ header #search-nav.appear {
     padding: 12px;
   }
 }
+.curriculum-description {
+    display: flex;
+    flex-direction: column; /* Asegura que los hijos se apilen verticalmente */
+    gap: 15px; /* Espaciado entre materiales */
+}
 
+.curriculum-material-item {
+    display: flex; /* Estilo del contenedor del material */
+    justify-content: space-between; /* Distribuir contenido */
+    align-items: center; /* Alinear elementos verticalmente */
+    padding: 10px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Línea divisoria (opcional) */
+    border-radius: 5px; /* Bordes redondeados (opcional) */
+    background-color: #f9f9f9; /* Fondo ligero (opcional) */
+}
 .course-curriculum-area .curriculum-area-bottom .curriculum-description {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 12px 24px;
+  /*padding: 12px 24px;*/
   -webkit-box-align: center;
-  -webkit-align-items: center;
+  /*-webkit-align-items: center;*/
   -ms-flex-align: center;
-  align-items: center;
+  /*align-items: center;*/
   border: 1px solid transparent;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;

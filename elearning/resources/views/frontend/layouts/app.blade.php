@@ -71,11 +71,9 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="{{route('about')}}">{{__('About')}}</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="http://localhost:8081/">
-                                Events
-                            </a>
-                        </li> --}}
+{{--                         <li class="nav-item">--}}
+{{--                            <a class="nav-link" aria-current="page" href="{{route('event')}}">{{ __('Events') }}</a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('contact')}}">{{__('Contact')}}</a>
                         </li>
@@ -371,10 +369,10 @@
                     <div class="footer__list">
                         <h6>{{__('Company')}}</h6>
                         <ul>
-                            <li><a href="about.html">{{__('About Us')}}</a></li>
-                            <li><a href="course-search.html">{{__('Courses')}}</a></li>
-                            <li><a href="#">{{__('career')}}</a></li>
-                            <li><a href="#">{{__('Affiliate')}}</a></li>
+                            <li><a href="{{route('about')}}">{{__('About Us')}}</a></li>
+                            <li><a href="{{route('searchCourse')}}">{{__('Courses')}}</a></li>
+{{--                            <li><a href="{{route('about')}}">{{__('Trajectory')}}</a></li>--}}
+{{--                            <li><a href="#">{{__('Affiliate')}}</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -385,7 +383,7 @@
                             <li><a href="#">{{__('Help & Supports')}} </a></li>
                             <li><a href="#">{{__('Privacy Policy')}}</a></li>
                             <li><a href="faq.html">{{__('FAQs')}}</a></li>
-                            <li><a href="contact.html">{{__('Contact Us')}}</a></li>
+                            <li><a href="{{route('contact')}}">{{__('Contact Us')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -393,7 +391,7 @@
                     <div class="footer__list">
                         <h6>{{__('Quick Links')}}</h6>
                         <ul>
-                            <li><a href="event-search.html">{{__('Events')}}</a></li>
+                            <li><a href="{{route('searchCourse')}}">{{__('Events')}}</a></li>
                             <li><a href="become-instructor.html">{{__('Become an Instructor')}}</a></li>
                             <li><a href="#">{{__('Partnerships')}}</a></li>
 {{--                            <li><a href="#">{{__('Get the app')}}</a></li>--}}

@@ -301,24 +301,25 @@
         <div class="dlabnav-scroll">
             <ul class="metismenu" id="menu">
                 <li class="nav-label first">{{__('Instructor Panel')}}</li>
-                <li><a class="ai-icon" href="{{route('dashboard')}}" aria-expanded="false">
-                        <i class="las la-tachometer-alt"></i> <span class="nav-text">{{__('Dashboard')}}</span>
-                    </a>
-                </li>
+
+{{--                <li><a class="ai-icon" href="{{route('instructorProfile', encryptor('encrypt', currentUserId()))}}" aria-expanded="false">--}}
+{{--                        <i class="las la-tachometer-alt"></i> <span class="nav-text">{{__('Instructor Panel')}}</span>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li><a class="ai-icon" href="{{route('home')}}" aria-expanded="false">
                         <i class="las la-home"></i><span class="nav-text">{{__('Homepage')}}</span>
                     </a>
                 </li>
                 <li class="nav-label">{{__('Main Menu')}}</li>
-                <li><a href="{{route('instructor.index')}}">
-                        <i class="las la-chalkboard-teacher"></i>{{__('Instructors List')}}
-                    </a>
-                </li>
+{{--                <li><a href="{{route('instructor.index')}}">--}}
+{{--                        <i class="las la-chalkboard-teacher"></i>{{__('Instructors List')}}--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li><a href="{{route('student.index')}}"><i class="las la-book-reader"></i>{{__('Students List')}}</a></li>
                 <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>{{__('All Courses')}}</a></li>
                 <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>{{__('Course Lessons')}}</a></li>
                 <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>{{__('Course Materials')}}</a></li>
-                <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>{{__('Coupons')}}</a></li>
+{{--                <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>{{__('Coupons')}}</a></li>--}}
                 <li><a href="{{route('enrollment.index')}}"><i class="las la-bullseye"></i>{{__('Enrollments')}}</a></li>
             </ul>
         </div>

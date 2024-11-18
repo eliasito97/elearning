@@ -16,7 +16,7 @@
                     <a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="fs-6 text-secondary">{{ __('Course') }}</a>
+                    <a href="#" class="fs-6 text-secondary">{{ __('Courses') }}</a>
                 </li>
                 <li class="breadcrumb-item fs-6 text-secondary d-none d-lg-inline-block" aria-current="page">
                     {{ $course->title_en }}
@@ -50,7 +50,7 @@
                                 d="M9.94438 2.34287L11.7457 5.96656C11.8359 6.14934 12.0102 6.2769 12.2124 6.30645L16.2452 6.88901C16.4085 6.91079 16.5555 6.99635 16.6559 7.12701C16.8441 7.37201 16.8153 7.71891 16.5898 7.92969L13.6668 10.7561C13.5183 10.8961 13.4522 11.1015 13.4911 11.3014L14.1911 15.2898C14.2401 15.6204 14.0145 15.93 13.684 15.9836C13.5471 16.0046 13.4071 15.9829 13.2826 15.9214L9.69082 14.0384C9.51037 13.9404 9.29415 13.9404 9.1137 14.0384L5.49546 15.9315C5.1929 16.0855 4.82267 15.9712 4.65778 15.6748C4.59478 15.5551 4.57301 15.419 4.59478 15.286L5.29479 11.2975C5.32979 11.0984 5.26368 10.8938 5.11901 10.753L2.18055 7.92735C1.94099 7.68935 1.93943 7.30201 2.17821 7.06246C2.17899 7.06168 2.17977 7.06012 2.18055 7.05935C2.27932 6.9699 2.40066 6.91001 2.5321 6.88668L6.56569 6.30412C6.76713 6.27223 6.94058 6.14623 7.03236 5.96345L8.83215 2.34287C8.90448 2.19587 9.03281 2.08309 9.18837 2.03176C9.3447 1.97965 9.51582 1.99209 9.66282 2.06598C9.78337 2.12587 9.88215 2.22309 9.94438 2.34287Z"
                                 stroke="#FF7A1A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p class="font-para--md">5.0 Star <span>(2,54,879)</span></p>
+                        <p class="font-para--md">{{$course->difficulty}}</p>
                     </div>
                     <div class="icon-with-date-end d-flex align-items-center">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,16 +64,16 @@
                     </div>
                 </div>
                 <div class="icon-with-date d-flex align-items-lg-cente mb-0">
-                    <div class="icon-with-date-start d-flex align-items-center">
-                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 9C1 9 4 3 9.25 3C14.5 3 17.5 9 17.5 9C17.5 9 14.5 15 9.25 15C4 15 1 9 1 9Z"
-                                stroke="#1089FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M9.25 11.25C10.4926 11.25 11.5 10.2426 11.5 9C11.5 7.75736 10.4926 6.75 9.25 6.75C8.00736 6.75 7 7.75736 7 9C7 10.2426 8.00736 11.25 9.25 11.25Z"
-                                stroke="#1089FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <p class="font-para--md">19,97,2547 Enrolled</p>
-                    </div>
+{{--                    <div class="icon-with-date-start d-flex align-items-center">--}}
+{{--                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                            <path d="M1 9C1 9 4 3 9.25 3C14.5 3 17.5 9 17.5 9C17.5 9 14.5 15 9.25 15C4 15 1 9 1 9Z"--}}
+{{--                                stroke="#1089FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />--}}
+{{--                            <path--}}
+{{--                                d="M9.25 11.25C10.4926 11.25 11.5 10.2426 11.5 9C11.5 7.75736 10.4926 6.75 9.25 6.75C8.00736 6.75 7 7.75736 7 9C7 10.2426 8.00736 11.25 9.25 11.25Z"--}}
+{{--                                stroke="#1089FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />--}}
+{{--                        </svg>--}}
+{{--                        <p class="font-para--md">19,97,2547 Enrolled</p>--}}
+{{--                    </div>--}}
                     <div class="icon-with-date-end d-flex align-items-center">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -83,7 +83,7 @@
                                 d="M16.5 2.25H12C11.2044 2.25 10.4413 2.56607 9.87868 3.12868C9.31607 3.69129 9 4.45435 9 5.25V15.75C9 15.1533 9.23705 14.581 9.65901 14.159C10.081 13.7371 10.6533 13.5 11.25 13.5H16.5V2.25Z"
                                 stroke="#00AF91" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
-                        <p class="font-para--md">{{$course->lesson}} {{ __('Lesson') }}</p>
+                        <p class="font-para--md">{{$course->lesson == null? 0 : $course->lesson}}  {{ __('Lessons') }}</p>
                     </div>
                 </div>
             </div>
@@ -133,13 +133,13 @@
                                 {{ __('Instructor') }}
                             </button>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <button class="nav-link me-0 font-para--lg" id="pills-course-review-tab"
-                                data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab"
-                                aria-controls="pills-course-review-tab" aria-selected="false">
-                                {{ __('Review') }}
-                            </button>
-                        </li>
+{{--                        <li class="nav-item" role="presentation">--}}
+{{--                            <button class="nav-link me-0 font-para--lg" id="pills-course-review-tab"--}}
+{{--                                data-bs-toggle="pill" data-bs-target="#pills-review" type="button" role="tab"--}}
+{{--                                aria-controls="pills-course-review-tab" aria-selected="false">--}}
+{{--                                {{ __('Review') }}--}}
+{{--                            </button>--}}
+{{--                        </li>--}}
                     </ul>
 
                     <div class="tab-content course-overview-content" id="pills-tabContentTwo">
@@ -173,393 +173,85 @@
                             <div class="row">
                                 <div class="course-curriculum-area">
                                     <div class="curriculum-area">
-                                        <div class="curriculum-area-top" role="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                                            <div class="curriculum-area-top-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    viewBox="0 0 20 20" fill="none">
-                                                    <path d="M15.8332 7.08337L9.99984 12.9167L4.1665 7.08337"
-                                                        stroke="#42414B" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <p class="font-para--lg">{{ __('Get Started') }}</p>
-                                            </div>
-                                            <div class="curriculum-area-top-end">
-                                                <div class="total-lesson">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M1.5 2.75H6C6.79565 2.75 7.55871 3.06607 8.12132 3.62868C8.68393 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 8.76295 15.081 8.34099 14.659C7.91903 14.2371 7.34674 14 6.75 14H1.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M16.5 2.75H12C11.2044 2.75 10.4413 3.06607 9.87868 3.62868C9.31607 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 9.23705 15.081 9.65901 14.659C10.081 14.2371 10.6533 14 11.25 14H16.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
+                                        {{-- Iterar sobre las lecciones --}}
+                                        @forelse($lessons as $index => $less)
+                                            <div class="curriculum-area-top" role="button" data-bs-toggle="collapse"
+                                                 data-bs-target="#collapse{{$index}}" aria-expanded="false" aria-controls="collapse{{$index}}">
+                                                <div class="curriculum-area-top-start">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                                         viewBox="0 0 20 20" fill="none">
+                                                        <path d="M15.8332 7.08337L9.99984 12.9167L4.1665 7.08337"
+                                                              stroke="#42414B" stroke-width="2" stroke-linecap="round"
+                                                              stroke-linejoin="round" />
                                                     </svg>
-                                                    <p>4 {{ __('Lesson') }}</p>
+                                                    <p class="font-para--lg">{{$less->title}}</p>
                                                 </div>
-                                                <div class="total-hours">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z"
-                                                            stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path d="M9 5V9.5L12 11" stroke="#FFC91B" stroke-width="1.8"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
+                                                <div class="curriculum-area-top-end">
+                                                    <div class="total-lesson">
+                                                        <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M1.5 2.75H6C6.79565 2.75 7.55871 3.06607 8.12132 3.62868C8.68393 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 8.76295 15.081 8.34099 14.659C7.91903 14.2371 7.34674 14 6.75 14H1.5V2.75Z"
+                                                                stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path
+                                                                d="M16.5 2.75H12C11.2044 2.75 10.4413 3.06607 9.87868 3.62868C9.31607 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 9.23705 15.081 9.65901 14.659C10.081 14.2371 10.6533 14 11.25 14H16.5V2.75Z"
+                                                                stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                        </svg>
+                                                        <p>{{$course->lession}} {{ __('Lessons') }}</p>
+                                                    </div>
+                                                    <div class="total-hours">
+                                                        <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z"
+                                                                stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
+                                                                stroke-linejoin="round" />
+                                                            <path d="M9 5V9.5L12 11" stroke="#FFC91B" stroke-width="1.8"
+                                                                  stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                        <p>{{$course->duration}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="curriculum-area-bottom collapse" id="collapse{{$index}}">
+                                                <div class="curriculum-description">
+                                                    {{-- Iterar sobre los materiales filtrados por lección --}}
+                                                    @forelse($materials->where('lesson_id', $less->id) as $matt)
+                                                        <div class="curriculum-material-item"> {{-- Contenedor adicional para cada material --}}
+                                                            <div class="curriculum-description-start">
+                                                                <p>
+                                                                    <a href="#">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                             class="feather feather-play-circle">
+                                                                            <circle cx="12" cy="12" r="10"></circle>
+                                                                            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+                                                                        </svg>
+                                                                    </a>
+                                                                    <a href="#">{{$matt->title}}</a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="curriculum-description-end">
+                                                                <p>12:34</p>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                                     class="feather feather-lock">
+                                                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+                                                    @empty
+                                                        <p>{{ __('No materials for this lesson.') }}</p>
+                                                    @endforelse
+                                                </div>
 
-                                                    <p>1H 16M</p>
-                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="curriculum-area-bottom collapse show" id="collapse1">
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description active">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="curriculum-area">
-                                        <div class="curriculum-area-top collapsed" role="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false"
-                                            aria-controls="collapse2">
-                                            <div class="curriculum-area-top-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    viewBox="0 0 20 20" fill="none">
-                                                    <path d="M15.8332 7.08337L9.99984 12.9167L4.1665 7.08337"
-                                                        stroke="#42414B" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <p class="font-para--lg">The Project Brief</p>
-                                            </div>
-                                            <div class="curriculum-area-top-end">
-                                                <div class="total-lesson">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M1.5 2.75H6C6.79565 2.75 7.55871 3.06607 8.12132 3.62868C8.68393 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 8.76295 15.081 8.34099 14.659C7.91903 14.2371 7.34674 14 6.75 14H1.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M16.5 2.75H12C11.2044 2.75 10.4413 3.06607 9.87868 3.62868C9.31607 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 9.23705 15.081 9.65901 14.659C10.081 14.2371 10.6533 14 11.25 14H16.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                    <p>11 {{ __('Lesson') }}</p>
-                                                </div>
-                                                <div class="total-hours">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z"
-                                                            stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path d="M9 5V9.5L12 11" stroke="#FFC91B" stroke-width="1.8"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-
-                                                    <p>9H 18M</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="curriculum-area-bottom collapse" id="collapse2">
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description active">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="curriculum-area mb-0">
-                                        <div class="curriculum-area-top collapsed" role="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                            aria-expanded="false" aria-controls="collapseExample">
-                                            <div class="curriculum-area-top-start">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                    viewBox="0 0 20 20" fill="none">
-                                                    <path d="M15.8332 7.08337L9.99984 12.9167L4.1665 7.08337"
-                                                        stroke="#42414B" stroke-width="2" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                                <p class="font-para--lg">Low Fidelity Wireframes</p>
-                                            </div>
-                                            <div class="curriculum-area-top-end">
-                                                <div class="total-lesson">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M1.5 2.75H6C6.79565 2.75 7.55871 3.06607 8.12132 3.62868C8.68393 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 8.76295 15.081 8.34099 14.659C7.91903 14.2371 7.34674 14 6.75 14H1.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path
-                                                            d="M16.5 2.75H12C11.2044 2.75 10.4413 3.06607 9.87868 3.62868C9.31607 4.19129 9 4.95435 9 5.75V16.25C9 15.6533 9.23705 15.081 9.65901 14.659C10.081 14.2371 10.6533 14 11.25 14H16.5V2.75Z"
-                                                            stroke="#00AF91" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                    </svg>
-                                                    <p>3 {{ __('Lesson') }}</p>
-                                                </div>
-                                                <div class="total-hours">
-                                                    <svg width="18" height="19" viewBox="0 0 18 19" fill="none"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M9 17C13.1421 17 16.5 13.6421 16.5 9.5C16.5 5.35786 13.1421 2 9 2C4.85786 2 1.5 5.35786 1.5 9.5C1.5 13.6421 4.85786 17 9 17Z"
-                                                            stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
-                                                        <path d="M9 5V9.5L12 11" stroke="#FFC91B" stroke-width="1.8"
-                                                            stroke-linecap="round" stroke-linejoin="round" />
-                                                    </svg>
-
-                                                    <p>10:20</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="curriculum-area-bottom collapse" id="collapseExample">
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="curriculum-description active">
-                                                <div class="curriculum-description-start">
-                                                    <p>
-                                                        <a href="#">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                                                height="24" viewBox="0 0 24 24" fill="none"
-                                                                stroke="currentColor" stroke-width="2"
-                                                                stroke-linecap="round" stroke-linejoin="round"
-                                                                class="feather feather-play-circle">
-                                                                <circle cx="12" cy="12" r="10"></circle>
-                                                                <polygon points="10 8 16 12 10 16 10 8"></polygon>
-                                                            </svg>
-                                                        </a>
-                                                        <a href="#">1. Introduction to Adobe XD</a>
-                                                    </p>
-                                                </div>
-                                                <div class="curriculum-description-end">
-                                                    <p>12:34</p>
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-lock">
-                                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2">
-                                                        </rect>
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @empty
+                                            <p>{{ __('No lessons available."') }}</p>
+                                        @endforelse
                                     </div>
                                 </div>
                             </div>
@@ -580,21 +272,21 @@
                                             <div class="instructor-text">
                                                 <h6 class="font-title--xs mb-0">
                                                     <a
-                                                        href="instructor-profile.html">{{$course->instructor?->name_en}}</a>
+                                                        href="{{route('instructorProfile', encryptor('encrypt', $course->instructor?->id))}}">{{$course->instructor?->name_en}}</a>
                                                 </h6>
                                                 <p class="font-para--md">
                                                     {{($course->instructor?->designation)?$course->instructor?->designation:__('No Designation') }}</p>
                                                 <div class="d-flex align-items-center instructor-text-bottom">
-                                                    <div class="d-flex align-items-center ratings-icon">
-                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                d="M9.94438 2.34287L11.7457 5.96656C11.8359 6.14934 12.0102 6.2769 12.2124 6.30645L16.2452 6.88901C16.4085 6.91079 16.5555 6.99635 16.6559 7.12701C16.8441 7.37201 16.8153 7.71891 16.5898 7.92969L13.6668 10.7561C13.5183 10.8961 13.4522 11.1015 13.4911 11.3014L14.1911 15.2898C14.2401 15.6204 14.0145 15.93 13.684 15.9836C13.5471 16.0046 13.4071 15.9829 13.2826 15.9214L9.69082 14.0384C9.51037 13.9404 9.29415 13.9404 9.1137 14.0384L5.49546 15.9315C5.1929 16.0855 4.82267 15.9712 4.65778 15.6748C4.59478 15.5551 4.57301 15.419 4.59478 15.286L5.29479 11.2975C5.32979 11.0984 5.26368 10.8938 5.11901 10.753L2.18055 7.92735C1.94099 7.68935 1.93943 7.30201 2.17821 7.06246C2.17899 7.06168 2.17977 7.06012 2.18055 7.05935C2.27932 6.9699 2.40066 6.91001 2.5321 6.88668L6.56569 6.30412C6.76713 6.27223 6.94058 6.14623 7.03236 5.96345L8.83215 2.34287C8.90448 2.19587 9.03281 2.08309 9.18837 2.03176C9.3447 1.97965 9.51582 1.99209 9.66282 2.06598C9.78337 2.12587 9.88215 2.22309 9.94438 2.34287Z"
-                                                                stroke="#FF7A1A" stroke-width="2" stroke-linecap="round"
-                                                                stroke-linejoin="round" />
-                                                        </svg>
-                                                        <p class="font-para--md">4.9 Star Rating</p>
-                                                    </div>
+{{--                                                    <div class="d-flex align-items-center ratings-icon">--}}
+{{--                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"--}}
+{{--                                                            xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                            <path fill-rule="evenodd" clip-rule="evenodd"--}}
+{{--                                                                d="M9.94438 2.34287L11.7457 5.96656C11.8359 6.14934 12.0102 6.2769 12.2124 6.30645L16.2452 6.88901C16.4085 6.91079 16.5555 6.99635 16.6559 7.12701C16.8441 7.37201 16.8153 7.71891 16.5898 7.92969L13.6668 10.7561C13.5183 10.8961 13.4522 11.1015 13.4911 11.3014L14.1911 15.2898C14.2401 15.6204 14.0145 15.93 13.684 15.9836C13.5471 16.0046 13.4071 15.9829 13.2826 15.9214L9.69082 14.0384C9.51037 13.9404 9.29415 13.9404 9.1137 14.0384L5.49546 15.9315C5.1929 16.0855 4.82267 15.9712 4.65778 15.6748C4.59478 15.5551 4.57301 15.419 4.59478 15.286L5.29479 11.2975C5.32979 11.0984 5.26368 10.8938 5.11901 10.753L2.18055 7.92735C1.94099 7.68935 1.93943 7.30201 2.17821 7.06246C2.17899 7.06168 2.17977 7.06012 2.18055 7.05935C2.27932 6.9699 2.40066 6.91001 2.5321 6.88668L6.56569 6.30412C6.76713 6.27223 6.94058 6.14623 7.03236 5.96345L8.83215 2.34287C8.90448 2.19587 9.03281 2.08309 9.18837 2.03176C9.3447 1.97965 9.51582 1.99209 9.66282 2.06598C9.78337 2.12587 9.88215 2.22309 9.94438 2.34287Z"--}}
+{{--                                                                stroke="#FF7A1A" stroke-width="2" stroke-linecap="round"--}}
+{{--                                                                stroke-linejoin="round" />--}}
+{{--                                                        </svg>--}}
+{{--                                                        <p class="font-para--md">4.9 Star Rating</p>--}}
+{{--                                                    </div>--}}
                                                     <div class="d-flex align-items-center ratings-icon">
                                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -2312,18 +2004,18 @@
                     <div class="cart">
                         <div class="cart__price">
                             <div class="current-price">
-                                <h3 class="font-title--sm">{{$course->price?'৳'.$course->price:'Free'}}</h3>
-                                <p><del>{{$course->old_price?'৳'.$course->old_price:''}}</del></p>
+                                <h3 class="font-title--sm">{{$course->price?'Bs'.$course->price:__('Free')}}</h3>
+                                <p><del>{{$course->old_price?'Bs'.$course->old_price:''}}</del></p>
                             </div>
-                            <div class="current-discount">
-                                <p class="font-para--md">90% off</p>
-                            </div>
+{{--                            <div class="current-discount">--}}
+{{--                                <p class="font-para--md">90% off</p>--}}
+{{--                            </div>--}}
                         </div>
                         <div class="cart__checkout-process">
-                            <p class="time-left text-center"><span>5 hours</span> to remaining this price</p>
+                            <p class="time-left text-center"><span>5 {{ __('hours') }}</span> {{ __('to remaining this price') }}</p>
                             <form action="#">
                                 <!-- Botón para agregar al carrito -->
-                                <a href="{{ route('add.to.cart', $course->id) }}" class="text-white button button-lg button--primary w-100">Add to Cart</a>
+                                <a href="{{ route('add.to.cart', $course->id) }}" class="text-white button button-lg button--primary w-100">{{ __('Add to Cart') }}</a>
 
                                 <!-- Verificar si el carrito está vacío y redirigir a checkout o agregar al carrito -->
                                 @php
@@ -2332,45 +2024,45 @@
 
                                 @if(count($cart) == 0)
                                     <!-- Si el carrito está vacío, redirige a agregar el ítem -->
-                                    <a href="{{ route('add.to.cart', $course->id) }}" class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                    <a href="{{ route('add.to.cart', $course->id) }}" class="button button-lg button--primary-outline mt-3 w-100">{{ __('Buy Now') }}</a>
                                 @else
                                     <!-- Si el carrito no está vacío, redirige al checkout -->
-                                    <a href="{{ route('checkout') }}" class="button button-lg button--primary-outline mt-3 w-100">Buy Now</a>
+                                    <a href="{{ route('checkout') }}" class="button button-lg button--primary-outline mt-3 w-100">{{ __('Buy Now') }}</a>
                                 @endif
                             </form>
                         </div>
                         <div class="cart__includes-info">
-                            <h6 class="font-title--card">This course includes:</h6>
+                            <h6 class="font-title--card">{{ __('This course includes:') }}</h6>
                             <ul>
                                 <li>
                                     <span><img src="{{asset('public/frontend/dist/images/icon/dollar.png')}}"
                                             alt="dollar" /></span>
-                                    <p class="font-para--md">Full Lifetime Access</p>
+                                    <p class="font-para--md">{{ __('Full Lifetime Access') }}</p>
                                 </li>
-                                <li>
-                                    <span><img src="{{asset('public/frontend/dist/images/icon/clock-2.png')}}"
-                                            alt="clock" /></span>
-                                    <p class="font-para--md">30 Days Money Back Guarantee</p>
-                                </li>
+{{--                                <li>--}}
+{{--                                    <span><img src="{{asset('public/frontend/dist/images/icon/clock-2.png')}}"--}}
+{{--                                            alt="clock" /></span>--}}
+{{--                                    <p class="font-para--md">{{ __('30 Days Money Back Guarantee') }}</p>--}}
+{{--                                </li>--}}
                                 <li>
                                     <span><img src="{{asset('public/frontend/dist/images/icon/paper-plus.png')}}"
                                             alt="paper-plus" /></span>
-                                    <p class="font-para--md">Free Exercises File</p>
+                                    <p class="font-para--md">{{ __('Free Exercises File') }}</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('public/frontend/dist/images/icon/airplay.png')}}"
                                             alt="airplay" /></span>
-                                    <p class="font-para--md">Access on Mobile , Tablet and TV</p>
+                                    <p class="font-para--md">{{ __('Access on Mobile') }}</p>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('public/frontend/dist/images/icon/clipboard.png')}}"
                                             alt="clipboard" /></span>
-                                    <p class="font-para--md">Certificate of Completion</p>
+                                    <p class="font-para--md">{{ __('Certificate of Completion') }}</p>
                                 </li>
                             </ul>
                         </div>
                         <div class="cart__share-content">
-                            <h6 class="font-title--card">Share This Course</h6>
+                            <h6 class="font-title--card">{{ __('Share This Course') }}</h6>
                             <ul class="social-icons social-icons--outline">
                                 <li>
                                     <a href="#">
@@ -2447,227 +2139,64 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-12">
-                <h2 class="font-title--md text-center">Related Course</h2>
+                <h2 class="font-title--md text-center">{{ __('Related Courses') }}</h2>
             </div>
             <div class="row">
                 <div class="col-12 position-relative px-0 mx-0">
                     <div class="new__courses">
-                        <div class="contentCard contentCard--course contentCard--space">
-                            <div class="contentCard-top">
-                                <a href="#"><img src="{{asset('public/frontend/dist/images/courses/demo-img-01.png')}}"
-                                        alt="images" class="img-fluid" /></a>
-                            </div>
-                            <div class="contentCard-bottom">
-                                <h5>
-                                    <a href="#" class="font-title--card">Chicago International
-                                        Conference on Education</a>
-                                </h5>
-                                <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                    <a href="instructor-profile.html"
-                                        class="contentCard-user d-flex align-items-center">
-                                        <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                            alt="client-image" class="rounded-circle" />
-                                        <p class="font-para--md">Brandon Dias</p>
-                                    </a>
-                                    <div class="price">
-                                        <span>৳12</span>
-                                        <del>৳95</del>
+                        @if($CoursesCategory->isEmpty())
+                            <p>{{ __('No hay cursos en esta categoría.') }}</p>
+                        @else
+                            @foreach($CoursesCategory as $co)
+                                <div class="contentCard contentCard--course contentCard--space">
+                                    <div class="contentCard-top">
+                                        <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $co->id)])}}">
+                                            <img src="{{asset('/public/uploads/courses/'.$co->image)}}"
+                                                         alt="images" class="img-fluid" /></a>
+                                    </div>
+                                    <div class="contentCard-bottom">
+                                        <h5>
+                                            <a href="#" class="font-title--card">{{$co->title_en}}</a>
+                                        </h5>
+                                        <div class="contentCard-info d-flex align-items-center justify-content-between">
+                                            <a href="{{route('instructorProfile', encryptor('encrypt', $co->instructor?->id))}}"
+                                               class="contentCard-user d-flex align-items-center">
+                                                <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
+                                                     alt="client-image" class="rounded-circle" />
+                                                <p class="font-para--md">{{$co->instructor->name_en}}</p>
+                                            </a>
+                                            <div class="price">
+                                                <span>{{$co->price==null?__('Free'):'Bs'.$co->price}}</span>
+                                                <del>{{$co->old_price?'Bs'.$co->old_price:''}}</del>
+                                            </div>
+                                        </div>
+                                        <div class="contentCard-more">
+                                            <div class="d-flex align-items-center">
+                                                <div class="icon">
+                                                    <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
+                                                         alt="star" />
+                                                </div>
+                                                <span>{{$co->difficulty}}</span>
+                                            </div>
+                                            <div class="book d-flex align-items-center">
+                                                <div class="icon">
+                                                    <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
+                                                         alt="location" />
+                                                </div>
+                                                <span>{{$co->lesson?$co->lesson: 0 }} {{__('Lessons')}}</span>
+                                            </div>
+                                            <div class="clock d-flex align-items-center">
+                                                <div class="icon">
+                                                    <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
+                                                         alt="clock" />
+                                                </div>
+                                                <span>{{$co->duration}} {{ __('Hours') }}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="contentCard-more">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
-                                                alt="star" />
-                                        </div>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class="eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
-                                    <div class="book d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
-                                                alt="location" />
-                                        </div>
-                                        <span>37 Lesson</span>
-                                    </div>
-                                    <div class="clock d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
-                                                alt="clock" />
-                                        </div>
-                                        <span>3 Hours</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contentCard contentCard--course contentCard--space">
-                            <div class="contentCard-top">
-                                <a href="#"><img src="{{asset('public/frontend/dist/images/courses/demo-img-02.png')}}"
-                                        alt="images" class="img-fluid" /></a>
-                            </div>
-                            <div class="contentCard-bottom">
-                                <h5>
-                                    <a href="#" class="font-title--card">Chicago International
-                                        Conference on Education</a>
-                                </h5>
-                                <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                    <a href="instructor-profile.html"
-                                        class="contentCard-user d-flex align-items-center">
-                                        <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                            alt="client-image" class="rounded-circle" />
-                                        <p class="font-para--md">Brandon Dias</p>
-                                    </a>
-                                    <div class="price">
-                                        <span>৳12</span>
-                                        <del>৳95</del>
-                                    </div>
-                                </div>
-                                <div class="contentCard-more">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
-                                                alt="star" />
-                                        </div>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class="eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
-                                    <div class="book d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
-                                                alt="location" />
-                                        </div>
-                                        <span>37 Lesson</span>
-                                    </div>
-                                    <div class="clock d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
-                                                alt="clock" />
-                                        </div>
-                                        <span>3 Hours</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contentCard contentCard--course contentCard--space">
-                            <div class="contentCard-top">
-                                <a href="#"><img src="{{asset('public/frontend/dist/images/courses/demo-img-03.png')}}"
-                                        alt="images" class="img-fluid" /></a>
-                            </div>
-                            <div class="contentCard-bottom">
-                                <h5>
-                                    <a href="#" class="font-title--card">Chicago International
-                                        Conference on Education</a>
-                                </h5>
-                                <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                    <a href="instructor-profile.html"
-                                        class="contentCard-user d-flex align-items-center">
-                                        <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                            alt="client-image" class="rounded-circle" />
-                                        <p class="font-para--md">Brandon Dias</p>
-                                    </a>
-                                    <div class="price">
-                                        <span>৳12</span>
-                                        <del>৳95</del>
-                                    </div>
-                                </div>
-                                <div class="contentCard-more">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
-                                                alt="star" />
-                                        </div>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class="eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
-                                    <div class="book d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
-                                                alt="location" />
-                                        </div>
-                                        <span>37 Lesson</span>
-                                    </div>
-                                    <div class="clock d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
-                                                alt="clock" />
-                                        </div>
-                                        <span>3 Hours</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contentCard contentCard--course contentCard--space">
-                            <div class="contentCard-top">
-                                <a href="#"><img src="{{asset('public/frontend/dist/images/courses/demo-img-04.png')}}"
-                                        alt="images" class="img-fluid" /></a>
-                            </div>
-                            <div class="contentCard-bottom">
-                                <h5>
-                                    <a href="#" class="font-title--card">Chicago International
-                                        Conference on Education</a>
-                                </h5>
-                                <div class="contentCard-info d-flex align-items-center justify-content-between">
-                                    <a href="instructor-profile.html"
-                                        class="contentCard-user d-flex align-items-center">
-                                        <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
-                                            alt="client-image" class="rounded-circle" />
-                                        <p class="font-para--md">Brandon Dias</p>
-                                    </a>
-                                    <div class="price">
-                                        <span>৳12</span>
-                                        <del>৳95</del>
-                                    </div>
-                                </div>
-                                <div class="contentCard-more">
-                                    <div class="d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
-                                                alt="star" />
-                                        </div>
-                                        <span>4.5</span>
-                                    </div>
-                                    <div class="eye d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
-                                                alt="eye" />
-                                        </div>
-                                        <span>24,517</span>
-                                    </div>
-                                    <div class="book d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
-                                                alt="location" />
-                                        </div>
-                                        <span>37 Lesson</span>
-                                    </div>
-                                    <div class="clock d-flex align-items-center">
-                                        <div class="icon">
-                                            <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
-                                                alt="clock" />
-                                        </div>
-                                        <span>3 Hours</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

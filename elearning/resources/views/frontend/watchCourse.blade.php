@@ -41,11 +41,11 @@
                             <div class="lesson-hours">
                                 <div class="book-lesson">
                                     <i class="fas fa-book-open text-primary"></i>
-                                    <span>{{$course->lesson?$course->lesson:0}} Lesson</span>
+                                    <span>{{$course->lesson?$course->lesson:0}} {{ __('Lesson') }}</span>
                                 </div>
                                 <div class="totoal-hours">
                                     <i class="far fa-clock text-danger"></i>
-                                    <span>{{$course->duration?$course->duration:0}} Hours</span>
+                                    <span>{{$course->duration?$course->duration:0}} {{ __('Hours') }}</span>
                                 </div>
                             </div>
                         </div>
@@ -53,11 +53,10 @@
                 </div>
                 <div class="coursedescription-header-end">
                     <!-- <a href="#" class="rating-link" data-bs-toggle="modal" data-bs-target="#ratingModal">Leave a Rating</a> -->
-                    <a href="#" class="button button--text" data-bs-toggle="modal" data-bs-target="#ratingModal">Leave a
-                        Rating</a>
+                    <a href="#" class="button button--text" data-bs-toggle="modal" data-bs-target="#ratingModal">{{ __('Leave a Rating') }}</a>
 
                     <!-- <a href="#" class="btn btn-primary regular-fill-btn">Next Lession</a> -->
-                    <button class="button button--primary">Next Lession</button>
+                    <button class="button button--primary">{{ __('Next Lession') }}</button>
                 </div>
             </div>
         </div>
@@ -84,20 +83,20 @@
                                 <button class="nav-link active" id="nav-ldescrip-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-ldescrip" type="button" role="tab" aria-controls="nav-ldescrip"
                                     aria-selected="true">
-                                    Lesson Description
+                                    {{ __('Lesson Description') }}
                                 </button>
                                 <button class="nav-link" id="nav-lnotes-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-lnotes" type="button" role="tab" aria-controls="nav-lnotes"
-                                    aria-selected="false">Lesson Notes</button>
+                                    aria-selected="false">{{ __('Lesson Notes') }}</button>
                                 <button class="nav-link" id="nav-lcomments-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-lcomments" type="button" role="tab"
-                                    aria-controls="nav-lcomments" aria-selected="false">Comments</button>
+                                    aria-controls="nav-lcomments" aria-selected="false">{{ __('Comments') }}</button>
                                 <button class="nav-link" id="nav-loverview-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-loverview" type="button" role="tab"
-                                    aria-controls="nav-loverview" aria-selected="false">Course Overview</button>
+                                    aria-controls="nav-loverview" aria-selected="false">{{ __('Course Overview') }}</button>
                                 <button class="nav-link" id="nav-linstruc-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-linstruc" type="button" role="tab" aria-controls="nav-linstruc"
-                                    aria-selected="false">Instructor</button>
+                                    aria-selected="false">{{ __('Instructor') }}</button>
                             </div>
                         </nav>
                         <div class="tab-content course-description-start-content-tabitem" id="nav-tabContent">
@@ -141,17 +140,16 @@
                                 aria-labelledby="nav-lcomments-tab">
                                 <div class="lesson-comments">
                                     <div class="feedback-comment pt-0 ps-0 pe-0">
-                                        <h6 class="font-title--card">Add a Public Comment</h6>
+                                        <h6 class="font-title--card">{{ __('Add a Public Comment') }}</h6>
                                         <form action="#">
-                                            <label for="comment">Comment</label>
-                                            <textarea class="form-control" id="comment" placeholder="Add a Public Comment"></textarea>
-                                            <button type="submit" class="button button-md button--primary float-end">Post
-                                                Comment</button>
+                                            <label for="comment">{{ __('Comments') }}</label>
+                                            <textarea class="form-control" id="comment" placeholder="{{ __('Add a Public Comment') }}"></textarea>
+                                            <button type="submit" class="button button-md button--primary float-end">{{ __('Post Comment') }}</button>
                                         </form>
                                     </div>
                                     <div class="students-feedback pt-0 ps-0 pe-0 pb-0 mb-0">
                                         <div class="students-feedback-heading">
-                                            <h5 class="font-title--card">Comments <span>(57,685)</span></h5>
+                                            <h5 class="font-title--card">{{ __('Comments') }} <span>(57,685)</span></h5>
                                         </div>
                                         <div class="students-feedback-item">
                                             <div class="feedback-rating">
@@ -225,7 +223,7 @@
                                                 sapien. Quisque vestibulum massa eget consequat scelerisque.
                                             </p>
                                         </div>
-                                        <button class="button button-md button--primary-outline">Load More</button>
+                                        <button class="button button-md button--primary-outline">{{ __('Load More') }}</button>
                                     </div>
                                 </div>
                                 <!-- Lesson Comments Ends Here -->
@@ -235,13 +233,13 @@
                                 aria-labelledby="nav-loverview-tab">
                                 <div class="row course-overview-main">
                                     <div class="course-overview-main-item">
-                                        <h6 class="font-title--card">Description</h6>
+                                        <h6 class="font-title--card">{{ __('Description') }}</h6>
                                         <p class="mb-3 font-para--lg">
                                            {{$course->description_en}}
                                         </p>
                                     </div>
                                     <div class="course-overview-main-item">
-                                        <h6 class="font-title--card">Requirments</h6>
+                                        <h6 class="font-title--card">{{ __('Requirments') }}</h6>
                                         <p class="mb-2 font-para--lg">
                                            {{$course->prerequisites_en}}
                                         </p>
@@ -292,7 +290,7 @@
                                                                 </path>
                                                             </svg>
 
-                                                            <p>5 Courses</p>
+                                                            <p>5 {{ __('Courses') }}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -315,7 +313,7 @@
             <div class="col-lg-4">
                 <div class="videolist-area">
                     <div class="videolist-area-heading">
-                        <h6>Course Contents</h6>
+                        <h6>{{ __('Course Contents') }}</h6>
                         <p>5% Completed</p>
                     </div>
                     <div class="videolist-area-bar">
@@ -372,7 +370,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Leave A Rating</h5>
+                    <h5 class="modal-title">{{ __('Leave A Rating') }}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center pt-0 pb-0">
@@ -383,7 +381,7 @@
                 </div>
                 <div class="modal-footer border-0">
                     <form action="#" class="w-100">
-                        <label for="messages">Message</label>
+                        <label for="messages">{{ __('Message') }}</label>
                         <textarea id="messages" placeholder="How is your to feeling taking these course?"
                             class="w-100"></textarea>
                         <button type="submit" class="button button-md button--primary w-100">Submit</button>
@@ -418,7 +416,7 @@
 
         function show_video(e){
             let link="{{asset('public/uploads/courses/contents')}}/"+e
-           
+
             var video = document.getElementById('myvideo');
                         video.src = link;
                         video.play();

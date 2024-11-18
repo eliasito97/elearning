@@ -101,9 +101,14 @@ class CourseController extends Controller
     public function frontShow($id)
     {
         $course = Course::findOrFail(encryptor('decrypt', $id));
+        $lessons = Lesson::where ('course_id', $course->id)->get();
+        $CoursesCategory = Course::where('course_category_id', $course->course_category_id)->get();
+        $materials = Material::whereIn('lesson_id', $lessons->pluck('id'))->get();
+//        dd($materials);
         $instructor = Instructor::where('id', $course->instructor_id)->where('status','1')->first();
         $instructor_count = Course::where('instructor_id', $instructor->id)->Count();
-        return view('frontend.courseDetails', compact('course','instructor_count'));
+
+        return view('frontend.courseDetails', compact('course','instructor_count','lessons','materials','CoursesCategory'));
     }
 
 
