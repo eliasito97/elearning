@@ -33002,3 +33002,12 @@ footer {
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+.logo-theme-footer{
+    background-image: url("/public/frontend/dist/images/logo/logo4.png");
+    background-size: contain;  /* Asegura que la imagen se ajuste al contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 320px;
+    height: 160px;
+    margin-top: -50px;
+}

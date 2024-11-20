@@ -10,7 +10,7 @@
 @section('content')
 
 <!-- Banner Starts Here -->
-<section class="main-banner" style="background-image: url({{asset('public/frontend/dist/images/banner/banner.jpg')}});">
+<section class="main-banner" style="background-image: url({{asset('public/frontend/dist/images/banner/banner.png')}});">
     <div class="container">
         <div class="row">
             <div class="col-lg-7 mb-lg-0 order-2 order-lg-0 d-flex align-items-center">

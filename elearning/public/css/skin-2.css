@@ -230,7 +230,7 @@ svg.pulse-svg .first-circle, svg.pulse-svg .second-circle, svg.pulse-svg .third-
 .header-right .header-profile .profile_title {
   background: #6673fd; }
 [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .nav-control .hamburger .line {
-  background-color: #6673fd !important; }
+  background-color: white !important; }
 .dlabnav .metismenu > li > a svg {
   color: #6673fd; }
 .dlabnav .metismenu > li:hover > a, .dlabnav .metismenu > li:focus > a {
@@ -306,4 +306,4 @@ span#counter {
 ::selection {
 	color: #fff;
 	background: #6673fd;
-} 
+}

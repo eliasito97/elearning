@@ -26874,9 +26874,9 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.theme-switcher i {
+.theme-switcher-admin i {
     font-size: 24px;
-    color: #000;
+    color: #000 !important;
 }
 body {
     transition: background-color 0.3s ease, color 0.3s ease;

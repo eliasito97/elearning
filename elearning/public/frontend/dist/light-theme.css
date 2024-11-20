@@ -21100,8 +21100,10 @@ header #search-nav.appear {
     line-height: 28px !important;
   }
 }
-
-
+.footer {
+    padding-top: 75px;
+    background-color: #0578be !important;
+}
 
 .footer--two {
   padding-top: 220px;
@@ -21142,7 +21144,7 @@ header #search-nav.appear {
 .footer__wrapper p {
   font-size: 16px;
   line-height: 1.5;
-  color: #908fa5;
+  color: white;
 }
 
 .footer__wrapper_social {
@@ -21205,7 +21207,7 @@ header #search-nav.appear {
 .footer__list .h6 {
   font-size: 20px;
   line-height: 1.5;
-  color: #fff !important;
+  color: #d4b69c !important;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   margin-bottom: 12px;
@@ -21214,7 +21216,7 @@ header #search-nav.appear {
 .footer__list ul li a {
   font-size: 16px;
   line-height: 1.5;
-  color: #908fa5;
+  color: white;
   padding: 4px 0;
   display: block;
   -webkit-transition: 0.3s;
@@ -21256,7 +21258,7 @@ header #search-nav.appear {
 }
 
 .footer__bottom_copyright p {
-  color: #908fa5;
+  color: white;
   line-height: 1.5;
   font-size: 16px;
 }
@@ -21277,7 +21279,7 @@ header #search-nav.appear {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #908fa5;
+  color: white;
   font-size: 16px;
 }
 
@@ -32966,22 +32968,13 @@ body {
     padding-right: 200px !important;
 
 }
-.logo-theme{
-    background-image: url("/public/frontend/dist/images/logo/logo2.png");
-    background-size: contain;  /* Asegura que la imagen se ajuste al contenedor */
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 200px;
-    height: 100px;
-}
+
 
 .navbar-theme{
     background-color: #0578be !important;
 }
 
-.footer {
-    background-color: #0578be !important;
-}
+
 
 .theme-switcher {
     margin-left: 20px;
@@ -33001,4 +32994,22 @@ body {
 }
 body {
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logo-theme{
+    background-image: url("/public/frontend/dist/images/logo/logo2.png");
+    background-size: contain;  /* Asegura que la imagen se ajuste al contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 200px;
+    height: 100px;
+}
+.logo-theme-footer{
+    background-image: url("/public/frontend/dist/images/logo/logo2.png");
+    background-size: contain;  /* Asegura que la imagen se ajuste al contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 320px;
+    height: 160px;
+    margin-top: -50px;
 }

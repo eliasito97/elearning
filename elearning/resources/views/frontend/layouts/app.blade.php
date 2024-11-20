@@ -306,10 +306,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="footer__wrapper">
-                        <div class="footer__wrapper_logo">
-                            <img src="{{asset('public/frontend/dist/images/logo/logo4.png')}}" alt="logo"
-                                class="img-fluid" />
-                        </div>
+                        <div class="footer__wrapper_logo logo-theme-footer"></div>
                         <p style="margin-top: -30px; margin-left: 40px;">
                             {{__('Learning without limits, your future begins here.')}}
                         </p>
