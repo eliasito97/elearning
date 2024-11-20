@@ -60,7 +60,7 @@
                             <path d="M9 4.5V9L12 10.5" stroke="#FFC91B" stroke-width="1.8" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                        <p class="font-para--md">{{$course->duration}} {{ __('Hours') }}</p>
+                        <p class="font-para--md">{{$course->duration == null? 0 : $course->duration}} {{ __('Hours') }}</p>
                     </div>
                 </div>
                 <div class="icon-with-date d-flex align-items-lg-cente mb-0">
@@ -250,7 +250,7 @@
 
                                             </div>
                                         @empty
-                                            <p>{{ __('No lessons available."') }}</p>
+                                            <p>{{ __('No lessons available.') }}</p>
                                         @endforelse
                                     </div>
                                 </div>
@@ -2183,14 +2183,14 @@
                                                     <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
                                                          alt="location" />
                                                 </div>
-                                                <span>{{$co->lesson?$co->lesson: 0 }} {{__('Lessons')}}</span>
+                                                <span>{{$co->lesson == null ? 0 : $co->lesson }} {{__('Lessons')}}</span>
                                             </div>
                                             <div class="clock d-flex align-items-center">
                                                 <div class="icon">
                                                     <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
                                                          alt="clock" />
                                                 </div>
-                                                <span>{{$co->duration}} {{ __('Hours') }}</span>
+                                                <span>{{$co->duration == null ? 0 : $co->duration}} {{ __('Hours') }}</span>
                                             </div>
                                         </div>
                                     </div>

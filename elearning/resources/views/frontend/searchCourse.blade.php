@@ -402,14 +402,14 @@
                                             <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
                                                 alt="location" />
                                         </div>
-                                        <span>{{$c->lesson}} {{__('Lessons')}}</span>
+                                        <span>{{$c->lesson == null? 0 :$c->lesson }} {{__('Lessons')}}</span>
                                     </div>
                                     <div class="clock d-flex align-items-center">
                                         <div class="icon">
                                             <img src="{{asset('public/frontend/dist/images/icon/Clock.png')}}"
                                                 alt="clock" />
                                         </div>
-                                        <span>{{$c->duration}} {{__('Hours')}}</span>
+                                        <span>{{$c->duration == null? 0 : $c->duration}} {{__('Hours')}}</span>
                                     </div>
                                 </div>
                             </div>
