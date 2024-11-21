@@ -1,0 +1,134 @@
+/* Estilo general para el fondo y la tipografía */
+.page-recover-account {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.page-recover-account1 {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+/* Contenedor principal */
+.page-recover-account .container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+.page-recover-account1 .container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+/* Título */
+.page-recover-account h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Texto explicativo */
+.page-recover-account p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Campo de entrada */
+.page-recover-account input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Contenedor para los botones */
+.page-recover-account .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Botón Cancelar */
+.page-recover-account .cancel-btn {
+    background-color: #e4e6eb;
+    color: #333;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    margin-right: 10px;
+    text-align: center;
+}
+
+/* Botón Buscar */
+.page-recover-account .search-btn {
+    background-color: #1877f2;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+
+/* Efecto hover en los botones */
+.page-recover-account button:hover {
+    opacity: 0.9;
+}
+
+/* Ajustes para enlaces */
+.page-recover-account a {
+    text-decoration: none;
+    color: #1877f2;
+}
+
+/* Responsividad */
+@media (max-width: 600px) {
+    .page-recover-account .container {
+        padding: 15px 20px;
+    }
+
+    .page-recover-account h1 {
+        font-size: 20px;
+    }
+
+    .page-recover-account p {
+        font-size: 12px;
+    }
+
+    .page-recover-account input[type="text"] {
+        font-size: 14px;
+    }
+
+    .page-recover-account .cancel-btn,
+    .page-recover-account .search-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+}

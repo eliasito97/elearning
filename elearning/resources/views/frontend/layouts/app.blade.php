@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{asset('public/frontend/dist/main.css')}}" />
     <link rel="icon" type="image/png" href="{{asset('public/frontend/dist/images/favicon/favicon.png')}}" />
     <link rel="stylesheet" href="{{asset('public/frontend/fontawesome-free-5.15.4-web/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('public/frontend/dist/recover-account.css')}}" />
+    @stack('styles')
     <style>
         .dropdown {
             position: relative;

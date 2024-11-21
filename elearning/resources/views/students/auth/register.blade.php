@@ -28,7 +28,7 @@
                                 @endif
                         </div>
                         <div class="form-element">
-                            <label for="password" class="w-100" style="text-align: left;">{{__('password')}}</label>
+                            <label for="password" class="w-100" style="text-align: left;">{{__('Password')}}</label>
                             <div class="form-alert-input">
                                 <input type="password" placeholder="{{__('Type here...')}}" id="password"  name="password"/>
                                 <div class="form-alert-icon" onclick="showPassword('password',this)">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="form-element">
-                            <label for="password_confirmation" class="w-100" style="text-align: left;">{{__('Confirm password')}}</label>
+                            <label for="password_confirmation" class="w-100" style="text-align: left;">{{__('Confirm Password')}}</label>
                             <div class="form-alert-input">
                                 <input type="password" placeholder="{{__('Type here...')}}" name="password_confirmation" id="password_confirmation" />
                                 <div class="form-alert-icon" onclick="showPassword('password_confirmation',this)">

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\PasswordResetController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Setting\AuthenticationController as auth;
 use App\Http\Controllers\Backend\Setting\UserController as user;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Students\AuthController as sauth;
 use App\Http\Controllers\Students\DashboardController as studashboard;
 use App\Http\Controllers\Students\ProfileController as stu_profile;
 use App\Http\Controllers\Students\sslController as sslcz;
+use App\Http\Controllers\AccountRecoveryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +91,13 @@ Route::post('/student/register/{back_route}', [sauth::class, 'signUpStore'])->na
 Route::get('/student/login', [sauth::class, 'signInForm'])->name('studentLogin');
 Route::post('/student/login/{back_route}', [sauth::class, 'signInCheck'])->name('studentLogin.check');
 Route::get('/student/logout', [sauth::class, 'signOut'])->name('studentlogOut');
+
+Route::get('/recover-account', [AccountRecoveryController::class, 'showForm'])->name('recover.account');
+Route::post('/recover-account', [AccountRecoveryController::class, 'recover'])->name('recover.account.process');
+Route::get('password/reset/{token}', [PasswordResetController::class, 'showResetForm'])
+    ->name('password.reset');
+Route::post('password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
+
 
 Route::middleware(['checkstudent'])->prefix('students')->group(function () {
     Route::get('/dashboard', [studashboard::class, 'index'])->name('studentdashboard');

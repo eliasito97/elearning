@@ -9,8 +9,8 @@
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent mb-0 align-items-center">
-                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">Home</a></li>
-                <li class="breadcrumb-item active"><a href="checkout.html" class="fs-6 text-secondary">Checkout</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
+                <li class="breadcrumb-item active"><a href="checkout.html" class="fs-6 text-secondary">{{ __('Checkout') }}</a></li>
             </ol>
         </nav>
     </div>
@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col-lg-6 checkout-area-checkout">
-                <h6 class="checkout-area__label">Checkout</h6>
+                <h6 class="checkout-area__label">{{ __('Checkout') }}</h6>
                 <div class="checkout-tab">
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-checkout" role="tabpanel"
@@ -33,13 +33,11 @@
                                 <div class="mb-4">
                                     <div class="ps-0 ">
                                         <label class="text-danger"> *
-                                            Please check your courses before payment
+                                            {{ __('Please check your courses before payment') }}
                                         </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="button button-lg button--primary w-100"> Click Here to
-                                    Confirm
-                                    Payment</button>
+                                <button type="submit" class="button button-lg button--primary w-100">{{ __('Click Here to Confirm Payment') }}</button>
                             </form>
                         </div>
                     </div>
@@ -47,7 +45,7 @@
             </div>
             <div class="col-lg-6 mt-4 mt-lg-0">
                 <div class="checkout-area-summery">
-                    <h6 class="checkout-area__label">Summery</h6>
+                    <h6 class="checkout-area__label">{{ __('Summery') }}</h6>
 
                     <div class="cart">
                         <div class="cart__includes-info cart__includes-info--bordertop-0">
@@ -68,9 +66,9 @@
                                         </h6>
                                         <p>by {{$details['instructor']}}</p>
                                         <div class="price">
-                                            <h6 class="font-para--md">{{$details['price'] ? '৳' . $details['price'] :
+                                            <h6 class="font-para--md">{{$details['price'] ? 'Bs' . $details['price'] :
                                                 'Free'}}</h6>
-                                            <p><del>{{$details['old_price'] ? '৳' . $details['old_price'] : ''}}</del>
+                                            <p><del>{{$details['old_price'] ? 'Bs' . $details['old_price'] : ''}}</del>
                                             </p>
                                         </div>
                                     </div>
@@ -83,28 +81,28 @@
                         <div class="cart__checkout-process">
                             <ul>
                                 <li>
-                                    <p>Subtotal</p>
-                                    <p>{{'৳' . number_format((float) session('cart_details')['cart_total'] , 2)}}
+                                    <p>{{ __('Subtotal') }}</p>
+                                    <p>{{'Bs' . number_format((float) session('cart_details')['cart_total'] , 2)}}
                                     </p>
                                     {{-- {{ '৳' . (session('cart_details') && array_key_exists('cart_total',
                                     session('cart_details')) ? number_format(session('cart_details')['cart_total'], 2) :
                                     '0.00') }} --}}
                                 </li>
                                 <li>
-                                    <p>Coupon Discount ({{session('cart_details')['discount'] ?? 0.00}}%)</p>
-                                    <p>{{'৳' . number_format((float) isset(session('cart_details')['discount_amount']) ?
+                                    <p>{{ __('Coupon Discount') }} ({{session('cart_details')['discount'] ?? 0.00}}%)</p>
+                                    <p>{{'Bs' . number_format((float) isset(session('cart_details')['discount_amount']) ?
                                         session('cart_details')['discount_amount']: 0.00 , 2)}}</p>
                                 </li>
                                 <li>
-                                    <p>Taxes (15%)</p>
+                                    <p>{{ __('Taxes (15%)') }}</p>
                                     <p>{{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>
                                     {{-- {{ '৳' . (session('cart_details') && array_key_exists('tax',
                                     session('cart_details')) ? number_format(session('cart_details')['tax'], 2) :
                                     '0.00') }} --}}
                                 </li>
                                 <li>
-                                    <p class="font-title--card">Total:</p>
-                                    <p class="total-price font-title--card">{{'৳' .
+                                    <p class="font-title--card">{{ __('Total:') }}</p>
+                                    <p class="total-price font-title--card">{{'Bs' .
                                         number_format((float)session('cart_details')['total_amount'] , 2)}}</p>
                                     {{-- {{ '৳' . (session('cart_details') && array_key_exists('total_amount',
                                     session('cart_details')) ? number_format(session('cart_details')['total_amount'], 2)
@@ -123,26 +121,26 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6 offset-xl-3 order-2 order-xl-0">
                         <div class="signup-area-textwrapper">
-                            <h2 class="font-title--md mb-0">Sign in Before Checkout</h2>
-                            <p class="mt-2 mb-lg-4 mb-3">Don't have account?
-                                <a href="#" onclick="hide_signin()" class="text-black-50">Sign up</a>
+                            <h2 class="font-title--md mb-0">{{ __('Sign in Before Checkout') }}</h2>
+                            <p class="mt-2 mb-lg-4 mb-3">{{ __('Do not have an account?:') }}
+                                <a href="#" onclick="hide_signin()" class="text-black-50">{{ __('Sign up') }}</a>
                             </p>
                             <form action="{{route('studentLogin.check','checkout')}}" method="POST">
                                 @csrf
                                 <div class="form-element">
-                                    <label for="email">Email</label>
-                                    <input type="email" placeholder="Username" id="email" name="email" />
+                                    <label for="email">{{ __('Email') }}</label>
+                                    <input type="email" placeholder="{{ __('Email') }}" id="email" name="email" />
                                     @if($errors->has('email'))
                                     <small class="d-block text-danger">{{$errors->first('email')}}</small>
                                     @endif
                                 </div>
                                 <div class="form-element">
                                     <div class="d-flex justify-content-between">
-                                        <label for="password">Password</label>
-                                        <a href="forget-password.html" class="text-primary fs-6">Forget Password</a>
+                                        <label for="password">{{ __('Password') }}</label>
+                                        <a href="forget-password.html" class="text-primary fs-6">{{ __('Forget Password') }}</a>
                                     </div>
                                     <div class="form-alert-input">
-                                        <input type="password" placeholder="Type here..." id="password"
+                                        <input type="password" placeholder="{{ __('Type here...') }}" id="password"
                                             name="password" />
                                         <div class="form-alert-icon" onclick="showPassword('password',this);">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -159,8 +157,7 @@
                                     </div>
                                 </div>
                                 <div class="form-element">
-                                    <button type="submit" class="button button-lg button--primary w-100">Sign
-                                        in</button>
+                                    <button type="submit" class="button button-lg button--primary w-100">{{ __('Sign in') }}</button>
                                 </div>
                             </form>
                         </div>
@@ -176,31 +173,31 @@
                 <div class="row align-items-center justify-content-md-center">
                     <div class="col-lg-5 order-2 order-lg-0">
                         <div class="signup-area-textwrapper">
-                            <h2 class="font-title--md mb-0">Sign Up Before Checkout</h2>
-                            <p class="mt-2 mb-lg-4 mb-3">Already have account? <a href="#" onclick="hide_signin()"
-                                    class="text-black-50">Sign In</a></p>
+                            <h2 class="font-title--md mb-0">{{ __('Sign Up Before Checkout') }}</h2>
+                            <p class="mt-2 mb-lg-4 mb-3">{{ __('Already have account?') }} <a href="#" onclick="hide_signin()"
+                                    class="text-black-50">{{ __('Sign in') }}</a></p>
                             <form action="{{route('studentRegister.store','checkout')}}" method="POST">
                                 @csrf
                                 <div class="form-element">
-                                    <label for="name">Full Name</label>
-                                    <input type="text" placeholder="Enter Your Name" id="name" value="{{old('name')}}"
+                                    <label for="name">{{ __('Full Name') }}</label>
+                                    <input type="text" placeholder="{{ __('Enter Your Name') }}" id="name" value="{{old('name')}}"
                                         name="name" />
                                     @if($errors->has('name'))
                                     <small class="d-block text-danger">{{$errors->first('name')}}</small>
                                     @endif
                                 </div>
                                 <div class="form-element">
-                                    <label for="email">Email</label>
-                                    <input type="email" placeholder="example@email.com" id="email"
+                                    <label for="email">{{ __('Email') }}</label>
+                                    <input type="email" placeholder="{{ __('example@email.com') }}" id="email"
                                         value="{{old('email')}}" name="email" />
                                     @if($errors->has('email'))
                                     <small class="d-block text-danger">{{$errors->first('email')}}</small>
                                     @endif
                                 </div>
                                 <div class="form-element">
-                                    <label for="password" class="w-100" style="text-align: left;">password</label>
+                                    <label for="password" class="w-100" style="text-align: left;">{{ __('Password') }}</label>
                                     <div class="form-alert-input">
-                                        <input type="password" placeholder="Type here..." id="password"
+                                        <input type="password" placeholder="{{ __('Type here...') }}" id="password"
                                             name="password" />
                                         <div class="form-alert-icon" onclick="showPassword('password',this)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -217,10 +214,9 @@
                                     </div>
                                 </div>
                                 <div class="form-element">
-                                    <label for="password_confirmation" class="w-100" style="text-align: left;">Confirm
-                                        password</label>
+                                    <label for="password_confirmation" class="w-100" style="text-align: left;">{{ __('Confirm Password') }}</label>
                                     <div class="form-alert-input">
-                                        <input type="password" placeholder="Type here..." name="password_confirmation"
+                                        <input type="password" placeholder="{{ __('Type here...') }}" name="password_confirmation"
                                             id="password_confirmation" />
                                         <div class="form-alert-icon"
                                             onclick="showPassword('password_confirmation',this)">
@@ -236,13 +232,12 @@
                                 </div>
                                 <div class="form-element d-flex align-items-center terms">
                                     <input class="checkbox-primary me-1" type="checkbox" id="agree" />
-                                    <label for="agree" class="text-secondary mb-0">Accept the <a href="#"
-                                            style="text-decoration: underline;">Terms</a> and <a href="#"
-                                            style="text-decoration: underline;">Privacy Policy</a></label>
+                                    <label for="agree" class="text-secondary mb-0">{{ __('Accept the') }} <a href="#"
+                                            style="text-decoration: underline;">{{ __('Terms') }}</a> {{ __('and') }} <a href="#"
+                                            style="text-decoration: underline;">{{ __('Privacy Policy') }}</a></label>
                                 </div>
                                 <div class="form-element">
-                                    <button type="submit" class="button button-lg button--primary w-100">Sign
-                                        UP</button>
+                                    <button type="submit" class="button button-lg button--primary w-100">{{ __('Sign up') }}</button>
                                 </div>
                             </form>
                         </div>

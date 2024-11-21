@@ -9,7 +9,7 @@
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent mb-0">
-                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('dashboard')}}" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
                 <li class="breadcrumb-item fs-6 text-secondary" aria-current="page">{{ __('My Profile') }}</li>
             </ol>
         </nav>
