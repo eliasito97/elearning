@@ -12,8 +12,10 @@ class SearchCourseController extends Controller
     {
 
         $category = CourseCategory::get();
+
         $selectedCategories = $request->input('categories', []);
         $selectedDifficulty = $request->input('difficulty', []);
+        $selectedTypepayment = $request->input('typepayment', []);
 
         $course = Course::where('status', 2)
             ->when($selectedCategories, function ($query) use ($selectedCategories) {
@@ -26,6 +28,10 @@ class SearchCourseController extends Controller
                     $query1->where('difficulty', 'like', "%$selectedDifficulty%");
                 }
             })
+            ->when(!empty($selectedTypepayment) && !in_array('', $selectedTypepayment), function ($query2) use ($selectedTypepayment) {
+                // Si "Todos" no está seleccionado, aplica el filtro de tipo de pago
+                $query2->whereIn('typepayment_id', $selectedTypepayment);
+            })
             ->get();
 //        dd($course);
         $DifficultyAll = Course::where('status', 2)
@@ -33,24 +39,22 @@ class SearchCourseController extends Controller
         ->groupBy('difficulty')
         ->get();
 
-        $courseDuration1 = Course::where('status', 2)
-            ->whereBetween('duration', [0, 5])
-            ->get();
-
-        $courseDuration2 = Course::where('status', 2)
-            ->whereBetween('duration', [5, 10])
-            ->get();
-
-        $courseDuration3 = Course::where('status', 2)
-            ->whereBetween('duration', [10, 15])
-            ->get();
-
-        $courseDuration4 = Course::where('status', 2)
-            ->where('duration', '>', 15)
-            ->get();
+        $TypepaymentAll = Course::with('typepayment')
+            ->where('status', 2)
+            ->select('typepayment_id', Course::raw('COUNT(*) as count'))
+            ->groupBy('typepayment_id')
+            ->get()
+            ->map(function ($course) {
+                return [
+                    'typepayment_id' => $course->typepayment_id,
+                    'typepayment_plan' => $course->typepayment->typepayment_plan ?? 'Sin tipo de pago',
+                    'count' => $course->count,
+                ];
+            });
 
         $allCourse = Course::where('status', 2)->get();
 
-        return view('frontend.searchCourse', compact('course', 'category', 'selectedCategories', 'allCourse','courseDuration1','courseDuration2','courseDuration3','courseDuration4','selectedDifficulty','DifficultyAll'));
+
+        return view('frontend.searchCourse', compact('course', 'category', 'selectedCategories', 'allCourse','selectedDifficulty','DifficultyAll','TypepaymentAll','selectedTypepayment'));
     }
 }

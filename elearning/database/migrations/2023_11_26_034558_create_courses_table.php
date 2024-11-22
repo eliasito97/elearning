@@ -19,10 +19,14 @@ return new class extends Migration
             $table->text('description_bn')->nullable();
             $table->unsignedBigInteger('course_category_id')->index();
             $table->unsignedBigInteger('instructor_id')->index();
-            $table->enum('type', ['free', 'paid', 'subscription'])->default('paid');
+            $table->unsignedBigInteger('type')->index();
             $table->decimal('price', 10, 2)->default(0.00)->nullable();
             $table->decimal('old_price', 10, 2)->nullable();
             $table->decimal('subscription_price', 10, 2)->nullable();
+            $table->decimal('full_course_subscription', 10, 2)->nullable();
+            $table->decimal('annual_subscription', 10, 2)->nullable();
+            $table->decimal('weekly_subscription', 10, 2)->nullable();
+            $table->decimal('daily_subscription', 10, 2)->nullable();
             $table->timestamp('start_from')->nullable();
             $table->integer('duration')->nullable();
             $table->integer('lesson')->nullable();
@@ -41,6 +45,7 @@ return new class extends Migration
             // Foreign key constraints
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->foreign('course_category_id')->references('id')->on('course_categories')->onDelete('cascade');
+            $table->foreign('type')->references('id')->on('typepayment')->onDelete('cascade');
         });
     }
 

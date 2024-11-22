@@ -15,7 +15,7 @@ class Course extends Model
 
     public function courseCategory()
     {
-        return $this->belongsTo(CourseCategory::class); 
+        return $this->belongsTo(CourseCategory::class);
     }
 
     public function instructor()
@@ -51,5 +51,9 @@ class Course extends Model
     public function lesson()
     {
         return $this->hasMany(Lesson::class);
+    }
+    public function typepayment()
+    {
+        return $this->belongsTo(Typepayment::class);
     }
 }

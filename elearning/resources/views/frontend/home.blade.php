@@ -172,7 +172,19 @@
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
                                                     alt="star" />
                                             </div>
-                                            <span>{{$pc->difficulty}}</span>
+                                            <span>@switch($pc->difficulty)
+                                                    @case('beginner')
+                                                        {{ __('Beginner') }}
+                                                        @break
+                                                    @case('intermediate')
+                                                        {{ __('Intermediate') }}
+                                                        @break
+                                                    @case('advanced')
+                                                        {{ __('Advanced') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch</span>
                                         </div>
 {{--                                        <div class="eye d-flex align-items-center">--}}
 {{--                                            <div class="icon">--}}
@@ -243,7 +255,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>{{$dc->difficulty}}</span>
+                                            <span>@switch($dc->difficulty)
+                                                    @case('beginner')
+                                                        {{ __('Beginner') }}
+                                                        @break
+                                                    @case('intermediate')
+                                                        {{ __('Intermediate') }}
+                                                        @break
+                                                    @case('advanced')
+                                                        {{ __('Advanced') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch</span>
                                         </div>
 {{--                                        <div class="eye d-flex align-items-center">--}}
 {{--                                            <div class="icon">--}}
@@ -312,7 +336,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>{{$dv->difficulty}}</span>
+                                            <span>@switch($dv->difficulty)
+                                                    @case('beginner')
+                                                        {{ __('Beginner') }}
+                                                        @break
+                                                    @case('intermediate')
+                                                        {{ __('Intermediate') }}
+                                                        @break
+                                                    @case('advanced')
+                                                        {{ __('Advanced') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch</span>
                                         </div>
 {{--                                        <div class="eye d-flex align-items-center">--}}
 {{--                                            <div class="icon">--}}
@@ -381,7 +417,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>{{$bc->difficulty}}</span>
+                                            <span>@switch($bc->difficulty)
+                                                    @case('beginner')
+                                                        {{ __('Beginner') }}
+                                                        @break
+                                                    @case('intermediate')
+                                                        {{ __('Intermediate') }}
+                                                        @break
+                                                    @case('advanced')
+                                                        {{ __('Advanced') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch</span>
                                         </div>
 {{--                                        <div class="eye d-flex align-items-center">--}}
 {{--                                            <div class="icon">--}}
@@ -450,7 +498,19 @@
                                             <div class="icon">
                                                 <img src="{{asset('public/frontend/dist/images/icon/star.png')}}" alt="star" />
                                             </div>
-                                            <span>{{$ic->difficulty}}</span>
+                                            <span>@switch($ic->difficulty)
+                                                    @case('beginner')
+                                                        {{ __('Beginner') }}
+                                                        @break
+                                                    @case('intermediate')
+                                                        {{ __('Intermediate') }}
+                                                        @break
+                                                    @case('advanced')
+                                                        {{ __('Advanced') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch</span>
                                         </div>
 {{--                                        <div class="eye d-flex align-items-center">--}}
 {{--                                            <div class="icon">--}}

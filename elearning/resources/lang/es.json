@@ -33,6 +33,7 @@
     "Apply Filter": "Aplicar Filtro",
     "Level": "Nivel",
     "Basic" : "Básico",
+    "Beginner": "Básico",
     "Intermediate": "Intermedio",
     "Advanced": "Avanzado",
     "Expert": "Experto",
@@ -415,5 +416,15 @@
     "Already have account?": "¿Ya tiene una cuenta?",
     "Forget Password": "¿Olvidaste tu contraseña?",
     "Enter your email or mobile number to search for your account.": "Introduce tu correo electrónico o número de móvil para buscar tu cuenta.",
-    "Recover your account": "Recupera tu cuenta"
+    "Recover your account": "Recupera tu cuenta",
+    "Account Recovery": "Recuperación de Cuenta",
+    "Hello": "Hola",
+    "You have requested to recover your account. Click on the following link to reset your password:":"Has solicitado recuperar tu cuenta. Haz clic en el siguiente enlace para restablecer tu contraseña:",
+    "Reset Password": "Restablecer contraseña",
+    "Typepayment": "tipo de pago",
+    "full_course_subscription": "suscripción al curso completo",
+    "annual_subscription": "suscripción anual",
+    "weekly_subscription": "suscripción semanal",
+    "daily_subscription": "suscripción diaria",
+    "unknown": "desconocido"
 }

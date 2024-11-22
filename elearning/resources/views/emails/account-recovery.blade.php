@@ -11,10 +11,10 @@
 <div class="page-recover-account">
     <div class="container">
         <div class="row align-items-center justify-content-md-center">
-            <h1>Recuperación de Cuenta</h1>
-            <p>Hola {{ $user->name_en }},</p>
-            <p>Has solicitado recuperar tu cuenta. Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
-            <a href="{{ route('password.reset',encryptor('encrypt', $user->id)) }}">Restablecer contraseña</a>
+            <h1>{{ __('Account Recovery') }}</h1>
+            <p>{{ __('Hello') }} {{ $user->name_en }},</p>
+            <p>{{ __('You have requested to recover your account. Click on the following link to reset your password:') }}</p>
+            <a href="{{ route('password.reset',encryptor('encrypt', $user->id)) }}">{{ __('Reset Password') }}</a>
         </div>
     </div>
 </div>

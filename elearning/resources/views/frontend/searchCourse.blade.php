@@ -123,7 +123,19 @@
                                             <div class="check-box">
                                                 <input type="checkbox" class="checkbox-primary" name="difficulty[]" value="{{ $diff->difficulty }}"
                                                     {{ in_array($diff->difficulty, (array) $selectedDifficulty, true) ? 'checked' : '' }}>
-                                                <label> {{$diff->difficulty}} </label>
+                                                <label> @switch($diff->difficulty)
+                                                        @case('beginner')
+                                                            {{ __('Beginner') }}
+                                                            @break
+                                                        @case('intermediate')
+                                                            {{ __('Intermediate') }}
+                                                            @break
+                                                        @case('advanced')
+                                                            {{ __('Advanced') }}
+                                                            @break
+                                                        @default
+                                                            {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                    @endswitch </label>
                                             </div>
                                             <p class="check-details">
                                                 {{$diff->count}} <!-- Muestra el conteo de cursos para esta dificultad -->
@@ -136,47 +148,63 @@
                             </div>
                         </div>
                     </div>
-{{--                    <!-- Search by Price  -->--}}
-{{--                    <div class="accordion-item">--}}
-{{--                        <h2 class="accordion-header" id="headingThree">--}}
-{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
-{{--                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">--}}
-{{--                                {{__('Price')}}--}}
-{{--                            </button>--}}
-{{--                        </h2>--}}
-{{--                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"--}}
-{{--                            data-bs-parent="#sidebarFilter">--}}
-{{--                            <div class="accordion-body">--}}
-{{--                                <div class="price-range">--}}
-{{--                                    <div>--}}
-{{--                                        <div class="price-range-block">--}}
-{{--                                            <form class="d-flex price-range-block__inputWrapper" action="#">--}}
-{{--                                                <input type="number" min="0" max="5000"--}}
-{{--                                                    oninput="validity.valid||(value='0');" id="min_price"--}}
-{{--                                                    class="price-range-field"--}}
-{{--                                                    style="width: 105px; height: 50px; border-radius: 4px; padding: 15px;" />--}}
-{{--                                                <span>to</span>--}}
-{{--                                                <input type="number" min="0" max="5000"--}}
-{{--                                                    oninput="validity.valid||(value='5000');" id="max_price"--}}
-{{--                                                    class="price-range-field"--}}
-{{--                                                    style="width: 125px; height: 50px; padding: 15px; border-radius: 4px;" />--}}
-{{--                                                <button class="angle-btn">--}}
-{{--                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"--}}
-{{--                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"--}}
-{{--                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"--}}
-{{--                                                        class="feather feather-chevron-right">--}}
-{{--                                                        <polyline points="9 18 15 12 9 6"></polyline>--}}
-{{--                                                    </svg>--}}
-{{--                                                </button>--}}
-{{--                                            </form>--}}
-{{--                                            <div id="slider-range" class="price-filter-range"></div>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- Search by Rating  -->--}}
+                    <!-- Search by Typepayment  -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="levelAcc">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#TypepaymentCollapse" aria-expanded="false" aria-controls="TypepaymentCollapse">
+                                {{__('Typepayment')}}
+                            </button>
+                        </h2>
+                        <div id="TypepaymentCollapse" class="accordion-collapse collapse" aria-labelledby="levelAcc"
+                             data-bs-parent="#sidebarFilter">
+                            <div class="accordion-body">
+                                <form action="{{ route('searchCourse') }}" method="get">
+                                    @csrf
+                                    <div class="accordion-body__item">
+                                        <div class="check-box">
+                                            <input type="checkbox" class="checkbox-primary" name="typepayment" value=""
+                                                {{ !$selectedTypepayment ? 'checked' : '' }}>
+                                            <label>{{ __('All') }}</label>
+                                        </div>
+                                        <p class="check-details">
+                                            {{ $allCourse->count() }}
+                                        </p>
+                                    </div>
+                                    @forelse($TypepaymentAll as $type)
+                                        <div class="accordion-body__item">
+                                            <div class="check-box">
+                                                <input type="checkbox" class="checkbox-primary" name="typepayment[]" value="{{ $type['typepayment_id'] }}"
+                                                    {{ in_array($type['typepayment_id'], (array) $selectedTypepayment, true) ? 'checked' : '' }}>
+                                                <label>@switch($type['typepayment_plan'])
+                                                        @case('full_course_subscription')
+                                                            {{ __('full_course_subscription') }}
+                                                            @break
+                                                        @case('annual_subscription')
+                                                            {{ __('annual_subscription') }}
+                                                            @break
+                                                        @case('weekly_subscription')
+                                                            {{ __('weekly_subscription') }}
+                                                            @break
+                                                        @case('daily_subscription')
+                                                            {{ __('daily_subscription') }}
+                                                            @break
+                                                        @default
+                                                            {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                    @endswitch</label>
+                                            </div>
+                                            <p class="check-details">
+                                                {{ $type['count'] }} <!-- Muestra el conteo de cursos para esta modalidad -->
+                                            </p>
+                                        </div>
+                                    @empty
+                                    @endforelse
+                                    <button type="submit" class="btn btn-primary">{{ __('Apply Filter') }}</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Search by Rating  -->
 {{--                    <div class="accordion-item">--}}
 {{--                        <h2 class="accordion-header" id="ratingAcc">--}}
 {{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
@@ -388,15 +416,23 @@
                                             <img src="{{asset('public/frontend/dist/images/icon/star.png')}}"
                                                 alt="star" />
                                         </div>
-                                            <span>{{$c->difficulty}}</span>
+                                        <span>
+                                        @switch($c->difficulty)
+                                                @case('beginner')
+                                                    {{ __('Beginner') }}
+                                                    @break
+                                                @case('intermediate')
+                                                    {{ __('Intermediate') }}
+                                                    @break
+                                                @case('advanced')
+                                                    {{ __('Advanced') }}
+                                                    @break
+                                                @default
+                                                    {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                            @endswitch
+                                    </span>
                                     </div>
-{{--                                    <div class="eye d-flex align-items-center">--}}
-{{--                                        <div class="icon">--}}
-{{--                                            <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"--}}
-{{--                                                alt="eye" />--}}
-{{--                                        </div>--}}
-{{--                                        <span>24,517</span>--}}
-{{--                                    </div>--}}
+
                                     <div class="book d-flex align-items-center">
                                         <div class="icon">
                                             <img src="{{asset('public/frontend/dist/images/icon/book.png')}}"
@@ -411,6 +447,31 @@
                                         </div>
                                         <span>{{$c->duration == null? 0 : $c->duration}} {{__('Hours')}}</span>
                                     </div>
+                                </div>
+                                <div class="contentCard-more" style="place-content: center;">
+                                <div class="eye d-flex align-items-center" >
+                                    <div class="icon">
+                                        <img src="{{asset('public/frontend/dist/images/icon/eye.png')}}"
+                                             alt="eye" />
+                                    </div>
+                                    <span> @switch($c->typepayment->typepayment_plan)
+                                            @case('full_course_subscription')
+                                                {{ __('full_course_subscription') }}
+                                                @break
+                                            @case('annual_subscription')
+                                                {{ __('annual_subscription') }}
+                                                @break
+                                            @case('weekly_subscription')
+                                                {{ __('weekly_subscription') }}
+                                                @break
+                                            @case('daily_subscription')
+                                                {{ __('daily_subscription') }}
+                                                @break
+                                            @default
+                                                {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                        @endswitch
+                                            </span>
+                                </div>
                                 </div>
                             </div>
                         </div>

@@ -276,7 +276,19 @@
                                                             <img src="{{ asset('public/frontend/dist/images/icon/star.png') }}"
                                                                  alt="star" />
                                                         </div>
-                                                        <span>{{$cou->difficulty}}</span>
+                                                        <span>@switch($cou->difficulty)
+                                                                @case('beginner')
+                                                                    {{ __('Beginner') }}
+                                                                    @break
+                                                                @case('intermediate')
+                                                                    {{ __('Intermediate') }}
+                                                                    @break
+                                                                @case('advanced')
+                                                                    {{ __('Advanced') }}
+                                                                    @break
+                                                                @default
+                                                                    {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                            @endswitch</span>
                                                     </div>
                                                     <div class="book d-flex align-items-center">
                                                         <div class="icon">
