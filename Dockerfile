@@ -1,5 +1,5 @@
 # Usa la imagen oficial de Ubuntu como base
-FROM ubuntu:22.04
+FROM ubuntu:latest
 
 # Configura la zona horaria para Sudamérica
 ENV TZ=America/Sao_Paulo
@@ -19,11 +19,12 @@ RUN apt-get update && apt-get install -y \
     php8.2-mysql \
     php8.2-xml \
     php8.2-curl \
+    php8.2-mbstring \
+    libonig-dev \
     unzip \
     git \
     curl \
     && apt-get clean
-
 # Habilita los módulos de Apache necesarios
 RUN a2enmod php8.2
 RUN a2enmod rewrite
