@@ -56,7 +56,7 @@
                                                 <td><img class="img fluid" width="100" src="{{asset('public/uploads/courses/'.$d->image)}}" alt="">
                                             </td>
                                                 <td><strong>{{$d->title_en}}</strong></td>
-                                                <td><strong>{{$d->instructor?->name_en}}</strong></td>
+                                                <td><strong>{{$d->instructor?->name}} {{$d->instructor?->lastname}}</strong></td>
                                                 <td><strong>{{$d->courseCategory?->category_name}}</strong>
                                                 </td>
                                                 <td><strong>{{$d->price?'Bs '.$d->price:__('Free')}}</strong></td>

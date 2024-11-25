@@ -50,28 +50,11 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">টাইটেল (বাংলায়)</label>
-                                        <input type="text" class="form-control" name="courseTitle_bn"
-                                            value="{{old('courseTitle_bn')}}">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
                                         <label class="form-label">{{ __('Description') }}</label>
                                         <textarea class="form-control" name="courseDescription_en">{{old('courseDescription_en')}}</textarea>
                                     </div>
                                     @if($errors->has('courseDescription_en'))
                                     <span class="text-danger"> {{ $errors->first('courseDescription_en') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">বিস্তারিত (বাংলায়)</label>
-                                        <textarea class="form-control" name="courseDescription_bn"
-                                            value="{{old('courseDescription_bn')}}"></textarea>
-                                    </div>
-                                    @if($errors->has('courseDescription_bn'))
-                                    <span class="text-danger"> {{ $errors->first('courseDescription_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -96,7 +79,7 @@
                                         <select class="form-control" name="instructorId">
                                             @forelse ($instructor as $i)
                                             <option value="{{$i->id}}" {{old('instructorId')==$i->id?'selected':''}}>
-                                                {{$i->name_en}}</option>
+                                                {{$i->name}} {{$i->lastname}}</option>
                                             @empty
                                             <option value="">{{ __('No Instructor Found') }}</option>
                                             @endforelse
@@ -108,15 +91,58 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">{{ __('Type') }}</label>
-                                        <select class="form-control" name="courseType">
-                                            <option value="free" @if(old('courseType')=='free' ) selected @endif>{{ __('Free') }}
-                                            </option>
-                                            <option value="paid" @if(old('courseType')=='paid' ) selected @endif>{{ __('Paid') }}
-                                            </option>
-                                            <option value="subscription" @if(old('courseType')=='subscription' )
-                                                selected @endif>{{ __('Subscription-based') }}</option>
+                                        <label class="form-label">{{ __('Typepayment') }}</label>
+                                        <select class="form-control" name="typepayment_id">
+                                            @forelse ($typepayment as $t)
+                                                <option value="{{$t->id}}" {{old('typepayment_id')==$t->id?'selected':''}}>
+                                                    @switch($t->typepayment_plan)
+                                                        @case('full_course_subscription')
+                                                            {{ __('full_course_subscription') }}
+                                                            @break
+                                                        @case('annual_subscription')
+                                                            {{ __('annual_subscription') }}
+                                                            @break
+                                                        @case('weekly_subscription')
+                                                            {{ __('weekly_subscription') }}
+                                                            @break
+                                                        @case('daily_subscription')
+                                                            {{ __('daily_subscription') }}
+                                                            @break
+                                                        @default
+                                                            {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                    @endswitch</option>
+                                            @empty
+                                                <option value="">{{ __('No Instructor Found') }}</option>
+                                            @endforelse
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('full_course_subscription') }}</label>
+                                        <input type="number" class="form-control" name="courseFull_course_subscription"
+                                               value="{{old('courseFull_course_subscription')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('annual_subscription') }}</label>
+                                        <input type="number" class="form-control" name="courseAnnual_subscription"
+                                               value="{{old('courseAnnual_subscription')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('weekly_subscription') }}</label>
+                                        <input type="number" class="form-control" name="courseWeekly_subscription"
+                                               value="{{old('courseWeekly_subscription')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('daily_subscription') }}</label>
+                                        <input type="number" class="form-control" name="courseDaily_subscription"
+                                               value="{{old('courseDaily_subscription')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -202,16 +228,6 @@
                                     </div>
                                     @if($errors->has('prerequisites_en'))
                                     <span class="text-danger"> {{ $errors->first('prerequisites_en') }}</span>
-                                    @endif
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">পূর্বশর্ত (বাংলায়)</label>
-                                        <textarea class="form-control" name="prerequisites_bn"
-                                            value="{{old('prerequisites_bn')}}"></textarea>
-                                    </div>
-                                    @if($errors->has('prerequisites_bn'))
-                                    <span class="text-danger"> {{ $errors->first('prerequisites_bn') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

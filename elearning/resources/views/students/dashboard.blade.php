@@ -28,7 +28,7 @@
                             <img src="{{ asset('public/uploads/students/' . $student_info->image) }}" alt="Student" />
                         </div>
                         <div class="text">
-                            <h5>{{$student_info->name_en}}</h5>
+                            <h5>{{$student_info->name}} {{$student_info->lastname}}</h5>
                             <p>{{$student_info->profession ? $student_info->profession : __('Student')}}</p>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$a->course?->instructor?->image)}}"
                                                 alt="client-image" class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$a->course?->instructor?->name_en}}</p>
+                                            <p class="font-para--md">{{$a->course?->instructor?->name}} {{$a->course?->instructor?->lastname}}</p>
                                         </a>
                                         <div class="contentCard-course--status d-flex align-items-center">
                                             <span class="percentage">43%</span>
@@ -227,7 +227,7 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$a->course?->instructor?->image)}}"
                                                 alt="client-image" class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$a->course?->instructor?->name_en}}</p>
+                                            <p class="font-para--md">{{$a->course?->instructor?->name}} {{$a->course?->instructor?->lastname}}</p>
                                         </a>
                                         <div class="contentCard-course--status d-flex align-items-center">
                                             <span class="percentage">43%</span>

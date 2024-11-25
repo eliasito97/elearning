@@ -67,13 +67,11 @@ class DashboardController extends Controller
     }
     private function getstudentsforstatus()
     {
-        $endDate = Carbon::now();
-        $startDate = Carbon::now()->subMonths(6);
 
         return Student::selectRaw('status, COUNT(id) as total')
-            ->whereBetween('created_at', [$startDate, $endDate])
             ->groupBy('status')
             ->get();
+
     }
     private function getSixMonthsLabels()
     {

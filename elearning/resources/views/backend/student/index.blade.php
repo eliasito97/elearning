@@ -48,7 +48,7 @@
                                     <table id="example3" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
-                                                <th>{{__('#')}}</th>
+                                                <th>{{__('Image')}}</th>
                                                 <th>{{__('Name')}}</th>
                                                 <th>{{__('Email')}}</th>
                                                 <th>{{__('Contact')}}</th>
@@ -63,7 +63,7 @@
                                             <tr>
                                                 <td><img class="rounded-circle" width="35" height="35"
                                                         src="{{asset('public/uploads/students/'.$d->image)}}" alt=""></td>
-                                                <td><strong>{{$d->name_en}}</strong></td>
+                                                <td><strong>{{$d->name}} {{$d->lastname}} </strong></td>
                                                 <td>{{$d->email}}</td>
                                                 <td>{{$d->contact_en}}</td>
                                                 <td>{{$d->role?->name}}</td>
@@ -127,7 +127,7 @@
                                                 <img src="{{asset('public/uploads/students/'.$d->image)}}" width="100"
                                                     height="100" class="rounded-circle" alt="">
                                             </div>
-                                            <h3 class="mt-4 mb-1">{{$d->name_en}}</h3>
+                                            <h3 class="mt-4 mb-1">{{$d->name}} {{$d->lastname}}</h3>
                                             <p class="text-muted">{{$d->role?->name}}</p>
                                             <ul class="list-group mb-3 list-group-flush">
                                                 <li class="list-group-item px-0 d-flex justify-content-between">

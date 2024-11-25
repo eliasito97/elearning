@@ -20,28 +20,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('roles')->insert([
-            [
-                'name'=> 'Super Admin',
-                'identity'=> 'superadmin',
-                'created_at'=> Carbon::now()
-            ],
-            [
-                'name'=> 'Admin',
-                'identity'=> 'admin',
-                'created_at'=> Carbon::now()
-            ],
-            [
-                'name'=> 'Instructor',
-                'identity'=> 'instructor',
-                'created_at'=> Carbon::now()
-            ],
-            [
-                'name'=> 'Student',
-                'identity'=> 'student',
-                'created_at'=> Carbon::now()
-            ]
-        ]);
     }
 
     /**

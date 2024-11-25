@@ -50,19 +50,33 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">{{ __('Names') }}</label>
-                                        <input type="text" class="form-control" name="userName_en"
-                                            value="{{old('userName_en', $user->name_en)}}">
+                                        <label class="form-label">{{ __('Name') }}</label>
+                                        <input type="text" class="form-control" name="userName"
+                                            value="{{old('userName', $user->name)}}">
                                     </div>
-                                    @if($errors->has('userName_en'))
-                                    <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
+                                    @if($errors->has('userName'))
+                                    <span class="text-danger"> {{ $errors->first('userName') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
+                                        <label class="form-label">{{ __('Middlename') }}</label>
+                                        <input type="text" class="form-control" name="userMiddlename"
+                                               value="{{old('userMiddlename', $user->middlename)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
                                         <label class="form-label">{{ __('Last Name') }}</label>
-                                        <input type="text" class="form-control" name="userName_bn"
-                                            value="{{old('userName_bn', $user->name_bn)}}">
+                                        <input type="text" class="form-control" name="userLastname"
+                                               value="{{old('userLastname', $user->lastname)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('last Name2') }}</label>
+                                        <input type="text" class="form-control" name="userLastname2"
+                                               value="{{old('userLastname2', $user->lastname2)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -77,9 +91,9 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">{{ __('Pais') }}</label>
-                                        <input type="tel" class="form-control" name="contactNumber_bn"
-                                            value="{{old('contactNumber_bn', $user->contact_bn)}}">
+                                        <label class="form-label">{{ __('Country') }}</label>
+                                        <input type="tel" class="form-control" name="userCountry"
+                                            value="{{old('userCountry', $user->country)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

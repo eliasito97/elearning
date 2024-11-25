@@ -14,12 +14,10 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title_en');
-            $table->string('title_bn')->nullable();
             $table->text('description_en')->nullable();
-            $table->text('description_bn')->nullable();
             $table->unsignedBigInteger('course_category_id')->index();
             $table->unsignedBigInteger('instructor_id')->index();
-            $table->unsignedBigInteger('type')->index();
+            $table->unsignedBigInteger('typepayment_id')->index();
             $table->decimal('price', 10, 2)->default(0.00)->nullable();
             $table->decimal('old_price', 10, 2)->nullable();
             $table->decimal('subscription_price', 10, 2)->nullable();
@@ -31,12 +29,12 @@ return new class extends Migration
             $table->integer('duration')->nullable();
             $table->integer('lesson')->nullable();
             $table->text('prerequisites_en')->nullable();
-            $table->text('prerequisites_bn')->nullable();
             $table->enum('difficulty', ['beginner', 'intermediate', 'advanced'])->nullable();
             $table->string('course_code')->nullable();
             $table->string('image')->nullable();
             $table->string('thumbnail_image')->nullable();
             $table->string('thumbnail_video')->nullable();
+            $table->enum('tag', ['popular', 'featured', 'upcoming'])->nullable();
             $table->integer('status')->default(0)->comment('0 pending, 1 inactive, 2 active');
             $table->string('language')->default('en');
             $table->timestamps();
@@ -45,7 +43,7 @@ return new class extends Migration
             // Foreign key constraints
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->foreign('course_category_id')->references('id')->on('course_categories')->onDelete('cascade');
-            $table->foreign('type')->references('id')->on('typepayment')->onDelete('cascade');
+            $table->foreign('typepayment_id')->references('id')->on('typepayments')->onDelete('cascade');
         });
     }
 

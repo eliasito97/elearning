@@ -44,18 +44,32 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Name') }}</label>
-                                        <input type="text" class="form-control" name="fullName_en"
-                                            value="{{old('fullName_en',$instructor->name_en)}}">
+                                        <input type="text" class="form-control" name="userName"
+                                            value="{{old('userName',$instructor->name)}}">
                                     </div>
-                                    @if($errors->has('fullName_en'))
-                                    <span class="text-danger"> {{ $errors->first('fullName_en') }}</span>
+                                    @if($errors->has('userName'))
+                                    <span class="text-danger"> {{ $errors->first('userName') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
+                                        <label class="form-label">{{ __('Middlename') }}</label>
+                                        <input type="text" class="form-control" name="userMiddlename"
+                                            value="{{old('userMiddlename',$instructor->middlename)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
                                         <label class="form-label">{{ __('Last Name') }}</label>
-                                        <input type="text" class="form-control" name="fullName_bn"
-                                            value="{{old('fullName_bn',$instructor->name_bn)}}">
+                                        <input type="text" class="form-control" name="userLastname"
+                                               value="{{old('userLastname',$instructor->lastname)}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Last Name2') }}</label>
+                                        <input type="text" class="form-control" name="userLastname2"
+                                               value="{{old('userLastname2',$instructor->lastname2)}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -70,12 +84,12 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">ফোন নাম্বার (বাংলায়)</label>
-                                        <input type="tel" class="form-control" name="contactNumber_bn"
-                                            value="{{old('contactNumber_bn',$instructor->contact_bn)}}">
+                                        <label class="form-label">{{__('Country')}}</label>
+                                        <input type="tel" class="form-control" name="userCountry"
+                                            value="{{old('userCountry',$instructor->country)}}">
                                     </div>
-                                    @if($errors->has('contactNumber_bn'))
-                                    <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
+                                    @if($errors->has('userCountry'))
+                                    <span class="text-danger"> {{ $errors->first('userCountry') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

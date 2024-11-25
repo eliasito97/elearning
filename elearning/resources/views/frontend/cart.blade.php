@@ -8,7 +8,7 @@
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent mb-0">
-                <li class="breadcrumb-item"><a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}" class="fs-6 text-secondary">{{ __('Homepage') }}</a></li>
                 <li class="breadcrumb-item active"><a href="cart.html" class="fs-6 text-secondary">{{ __('Cart') }}</a></li>
             </ol>
         </nav>
@@ -34,11 +34,28 @@
                     <div class="text">
                         <h6><a href="{{route('courseDetails', encryptor('encrypt', $id))}}">{{$details['title_en']}}</a>
                         </h6>
-                        <p>By <a href="#">{{$details['instructor']}}</a></p>
+                        <p>{{"Instructor"}} <a href="{{route('instructorProfile', encryptor('encrypt', $details['instructor_id']))}}">{{$details['instructor']}}</a></p>
+                        <p><a>
+                                @switch($details['typepayment'])
+                                    @case('full_course_subscription')
+                                        {{ __('full_course_subscription') }}
+                                        @break
+                                    @case('annual_subscription')
+                                        {{ __('annual_subscription') }}
+                                        @break
+                                    @case('weekly_subscription')
+                                        {{ __('weekly_subscription') }}
+                                        @break
+                                    @case('daily_subscription')
+                                        {{ __('daily_subscription') }}
+                                        @break
+                                    @default
+                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                @endswitch
+                            </a></p>
                         <div class="bottom-wizard d-flex justify-content-between align-items-center">
                             <p>
-                                {{$details['price'] ? '৳' . $details['price'] : 'Free'}}
-                                <span><del>{{$details['old_price'] ? '৳' . $details['old_price'] : ''}}</del></span>
+                                {{$details['price'] ? 'Bs' . $details['price'] : __('Free')}}
                             </p>
                             <div class="trash-icon">
                                 <a href="#" class="remove-from-cart" data-id="{{$id}}">
@@ -56,19 +73,19 @@
                 <div class="summery-wizard">
                     <div class="summery-wizard-text pt-0">
                         <h6>{{__('Subtotal')}}</h6>
-                        <p> {{'৳' . number_format((float) session('cart_details')['cart_total'] , 2)}}</p>
+                        <p> {{'Bs' . number_format((float) session('cart_details')['cart_total'] , 2)}}</p>
                     </div>
                     <div class="summery-wizard-text">
                         <h6>{{__('Coupon Discount')}} ({{session('cart_details')['discount'] ?? 0.00}}%)</h6>
-                        <p>{{'৳' . number_format((float) isset(session('cart_details')['discount_amount']) ? session('cart_details')['discount_amount']: 0.00 , 2)}}</p>
+                        <p>{{'Bs' . number_format((float) isset(session('cart_details')['discount_amount']) ? session('cart_details')['discount_amount']: 0.00 , 2)}}</p>
                     </div>
-                    <div class="summery-wizard-text">
-                        <h6>{{__('Taxes (15%)')}}</h6>
-                        <p> {{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>
-                    </div>
+{{--                    <div class="summery-wizard-text">--}}
+{{--                        <h6>{{__('Taxes (15%)')}}</h6>--}}
+{{--                        <p> {{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>--}}
+{{--                    </div>--}}
                     <div class="total-wizard">
                         <h6 class="font-title--card">{{__('Total:')}}</h6>
-                        <p class="font-title--card">{{'৳' . number_format((float) session('cart_details')['total_amount'] , 2)}}</p>
+                        <p class="font-title--card">{{'Bs' . number_format((float) session('cart_details')['total_amount'] , 2)}}</p>
                     </div>
                     <form action="{{route('coupon_check')}}" method="post">
                         @csrf

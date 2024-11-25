@@ -9,10 +9,11 @@ use App\Models\User;
 use App\Http\Requests\Backend\Instructors\AddNewRequest;
 use App\Http\Requests\Backend\Instructors\UpdateRequest;
 use App\Models\Role;
+use Dflydev\DotAccessData\Data;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Exception;
 use File;
-use DB;
 
 class InstructorController extends Controller
 {
@@ -42,10 +43,12 @@ class InstructorController extends Controller
         try {
             DB::beginTransaction();
             $instructor = new Instructor;
-            $instructor->name_en = $request->fullName_en;
-            $instructor->name_bn = $request->fullName_bn;
+            $instructor->name = $request->userName;
+            $instructor->middlename = $request->userMiddlename;
+            $instructor->lastname = $request->userLastname;
+            $instructor->lastname2 = $request->userLastname2;
             $instructor->contact_en = $request->contactNumber_en;
-            $instructor->contact_bn = $request->contactNumber_bn;
+            $instructor->country = $request->userCountry;
             $instructor->email = $request->emailAddress;
             $instructor->role_id = $request->roleId;
             $instructor->bio = $request->bio;
@@ -64,9 +67,13 @@ class InstructorController extends Controller
             if ($instructor->save()) {
                 $user = new User;
                 $user->instructor_id = $instructor->id;
-                $user->name_en = $request->fullName_en;
+                $user->name = $request->userName;
+                $user->middlename = $request->userMiddlename;
+                $user->lastname = $request->userLastname;
+                $user->lastname2 = $request->userLastname2;
                 $user->email = $request->emailAddress;
                 $user->contact_en = $request->contactNumber_en;
+                $user->country = $request->userCountry;
                 $user->role_id = $request->roleId;
                 $user->status = $request->status;
                 $user->password = Hash::make($request->password);
@@ -120,10 +127,12 @@ class InstructorController extends Controller
     {
         try {
             $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
-            $instructor->name_en = $request->fullName_en;
-            $instructor->name_bn = $request->fullName_bn;
+            $instructor->name = $request->userName;
+            $instructor->middlename = $request->userMiddlename;
+            $instructor->lastname = $request->userLastname;
+            $instructor->lastname2 = $request->userLastname2;
             $instructor->contact_en = $request->contactNumber_en;
-            $instructor->contact_bn = $request->contactNumber_bn;
+            $instructor->country = $request->userCountry;
             $instructor->email = $request->emailAddress;
             $instructor->role_id = $request->roleId;
             $instructor->bio = $request->bio;
@@ -138,13 +147,16 @@ class InstructorController extends Controller
                 $request->image->move(public_path('uploads/users'), $imageName);
                 $instructor->image = $imageName;
             }
-
             if ($instructor->save()) {
                 $user = User::where('instructor_id', $instructor->id)->first();
                 $user->instructor_id = $instructor->id;
-                $user->name_en = $request->fullName_en;
+                $user->name = $request->userName;
+                $user->middlename = $request->userMiddlename;
+                $user->lastname = $request->userLastname;
+                $user->lastname2 = $request->userLastname2;
                 $user->email = $request->emailAddress;
                 $user->contact_en = $request->contactNumber_en;
+                $user->country = $request->userCountry;
                 $user->role_id = $request->roleId;
                 $user->status = $request->status;
                 $user->password = Hash::make($request->password);

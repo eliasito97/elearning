@@ -385,7 +385,7 @@
 
                 {{-- Courses --}}
                 <div class="row event-search-content">
-                    @forelse ($course as $c)
+                    @forelse ($filteredCourses  as $c)
                     <div class="col-md-6 mb-4">
                         <div class="contentCard contentCard--course">
                             <div class="contentCard-top">
@@ -403,11 +403,18 @@
                                         class="contentCard-user d-flex align-items-center">
                                         <img src="{{asset('public/uploads/users/'.$c->instructor?->image)}}"
                                             alt="Instructor Image" class="rounded-circle" height="34" width="34" />
-                                        <p class="font-para--md">{{$c->instructor?->name_en}}</p>
+                                        <p class="font-para--md">{{$c->instructor->name .' '. $c->instructor->lastname}}</p>
                                     </a>
                                     <div class="price">
-                                        <span>{{$c->price==null?__('Free'):'Bs'.$c->price}}</span>
-                                        <del>{{$c->old_price?'Bs'.$c->old_price:''}}</del>
+                                        @php
+                                            $subscriptionPrice = $c->full_course_subscription
+                                                ?? $c->annual_subscription
+                                                ?? $c->weekly_subscription
+                                                ?? $c->daily_subscription
+                                                ?? __('Free');
+                                        @endphp
+                                        {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
+{{--                                        <del>{{$c->old_price?'Bs'.$c->old_price:''}}</del>--}}
                                     </div>
                                 </div>
                                 <div class="contentCard-more">

@@ -159,11 +159,17 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$pc?->instructor->image)}}"
                                                 alt="client-image" class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$pc?->instructor->name_en}}</p>
+                                            <p class="font-para--md">{{$pc?->instructor->name}} {{$pc->instructor->lastname}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$pc->price?'Bs '.$pc->price:__('Free')}}</span>
-                                            <del>{{$pc->old_price?'Bs'.$pc->old_price:''}}</del>
+                                            @php
+                                                $subscriptionPrice = $pc->full_course_subscription
+                                                    ?? $pc->annual_subscription
+                                                    ?? $pc->weekly_subscription
+                                                    ?? $pc->daily_subscription
+                                                    ?? __('Free');
+                                            @endphp
+                                            {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -243,11 +249,17 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$dc?->instructor->image)}}" alt="client-image"
                                                 class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$dc?->instructor->name_en}}</p>
+                                            <p class="font-para--md">{{$dc?->instructor->name}} {{$dc?->instructor->lastname}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$dc->price?'Bs '.$dc->price:__('Free') }}</span>
-                                            <del>{{$dc->old_price?'Bs'.$dc->old_price:''}}</del>
+                                            @php
+                                                $subscriptionPrice = $dc->full_course_subscription
+                                                    ?? $dc->annual_subscription
+                                                    ?? $dc->weekly_subscription
+                                                    ?? $dc->daily_subscription
+                                                    ?? __('Free');
+                                            @endphp
+                                            {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -324,11 +336,17 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$dv?->instructor->image)}}" alt="client-image"
                                                 class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$dv?->instructor->name_en}}</p>
+                                            <p class="font-para--md">{{$dv?->instructor->name}} {{$dv?->instructor->lastname}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$dv->price?'Bs '.$dv->price:__('Free') }}</span>
-                                            <del>{{$dv->old_price?'Bs'.$dv->old_price:''}}</del>
+                                            @php
+                                                $subscriptionPrice = $dv->full_course_subscription
+                                                    ?? $dv->annual_subscription
+                                                    ?? $dv->weekly_subscription
+                                                    ?? $dv->daily_subscription
+                                                    ?? __('Free');
+                                            @endphp
+                                            {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -405,11 +423,17 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$bc?->instructor->image)}}" alt="client-image"
                                                 class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$bc?->instructor->name_en}}</p>
+                                            <p class="font-para--md">{{$bc?->instructor->name}} {{$bc?->instructor->lastname}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$bc->price?'Bs '.$bc->price:__('free')}}</span>
-                                            <del>{{$bc->old_price?'Bs'.$bc->old_price:''}}</del>
+                                            @php
+                                                $subscriptionPrice = $bc->full_course_subscription
+                                                    ?? $bc->annual_subscription
+                                                    ?? $bc->weekly_subscription
+                                                    ?? $bc->daily_subscription
+                                                    ?? __('Free');
+                                            @endphp
+                                            {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -486,11 +510,17 @@
                                             class="contentCard-user d-flex align-items-center">
                                             <img src="{{asset('public/uploads/users/'.$ic?->instructor->image)}}" alt="client-image"
                                                 class="rounded-circle" height="34" width="34" />
-                                            <p class="font-para--md">{{$ic?->instructor->name_en}}</p>
+                                            <p class="font-para--md">{{$ic?->instructor->name}} {{$ic?->instructor->lastname}}</p>
                                         </a>
                                         <div class="price">
-                                            <span>{{$ic->price?'Bs '.$ic->price:__('Free')}}</span>
-                                            <del>{{$ic->old_price?'Bs'.$ic->old_price:''}}</del>
+                                            @php
+                                                $subscriptionPrice = $ic->full_course_subscription
+                                                    ?? $ic->annual_subscription
+                                                    ?? $ic->weekly_subscription
+                                                    ?? $ic->daily_subscription
+                                                    ?? __('Free');
+                                            @endphp
+                                            {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                         </div>
                                     </div>
                                     <div class="contentCard-more">
@@ -1030,7 +1060,7 @@
                             <div class="mentor__title">
                                 <h6>
                                     <a href="{{route('instructorProfile', encryptor('encrypt', $i->id))}}"
-                                        tabindex="0">{{$i->name_en}}</a>
+                                        tabindex="0">{{$i->name}} {{$i->lastname}}</a>
                                 </h6>
                                 <p>{{$i->designation}}</p>
                             </div>

@@ -64,12 +64,27 @@
                                             <a
                                                 href="{{route('courseDetails', encryptor('encrypt', $id))}}">{{$details['title_en']}}</a>
                                         </h6>
-                                        <p>by {{$details['instructor']}}</p>
+                                        <p>{{"Instructor"}} {{$details['instructor']}}</p>
+                                        <p><a>
+                                                @switch($details['typepayment'])
+                                                    @case('full_course_subscription')
+                                                        {{ __('full_course_subscription') }}
+                                                        @break
+                                                    @case('annual_subscription')
+                                                        {{ __('annual_subscription') }}
+                                                        @break
+                                                    @case('weekly_subscription')
+                                                        {{ __('weekly_subscription') }}
+                                                        @break
+                                                    @case('daily_subscription')
+                                                        {{ __('daily_subscription') }}
+                                                        @break
+                                                    @default
+                                                        {{ __('unknown') }} <!-- Opcional: si no se encuentra un valor de dificultad -->
+                                                @endswitch
+                                            </a></p>
                                         <div class="price">
-                                            <h6 class="font-para--md">{{$details['price'] ? 'Bs' . $details['price'] :
-                                                'Free'}}</h6>
-                                            <p><del>{{$details['old_price'] ? 'Bs' . $details['old_price'] : ''}}</del>
-                                            </p>
+                                            <h6 class="font-para--md">{{$details['price'] ? 'Bs' . $details['price'] : __('Free') }}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -93,13 +108,13 @@
                                     <p>{{'Bs' . number_format((float) isset(session('cart_details')['discount_amount']) ?
                                         session('cart_details')['discount_amount']: 0.00 , 2)}}</p>
                                 </li>
-                                <li>
-                                    <p>{{ __('Taxes (15%)') }}</p>
-                                    <p>{{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>
-                                    {{-- {{ '৳' . (session('cart_details') && array_key_exists('tax',
-                                    session('cart_details')) ? number_format(session('cart_details')['tax'], 2) :
-                                    '0.00') }} --}}
-                                </li>
+{{--                                <li>--}}
+{{--                                    <p>{{ __('Taxes (15%)') }}</p>--}}
+{{--                                    <p>{{'৳' . number_format((float) session('cart_details')['tax'] , 2)}}</p>--}}
+{{--                                    --}}{{-- {{ '৳' . (session('cart_details') && array_key_exists('tax',--}}
+{{--                                    session('cart_details')) ? number_format(session('cart_details')['tax'], 2) :--}}
+{{--                                    '0.00') }} --}}
+{{--                                </li>--}}
                                 <li>
                                     <p class="font-title--card">{{ __('Total:') }}</p>
                                     <p class="total-price font-title--card">{{'Bs' .
@@ -137,7 +152,7 @@
                                 <div class="form-element">
                                     <div class="d-flex justify-content-between">
                                         <label for="password">{{ __('Password') }}</label>
-                                        <a href="forget-password.html" class="text-primary fs-6">{{ __('Forget Password') }}</a>
+                                        <a href="{{ route('recover.account')}}" class="text-primary fs-6">{{ __('Forget Password') }}</a>
                                     </div>
                                     <div class="form-alert-input">
                                         <input type="password" placeholder="{{ __('Type here...') }}" id="password"

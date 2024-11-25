@@ -75,7 +75,7 @@
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                     <span class="mb-0">{{ __('Instructor') }}</span>
-                                                    <strong>{{$d->instructor?->name_en}}</strong>
+                                                    <strong>{{$d->instructor?->name}} {{$d->instructor?->lastname}}</strong>
                                                 </li>
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
                                                     <span class="mb-0">{{ __('Category') }}</span>

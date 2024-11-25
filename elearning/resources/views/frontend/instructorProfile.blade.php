@@ -32,7 +32,7 @@
                         <img src="{{asset('public/uploads/users/'.$instructor->image)}}" alt="Instructor" />
                     </div>
                     <div class="instructor-info text-center">
-                        <h5 class="font-title--sm">{{$instructor->name_en}}</h5>
+                        <h5 class="font-title--sm">{{$instructor->name}} {{$instructor->lastname}}</h5>
                         <p class="text-secondary mb-3">{{$instructor->designation}}</p>
                         <ul class="list-inline social-links">
                             <li class="list-inline-item">
@@ -263,11 +263,17 @@
                                                        class="contentCard-user d-flex align-items-center">
                                                         <img src="{{ asset('public/frontend/dist/images/courses/7.png') }}"
                                                              alt="client-image" class="rounded-circle" />
-                                                        <p class="font-para--md">{{$cou->instructor->name_en}}</p>
+                                                        <p class="font-para--md">{{$cou->instructor->name}} {{$cou->instructor->lastname}}</p>
                                                     </a>
                                                     <div class="price">
-                                                        <span>{{$cou->price == null ? __('Free') : 'Bs'.$cou->price}}</span>
-                                                        <del>{{$cou->old_price ? 'Bs'.$cou->old_price : ''}}</del>
+                                                        @php
+                                                            $subscriptionPrice = $cou->full_course_subscription
+                                                                ?? $cou->annual_subscription
+                                                                ?? $cou->weekly_subscription
+                                                                ?? $cou->daily_subscription
+                                                                ?? __('Free');
+                                                        @endphp
+                                                        {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                                     </div>
                                                 </div>
                                                 <div class="contentCard-more">

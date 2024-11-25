@@ -109,11 +109,11 @@
                                     <tr>
                                         <th>{{$c->id}}</th>
                                         <td>{{$c->title_en}}</td>
-                                        <td>{{$c->instructor->name_en}} {{$c->instructor->title_bn}}</td>
+                                        <td>{{$c->instructor->name.' '.$c->instructor->lastname}} {{$c->instructor->title_bn}}</td>
                                         <td>
                                              <span class="badge badge-rounded
                                              {{ $c->status == 2 ? 'badge-primary' : ($c->status == 1 ? 'badge-danger' : 'badge-warning') }}">
-                                             {{ $c->status == 2 ? 'Activo' : ($c->status == 1 ? 'Inactivo' : 'Pendiente') }}
+                                             {{ $c->status == 2 ? __('Active') : ($c->status == 1 ? __('Inactive') : 'Pending') }}
                                              </span>
                                         </td>
                                         <td>{{$c->courseCategory->category_name}}</td>
@@ -210,7 +210,7 @@
                                         <img class="rounded-circle" alt="image" width="50"
                                             src="{{asset('public/uploads/users/'.$u->image)}}">
                                         <div class="col">
-                                            <h5 class="mb-1">{{$u->name_en}}</h5>
+                                            <h5 class="mb-1">{{$u->name}} {{$u->lastname}}</h5>
                                             <small class="d-block">{{$u->created_at}}</small>
                                             <small class="d-block">{{$u->Role->name}}</small>
                                         </div>
@@ -340,7 +340,7 @@
                             <table class="table table-sm mb-0 table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="px-5 py-3">{{ __('Name') }}</th>
+                                        <th class="px-4 py-3">{{ __('Full Name') }}</th>
 {{--                                        <th class="py-3">{{ __('Assigned Professor') }}</th>--}}
                                         <th class="py-3">{{ __('Branch') }}</th>
                                         <th class="py-3">{{ __('Status') }}</th>
@@ -361,7 +361,7 @@
                                                             alt="">
                                                     </div>
                                                     <div class="media-body">
-                                                        <h5 class="mb-0 fs--1">{{$us->name_en}} {{$us->name_bn}}</h5>
+                                                        <h5 class="mb-0 fs--1">{{$us->name}} {{$us->lastname}}</h5>
                                                     </div>
                                                 </div>
                                             </a>
@@ -370,7 +370,7 @@
                                         <td class="py-2">{{$us->profession}}</td>
                                         <td>    <span class="badge badge-rounded
                                               {{ $us->status == 1 ? 'badge-primary' : 'badge-danger' }}">
-                                              {{ $us->status == 1 ? 'Activo' : 'Inactivo' }}
+                                              {{ $us->status == 1 ? __('Active') : __('Inactive') }}
                                                 </span></td>
                                         <td class="py-2">{{$us->created_at}}</td>
                                         <td>

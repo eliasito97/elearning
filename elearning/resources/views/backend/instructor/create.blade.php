@@ -40,19 +40,33 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">{{ __('Names') }}</label>
-                                        <input type="text" class="form-control" name="fullName_en"
-                                            value="{{old('fullName_en')}}">
+                                        <label class="form-label">{{ __('Name') }}</label>
+                                        <input type="text" class="form-control" name="userName"
+                                            value="{{old('userName')}}">
                                     </div>
-                                    @if($errors->has('fullName_en'))
-                                    <span class="text-danger"> {{ $errors->first('fullName_en') }}</span>
+                                    @if($errors->has('userName'))
+                                    <span class="text-danger"> {{ $errors->first('userName') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
+                                        <label class="form-label">{{ __('Middlename') }}</label>
+                                        <input type="text" class="form-control" name="userMiddlename"
+                                               value="{{old('userMiddlename')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
                                         <label class="form-label">{{ __('Last Name') }}</label>
-                                        <input type="text" class="form-control" name="fullName_bn"
-                                            value="{{old('fullName_bn')}}">
+                                        <input type="text" class="form-control" name="userLastname"
+                                               value="{{old('userLastname')}}">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('last Name2') }}</label>
+                                        <input type="text" class="form-control" name="userLastname2"
+                                               value="{{old('userLastname2')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -67,12 +81,12 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">ফোন নাম্বার (বাংলায়)</label>
-                                        <input type="tel" class="form-control" name="contactNumber_bn"
-                                            value="{{old('contactNumber_bn')}}">
+                                        <label class="form-label">{{ __('Country') }}</label>
+                                        <input type="tel" class="form-control" name="userCountry"
+                                            value="{{old('userCountry')}}">
                                     </div>
-                                    @if($errors->has('contactNumber_bn'))
-                                    <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
+                                    @if($errors->has('userCountry'))
+                                    <span class="text-danger"> {{ $errors->first('userCountry') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Courses;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Typepayment;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\Courses\AddNewRequest;
 use App\Http\Requests\Backend\Course\Courses\UpdateRequest;
@@ -39,7 +40,8 @@ class CourseController extends Controller
     {
         $courseCategory = CourseCategory::get();
         $instructor = Instructor::get();
-        return view('backend.course.courses.create', compact('courseCategory', 'instructor'));
+        $typepayment = Typepayment::get();
+        return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment'));
     }
 
     /**
@@ -50,22 +52,23 @@ class CourseController extends Controller
         try {
             $course = new Course;
             $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
-            $course->type = $request->courseType;
+            $course->typepayment_id = $request->typepayment_id;
             $course->price = $request->coursePrice;
             $course->old_price = $request->courseOldPrice;
             $course->subscription_price = $request->subscriptionPrice;
+            $course->full_course_subscription = $request->courseFull_course_subscription;
+            $course->annual_subscription = $request->courseAnnual_subscription;
+            $course->weekly_subscription = $request->courseWeekly_subscription;
+            $course->daily_subscription = $request->courseDaily_subscription;
             $course->start_from = $request->start_from;
             $course->duration = $request->duration;
             $course->lesson = $request->lesson;
             $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
             $course->language = 'en';
@@ -119,8 +122,9 @@ class CourseController extends Controller
     {
         $courseCategory = CourseCategory::get();
         $instructor = Instructor::get();
+        $typepayment = Typepayment::get();
         $course = Course::findOrFail(encryptor('decrypt', $id));
-        return view('backend.course.courses.edit', compact('courseCategory', 'instructor', 'course'));
+        return view('backend.course.courses.edit', compact('courseCategory', 'instructor', 'course', 'typepayment'));
     }
 
     /**
@@ -131,22 +135,23 @@ class CourseController extends Controller
         try {
             $course = Course::findOrFail(encryptor('decrypt', $id));
             $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
-            $course->type = $request->courseType;
+            $course->typepayment_id = $request->typepayment_id;
+            $course->full_course_subscription = $request->courseFull_course_subscription;
+            $course->annual_subscription = $request->courseAnnual_subscription;
+            $course->weekly_subscription = $request->courseWeekly_subscription;
+            $course->daily_subscription = $request->courseDaily_subscription;
+            $course->difficulty = $request->courseDifficulty;
             $course->price = $request->coursePrice;
             $course->old_price = $request->courseOldPrice;
             $course->subscription_price = $request->subscriptionPrice;
             $course->start_from = $request->start_from;
             $course->duration = $request->duration;
             $course->lesson = $request->lesson;
-            $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
             $course->language = 'en';
@@ -176,22 +181,23 @@ class CourseController extends Controller
         try {
             $course = Course::findOrFail(encryptor('decrypt', $id));
             $course->title_en = $request->courseTitle_en;
-            $course->title_bn = $request->courseTitle_bn;
             $course->description_en = $request->courseDescription_en;
-            $course->description_bn = $request->courseDescription_bn;
             $course->course_category_id = $request->categoryId;
             $course->instructor_id = $request->instructorId;
-            $course->type = $request->courseType;
+            $course->typepayment_id = $request->typepayment_id;
             $course->price = $request->coursePrice;
             $course->old_price = $request->courseOldPrice;
             $course->subscription_price = $request->subscriptionPrice;
+            $course->full_course_subscription = $request->courseFull_course_subscription;
+            $course->annual_subscription = $request->courseAnnual_subscription;
+            $course->weekly_subscription = $request->courseWeekly_subscription;
+            $course->daily_subscription = $request->courseDaily_subscription;
             $course->start_from = $request->start_from;
             $course->duration = $request->duration;
             $course->lesson = $request->lesson;
             $course->difficulty = $request->courseDifficulty;
             $course->course_code = $request->course_code;
             $course->prerequisites_en = $request->prerequisites_en;
-            $course->prerequisites_bn = $request->prerequisites_bn;
             $course->thumbnail_video = $request->thumbnail_video;
             $course->tag = $request->tag;
             $course->status = $request->status;

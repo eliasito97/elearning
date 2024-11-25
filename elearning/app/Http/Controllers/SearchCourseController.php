@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\CourseCategory;
@@ -10,14 +12,49 @@ class SearchCourseController extends Controller
 {
     public function index(Request $request)
     {
-
         $category = CourseCategory::get();
-
+        $allCourse = Course::where('status', 2)->get();
         $selectedCategories = $request->input('categories', []);
         $selectedDifficulty = $request->input('difficulty', []);
         $selectedTypepayment = $request->input('typepayment', []);
 
-        $course = Course::where('status', 2)
+
+        $course = $this->getcourse($selectedCategories,$selectedDifficulty,$selectedTypepayment);
+
+        $TypepaymentAll= $this->getpayments();
+        $DifficultyAll= $this->getdifficulty();
+        $filteredCourses = $this->getprice($course);
+        return view('frontend.searchCourse', compact(
+            'filteredCourses', 'category', 'selectedCategories',
+            'allCourse', 'selectedDifficulty', 'course' ,
+            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment'
+        ));
+    }
+    private function getpayments()
+    {
+       return Course::with('typepayment')
+            ->where('status', 2)
+            ->select('typepayment_id', Course::raw('COUNT(*) as count'))
+            ->groupBy('typepayment_id')
+            ->get()
+            ->map(function ($course) {
+                return [
+                    'typepayment_id' => $course->typepayment_id,
+                    'typepayment_plan' => $course->typepayment->typepayment_plan ?? 'Sin tipo de pago',
+                    'count' => $course->count,
+                ];
+            });
+    }
+    private function getdifficulty()
+    {
+        return Course::where('status', 2)
+            ->select('difficulty', Course::raw('COUNT(*) as count'))
+            ->groupBy('difficulty')
+            ->get();
+    }
+    private function getcourse($selectedCategories,$selectedDifficulty,$selectedTypepayment)
+    {
+            return Course::where('status', 2)
             ->when($selectedCategories, function ($query) use ($selectedCategories) {
                 $query->whereIn('course_category_id', $selectedCategories);
             })
@@ -33,28 +70,15 @@ class SearchCourseController extends Controller
                 $query2->whereIn('typepayment_id', $selectedTypepayment);
             })
             ->get();
-//        dd($course);
-        $DifficultyAll = Course::where('status', 2)
-        ->select('difficulty', Course::raw('COUNT(*) as count'))
-        ->groupBy('difficulty')
-        ->get();
+    }
 
-        $TypepaymentAll = Course::with('typepayment')
-            ->where('status', 2)
-            ->select('typepayment_id', Course::raw('COUNT(*) as count'))
-            ->groupBy('typepayment_id')
-            ->get()
-            ->map(function ($course) {
-                return [
-                    'typepayment_id' => $course->typepayment_id,
-                    'typepayment_plan' => $course->typepayment->typepayment_plan ?? 'Sin tipo de pago',
-                    'count' => $course->count,
-                ];
-            });
-
-        $allCourse = Course::where('status', 2)->get();
-
-
-        return view('frontend.searchCourse', compact('course', 'category', 'selectedCategories', 'allCourse','selectedDifficulty','DifficultyAll','TypepaymentAll','selectedTypepayment'));
+    private function getprice($courses)
+    {
+        return $courses->filter(function ($course) {
+            return $course->full_course_subscription !== null ||
+                $course->annual_subscription !== null ||
+                $course->weekly_subscription !== null ||
+                $course->daily_subscription !== null;
+        });
     }
 }

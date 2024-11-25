@@ -39,11 +39,13 @@ class UserController extends Controller
     {
         try {
             $data = new User();
-            $data->name_en = $request->userName_en;
-            $data->name_bn = $request->userName_bn;
+            $data->name = $request->userName;
+            $data->middlename = $request->userMiddlename;
+            $data->lastname = $request->userLastname;
+            $data->lastname2 = $request->userLastname2;
             $data->email = $request->emailAddress;
             $data->contact_en = $request->contactNumber_en;
-            $data->contact_bn = $request->contactNumber_bn;
+            $data->country = $request->userCountry;
             $data->role_id = $request->roleId;
             $data->language = 'en';
             $data->full_access = $request->fullAccess;
@@ -90,11 +92,13 @@ class UserController extends Controller
     {
         try {
             $data = User::findOrFail(encryptor('decrypt', $id));
-            $data->name_en = $request->userName_en;
-            $data->name_bn = $request->userName_bn;
+            $data->name = $request->userName;
+            $data->middlename = $request->userMiddlename;
+            $data->lastname = $request->userLastname;
+            $data->lastname2 = $request->userLastname2;
             $data->email = $request->emailAddress;
             $data->contact_en = $request->contactNumber_en;
-            $data->contact_bn = $request->contactNumber_bn;
+            $data->country = $request->userCountry;
             $data->role_id = $request->roleId;
             $data->language = 'en';
             $data->full_access = $request->fullAccess;
@@ -122,7 +126,7 @@ class UserController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy($id)
-    { 
+    {
         $data = User::findOrFail(encryptor('decrypt', $id));
         $image_path = public_path('uploads/users/') . $data->image;
 
@@ -131,6 +135,6 @@ class UserController extends Controller
                 File::delete($image_path);
 
             return redirect()->back();
-        } 
+        }
     }
 }

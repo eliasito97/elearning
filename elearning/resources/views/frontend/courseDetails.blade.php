@@ -34,9 +34,9 @@
                             alt="Instructor Image" height="75" width="75" />
                     </div>
                     <div class="created-by-text">
-                        <p>Created by</p>
+                        <p>{{ __('Created by')}}</p>
                         <h6>
-                            <a href="{{route('instructorProfile', encryptor('encrypt', $course->instructor->id))}}">{{$course->instructor?->name_en}}
+                            <a href="{{route('instructorProfile', encryptor('encrypt', $course->instructor->id))}}">{{$course->instructor->name .' '. $course->instructor->lastname}}
                             </a>
                         </h6>
                     </div>
@@ -286,7 +286,7 @@
                                             <div class="instructor-text">
                                                 <h6 class="font-title--xs mb-0">
                                                     <a
-                                                        href="{{route('instructorProfile', encryptor('encrypt', $course->instructor?->id))}}">{{$course->instructor?->name_en}}</a>
+                                                        href="{{route('instructorProfile', encryptor('encrypt', $course->instructor?->id))}}">{{$course->instructor->name .' '. $course->instructor->lastname}}</a>
                                                 </h6>
                                                 <p class="font-para--md">
                                                     {{($course->instructor?->designation)?$course->instructor?->designation:__('No Designation') }}</p>
@@ -2018,8 +2018,16 @@
                     <div class="cart">
                         <div class="cart__price">
                             <div class="current-price">
-                                <h3 class="font-title--sm">{{$course->price?'Bs'.$course->price:__('Free')}}</h3>
-                                <p><del>{{$course->old_price?'Bs'.$course->old_price:''}}</del></p>
+                                <h3 class="font-title--sm">
+                                    @php
+                                        $subscriptionPrice = $course->full_course_subscription
+                                            ?? $course->annual_subscription
+                                            ?? $course->weekly_subscription
+                                            ?? $course->daily_subscription
+                                            ?? __('Free');
+                                    @endphp
+                                    {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
+                                </h3>
                             </div>
 {{--                            <div class="current-discount">--}}
 {{--                                <p class="font-para--md">90% off</p>--}}
@@ -2177,11 +2185,17 @@
                                                class="contentCard-user d-flex align-items-center">
                                                 <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"
                                                      alt="client-image" class="rounded-circle" />
-                                                <p class="font-para--md">{{$co->instructor->name_en}}</p>
+                                                <p class="font-para--md">{{$co->instructor->name}} {{$co->instructor->lastname}}</p>
                                             </a>
                                             <div class="price">
-                                                <span>{{$co->price==null?__('Free'):'Bs'.$co->price}}</span>
-                                                <del>{{$co->old_price?'Bs'.$co->old_price:''}}</del>
+                                                @php
+                                                    $subscriptionPrice = $co->full_course_subscription
+                                                        ?? $co->annual_subscription
+                                                        ?? $co->weekly_subscription
+                                                        ?? $co->daily_subscription
+                                                        ?? __('Free');
+                                                @endphp
+                                                {{$subscriptionPrice !== __('Free') ? 'Bs'.$subscriptionPrice : $subscriptionPrice}}
                                             </div>
                                         </div>
                                         <div class="contentCard-more">

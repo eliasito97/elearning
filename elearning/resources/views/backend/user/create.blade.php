@@ -41,19 +41,42 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Name') }}</label>
-                                        <input type="text" class="form-control" name="userName_en"
-                                            value="{{old('userName_en')}}">
+                                        <input type="text" class="form-control" name="userName"
+                                            value="{{old('userName')}}" required autofocus>
                                     </div>
-                                    @if($errors->has('userName_en'))
-                                    <span class="text-danger"> {{ $errors->first('userName_en') }}</span>
+                                    @if($errors->has('userName'))
+                                    <span class="text-danger"> {{ $errors->first('userName') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('Middlename') }}</label>
+                                        <input type="text" class="form-control" name="userMiddlename"
+                                               value="{{old('userMiddlename')}}">
+                                    </div>
+                                    @if($errors->has('userMiddlename'))
+                                        <span class="text-danger"> {{ $errors->first('userMiddlename') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Last Name') }}</label>
-                                        <input type="text" class="form-control" name="userName_bn"
-                                            value="{{old('userName_bn')}}">
+                                        <input type="text" class="form-control" name="userLastname"
+                                               value="{{old('userLastname')}}" required autofocus>
                                     </div>
+                                    @if($errors->has('userLastname'))
+                                        <span class="text-danger"> {{ $errors->first('userLastname') }}</span>
+                                    @endif
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">{{ __('last Name2') }}</label>
+                                        <input type="text" class="form-control" name="userLastname2"
+                                               value="{{old('userLastname2')}}">
+                                    </div>
+                                    @if($errors->has('userLastname2'))
+                                        <span class="text-danger"> {{ $errors->first('userLastname2') }}</span>
+                                    @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
@@ -67,12 +90,12 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">ফোন নাম্বার (বাংলায়)</label>
-                                        <input type="tel" class="form-control" name="contactNumber_bn"
-                                            value="{{old('contactNumber_bn')}}">
+                                        <label class="form-label">{{__('Country')}}</label>
+                                        <input type="tel" class="form-control" name="userCountry"
+                                            value="{{old('userCountry')}}">
                                     </div>
-                                    @if($errors->has('contactNumber_bn'))
-                                    <span class="text-danger"> {{ $errors->first('contactNumber_bn') }}</span>
+                                    @if($errors->has('userCountry'))
+                                    <span class="text-danger"> {{ $errors->first('userCountry') }}</span>
                                     @endif
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">

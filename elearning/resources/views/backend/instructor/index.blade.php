@@ -48,7 +48,7 @@
                                     <table id="example3" class="display" style="min-width: 845px">
                                         <thead>
                                             <tr>
-                                                <th>{{__('#')}}</th>
+                                                <th>{{__('Image')}}</th>
                                                 <th>{{__('Name')}}</th>
                                                 <th>{{__('Email')}}</th>
                                                 <th>{{__('Contact')}}</th>
@@ -64,7 +64,7 @@
                                                     <img class="rounded-circle" width="35" height="35"
                                                         src="{{asset('public/uploads/users/'.$d->image)}}" alt="">
                                                 </td>
-                                                <td><strong>{{$d->name_en}}</strong></td>
+                                                <td><strong>{{$d->name}} {{$d->lastname}}</strong></td>
                                                 <td>{{$d->email}}</td>
                                                 <td>{{$d->contact_en}}</td>
                                                 <td>{{$d->designation}}</td>

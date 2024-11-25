@@ -57,7 +57,7 @@
                                                         src="{{asset('public/uploads/students/'.$e->student?->image)}}"
                                                         alt="">
                                                 </td>
-                                                <td><strong>{{$e->student?->name_en}}</strong></td>
+                                                <td><strong>{{$e->student?->name}} {{$e->student?->lastname}}</strong></td>
                                                 <td><strong>{{$e->course?->title_en}}</strong></td>
                                                 <td><img class="img fluid" width="100"
                                                         src="{{asset('public/uploads/courses/'.$e->course?->image)}}"

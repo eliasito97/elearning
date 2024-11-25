@@ -9,10 +9,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">{{__('Homepage')}}</a>
+                    <a href="{{route('home')}}" class="fs-6 text-secondary">{{__('Homepage')}}</a>
                 </li>
                 <li class="breadcrumb-item active">
-                    <a href="about.html" class="fs-6 text-secondary">{{__('About')}}</a>
+                    <a href="{{route('about')}}" class="fs-6 text-secondary">{{__('About')}}</a>
                 </li>
             </ol>
         </nav>
@@ -213,7 +213,7 @@
                                 <div class="mentor__title">
                                     <h6>
                                         <a href="{{route('instructorProfile', encryptor('encrypt', $i->id))}}"
-                                           tabindex="0">{{$i->name_en}}</a>
+                                           tabindex="0">{{$i->name}} {{$i->lastname}}</a>
                                     </h6>
                                     <p>{{$i->designation}}</p>
                                 </div>
