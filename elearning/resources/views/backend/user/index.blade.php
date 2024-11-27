@@ -49,7 +49,7 @@
                                         <thead>
                                             <tr>
                                                 <th>{{__('Image')}}</th>
-                                                <th>{{__('Name')}}</th>
+                                                <th>{{__('Full Name')}}</th>
                                                 <th>{{__('Email')}}</th>
                                                 <th>{{__('Contact')}}</th>
                                                 <th>{{__('Role')}}</th>
