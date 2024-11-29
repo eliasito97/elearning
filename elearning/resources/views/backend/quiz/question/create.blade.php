@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Add Question</h4>
+                    <h4>{{ __('Add Question') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('question.index')}}">Questions</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('question.create')}}">Add Question</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('question.index')}}">{{ __('Questions') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('question.create')}}">{{ __('Add Question') }}</a>
                     </li>
                 </ol>
             </div>
@@ -33,7 +33,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{ __('Basic Info') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('question.store')}}" method="post" enctype="multipart/form-data">
@@ -41,13 +41,13 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Quiz</label>
+                                        <label class="form-label">{{ __('Quiz') }}</label>
                                         <select class="form-control" name="quizId">
                                             @forelse ($quiz as $q)
                                             <option value="{{$q->id}}" {{old('quizId')==$q->id?'selected':''}}>
                                                 {{$q->title}}</option>
                                             @empty
-                                            <option value="">No Quiz Found</option>
+                                            <option value="">{{ __('No Quiz Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -57,22 +57,22 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Question Type</label>
+                                        <label class="form-label">{{ __('Question Type') }}</label>
                                         <select class="form-control" name="questionType">
                                             <option value="multiple_choice" @if(old('questionType')=='multiple_choice' ) selected @endif>
-                                                Multiple Choice
+                                                {{ __('Multiple Choice') }}
                                             </option>
                                             <option value="true_false" @if(old('questionType')=='true_false' ) selected
-                                                @endif>True False
+                                                @endif>{{ __('True False') }}
                                             </option>
-                                            <option value="short_answer" @if(old('questionType')=='short_answer' ) selected @endif>Short Answer
+                                            <option value="short_answer" @if(old('questionType')=='short_answer' ) selected @endif>{{ __('Short Answer') }}
                                             </option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Question Content</label>
+                                        <label class="form-label">{{ __('Question Content') }}</label>
                                         <textarea class="form-control"
                                             name="questionContent">{{old('questionContent')}}</textarea>
                                     </div>
@@ -82,7 +82,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label">Option A</label>
+                                        <label class="form-label">{{ __('Option A') }}</label>
                                         <input type="text" class="form-control" name="optionA" value="{{old('optionA')}}">
                                     </div>
                                     @if($errors->has('optionA'))
@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label">Option B</label>
+                                        <label class="form-label">{{ __('Option B') }}</label>
                                         <input type="text" class="form-control" name="optionB" value="{{old('optionB')}}">
                                     </div>
                                     @if($errors->has('optionB'))
@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label">Option C</label>
+                                        <label class="form-label">{{ __('Option C') }}</label>
                                         <input type="text" class="form-control" name="optionC" value="{{old('optionC')}}">
                                     </div>
                                     @if($errors->has('optionC'))
@@ -109,7 +109,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6">
                                     <div class="form-group">
-                                        <label class="form-label">Option D</label>
+                                        <label class="form-label">{{ __('Option D') }}</label>
                                         <input type="text" class="form-control" name="optionD" value="{{old('optionD')}}">
                                     </div>
                                     @if($errors->has('optionD'))
@@ -118,18 +118,18 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Correct Answer</label>
+                                        <label class="form-label">{{ __('Correct Answer') }}</label>
                                         <select class="form-control" name="correctAnswer">
-                                            <option value="a" @if(old('correctAnswer')=='a' ) selected @endif>Option A</option>
-                                            <option value="b" @if(old('correctAnswer')=='b' ) selected @endif>Option B</option>
-                                            <option value="c" @if(old('correctAnswer')=='c' ) selected @endif>Option C</option>
-                                            <option value="d" @if(old('correctAnswer')=='d' ) selected @endif>Option D</option>
+                                            <option value="a" @if(old('correctAnswer')=='a' ) selected @endif>{{ __('Option A') }}</option>
+                                            <option value="b" @if(old('correctAnswer')=='b' ) selected @endif>{{ __('Option B') }}</option>
+                                            <option value="c" @if(old('correctAnswer')=='c' ) selected @endif>{{ __('Option C') }}</option>
+                                            <option value="d" @if(old('correctAnswer')=='d' ) selected @endif>{{ __('Option D') }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

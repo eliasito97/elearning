@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Review List</h4>
+                    <h4>{{ __('Review List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('review.index')}}">Reviews</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('review.index')}}">All Review</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Home') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('review.index')}}">{{ __('Reviews') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('review.index')}}">{{ __('All Review') }}</a>
                     </li>
                 </ol>
             </div>
@@ -32,10 +32,9 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
+                            class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"
-                            class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -43,7 +42,7 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Reviews List </h4>
+                                <h4 class="card-title">{{ __('All Reviews List') }} </h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -65,7 +64,7 @@
                                                 <td>{{$r->rating}}</td>
                                                 <td>{{$r->comment}}</td>
                                                 <td>{{$r->course?->title_en}}</td>
-                                                <td>{{$r->student?->name_en}}</td>
+                                                <td>{{$r->student?->name}} {{$r->student?->lastname}}</td>
                                                 <td>
                                                     <a href="{{route('review.edit', encryptor('encrypt',$r->id))}}"
                                                         class="btn btn-sm btn-primary" title="Edit"><i
@@ -84,7 +83,7 @@
                                             @empty
                                             <tr>
                                                 <th colspan="5" class="text-center">
-                                                    <h1>No Review Found</h1>
+                                                    <h1>{{ __('No Review Found') }}</h1>
                                                 </th>
                                             </tr>
                                             @endforelse

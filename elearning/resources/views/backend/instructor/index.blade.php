@@ -112,7 +112,7 @@
                                             <div class="dropdown-menu dropdown-menu-right border py-0">
                                                 <div class="py-2">
                                                     <a class="dropdown-item"
-                                                        href="{{route('instructor.edit', encryptor('encrypt',$d->id))}}">Edit</a>
+                                                        href="{{route('instructor.edit', encryptor('encrypt',$d->id))}}">{{ __('Edit') }}</a>
                                                     <a class="dropdown-item text-danger"
                                                         href="javascript:void(0);">{{ __('Delete') }}</a>
                                                 </div>
@@ -125,7 +125,7 @@
                                                 <img src="{{asset('public/uploads/users/'.$d->image)}}" width="100"
                                                     height="100" class="rounded-circle" alt="">
                                             </div>
-                                            <h3 class="mt-4 mb-1">{{$d->name_en}}</h3>
+                                            <h3 class="mt-4 mb-1">{{$d->name}} {{$d->lastname}}</h3>
                                             <p class="text-muted">{{$d->role?->name}}</p>
                                             <ul class="list-group mb-3 list-group-flush">
                                                 <li class="list-group-item px-0 d-flex justify-content-between">
@@ -144,7 +144,7 @@
                                                 </li>
                                             </ul>
                                             <a class="btn btn-outline-primary btn-rounded mt-3 px-4"
-                                                href="about-instructor.html">{{ __('Read More') }}</a>
+                                                href="{{route('instructorProfile', encryptor('encrypt', $d->id))}}">{{ __('Read More') }}</a>
                                         </div>
                                     </div>
                                 </div>

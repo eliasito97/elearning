@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Answer List</h4>
+                    <h4>{{ __('Answer List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('answer.index')}}">Answers</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('answer.index')}}">All Answer</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('answer.index')}}">{{ __('Answers') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('answer.index')}}">{{ __('All Answer') }}</a>
                     </li>
                 </ol>
             </div>
@@ -32,10 +32,9 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
+                            class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"
-                            class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -43,7 +42,7 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Answers List </h4>
+                                <h4 class="card-title">{{ __('All Answers List') }} </h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -54,14 +53,14 @@
                                                 <th>{{__('Student')}}</th>
                                                 <th>{{__('Question')}}</th>
                                                 <th>{{__('Answer')}}</th>
-                                                <th>{{__('Action')}}</th> 
+                                                <th>{{__('Action')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse ($answer as $a)
                                             <tr>
                                                 <td>{{$a->id}}</td>
-                                                <td>{{$a->student?->name_en}}</td>
+                                                <td>{{$a->student?->name}} {{$a->student?->lastname}}</td>
                                                 <td>{{$a->question?->content}}</td>
                                                 <td>{{$a->answer}}</td>
                                                 <td>
@@ -81,7 +80,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="5" class="text-center"><h1>No Answer Found</h1></th>
+                                                <th colspan="5" class="text-center"><h1>{{ __('No Answer Found') }}</h1></th>
                                             </tr>
                                             @endforelse
                                         </tbody>

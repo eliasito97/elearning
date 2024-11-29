@@ -15,14 +15,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Discussion List</h4>
+                    <h4>{{ __('Discussion List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('discussion.index')}}">Discussions</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('discussion.index')}}">All Discussion</a>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('discussion.index')}}">{{ __('Discussions') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('discussion.index')}}">{{ __('All Discussion') }}</a>
                     </li>
                 </ol>
             </div>
@@ -32,10 +32,9 @@
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
+                            class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
                     <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"
-                            class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -43,7 +42,7 @@
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">All Discussions List </h4>
+                                <h4 class="card-title">{{ __('All Discussions List') }} </h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -55,13 +54,13 @@
                                                 <th>{{__('Course')}}</th>
                                                 <th>{{__('Title')}}</th>
                                                 <th>{{__('Comment')}}</th>
-                                                <th>{{__('Action')}}</th> 
+                                                <th>{{__('Action')}}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @forelse ($discussion as $d)
                                             <tr>
-                                                <td>{{$d->user?->name_en}}</td>
+                                                <td>{{$d->user?->name}} {{$d->user?->lastname}}</td>
                                                 <td>{{$d->user?->role?->name}}</td>
                                                 <td>{{$d->course?->title_en}}</td>
                                                 <td>{{$d->title}}</td>
@@ -83,7 +82,7 @@
                                             </tr>
                                             @empty
                                             <tr>
-                                                <th colspan="6" class="text-center"><h1>No Discussion Found</h1></th>
+                                                <th colspan="6" class="text-center"><h1>{{ __('No Discussion Found') }}</h1></th>
                                             </tr>
                                             @endforelse
                                         </tbody>

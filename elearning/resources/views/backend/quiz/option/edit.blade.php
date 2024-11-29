@@ -16,14 +16,14 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Edit Option</h4>
+                    <h4>{{ __('Edit Option') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('option.index')}}">Options</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Option</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('option.index')}}">{{ __('Options') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0);">{{ __('Edit Option') }}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
             <div class="col-xl-12 col-xxl-12 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic Info</h5>
+                        <h5 class="card-title">{{ __('Basic Info') }}</h5>
                     </div>
                     <div class="card-body">
                         <form action="{{route('option.update',encryptor('encrypt', $option->id))}}" method="post"
@@ -43,14 +43,14 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Question</label>
+                                        <label class="form-label">{{ __('Question') }}</label>
                                         <select class="form-control" name="questionId">
                                             @forelse ($question as $q)
                                             <option value="{{$q->id}}" {{old('questionId', $option->question_id) ==
                                                 $q->id?'selected':''}}>
                                                 {{$q->content}}</option>
                                             @empty
-                                            <option value="">No Question Found</option>
+                                            <option value="">{{ __('No Question Found') }}</option>
                                             @endforelse
                                         </select>
                                     </div>
@@ -60,7 +60,7 @@
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Option</label>
+                                        <label class="form-label">{{ __('Option') }}</label>
                                         <input type="text" class="form-control" name="optionText" value="{{old('optionText',$option->option_text)}}">
                                     </div>
                                     @if($errors->has('optionText'))
@@ -69,16 +69,16 @@
                                 </div>
                                <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="form-group">
-                                    <label class="form-label">Is Correct</label>
+                                    <label class="form-label">{{ __('Is Correct') }}</label>
                                     <select class="form-control" name="is_correct">
-                                        <option value="1" @if(old('is_correct',$option->is_correct)==1) selected @endif>Correct</option>
-                                        <option value="0" @if(old('is_correct',$option->is_correct)==0) selected @endif>Wrong</option>
+                                        <option value="1" @if(old('is_correct',$option->is_correct)==1) selected @endif>{{ __('Correct') }}</option>
+                                        <option value="0" @if(old('is_correct',$option->is_correct)==0) selected @endif>{{ __('Wrong') }}</option>
                                     </select>
                                 </div>
                             </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                    <button type="submit" class="btn btn-light">Cencel</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

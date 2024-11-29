@@ -28,25 +28,24 @@
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
-                    <h4>Permission List</h4>
+                    <h4>{{ __('Permission List') }}</h4>
                 </div>
             </div>
             <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">Permissions</a></li>
-                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">All Permission</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">{{ __('Homepage') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">{{ __('Permissions') }}</a></li>
+                    <li class="breadcrumb-item active"><a href="{{route('role.index')}}">{{ __('All Permission') }}</a></li>
                 </ol>
             </div>
-        </div> 
+        </div>
 
         <div class="row">
             <div class="col-lg-12">
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
-                            class="nav-link btn-primary mr-1 show active">List View</a></li>
-                    <li class="nav-item"><a href="javascript:void()" data-toggle="tab" class="nav-link btn-primary">Grid
-                            View</a></li>
+                            class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
+                    <li class="nav-item"><a href="javascript:void()" data-toggle="tab" class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
                 </ul>
             </div>
             <div class="col-lg-12">
@@ -61,7 +60,7 @@
                             foreach($permission as $perm){
                             $permissions[$perm->name]=$perm->name;
                             }
-                            @endphp 
+                            @endphp
                             @foreach(Illuminate\Support\Facades\Route::getRoutes() as $v)
                             @if($v->getPrefix()=="/admin")
                             @php
@@ -96,16 +95,16 @@
                                         @endif
                                     </div>
                                     @empty
-                        
+
                                     @endforelse
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary"> Save</button>
+                                        <button type="submit" class="btn btn-primary"> {{ __('Save') }}</button>
                                     </div>
                                 </div>
                             </form>
-                        
+
                         </div>
                     </div>
                 </div>
