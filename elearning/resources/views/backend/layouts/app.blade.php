@@ -31,6 +31,7 @@
         <div class="nav-header" style="background-color: black">
             <a href="{{route('home')}}" class="brand-logo">
 
+
                 <img src="{{asset('public/frontend/dist/images/logo/logo.png')}}" alt="images"
                      class="brand-title" style="margin-left: 0px; max-width: 200px;"/>
 {{--                <img src="{{asset('public/frontend/dist/images/logo/logo5.png')}}" alt="images"--}}
