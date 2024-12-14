@@ -21,7 +21,10 @@ class ProfileController extends Controller
     {
         try {
             $data = Student::find(currentUserId());
-            $data->name_en = $request->fullName_en;
+            $data->name = $request->Name;
+            $data->middlename = $request->Middlename;
+            $data->lastname = $request->Last_Name;
+            $data->lastname2 = $request->Last_Name2;
             $data->contact_en = $request->contactNumber_en;
             $data->email = $request->emailAddress;
             $data->date_of_birth = $request->dob;
@@ -64,7 +67,7 @@ class ProfileController extends Controller
                 return redirect()->back()->with('success', 'Password Have been Changed');
             }
         } catch (Exception $e) {
-            // dd($e); 
+            // dd($e);
             return redirect()->back()->withInput()->with('error', 'Something went wrong. Please try again');
         }
     }

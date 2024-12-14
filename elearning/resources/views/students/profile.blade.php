@@ -28,7 +28,7 @@
                             <img src="{{ asset('public/uploads/students/' . $student_info->image) }}" alt="Student" />
                         </div>
                         <div class="text">
-                            <h5>{{$student_info->name_en}}</h5>
+                            <h5>{{$student_info->name}} {{$student_info->lastname}}</h5>
                             <p>{{$student_info->profession?$student_info->profession: __('Student')}}</p>
                         </div>
                     </div>
@@ -103,13 +103,13 @@
                         </div>
                         <div class="tab-content__profile-content">
                             <div class="info-student">
-                                <h6 class="font-title--card">{{$student_info->name_en}} {{ __('Information') }}</h6>
+                                <h6 class="font-title--card">{{$student_info->name}} {{ __('Information') }}</h6>
                                 <dl class="row my-0 info-student-topic">
                                     <dt class="col-sm-4">
-                                        <span>{{ __('Name') }}</span>
+                                        <span>{{ __('Full Name') }}</span>
                                     </dt>
                                     <dd class="col-sm-8">
-                                        <p>{{$student_info->name_en}}</p>
+                                        <p>{{$student_info->name}} {{$student_info->lastname}}</p>
                                     </dd>
                                 </dl>
                                 <dl class="row my-0 info-student-topic">
@@ -160,9 +160,24 @@
                                         @csrf
                                         <div class="row g-3">
                                             <div class="col-lg-6">
-                                                <label for="fullName_en">{{ __('Full Name') }}</label>
-                                                <input type="text" class="form-control" name="fullName_en"
-                                                    value="{{$student_info->name_en}}" placeholder="{{ __('Enter Your Name') }}" />
+                                                <label for="fullName_en">{{ __('Name') }}</label>
+                                                <input type="text" class="form-control" name="Name"
+                                                    value="{{$student_info->name}}" placeholder="{{ __('Name') }}" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="fullName_en">{{ __('Middlename') }}</label>
+                                                <input type="text" class="form-control" name="Middlename"
+                                                       value="{{$student_info->middlename}}" placeholder="{{ __('Middlename') }}" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="fullName_en">{{ __('Last Name') }}</label>
+                                                <input type="text" class="form-control" name="Last_Name"
+                                                       value="{{$student_info->lastname}}" placeholder="{{ __('Last Name') }}" />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label for="fullName_en">{{ __('last Name2') }}</label>
+                                                <input type="text" class="form-control" name="Last_Name2"
+                                                       value="{{$student_info->lastname2}}" placeholder="{{ __('last Name2') }}" />
                                             </div>
                                             <div class="col-lg-6">
                                                 <label for="dob">{{ __('Date of Birth') }}</label>

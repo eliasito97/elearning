@@ -491,52 +491,61 @@
                                 </div>
                                 <div class="d-flex align-items-lg-center align-items-start flex-column flex-lg-row">
 
-
                                     <div class="purchase-area-items">
-                                        @php $i=0; @endphp
-                                        @foreach (json_decode(base64_decode($e->cart_data))->cart as $data)
-                                        @php ++$i; @endphp
-                                        <div
-                                            class="purchase-area-items-start d-flex align-items-lg-center flex-column flex-lg-row">
-                                            <div class="image">
-                                                <a href="#">
-                                                    <img src="{{asset('public/uploads/courses/'.$data->image)}}"
-                                                        alt="Image" />
-                                                </a>
-                                            </div>
-                                            <div class="text d-flex flex-column flex-lg-row">
-                                                <div class="text-main">
-                                                    <h6>
-                                                        <a href="#">{{$data->title_en}}</a>
-                                                    </h6>
-                                                    <p> By
+                                        @php
+                                            $cartData = json_decode(base64_decode($e->cart_data), true); // Decodificar como array
+                                            $courses = $cartData['cart'] ?? []; // Asegurarse de que sea un array
+                                            $cartDetails = $cartData['cart_details'] ?? null;
+                                        @endphp
+
+                                        @if (!empty($courses))
+                                            @foreach ($courses as $data)
+                                                <div class="purchase-area-items-start d-flex align-items-lg-center flex-column flex-lg-row">
+                                                    <div class="image">
                                                         <a href="#">
-                                                         {{$data->instructor}}</a>
-                                                    </p>
+                                                            <img src="{{ asset('public/uploads/courses/' . $data['image']) }}" alt="Image" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="text d-flex flex-column flex-lg-row">
+                                                        <div class="text-main">
+                                                            <h6>
+                                                                <a href="#">{{ $data['title_en'] }}</a>
+                                                            </h6>
+                                                            <p>By
+                                                                <a href="#">{{ $data['instructor'] }}</a>
+                                                            </p>
+                                                        </div>
+                                                        <p class="ms-2">
+                                                            {{ $data['price'] ? ('bs' . number_format($data['price'], 2)) : 'Free' }}
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <p class="ms-2">{{$data->price?('৳'.$data->price):'Free'}}</p>
-                                            </div>
-                                        </div>
-                                        @endforeach
+                                            @endforeach
+                                        @else
+                                            <p>{{ __('No courses found in the cart') }}</p>
+                                        @endif
                                     </div>
+
                                     <div class="purchase-area-items-end">
-                                        <p>{{$e->created_at}}</p>
+                                        <p>{{ $e->created_at->format('d-m-Y') }}</p>
                                         <dl class="row">
                                             <dt class="col-sm-4">Total</dt>
                                             <dd class="col-sm-8">
-                                                {{json_decode(base64_decode($e->cart_data))->cart_details->total_amount}}
+                                                ৳{{ number_format($cartDetails['total_amount'] ?? 0, 2) }}
                                             </dd>
                                             <dt class="col-sm-4">Total Courses</dt>
                                             <dd class="col-sm-8">
-                                                {{$i}}
+                                                {{ count($courses) }}
                                             </dd>
                                             <dt class="col-sm-4">Payment Type</dt>
                                             <dd class="col-sm-8">
-                                                {{$e->txnid}}
+                                                {{ $e->txnid ?? __('Not available') }}
                                             </dd>
                                         </dl>
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>

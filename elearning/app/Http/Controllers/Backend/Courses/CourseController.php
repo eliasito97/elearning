@@ -98,7 +98,8 @@ class CourseController extends Controller
      */
     public function show($id)
     {
-        //
+        $material = Material::where('id',$id)->paginate(10);
+        return view('backend.course.material.index', compact('material'));
     }
 
     public function frontShow($id)
