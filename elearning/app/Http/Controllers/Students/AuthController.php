@@ -22,7 +22,10 @@ class AuthController extends Controller
     {
         try {
             $student = new Student;
-            $student->name_en = $request->name;
+            $student->name = $request->userName;
+            $student->middlename = $request->userMiddlename;
+            $student->lastname = $request->userLastname;
+            $student->lastname2 = $request->userLastname2;
             $student->email = $request->email;
             $student->password = Hash::make($request->password);
             if ($student->save()){

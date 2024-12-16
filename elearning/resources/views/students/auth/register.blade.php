@@ -14,11 +14,32 @@
                     <form action="{{route('studentRegister.store','studentdashboard')}}" method="POST">
                         @csrf
                         <div class="form-element">
-                                <label for="name">{{__('Full Name')}}</label>
-                                <input type="text" placeholder="{{__('Enter your Full Name')}}" id="name" value="{{old('name')}}" name="name" />
+                                <label for="name">{{__('Name')}}</label>
+                                <input type="text" placeholder="{{__('Enter your')}} {{__('name')}}" id="userName" value="{{old('name')}}" name="userName" />
                                 @if($errors->has('name'))
                                     <small class="d-block text-danger">{{$errors->first('name')}}</small>
                                 @endif
+                        </div>
+                        <div class="form-element">
+                            <label for="name">{{__('Middlename')}}</label>
+                            <input type="text" placeholder="{{__('Enter your')}} {{__('Middlename')}}" id="userMiddlename" value="{{old('Middlename')}}" name="userMiddlename" />
+                            @if($errors->has('Middlename'))
+                                <small class="d-block text-danger">{{$errors->first('Middlename')}}</small>
+                            @endif
+                        </div>
+                        <div class="form-element">
+                            <label for="name">{{__('Last Name')}}</label>
+                            <input type="text" placeholder="{{__('Enter your')}} {{__('Last Name')}}" id="userLastname" value="{{old('Last Name')}}" name="userLastname" />
+                            @if($errors->has('Last Name'))
+                                <small class="d-block text-danger">{{$errors->first('Last Name')}}</small>
+                            @endif
+                        </div>
+                        <div class="form-element">
+                            <label for="name">{{__('last Name2')}}</label>
+                            <input type="text" placeholder="{{__('Enter your')}} {{__('last Name2')}} " id="userLastname2" value="{{old('last Name2')}}" name="userLastname2" />
+                            @if($errors->has('name'))
+                                <small class="d-block text-danger">{{$errors->first('last Name2')}}</small>
+                            @endif
                         </div>
                         <div class="form-element">
                                 <label for="email">{{__('Your email')}}</label>
