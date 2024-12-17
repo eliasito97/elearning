@@ -53,7 +53,7 @@
                 </div>
                 <div class="coursedescription-header-end">
                     <!-- <a href="#" class="rating-link" data-bs-toggle="modal" data-bs-target="#ratingModal">Leave a Rating</a> -->
-                    <a href="#" class="button button--text" data-bs-toggle="modal" data-bs-target="#ratingModal">{{ __('Leave a Rating') }}</a>
+{{--                    <a href="#" class="button button--text" data-bs-toggle="modal" data-bs-target="#ratingModal">{{ __('Leave a Rating') }}</a>--}}
 
                     <!-- <a href="#" class="btn btn-primary regular-fill-btn">Next Lession</a> -->
                     <button class="button button--primary">{{ __('Next Lession') }}</button>
@@ -70,12 +70,33 @@
             {{-- Video Area --}}
             <div class="col-lg-8">
                 <div class="course-description-start">
-                    <div class="video-area">
-                        <video controls id="myvideo" class="video-js w-100"
-                            poster="{{asset('public/frontend/dist/images/courses/vthumb.jpg')}}">
-                            <source src="" class="w-100" />
-                        </video>
-                    </div>
+                    @if(isset($course->thumbnail_video))
+                        @if(str_contains($course->thumbnail_video, 'youtube.com') || str_contains($course->thumbnail_video, 'youtu.be'))
+                            <!-- Si el video es un enlace de YouTube -->
+                            <div class="video-area">
+                                <iframe
+                                    id="myvideo"
+                                    class="video-js w-100"
+                                    src="{{ str_replace('watch?v=', 'embed/', $course->thumbnail_video) }}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        @else
+                            <!-- Si el video es un archivo físico cargado -->
+                            <div class="video-area">
+                                <video controls id="myvideo" class="video-js w-100">
+                                    <source src="{{ asset('uploads/courses/contents/'.$course->thumbnail_video) }}" type="video/mp4">
+                                    Tu navegador no soporta la reproducción de video.
+                                </video>
+                            </div>
+                        @endif
+                    @else
+                        <p>No hay un video disponible para este curso.</p>
+                    @endif
+
+
                     <div class="course-description-start-content">
                         <h5 class="font-title--sm material-title">{{$course->title_en}}</h5>
                         <nav class="course-description-start-content-tab">
@@ -85,9 +106,9 @@
                                     aria-selected="true">
                                     {{ __('Lesson Description') }}
                                 </button>
-                                <button class="nav-link" id="nav-lnotes-tab" data-bs-toggle="tab"
-                                    data-bs-target="#nav-lnotes" type="button" role="tab" aria-controls="nav-lnotes"
-                                    aria-selected="false">{{ __('Lesson Notes') }}</button>
+{{--                                <button class="nav-link" id="nav-lnotes-tab" data-bs-toggle="tab"--}}
+{{--                                    data-bs-target="#nav-lnotes" type="button" role="tab" aria-controls="nav-lnotes"--}}
+{{--                                    aria-selected="false">{{ __('Lesson Notes') }}</button>--}}
                                 <button class="nav-link" id="nav-lcomments-tab" data-bs-toggle="tab"
                                     data-bs-target="#nav-lcomments" type="button" role="tab"
                                     aria-controls="nav-lcomments" aria-selected="false">{{ __('Comments') }}</button>
@@ -105,36 +126,30 @@
                                 aria-labelledby="nav-ldescrip-tab">
                                 <div class="lesson-description">
                                     <p>
-                                        Donec imperdiet erat tortor, nec consectetur odio fermentum et. Mauris vehicula
-                                        faucibus viverra. Vestibulum varius ante enim. eu posuere ligula eleifend non.
-                                        Praesent sapien nisi, luctus a tellus
-                                        a, porta dapibus massa. Cras non mattis mauris. Etiam convallis purus a ante
-                                        mattis,
-                                        id tincidunt sapien hendrerit. Sed laoreet Check out my portfolio: <a
-                                            href="#">https://bit.ly/2OZkYCo</a>
+                                        {{$course->description_en}}
                                     </p>
                                 </div>
                                 <!-- Lesson Description Ends Here -->
                             </div>
                             <!-- Course Notes Starts Here -->
-                            <div class="tab-pane fade" id="nav-lnotes" role="tabpanel" aria-labelledby="nav-lnotes-tab">
-                                <div class="course-notes-area">
-                                    <div class="course-notes">
-                                        <div class="course-notes-item">
-                                            <p>
-                                                You have to take a minute to understand what is the goal, what is the
-                                                problem, what they're trying to achieve with it who is the target
-                                                audience,
-                                                who is the competition, and understand
-                                                what are you trying to do here and how will success will look like of
-                                                the
-                                                project. the way to do that is basically by doing two things
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Course Notes Ends Here -->
-                            </div>
+{{--                            <div class="tab-pane fade" id="nav-lnotes" role="tabpanel" aria-labelledby="nav-lnotes-tab">--}}
+{{--                                <div class="course-notes-area">--}}
+{{--                                    <div class="course-notes">--}}
+{{--                                        <div class="course-notes-item">--}}
+{{--                                            <p>--}}
+{{--                                                You have to take a minute to understand what is the goal, what is the--}}
+{{--                                                problem, what they're trying to achieve with it who is the target--}}
+{{--                                                audience,--}}
+{{--                                                who is the competition, and understand--}}
+{{--                                                what are you trying to do here and how will success will look like of--}}
+{{--                                                the--}}
+{{--                                                project. the way to do that is basically by doing two things--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <!-- Course Notes Ends Here -->--}}
+{{--                            </div>--}}
                             <!-- Lesson Comments Starts Here -->
                             <div class="tab-pane fade" id="nav-lcomments" role="tabpanel"
                                 aria-labelledby="nav-lcomments-tab">
@@ -330,15 +345,15 @@
                             <div class="main-wizard"
                                 data-material-title="{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}">
                                 <div class="main-wizard__wrapper">
-                                    <a class="main-wizard-start" onclick="show_video('{{$material->content}}')">
-                                        @if ($material->type=='video')
-                                        <div class="main-wizard-icon">
+                                    <a class="main-wizard-start" onclick="show_video('{{$material->content_url}}', '{{$material->type}}')">
+                                        @if ($material->type == 'video')
                                             <i class="far fa-play-circle fa-lg"></i>
-                                        </div>
+                                        @elseif ($material->type == 'document')
+                                            <i class="far fa-file-alt fa-lg text-success"></i>
+                                        @elseif ($material->type == 'quiz')
+                                            <i class="fas fa-question-circle fa-lg text-warning"></i>
                                         @else
-                                        <div class="main-wizard-icon">
-                                            <i class="far fa-file fa-lg text-success"></i>
-                                        </div>
+                                            <i class="far fa-file fa-lg text-muted"></i>
                                         @endif
                                         <div class="main-wizard-title">
                                             <p>{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}
