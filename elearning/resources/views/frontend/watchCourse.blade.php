@@ -333,7 +333,7 @@
                             <div class="main-wizard"
                                 data-material-title="{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}">
                                 <div class="main-wizard__wrapper">
-                                    <a class="main-wizard-start" onclick="show_video('{{$material->content_url}}', '{{$material->type}}')">
+                                    <a class="main-wizard-start" onclick="show_video('{{$material->content_url}}', '{{$material->type}}', {{$material->id}})">
                                         @if ($material->type == 'video')
                                             <i class="far fa-play-circle fa-lg"></i>
                                         @elseif ($material->type == 'document')
@@ -351,8 +351,8 @@
                                     <div class="main-wizard-end d-flex align-items-center">
                                         <span>12:34</span>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                style="border-radius: 0px; margin-left: 5px;" />
+                                            <input id="checkbox_{{$material->id}}" class="form-check-input" type="checkbox" value=""
+                                                   style="border-radius: 0px; margin-left: 5px;" />
                                         </div>
                                     </div>
                                 </div>
@@ -444,7 +444,7 @@
 
     <script>
 
-        function show_video(e, type) {
+        function show_video(e, type, index) {
             console.log(e);
 
             switch (type) {
@@ -455,16 +455,24 @@
                     if (e.includes('youtube.com') || e.includes('youtu.be')) {
                         let videoID = e.split('v=')[1].split('&')[0];  // Obtener el ID del video
                         link = `https://www.youtube.com/embed/${videoID}`;  // Enlace para embeber el video
+
                     } else {
                         // Enlace a un archivo de video local
                         link = "{{asset('public/uploads/courses/contents')}}/" + e;
                     }
-
+                    var checkbox = document.getElementById('checkbox_' + index);
+                    if (checkbox && !checkbox.checked) {
+                        checkbox.checked = true;
+                        checkbox.disabled = true;
+                    }
                     // Si el video es un elemento <video>
                     var video = document.getElementById('myvideo');
                     if (video) { // Verifica que el elemento exista
                         video.src = link;
                         video.play(); // Reproduce el video
+
+                        // Marca y bloquea el checkbox solo si no está marcado
+
                     } else {
                         // Si el video es de YouTube, usa un <iframe> en lugar de <video>
                         var iframe = document.getElementById('myvideo');
@@ -474,16 +482,31 @@
                             console.error('Elemento con ID "myvideo" no encontrado.');
                         }
                     }
+
                     break;
 
                 case 'document':
                     // Abre el documento en una nueva pestaña
                     window.open("{{asset('public/uploads/courses/contents')}}/" + e, '_blank');
+
+                    // Marca y bloquea el checkbox solo si no está marcado
+                    var checkbox = document.getElementById('checkbox_' + index);
+                    if (checkbox && !checkbox.checked) {
+                        checkbox.checked = true;
+                        checkbox.disabled = true;
+                    }
                     break;
 
                 case 'quiz':
                     // Redirige a la página del cuestionario
                     window.open(e, '_blank');
+
+                    // Marca y bloquea el checkbox solo si no está marcado
+                    var checkbox = document.getElementById('checkbox_' + index);
+                    if (checkbox && !checkbox.checked) {
+                        checkbox.checked = true;
+                        checkbox.disabled = true;
+                    }
                     break;
 
                 default:
@@ -493,8 +516,6 @@
             }
         }
 
-
-        // Asigna esta función a los eventos necesarios
     </script>
 </body>
 
