@@ -70,7 +70,7 @@
             {{-- Video Area --}}
             <div class="col-lg-8">
                 <div class="course-description-start">
-                    @if(isset($course->thumbnail_video))
+                    @if(isset($course->thumbnail_video) )
                         @if(str_contains($course->thumbnail_video, 'youtube.com') || str_contains($course->thumbnail_video, 'youtu.be'))
                             <!-- Si el video es un enlace de YouTube -->
                             <div class="video-area">
@@ -83,20 +83,8 @@
                                     allowfullscreen>
                                 </iframe>
                             </div>
-                        @else
-                            <!-- Si el video es un archivo físico cargado -->
-                            <div class="video-area">
-                                <video controls id="myvideo" class="video-js w-100">
-                                    <source src="{{ asset('uploads/courses/contents/'.$course->thumbnail_video) }}" type="video/mp4">
-                                    Tu navegador no soporta la reproducción de video.
-                                </video>
-                            </div>
                         @endif
-                    @else
-                        <p>No hay un video disponible para este curso.</p>
                     @endif
-
-
                     <div class="course-description-start-content">
                         <h5 class="font-title--sm material-title">{{$course->title_en}}</h5>
                         <nav class="course-description-start-content-tab">
@@ -429,13 +417,8 @@
                     starShape: "rounded",
         });
 
-        function show_video(e){
-            let link="{{asset('public/uploads/courses/contents')}}/"+e
 
-            var video = document.getElementById('myvideo');
-                        video.src = link;
-                        video.play();
-        }
+
     </script>
 
     <script>
@@ -459,7 +442,60 @@
     });
     </script>
 
+    <script>
 
+        function show_video(e, type) {
+            console.log(e);
+
+            switch (type) {
+                case 'video':
+                    let link;
+
+                    // Si el enlace es de YouTube
+                    if (e.includes('youtube.com') || e.includes('youtu.be')) {
+                        let videoID = e.split('v=')[1].split('&')[0];  // Obtener el ID del video
+                        link = `https://www.youtube.com/embed/${videoID}`;  // Enlace para embeber el video
+                    } else {
+                        // Enlace a un archivo de video local
+                        link = "{{asset('public/uploads/courses/contents')}}/" + e;
+                    }
+
+                    // Si el video es un elemento <video>
+                    var video = document.getElementById('myvideo');
+                    if (video) { // Verifica que el elemento exista
+                        video.src = link;
+                        video.play(); // Reproduce el video
+                    } else {
+                        // Si el video es de YouTube, usa un <iframe> en lugar de <video>
+                        var iframe = document.getElementById('myvideo');
+                        if (iframe) {
+                            iframe.src = link;
+                        } else {
+                            console.error('Elemento con ID "myvideo" no encontrado.');
+                        }
+                    }
+                    break;
+
+                case 'document':
+                    // Abre el documento en una nueva pestaña
+                    window.open("{{asset('public/uploads/courses/contents')}}/" + e, '_blank');
+                    break;
+
+                case 'quiz':
+                    // Redirige a la página del cuestionario
+                    window.open(e, '_blank');
+                    break;
+
+                default:
+                    // Maneja otros tipos de contenido
+                    alert('Tipo de contenido no reconocido.');
+                    break;
+            }
+        }
+
+
+        // Asigna esta función a los eventos necesarios
+    </script>
 </body>
 
 </html>
