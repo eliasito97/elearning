@@ -235,6 +235,7 @@
                             <li><a href="{{route('course.index')}}"><i class="las la-book-open"></i>{{__('All Courses')}}</a></li>
                             <li><a href="{{route('lesson.index')}}"><i class="las la-chalkboard"></i>{{__('Lessons')}}</a></li>
                             <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>{{__('Materials')}}</a></li>
+                            <li><a href="{{route('review.index')}}"><i class="las la-atom"></i></i>{{__('Review')}}</a></li>
                         </ul>
                     </li>
                     <li><a class="" href="{{route('enrollment.index')}}" aria-expanded="false">

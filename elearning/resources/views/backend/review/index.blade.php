@@ -33,8 +33,8 @@
                 <ul class="nav nav-pills mb-3">
                     <li class="nav-item"><a href="#list-view" data-toggle="tab"
                             class="nav-link btn-primary mr-1 show active">{{ __('List View') }}</a></li>
-                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"
-                            class="nav-link btn-primary">{{ __('Grid View') }}</a></li>
+{{--                    <li class="nav-item"><a href="javascript:void(0);" data-toggle="tab"--}}
+{{--                            class="nav-link btn-primary">{{ __('Grid View') }}</a></li>--}}
                 </ul>
             </div>
             <div class="col-lg-12">

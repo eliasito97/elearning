@@ -60,8 +60,13 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Review $review)
+    public function destroy($id)
     {
-        //
+        $data = Review::findOrFail(encryptor('decrypt', $id));
+//        dd($data);
+        if ($data->delete()) {
+            $this->notice::error('Data Deleted!');
+            return redirect()->back();
+        }
     }
 }

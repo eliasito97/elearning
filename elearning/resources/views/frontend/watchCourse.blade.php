@@ -51,13 +51,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="coursedescription-header-end">
+{{--                <div class="coursedescription-header-end">--}}
                     <!-- <a href="#" class="rating-link" data-bs-toggle="modal" data-bs-target="#ratingModal">Leave a Rating</a> -->
 {{--                    <a href="#" class="button button--text" data-bs-toggle="modal" data-bs-target="#ratingModal">{{ __('Leave a Rating') }}</a>--}}
 
                     <!-- <a href="#" class="btn btn-primary regular-fill-btn">Next Lession</a> -->
-                    <button class="button button--primary">{{ __('Next Lession') }}</button>
-                </div>
+{{--                    <button class="button button--primary">{{ __('Next Lession') }}</button>--}}
+{{--                </div>--}}
             </div>
         </div>
     </header>
@@ -144,88 +144,92 @@
                                 <div class="lesson-comments">
                                     <div class="feedback-comment pt-0 ps-0 pe-0">
                                         <h6 class="font-title--card">{{ __('Add a Public Comment') }}</h6>
-                                        <form action="#">
-                                            <label for="comment">{{ __('Comments') }}</label>
-                                            <textarea class="form-control" id="comment" placeholder="{{ __('Add a Public Comment') }}"></textarea>
+                                        <form action="{{ route('watchCourse.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="course_id" value="{{ $course->id }}">
+                                            <input type="hidden" name="student_id" value="{{ currentUserId() }}"> <!-- Asumiendo que el estudiante está autenticado -->
+                                            <label for="comment" >{{ __('Comments') }}</label>
+                                            <textarea name="comment" class="form-control" id="comment" placeholder="{{ __('Add a Public Comment') }}"></textarea>
                                             <button type="submit" class="button button-md button--primary float-end">{{ __('Post Comment') }}</button>
                                         </form>
                                     </div>
                                     <div class="students-feedback pt-0 ps-0 pe-0 pb-0 mb-0">
                                         <div class="students-feedback-heading">
-                                            <h5 class="font-title--card">{{ __('Comments') }} <span>(57,685)</span></h5>
+                                            <h5 class="font-title--card">{{ __('Comments') }} <span>{{$reviews->count()}}</span></h5>
                                         </div>
                                         <div class="students-feedback-item">
+                                            @foreach($reviews as $review)
                                             <div class="feedback-rating">
                                                 <div class="feedback-rating-start">
                                                     <div class="image">
-                                                        <img src="{{asset('public/frontend/dist/images/ellipse/user.jpg')}}" alt="Image" />
+                                                        <img src="{{asset('public/uploads/students/'.$review->student->image)}}" alt="Image" />
                                                     </div>
                                                     <div class="text">
-                                                        <h6><a href="#">Harry Pinsky</a></h6>
-                                                        <p>1 hour ago</p>
+                                                        <h6>
+                                                            <a>{{$review->student->name}} {{$review->student->lastname}}</a>
+                                                        </h6>
+                                                        <p>{{$review->created_at}}</p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p>
-                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,
-                                                vestibulum ante non, vulputate nibh. Cras non molestie diam. Great
-                                                Course
-                                                for Beginner 😀
+                                            <p class="mb-3 font-para--lg">
+                                              {{$review->comment}}
                                             </p>
+                                            @endforeach
                                         </div>
-                                        <div class="students-feedback-item">
-                                            <div class="feedback-rating">
-                                                <div class="feedback-rating-start">
-                                                    <div class="image">
-                                                        <img src="{{asset('public/frontend/dist/images/ellipse/1.png')}}" alt="Image" />
-                                                    </div>
-                                                    <div class="text">
-                                                        <h6><a href="#">Harry Pinsky</a></h6>
-                                                        <p>2 hour ago</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,
-                                                vestibulum ante non, vulputate nibh.
-                                            </p>
-                                        </div>
-                                        <div class="students-feedback-item">
-                                            <div class="feedback-rating">
-                                                <div class="feedback-rating-start">
-                                                    <div class="image">
-                                                        <img src="{{asset('public/frontend/dist/images/ellipse/2.png')}}" alt="Image" />
-                                                    </div>
-                                                    <div class="text">
-                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                        <p>1 day ago</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque
-                                                vestibulum
-                                                massa eget consequat scelerisque. Phasellus varius risus nec maximus
-                                                auctor.
-                                            </p>
-                                        </div>
-                                        <div class="students-feedback-item border-0">
-                                            <div class="feedback-rating">
-                                                <div class="feedback-rating-start">
-                                                    <div class="image">
-                                                        <img src="{{asset('public/frontend/dist/images/ellipse/3.png')}}" alt="Image" />
-                                                    </div>
-                                                    <div class="text">
-                                                        <h6><a href="#">Watcraz Eggsy</a></h6>
-                                                        <p>1 day ago</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <p>
-                                                Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus
-                                                sapien. Quisque vestibulum massa eget consequat scelerisque.
-                                            </p>
-                                        </div>
+{{--                                        <div class="students-feedback-item">--}}
+{{--                                            <div class="feedback-rating">--}}
+{{--                                                <div class="feedback-rating-start">--}}
+{{--                                                    <div class="image">--}}
+{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/1.png')}}" alt="Image" />--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="text">--}}
+{{--                                                        <h6><a href="#">Harry Pinsky</a></h6>--}}
+{{--                                                        <p>2 hour ago</p>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <p>--}}
+{{--                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,--}}
+{{--                                                vestibulum ante non, vulputate nibh.--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="students-feedback-item">--}}
+{{--                                            <div class="feedback-rating">--}}
+{{--                                                <div class="feedback-rating-start">--}}
+{{--                                                    <div class="image">--}}
+{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/2.png')}}" alt="Image" />--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="text">--}}
+{{--                                                        <h6><a href="#">Watcraz Eggsy</a></h6>--}}
+{{--                                                        <p>1 day ago</p>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <p>--}}
+{{--                                                Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque--}}
+{{--                                                vestibulum--}}
+{{--                                                massa eget consequat scelerisque. Phasellus varius risus nec maximus--}}
+{{--                                                auctor.--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="students-feedback-item border-0">--}}
+{{--                                            <div class="feedback-rating">--}}
+{{--                                                <div class="feedback-rating-start">--}}
+{{--                                                    <div class="image">--}}
+{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/3.png')}}" alt="Image" />--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="text">--}}
+{{--                                                        <h6><a href="#">Watcraz Eggsy</a></h6>--}}
+{{--                                                        <p>1 day ago</p>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <p>--}}
+{{--                                                Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus--}}
+{{--                                                sapien. Quisque vestibulum massa eget consequat scelerisque.--}}
+{{--                                            </p>--}}
+{{--                                        </div>--}}
                                         <button class="button button-md button--primary-outline">{{ __('Load More') }}</button>
                                     </div>
                                 </div>
@@ -267,17 +271,17 @@
                                                             {{$course?->instructor?->name}} {{$course?->instructor?->lastname}}</a></h6>
                                                     <p>{{$course?->instructor?->designation}}</p>
                                                     <div class="d-flex align-items-center instructor-text-bottom">
-                                                        <div class="d-flex align-items-center ratings-icon">
-                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                                                    d="M9.94438 2.34287L11.7457 5.96656C11.8359 6.14934 12.0102 6.2769 12.2124 6.30645L16.2452 6.88901C16.4085 6.91079 16.5555 6.99635 16.6559 7.12701C16.8441 7.37201 16.8153 7.71891 16.5898 7.92969L13.6668 10.7561C13.5183 10.8961 13.4522 11.1015 13.4911 11.3014L14.1911 15.2898C14.2401 15.6204 14.0145 15.93 13.684 15.9836C13.5471 16.0046 13.4071 15.9829 13.2826 15.9214L9.69082 14.0384C9.51037 13.9404 9.29415 13.9404 9.1137 14.0384L5.49546 15.9315C5.1929 16.0855 4.82267 15.9712 4.65778 15.6748C4.59478 15.5551 4.57301 15.419 4.59478 15.286L5.29479 11.2975C5.32979 11.0984 5.26368 10.8938 5.11901 10.753L2.18055 7.92735C1.94099 7.68935 1.93943 7.30201 2.17821 7.06246C2.17899 7.06168 2.17977 7.06012 2.18055 7.05935C2.27932 6.9699 2.40066 6.91001 2.5321 6.88668L6.56569 6.30412C6.76713 6.27223 6.94058 6.14623 7.03236 5.96345L8.83215 2.34287C8.90448 2.19587 9.03281 2.08309 9.18837 2.03176C9.3447 1.97965 9.51582 1.99209 9.66282 2.06598C9.78337 2.12587 9.88215 2.22309 9.94438 2.34287Z"
-                                                                    stroke="#FF7A1A" stroke-width="2"
-                                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                                </path>
-                                                            </svg>
-                                                            <p>4.9 Star Rating</p>
-                                                        </div>
+{{--                                                        <div class="d-flex align-items-center ratings-icon">--}}
+{{--                                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"--}}
+{{--                                                                xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                                <path fill-rule="evenodd" clip-rule="evenodd"--}}
+{{--                                                                    d="M9.94438 2.34287L11.7457 5.96656C11.8359 6.14934 12.0102 6.2769 12.2124 6.30645L16.2452 6.88901C16.4085 6.91079 16.5555 6.99635 16.6559 7.12701C16.8441 7.37201 16.8153 7.71891 16.5898 7.92969L13.6668 10.7561C13.5183 10.8961 13.4522 11.1015 13.4911 11.3014L14.1911 15.2898C14.2401 15.6204 14.0145 15.93 13.684 15.9836C13.5471 16.0046 13.4071 15.9829 13.2826 15.9214L9.69082 14.0384C9.51037 13.9404 9.29415 13.9404 9.1137 14.0384L5.49546 15.9315C5.1929 16.0855 4.82267 15.9712 4.65778 15.6748C4.59478 15.5551 4.57301 15.419 4.59478 15.286L5.29479 11.2975C5.32979 11.0984 5.26368 10.8938 5.11901 10.753L2.18055 7.92735C1.94099 7.68935 1.93943 7.30201 2.17821 7.06246C2.17899 7.06168 2.17977 7.06012 2.18055 7.05935C2.27932 6.9699 2.40066 6.91001 2.5321 6.88668L6.56569 6.30412C6.76713 6.27223 6.94058 6.14623 7.03236 5.96345L8.83215 2.34287C8.90448 2.19587 9.03281 2.08309 9.18837 2.03176C9.3447 1.97965 9.51582 1.99209 9.66282 2.06598C9.78337 2.12587 9.88215 2.22309 9.94438 2.34287Z"--}}
+{{--                                                                    stroke="#FF7A1A" stroke-width="2"--}}
+{{--                                                                    stroke-linecap="round" stroke-linejoin="round">--}}
+{{--                                                                </path>--}}
+{{--                                                            </svg>--}}
+{{--                                                            <p>4.9 Star Rating</p>--}}
+{{--                                                        </div>--}}
                                                         <div class="d-flex align-items-center ratings-icon">
                                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
@@ -317,7 +321,7 @@
                 <div class="videolist-area">
                     <div class="videolist-area-heading">
                         <h6>{{ __('Course Contents') }}</h6>
-                        <p>5% Completed</p>
+{{--                        <p>5% Completed</p>--}}
                     </div>
                     <div class="videolist-area-bar">
                         <span class="videolist-area-bar--progress"></span>
@@ -349,7 +353,7 @@
                                         </div>
                                     </a>
                                     <div class="main-wizard-end d-flex align-items-center">
-                                        <span>12:34</span>
+{{--                                        <span>12:34</span>--}}
                                         <div class="form-check">
                                             <input id="checkbox_{{$material->id}}" class="form-check-input" type="checkbox" value=""
                                                    style="border-radius: 0px; margin-left: 5px;" />
