@@ -34,7 +34,7 @@
                     </a>
                     <div class="topic-info">
                         <div class="topic-info-arrow">
-                            <a href="{{URL::previous()}}">
+                            <a href="{{route('home')}}">
                                 <i class="fas fa-chevron-left"></i>
                             </a>
                         </div>

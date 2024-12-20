@@ -1180,28 +1180,28 @@
 </section>
 
 <!-- News Letter Starts Here -->
-<section style="background-color: #ebebf2;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="newsletter-area">
-                    <h4>{{__('Subscribe to our Academy')}}</h4>
-                    <p class="mt-2 mb-lg-4 mb-3">
-                     {{__('Join our vibrant learning community by subscribing to our academy today! With a subscription, you gain access to a wide range of courses that cater to various interests and skill levels. Whether you are looking to advance your career, explore new hobbies, or enhance your knowledge, our academy has something for everyone.')}}
-                    </p>
-                    <form>
-                        <div class="input-group">
-                            <input type="email" class="form-control border-lowBlack" placeholder="{{__('Your email')}}" />
-                            <button class="button button-lg button--primary" type="button">
-                                {{__('Subscribe')}}
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+{{--<section style="background-color: #ebebf2;">--}}
+{{--    <div class="container">--}}
+{{--        <div class="row">--}}
+{{--            <div class="col-lg-8 mx-auto">--}}
+{{--                <div class="newsletter-area">--}}
+{{--                    <h4>{{__('Subscribe to our Academy')}}</h4>--}}
+{{--                    <p class="mt-2 mb-lg-4 mb-3">--}}
+{{--                     {{__('Join our vibrant learning community by subscribing to our academy today! With a subscription, you gain access to a wide range of courses that cater to various interests and skill levels. Whether you are looking to advance your career, explore new hobbies, or enhance your knowledge, our academy has something for everyone.')}}--}}
+{{--                    </p>--}}
+{{--                    <form>--}}
+{{--                        <div class="input-group">--}}
+{{--                            <input type="email" class="form-control border-lowBlack" placeholder="{{__('Your email')}}" />--}}
+{{--                            <button class="button button-lg button--primary" type="button">--}}
+{{--                                {{__('Subscribe')}}--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</section>--}}
 
 @endsection
 
