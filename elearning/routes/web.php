@@ -117,10 +117,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse');
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');
 Route::get('watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
-Route::post('watchCourse', [watchCourse::class, 'store'])->name('watchCourse.store');
+Route::post('watchCourse', [watchlist::class, 'store'])->name('watchlist.store');
 Route::post('/watchlist/update', [watchlist::class, 'update'])->name('watchlist.update');
-
-
 
 
 Route::get('instructorProfile/{id}', [instructor::class, 'frontShow'])->name('instructorProfile');

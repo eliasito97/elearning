@@ -146,7 +146,7 @@
                                 <div class="lesson-comments">
                                     <div class="feedback-comment pt-0 ps-0 pe-0">
                                         <h6 class="font-title--card">{{ __('Add a Public Comment') }}</h6>
-                                        <form action="{{ route('watchCourse.store') }}" method="POST">
+                                        <form action="{{ route('watchlist.store') }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="course_id" value="{{ $course->id }}">
                                             <input type="hidden" name="student_id" value="{{ currentUserId() }}"> <!-- Asumiendo que el estudiante está autenticado -->
@@ -272,7 +272,7 @@
                 <div class="videolist-area">
                     <div class="videolist-area-heading">
                         <h6>{{ __('Course Contents') }}</h6>
-{{--                        <p>5% Completed</p>--}}
+                        <p> {{$progress}}% {{ __('Completed') }}</p>
                     </div>
                     <div class="videolist-area-bar">
                         <span class="videolist-area-bar--progress"></span>

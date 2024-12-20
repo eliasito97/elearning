@@ -29,8 +29,6 @@ class WatchlistController extends Controller
      */
     public function store(Request $request)
     {
-
-
         try {
             $reviews = new Review;
             $reviews->student_id = $request->student_id;
