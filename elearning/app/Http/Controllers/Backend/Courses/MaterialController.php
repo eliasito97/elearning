@@ -77,7 +77,7 @@ class MaterialController extends Controller
         return view('backend.course.material.edit', compact('lesson', 'material'));
     }
 
-    /** 
+    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateRequest $request, $id)

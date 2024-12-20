@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('course_id')->index();
             $table->unsignedBigInteger('lesson_id')->index();
             $table->unsignedBigInteger('material_id')->index();
+            $table->boolean('is_checked')->default(false); // Añade esta columna para almacenar el estado del checkbox
             $table->timestamps();
             $table->softDeletes();
 

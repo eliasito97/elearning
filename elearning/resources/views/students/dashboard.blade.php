@@ -138,7 +138,7 @@
                         <div class="col-lg-4 col-md-6 col-md-6 mb-4">
                             <div class="contentCard contentCard--watch-course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$a->course?->image)}}"
+                                    <a href="{{route('watchCourse', encryptor('encrypt', $a->course?->id))}}"><img src="{{asset('public/uploads/courses/'.$a->course?->image)}}"
                                             alt="images" class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
@@ -213,7 +213,7 @@
                         <div class="col-lg-4 col-md-6 col-md-6 mb-4">
                             <div class="contentCard contentCard--watch-course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img
+                                    <a href="{{route('watchCourse', encryptor('encrypt', $a->course?->id))}}"><img
                                             src="{{asset('public/uploads/courses/'.$a->course?->image)}}"
                                             alt="images" class="img-fluid" /></a>
                                 </div>
@@ -241,71 +241,6 @@
                                 </div>
                             </div>
                         </div>
-
-{{--                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">--}}
-{{--                            <div class="contentCard contentCard--watch-course">--}}
-{{--                                <div class="contentCard-top">--}}
-{{--                                    <a href="#"><img--}}
-{{--                                            src="{{asset('public/frontend/dist/images/courses/demo-img-05.png')}}"--}}
-{{--                                            alt="images" class="img-fluid" /></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="contentCard-bottom">--}}
-{{--                                    <h5>--}}
-{{--                                        <a href="#" class="font-title--card">Chicago International--}}
-{{--                                            Conference on Education</a>--}}
-{{--                                    </h5>--}}
-{{--                                    <div class="contentCard-info d-flex align-items-center justify-content-between">--}}
-{{--                                        <a href="instructor-profile.html"--}}
-{{--                                            class="contentCard-user d-flex align-items-center">--}}
-{{--                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"--}}
-{{--                                                alt="client-image" class="rounded-circle" />--}}
-{{--                                            <p class="font-para--md">Brandon Dias</p>--}}
-{{--                                        </a>--}}
-{{--                                        <div class="contentCard-course--status d-flex align-items-center">--}}
-{{--                                            <span class="percentage">43%</span>--}}
-{{--                                            <p>Finish</p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch--}}
-{{--                                        Course</a>--}}
-{{--                                    <div class="contentCard-watch--progress">--}}
-{{--                                        <span class="percentage" style="width: 43%;"></span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="col-lg-4 col-md-6 col-md-6 mb-4">--}}
-{{--                            <div class="contentCard contentCard--watch-course">--}}
-{{--                                <div class="contentCard-top">--}}
-{{--                                    <a href="#"><img--}}
-{{--                                            src="{{asset('public/frontend/dist/images/courses/demo-img-01.png')}}"--}}
-{{--                                            alt="images" class="img-fluid" /></a>--}}
-{{--                                </div>--}}
-{{--                                <div class="contentCard-bottom">--}}
-{{--                                    <h5>--}}
-{{--                                        <a href="#" class="font-title--card">Chicago International--}}
-{{--                                            Conference on Education</a>--}}
-{{--                                    </h5>--}}
-{{--                                    <div class="contentCard-info d-flex align-items-center justify-content-between">--}}
-{{--                                        <a href="instructor-profile.html"--}}
-{{--                                            class="contentCard-user d-flex align-items-center">--}}
-{{--                                            <img src="{{asset('public/frontend/dist/images/courses/7.png')}}"--}}
-{{--                                                alt="client-image" class="rounded-circle" />--}}
-{{--                                            <p class="font-para--md">Brandon Dias</p>--}}
-{{--                                        </a>--}}
-{{--                                        <div class="contentCard-course--status d-flex align-items-center">--}}
-{{--                                            <span class="percentage">43%</span>--}}
-{{--                                            <p>Finish</p>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                    <a class="button button-md button--primary-outline w-100 my-3" href="#">Watch--}}
-{{--                                        Course</a>--}}
-{{--                                    <div class="contentCard-watch--progress">--}}
-{{--                                        <span class="percentage" style="width: 43%;"></span>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                         @empty
                             <div class="col-12 py-5">
                                 <div class="col-md-6 col-12 mx-auto text-center">

@@ -177,60 +177,9 @@
                                             </p>
                                             @endforeach
                                         </div>
-{{--                                        <div class="students-feedback-item">--}}
-{{--                                            <div class="feedback-rating">--}}
-{{--                                                <div class="feedback-rating-start">--}}
-{{--                                                    <div class="image">--}}
-{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/1.png')}}" alt="Image" />--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="text">--}}
-{{--                                                        <h6><a href="#">Harry Pinsky</a></h6>--}}
-{{--                                                        <p>2 hour ago</p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <p>--}}
-{{--                                                Aliquam eget leo quis neque molestie dictum. Etiam ut tortor tempor,--}}
-{{--                                                vestibulum ante non, vulputate nibh.--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="students-feedback-item">--}}
-{{--                                            <div class="feedback-rating">--}}
-{{--                                                <div class="feedback-rating-start">--}}
-{{--                                                    <div class="image">--}}
-{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/2.png')}}" alt="Image" />--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="text">--}}
-{{--                                                        <h6><a href="#">Watcraz Eggsy</a></h6>--}}
-{{--                                                        <p>1 day ago</p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <p>--}}
-{{--                                                Aenean vulputate nisi ligula. Quisque in tempus sapien. Quisque--}}
-{{--                                                vestibulum--}}
-{{--                                                massa eget consequat scelerisque. Phasellus varius risus nec maximus--}}
-{{--                                                auctor.--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="students-feedback-item border-0">--}}
-{{--                                            <div class="feedback-rating">--}}
-{{--                                                <div class="feedback-rating-start">--}}
-{{--                                                    <div class="image">--}}
-{{--                                                        <img src="{{asset('public/frontend/dist/images/ellipse/3.png')}}" alt="Image" />--}}
-{{--                                                    </div>--}}
-{{--                                                    <div class="text">--}}
-{{--                                                        <h6><a href="#">Watcraz Eggsy</a></h6>--}}
-{{--                                                        <p>1 day ago</p>--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                            <p>--}}
-{{--                                                Cras non molestie diam. Aenean vulputate nisi ligula. Quisque in tempus--}}
-{{--                                                sapien. Quisque vestibulum massa eget consequat scelerisque.--}}
-{{--                                            </p>--}}
-{{--                                        </div>--}}
-                                        <button class="button button-md button--primary-outline">{{ __('Load More') }}</button>
+                                        <div class="pagination">
+                                            {{ $reviews->links('pagination::simple-bootstrap-4') }}
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- Lesson Comments Ends Here -->
