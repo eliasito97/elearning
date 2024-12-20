@@ -1,3 +1,4 @@
+@php use App\Models\Watchlist; @endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ENV('APP_NAME')}} | @yield('title', 'Watch Course')</title>
     <link rel="stylesheet" href="{{asset('public/frontend/src/scss/vendors/plugin/css/video-js.css')}}" />
     <link rel="stylesheet" href="{{asset('public/frontend/src/scss/vendors/plugin/css/star-rating-svg.css')}}" />
@@ -277,42 +279,48 @@
                     </div>
                     <div class="videolist-area-bar__wrapper">
                         @foreach($lessons as $lesson)
-                        <div class="videolist-area-wizard" data-lesson-description="{{$lesson->description}}"
-                            data-lesson-notes="{{$lesson->notes}}">
-                            <div class="wizard-heading">
-                                <h6 class="">{{$loop->iteration}}. {{$lesson->title}}</h6>
-                            </div>
-                            @foreach ($lesson->material as $material)
-                            <div class="main-wizard"
-                                data-material-title="{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}">
-                                <div class="main-wizard__wrapper">
-                                    <a class="main-wizard-start" onclick="show_video('{{$material->content_url}}', '{{$material->type}}', {{$material->id}})">
-                                        @if ($material->type == 'video')
-                                            <i class="far fa-play-circle fa-lg"></i>
-                                        @elseif ($material->type == 'document')
-                                            <i class="far fa-file-alt fa-lg text-success"></i>
-                                        @elseif ($material->type == 'quiz')
-                                            <i class="fas fa-question-circle fa-lg text-warning"></i>
-                                        @else
-                                            <i class="far fa-file fa-lg text-muted"></i>
-                                        @endif
-                                        <div class="main-wizard-title">
-                                            <p>{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}
-                                            </p>
-                                        </div>
-                                    </a>
-                                    <div class="main-wizard-end d-flex align-items-center">
-{{--                                        <span>12:34</span>--}}
-                                        <div class="form-check">
-                                            <input id="checkbox_{{$material->id}}" class="form-check-input" type="checkbox" value=""
-                                                   style="border-radius: 0px; margin-left: 5px;" />
+                            <div class="videolist-area-wizard" data-lesson-description="{{$lesson->description}}"
+                                 data-lesson-notes="{{$lesson->notes}}">
+                                <div class="wizard-heading">
+                                    <h6 class="">{{$loop->iteration}}. {{$lesson->title}}</h6>
+                                </div>
+                                @foreach ($lesson->material as $material)
+                                    <div class="main-wizard" data-material-title="{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}">
+                                        <div class="main-wizard__wrapper">
+                                            @php
+                                                // Buscar el estado de is_checked para este material en la tabla Watchlist
+                                                $watchlist = Watchlist::where('student_id', currentUserId())
+                                                    ->where('course_id', $course->id)
+                                                    ->where('lesson_id', $lesson->id)
+                                                    ->where('material_id', $material->id)
+                                                    ->first();
+                                            @endphp
+                                            <a class="main-wizard-start" onclick="show_video('{{$material->content_url}}', '{{$material->type}}', '{{$material->id}}','{{$course->id}}','{{$lesson->id}}','{{currentUserId()}}')">
+                                                @if ($material->type == 'video')
+                                                    <i class="far fa-play-circle fa-lg"></i>
+                                                @elseif ($material->type == 'document')
+                                                    <i class="far fa-file-alt fa-lg text-success"></i>
+                                                @elseif ($material->type == 'quiz')
+                                                    <i class="fas fa-question-circle fa-lg text-warning"></i>
+                                                @else
+                                                    <i class="far fa-file fa-lg text-muted"></i>
+                                                @endif
+                                                <div class="main-wizard-title">
+                                                    <p>{{$loop->parent->iteration}}.{{$loop->iteration}} {{$material->title}}</p>
+                                                </div>
+                                            </a>
+                                            <div class="form-check">
+                                                <input id="checkbox_{{$material->id}}" class="form-check-input" type="checkbox" value=""
+                                                       style="border-radius: 0px; margin-left: 5px;" disabled
+                                                       @if($watchlist && $watchlist->is_checked) checked disabled @endif />
+                                            </div>
+
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
-                        </div>
                         @endforeach
+
                     </div>
                 </div>
             </div>
@@ -397,8 +405,10 @@
 
     <script>
 
-        function show_video(e, type, index) {
+        function show_video(e, type, index, courseId,lessonId,StudentId) {
             console.log(e);
+
+            var checkbox = document.getElementById('checkbox_' + index);
 
             switch (type) {
                 case 'video':
@@ -413,19 +423,42 @@
                         // Enlace a un archivo de video local
                         link = "{{asset('public/uploads/courses/contents')}}/" + e;
                     }
-                    var checkbox = document.getElementById('checkbox_' + index);
+
                     if (checkbox && !checkbox.checked) {
                         checkbox.checked = true;
                         checkbox.disabled = true;
+                        var url = "{{ route('watchlist.update') }}"; // Usa la ruta generada por Laravel
+
+                        var requestData = {
+                            student_id: StudentId,  // Asegúrate de definir este valor correctamente
+                            course_id: courseId,  // Asegúrate de definir este valor correctamente
+                            lesson_id: lessonId,  // Asegúrate de definir este valor correctamente
+                            material_id: index,  // Puedes usar el `index` aquí si es el ID correcto
+                            is_checked: checkbox.checked
+                        };
+
                     }
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Respuesta exitosa, puedes manejar la respuesta si es necesario
+                            console.log('Estado actualizado en la base de datos', xhr.responseText);
+                        } else if (xhr.readyState === 4) {
+                            // Si algo salió mal, muestra un error
+                            console.error('Error al actualizar el estado en la base de datos');
+                        }
+                    };
+
+                    // Enviar la solicitud POST con los datos al servidor
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(JSON.stringify(requestData));
                     // Si el video es un elemento <video>
                     var video = document.getElementById('myvideo');
                     if (video) { // Verifica que el elemento exista
                         video.src = link;
                         video.play(); // Reproduce el video
-
-                        // Marca y bloquea el checkbox solo si no está marcado
-
                     } else {
                         // Si el video es de YouTube, usa un <iframe> en lugar de <video>
                         var iframe = document.getElementById('myvideo');
@@ -435,31 +468,78 @@
                             console.error('Elemento con ID "myvideo" no encontrado.');
                         }
                     }
-
                     break;
 
                 case 'document':
                     // Abre el documento en una nueva pestaña
                     window.open("{{asset('public/uploads/courses/contents')}}/" + e, '_blank');
 
-                    // Marca y bloquea el checkbox solo si no está marcado
-                    var checkbox = document.getElementById('checkbox_' + index);
                     if (checkbox && !checkbox.checked) {
                         checkbox.checked = true;
                         checkbox.disabled = true;
+                        var url = "{{ route('watchlist.update') }}"; // Usa la ruta generada por Laravel
+
+                        var requestData = {
+                            student_id: StudentId,  // Asegúrate de definir este valor correctamente
+                            course_id: courseId,  // Asegúrate de definir este valor correctamente
+                            lesson_id: lessonId,  // Asegúrate de definir este valor correctamente
+                            material_id: index,  // Puedes usar el `index` aquí si es el ID correcto
+                            is_checked: checkbox.checked
+                        };
+
                     }
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Respuesta exitosa, puedes manejar la respuesta si es necesario
+                            console.log('Estado actualizado en la base de datos', xhr.responseText);
+                        } else if (xhr.readyState === 4) {
+                            // Si algo salió mal, muestra un error
+                            console.error('Error al actualizar el estado en la base de datos');
+                        }
+                    };
+
+                    // Enviar la solicitud POST con los datos al servidor
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(JSON.stringify(requestData));
                     break;
 
                 case 'quiz':
                     // Redirige a la página del cuestionario
                     window.open(e, '_blank');
 
-                    // Marca y bloquea el checkbox solo si no está marcado
-                    var checkbox = document.getElementById('checkbox_' + index);
                     if (checkbox && !checkbox.checked) {
                         checkbox.checked = true;
                         checkbox.disabled = true;
+                        var url = "{{ route('watchlist.update') }}"; // Usa la ruta generada por Laravel
+
+                        var requestData = {
+                            student_id: StudentId,  // Asegúrate de definir este valor correctamente
+                            course_id: courseId,  // Asegúrate de definir este valor correctamente
+                            lesson_id: lessonId,  // Asegúrate de definir este valor correctamente
+                            material_id: index,  // Puedes usar el `index` aquí si es el ID correcto
+                            is_checked: checkbox.checked
+                        };
+
                     }
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            // Respuesta exitosa, puedes manejar la respuesta si es necesario
+                            console.log('Estado actualizado en la base de datos', xhr.responseText);
+                        } else if (xhr.readyState === 4) {
+                            // Si algo salió mal, muestra un error
+                            console.error('Error al actualizar el estado en la base de datos');
+                        }
+                    };
+
+                    // Enviar la solicitud POST con los datos al servidor
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("X-CSRF-TOKEN", document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.send(JSON.stringify(requestData));
                     break;
 
                 default:
@@ -467,6 +547,7 @@
                     alert('Tipo de contenido no reconocido.');
                     break;
             }
+
         }
 
     </script>

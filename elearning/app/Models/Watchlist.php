@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Watchlist extends Model
 {
-    use HasFactory;
+    protected $fillable = ['student_id', 'course_id', 'lesson_id', 'material_id', 'is_checked'];
 }

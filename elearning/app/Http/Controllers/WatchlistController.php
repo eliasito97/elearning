@@ -29,7 +29,7 @@ class WatchlistController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+
 
         try {
             $reviews = new Review;
@@ -68,10 +68,50 @@ class WatchlistController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Watchlist $watchlist)
+    public function update(Request $request)
     {
-        //
+        try {
+            // Validación de los datos recibidos
+            $validated = $request->validate([
+                'student_id' => 'required|integer',
+                'course_id' => 'required|integer',
+                'lesson_id' => 'required|integer',
+                'material_id' => 'required|integer',
+                'is_checked' => 'required|boolean',
+            ]);
+
+            // Buscar el registro en la tabla Watchlist
+            $watchlist = Watchlist::where('student_id', $validated['student_id'])
+                ->where('course_id', $validated['course_id'])
+                ->where('lesson_id', $validated['lesson_id'])
+                ->where('material_id', $validated['material_id'])
+                ->first();
+
+            // Si existe, actualiza
+            if ($watchlist) {
+                $watchlist->is_checked = $validated['is_checked'];
+                $watchlist->save();
+            } else {
+                // Si no existe, crea uno nuevo
+                Watchlist::create([
+                    'student_id' => $validated['student_id'],
+                    'course_id' => $validated['course_id'],
+                    'lesson_id' => $validated['lesson_id'],
+                    'material_id' => $validated['material_id'],
+                    'is_checked' => $validated['is_checked'],
+                ]);
+            }
+
+            // Respuesta exitosa
+            return response()->json(['success' => true]);
+
+        } catch (\Exception $e) {
+            // En caso de error, captura y muestra el mensaje
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
+
+
 
     /**
      * Remove the specified resource from storage.

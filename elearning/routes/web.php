@@ -25,6 +25,7 @@ use App\Http\Controllers\SearchCourseController;
 use App\Http\Controllers\CheckoutController as checkout;
 use App\Http\Controllers\CouponController as coupon;
 use App\Http\Controllers\WatchCourseController as watchCourse;
+use App\Http\Controllers\WatchlistController as watchlist;
 use App\Http\Controllers\LessonController as lesson;
 use App\Http\Controllers\EnrollmentController as enrollment;
 use App\Http\Controllers\EventController as event;
@@ -117,6 +118,10 @@ Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('sear
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');
 Route::get('watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
 Route::post('watchCourse', [watchCourse::class, 'store'])->name('watchCourse.store');
+Route::post('/watchlist/update', [watchlist::class, 'update'])->name('watchlist.update');
+
+
+
 
 Route::get('instructorProfile/{id}', [instructor::class, 'frontShow'])->name('instructorProfile');
 Route::get('checkout', [checkout::class, 'index'])->name('checkout');
