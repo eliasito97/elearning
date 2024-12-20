@@ -19,19 +19,20 @@
                     <p>
                         {{ __('Our commitment is to guide you to the finest online courses, offering expert insights whenever and wherever you are.') }}
                     </p>
-                    <form>
+                    <form action="{{ route('home.Search') }}" method="post">
+                        @csrf
                         <div class="banner-input">
                             <div class="main-input">
-                                <input type="text" placeholder="{{__('what do you want to learn today...')}}" />
+                                <input type="text" id="search" name="search" placeholder="{{__('what do you want to learn today...')}}" />
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-search">
+                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                     stroke-linejoin="round" class="feather feather-search">
                                     <circle cx="11" cy="11" r="8"></circle>
                                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                                 </svg>
                             </div>
                             <div class="search-button">
-                                <button class="button button-lg button--primary">{{__('Search')}}</button>
+                                <button  class="button button-lg  button--primary">{{__('Search')}}</button>
                             </div>
                         </div>
                     </form>

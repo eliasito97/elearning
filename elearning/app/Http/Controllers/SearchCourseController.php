@@ -81,4 +81,5 @@ class SearchCourseController extends Controller
                 $course->daily_subscription !== null;
         });
     }
+
 }

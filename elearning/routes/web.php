@@ -113,6 +113,7 @@ Route::middleware(['checkstudent'])->prefix('students')->group(function () {
 
 // frontend pages
 Route::get('home', [HomeController::class, 'index'])->name('home');
+Route::post('searchCourse', [HomeController::class, 'Search'])->name('home.Search');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse');
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');

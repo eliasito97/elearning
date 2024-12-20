@@ -84,7 +84,9 @@
                         </li>
                     </ul>
                     <div class="d-flex align-items-center justify-content-between rightContent">
-                        <form class="header__Search-form" id="searchForm">
+                        <form action="{{ route('home.Search') }}" method="post" class="header__Search-form" id="search">
+                            @csrf
+                            <!-- Botón para abrir el overlay -->
                             <button type="button" class="border-0 bg-transparent header__Search-button" onclick="openSearch()">
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="9.19522" cy="9.19518" r="7.61714" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
@@ -92,21 +94,20 @@
                                 </svg>
                             </button>
 
+                            <!-- Overlay para búsqueda -->
                             <div id="myOverlay" class="overlay">
                                 <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                                 <div class="overlay-content">
-                                    <div>
-                                        <input type="text" placeholder="{{__('Search')}}" name="search" />
-                                        <button type="button">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"
-                                                class="feather feather-search">
-                                                <circle cx="11" cy="11" r="8" ></circle>
-                                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                            </svg>
-                                        </button>
-                                    </div>
+                                    <!-- Input de búsqueda -->
+                                    <input type="text" id="search-input" name="search" placeholder="{{ __('Search') }}" required />
+
+                                    <!-- Botón de envío -->
+                                    <button type="submit" class="search-submit-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        </svg>
+                                    </button>
                                 </div>
                             </div>
                         </form>

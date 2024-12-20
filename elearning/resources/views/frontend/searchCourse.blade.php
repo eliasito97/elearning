@@ -30,9 +30,10 @@
         <div class="row">
             <div class="col-lg-9 mx-auto">
                 <div class="event-search-bar">
-                    <form action="#">
+                    <form action="{{ route('home.Search') }}" method="post">
+                        @csrf
                         <div class="form-input-group">
-                            <input type="text" class="form-control" placeholder="{{__('Search Course...')}}" />
+                            <input type="text" id="search" name="search" class="form-control" placeholder="{{__('Search Course...')}}" />
                             <button class="button button-lg button--primary" type="submit" id="button-addon2">
                                 {{__('Search')}}
                             </button>
@@ -204,138 +205,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Search by Rating  -->
-{{--                    <div class="accordion-item">--}}
-{{--                        <h2 class="accordion-header" id="ratingAcc">--}}
-{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
-{{--                                data-bs-target="#ratingCollapse" aria-expanded="false" aria-controls="ratingCollapse">--}}
-{{--                                {{__('Rating')}}--}}
-{{--                            </button>--}}
-{{--                        </h2>--}}
-{{--                        <div id="ratingCollapse" class="accordion-collapse collapse" aria-labelledby="ratingAcc"--}}
-{{--                            data-bs-parent="#sidebarFilter">--}}
-{{--                            <div class="accordion-body">--}}
-{{--                                <form action="#">--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('All')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$allCourse->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('1 Star')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            45,770--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('2 Stars')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            45,770--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('3 Stars')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            45,770--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('4 Stars')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            45,770--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('5 Stars')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            45,770--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- Search by Duration  -->--}}
-{{--                    <div class="accordion-item">--}}
-{{--                        <h2 class="accordion-header" id="durationAcc">--}}
-{{--                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--}}
-{{--                                data-bs-target="#durationCollapse" aria-expanded="false"--}}
-{{--                                aria-controls="durationCollapse">--}}
-{{--                                {{__('Duration')}}--}}
-{{--                            </button>--}}
-{{--                        </h2>--}}
-{{--                        <div id="durationCollapse" class="accordion-collapse collapse" aria-labelledby="durationAcc"--}}
-{{--                            data-bs-parent="#sidebarFilter">--}}
-{{--                            <div class="accordion-body">--}}
-{{--                                <form action="#">--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('All')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$allCourse->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('0 - 5 minutes')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$courseDuration1->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('5 - 10 minutes')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$courseDuration2->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('10 - 15 minutes')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$courseDuration3->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                    <div class="accordion-body__item">--}}
-{{--                                        <div class="check-box">--}}
-{{--                                            <input type="checkbox" class="checkbox-primary" />--}}
-{{--                                            <label> {{__('15+ minutes')}} </label>--}}
-{{--                                        </div>--}}
-{{--                                        <p class="check-details">--}}
-{{--                                            {{$courseDuration4->count()}}--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
                 </div>
             </div>
 
