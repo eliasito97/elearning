@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\Students;
 
+use App\Models\Lesson;
+use App\Models\Material;
+use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Payment;
 use App\Models\Enrollment;
 use App\Models\Checkout;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 
 class sslController extends Controller
 {
@@ -19,7 +22,7 @@ class sslController extends Controller
 
         //$settings = Generalsetting::findOrFail(1);
         $cart_details=array('cart'=>session('cart'),'cart_details'=>session('cart_details'));
-         
+
         $check = new Checkout;
         $check->cart_data = base64_encode(json_encode($cart_details));
         $check->student_id = $user->id;
@@ -36,7 +39,7 @@ class sslController extends Controller
         $deposit->method = 'SSLCommerz';
         $deposit->txnid = $txnid;
         $deposit->save();
-        
+
 
         $post_data = array();
         $post_data['store_id'] = 'geniu5e1b00621f81e';//$settings->ssl_store_id;
@@ -48,8 +51,8 @@ class sslController extends Controller
         $post_data['fail_url'] =  action([sslController::class, 'cancel']);//action('User\DsslController@cancle');
         $post_data['cancel_url'] =  action([sslController::class, 'cancel']);//action('User\DsslController@cancle');
         # $post_data['multi_card_name'] = "mastercard,visacard,amexcard";  # DISABLE TO DISPLAY ALL AVAILABLE
-        
-        
+
+
         # CUSTOMER INFORMATION
         $post_data['cus_name'] = $user->name_en;
         $post_data['cus_email'] = $user->email;
@@ -60,8 +63,8 @@ class sslController extends Controller
         $post_data['cus_country'] = "$user->country";
         $post_data['cus_phone'] = $user->contact_en;
         $post_data['cus_fax'] = $user->contact_en;
-        
-        
+
+
         # REQUEST SEND TO SSLCOMMERZ
         //if($settings->ssl_sandbox_check == 1){
             $direct_api_url = "https://sandbox.sslcommerz.com/gwprocess/v3/api.php";
@@ -79,15 +82,15 @@ class sslController extends Controller
         curl_setopt($handle, CURLOPT_POSTFIELDS, $post_data);
         curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, FALSE); # KEEP IT FALSE IF YOU RUN FROM LOCAL PC
-        
-        
+
+
         $content = curl_exec($handle );
-        
+
         $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
-        
-        
-        
-        
+
+
+
+
         if($code == 200 && !( curl_errno($handle))) {
             curl_close( $handle);
             $sslcommerzResponse = $content;
@@ -96,12 +99,12 @@ class sslController extends Controller
             return redirect()->back()->with('unsuccess',"FAILED TO CONNECT WITH SSLCOMMERZ API");
             exit;
         }
-        
+
         # PARSE THE JSON RESPONSE
         $sslcz = json_decode($sslcommerzResponse, true );
-        
+
         if(isset($sslcz['GatewayPageURL']) && $sslcz['GatewayPageURL']!="" ) {
-        
+
              # THERE ARE MANY WAYS TO REDIRECT - Javascript, Meta Tag or Php Header Redirect or Other
             # echo "<script>window.location.href = '". $sslcz['GatewayPageURL'] ."';</script>";
             echo "<meta http-equiv='refresh' content='0;url=".$sslcz['GatewayPageURL']."'>";
@@ -122,17 +125,17 @@ class sslController extends Controller
         return redirect()->route('studentdashboard')->with('danger', 'Payment Cancelled.');
     }
 
-    
+
     public function notify(Request $request){
         $cancel_url = action([sslController::class, 'cancel']);
         $input = $request->all();
         if($input['status'] == 'VALID'){
             $deposit = Payment::where('txnid','=',$input['tran_id'])->orderBy('created_at','desc')->first();
-            
+
             $check = Checkout::where('txnid','=',$input['tran_id'])->orderBy('created_at','desc')->first();
             $check->status = 1;
             $check->save();
-            
+
             $student = Student::findOrFail($deposit->student_id);
             $this->setSession($student);
 
@@ -147,7 +150,34 @@ class sslController extends Controller
                     $enrole->course_id=$key;
                     $enrole->enrollment_date=date('Y-m-d');
                     $enrole->save();
+
+                    $whatchlist = new Watchlist;
+                    $whatchlist->student_id = $check->student_id;
+                    $whatchlist->course_id = $key;
+                    $whatchlist->is_checked = false;
+
+// Obtener lecciones para el curso actual
+                    $whatchlist_lesson = Lesson::where('course_id', '=', $key)->get();
+
+                    foreach ($whatchlist_lesson as $lesson) {
+                        // Obtener los materiales para cada lección
+                        $lesson_materials = Material::where('lesson_id', '=', $lesson->id)->get();
+
+                        foreach ($lesson_materials as $material) {
+                            // Crear una nueva entrada de Watchlist para cada lección y material
+                            $newWatchlist = new Watchlist;
+                            $newWatchlist->student_id = $check->student_id;
+                            $newWatchlist->course_id = $key;
+                            $newWatchlist->lesson_id = $lesson->id;  // Asociar la lección con el Watchlist
+                            $newWatchlist->material_id = $material->id;  // Asociar el material con el Watchlist
+                            $newWatchlist->is_checked = false;  // Valor por defecto
+
+                            // Guardar la entrada en la tabla Watchlist
+                            $newWatchlist->save();
+                        }
+                    }
                 }
+
             }
             return redirect()->route('studentdashboard')->with('success', 'Payment done!');
         }
@@ -155,7 +185,7 @@ class sslController extends Controller
             return redirect()->route('studentdashboard')->with('danger', 'Please try Again!');
         }
     }
-    
+
     public function setSession($student){
         return request()->session()->put(
             [
@@ -163,7 +193,7 @@ class sslController extends Controller
                 'userName' => encryptor('encrypt', $student->name_en),
                 'emailAddress' => encryptor('encrypt', $student->email),
                 'studentLogin' => 1,
-                'image' => $student->image ?? 'No Image Found' 
+                'image' => $student->image ?? 'No Image Found'
             ]
         );
     }
