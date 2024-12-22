@@ -975,7 +975,7 @@
                 @forelse ($course as $c)
                     <div class="contentCard contentCard--event contentCard--space">
                         <div class="contentCard-top">
-                            <a href="#"><img src="{{asset('public/uploads/courses/'.$c->image)}}" alt="images"
+                            <a href="{{route('courseDetails', encryptor('encrypt', $c->id))}}"><img src="{{asset('public/uploads/courses/'.$c->image)}}" alt="images"
                                              class="img-fluid" /></a>
                         </div>
                         <div class="contentCard-bottom">
@@ -1033,7 +1033,7 @@
                         {{__('Join our community of passionate educators and share your expertise with learners around the world. As an instructor on our platform, you have the opportunity to create and deliver courses that inspire and empower students. Whether you are a seasoned educator or an expert in your field, we provide the tools and support you need to succeed.')}}
                         </p>
                         <div class="text-center">
-                            <a href="become-instructor.html" class="green-btn">{{__('Apply as Instructor')}}</a>
+                                <a href="become-instructor.html" class="green-btn">{{__('Apply as Instructor')}}</a>
                         </div>
                     </div>
                 </div>

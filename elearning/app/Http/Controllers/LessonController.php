@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enrollment;
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Http\Controllers\Controller;
@@ -9,13 +10,14 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $lesson = Lesson::paginate(10);
-        return view('backend.course.lesson.index', compact('lesson'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.lesson.index', compact('lesson', 'enrollment'));
     }
 
     /**
@@ -24,7 +26,8 @@ class LessonController extends Controller
     public function create()
     {
         $course = Course::get();
-        return view('backend.course.lesson.create', compact('course'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.lesson.create', compact('course', 'enrollment'));
     }
 
     /**
@@ -68,7 +71,8 @@ class LessonController extends Controller
     {
         $course = Course::get();
         $lesson = Lesson::findOrFail(encryptor('decrypt', $id));
-        return view('backend.course.lesson.edit', compact('course', 'lesson'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.lesson.edit', compact('course', 'lesson', 'enrollment'));
     }
 
     /**

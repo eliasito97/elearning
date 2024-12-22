@@ -2034,7 +2034,7 @@
 {{--                            </div>--}}
                         </div>
                         <div class="cart__checkout-process">
-                            <p class="time-left text-center"><span>5 {{ __('hours') }}</span> {{ __('to remaining this price') }}</p>
+                            <p class="time-left text-center"><span>5 {{ __('Hours') }}</span> {{ __('to remaining this price') }}</p>
                             <form action="#">
                                 <!-- Botón para agregar al carrito -->
                                 <a href="{{ route('add.to.cart', $course->id) }}" class="text-white button button-lg button--primary w-100">{{ __('Add to Cart') }}</a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Models\Role;
@@ -18,7 +19,8 @@ class PermissionController extends Controller
     {
         $role = Role::findOrFail(encryptor('decrypt', $id));
         $permission = Permission::where('role_id', encryptor('decrypt', $id))->get();
-        return view('backend.permission.index', compact('role', 'permission'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.permission.index', compact('role', 'permission', 'enrollment'));
     }
 
     /**
@@ -36,10 +38,10 @@ class PermissionController extends Controller
     {
         //
     }
- 
+
     public function save(SaveRequest $request, $role)
-    { 
-        try { 
+    {
+        try {
             // delete permission before saved
             Permission::where('role_id', encryptor('decrypt', $role))->delete();
             foreach ($request->permission as $permission) {

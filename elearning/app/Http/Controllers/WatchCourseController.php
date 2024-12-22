@@ -19,7 +19,7 @@ class WatchCourseController extends Controller
         $course = Course::findOrFail(encryptor('decrypt', $id));
         $lessons = Lesson::where('course_id', $course->id)->get();
 
-        $reviews = Review::where('course_id', $course->id)->paginate(5);
+        $reviews = Review::where('course_id', $course->id)->orderby('id', 'DESC')->paginate(10);
         $lessonArrays = Lesson::where('course_id', $course->id)->get('id');
         foreach ($lessonArrays as $array)
         {

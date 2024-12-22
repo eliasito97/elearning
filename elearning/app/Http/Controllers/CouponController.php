@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coupon;
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 
 class CouponController extends Controller
@@ -14,7 +15,8 @@ class CouponController extends Controller
     public function index()
     {
         $coupon= Coupon::get();
-        return view('backend.coupon.index', compact('coupon'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.coupon.index', compact('coupon', 'enrollment'));
     }
 
     /**
@@ -22,7 +24,8 @@ class CouponController extends Controller
      */
     public function create()
     {
-        return view('backend.coupon.create');
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.coupon.create', compact('enrollment'));
     }
 
     /**
@@ -36,10 +39,10 @@ class CouponController extends Controller
             $coupon->discount = $request->discount;
             $coupon->valid_from = $request->valid_from;
             $coupon->valid_until = $request->valid_until;
-           
+
             if($coupon->save())
                 return redirect()->route('coupon.index')->with('success','Data Saved');
-                else 
+                else
                 return redirect()->back()->withInput()->with('error', 'Please try again');
         } catch (\Exception $e) {
             dd($e);
@@ -61,7 +64,8 @@ class CouponController extends Controller
     public function edit($id)
     {
         $coupon = Coupon::findOrFail($id);
-        return view('backend.coupon.edit', compact('coupon'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.coupon.edit', compact('coupon', 'enrollment'));
     }
 
     /**

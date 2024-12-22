@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\Instructor;
 use App\Models\Payment;
 use App\Models\Student;
@@ -24,11 +25,11 @@ class DashboardController extends Controller
         $months = $this->getSixMonthsLabels();
         $studentforstatus =$this->getstudentsforstatus();
         $studentData = $this->getstudents();
-
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $acces = User::where('id',currentUserId())->get();
         $instructor = Instructor::where('id',currentUserId());
          if (fullAccess())
-            return view('backend.adminDashboard', compact('user', 'student','course','totalAmount','payments','months','studentData','studentforstatus'));
+            return view('backend.adminDashboard', compact('user', 'student','course','totalAmount','payments','months','studentData','studentforstatus','enrollment','acces'));
         else
         if ($acces[0]->role_id == 3 or $acces[0]->role_id == 2 or $acces[0]->role_id == 1)
             return redirect()->route('student.index');

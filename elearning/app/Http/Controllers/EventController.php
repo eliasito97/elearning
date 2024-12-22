@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enrollment;
 use App\Models\Event;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $event = Event::get();
-        return view('backend.event.index', compact('event'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.event.index', compact('event', 'enrollment'));
     }
 
     /**
@@ -22,7 +24,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('backend.event.create');
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.event.create', compact('enrollment'));
     }
 
     /**
@@ -72,7 +75,8 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::findOrFail($id);
-        return view('backend.event.edit', compact('event'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.event.edit', compact('event', 'enrollment'));
     }
 
     /**

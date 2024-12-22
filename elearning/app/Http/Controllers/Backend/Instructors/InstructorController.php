@@ -25,7 +25,8 @@ class InstructorController extends Controller
     public function index()
     {
         $instructor = Instructor::paginate(10);
-        return view('backend.instructor.index', compact('instructor'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.instructor.index', compact('instructor', 'enrollment'));
     }
 
     /**
@@ -34,7 +35,8 @@ class InstructorController extends Controller
     public function create()
     {
         $role = Role::get();
-        return view('backend.instructor.create', compact('role'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.instructor.create', compact('role', 'enrollment'));
     }
 
     /**
@@ -106,7 +108,7 @@ class InstructorController extends Controller
     public function frontShow($id)
     {
         $student_info = Student::find(currentUserId());
-
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
         $course = Course::where('instructor_id', $instructor->id)
             ->with('instructor')  // Cargar la relación 'instructor'
@@ -117,7 +119,7 @@ class InstructorController extends Controller
         }
         $student = Enrollment::whereIN('course_id', $course_all);
 
-        return view('frontend.instructorProfile', compact('instructor','course','student_info','student'));
+        return view('frontend.instructorProfile', compact('instructor','course','student_info','student','enrollment'));
     }
 
     /**
@@ -127,7 +129,8 @@ class InstructorController extends Controller
     {
         $role = Role::get();
         $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
-        return view('backend.instructor.edit', compact('role', 'instructor'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.instructor.edit', compact('role', 'instructor', 'enrollment'));
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Courses;
 
+use App\Models\Enrollment;
 use App\Models\Material;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class MaterialController extends Controller
     public function index()
     {
         $material = Material::paginate(10);
-        return view('backend.course.material.index', compact('material'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.material.index', compact('material', 'enrollment'));
     }
 
     /**
@@ -27,7 +29,8 @@ class MaterialController extends Controller
     public function create()
     {
         $lesson= Lesson::get();
-        return view('backend.course.material.create', compact('lesson'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.material.create', compact('lesson', 'enrollment'));
     }
 
     /**
@@ -74,7 +77,8 @@ class MaterialController extends Controller
     {
         $lesson= Lesson::get();
         $material = Material::findOrFail(encryptor('decrypt', $id));
-        return view('backend.course.material.edit', compact('lesson', 'material'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.material.edit', compact('lesson', 'material', 'enrollment'));
     }
 
     /**

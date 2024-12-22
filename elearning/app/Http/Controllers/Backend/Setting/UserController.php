@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
@@ -20,7 +21,8 @@ class UserController extends Controller
     public function index()
     {
         $data = User::paginate(10);
-        return view('backend.user.index', compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.user.index', compact('data', 'enrollment'));
     }
 
     /**
@@ -29,7 +31,8 @@ class UserController extends Controller
     public function create()
     {
         $role = Role::get();
-        return view('backend.user.create', compact('role'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.user.create', compact('role'), compact('enrollment'));
     }
 
     /**
@@ -82,7 +85,8 @@ class UserController extends Controller
     {
         $role = Role::get();
         $user = User::findOrFail(encryptor('decrypt', $id));
-        return view('backend.user.edit', compact('role', 'user'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.user.edit', compact('role', 'user', 'enrollment'));
     }
 
     /**

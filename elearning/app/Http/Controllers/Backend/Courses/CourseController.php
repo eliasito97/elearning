@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Courses;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\Student;
 use App\Models\Typepayment;
 use Illuminate\Http\Request;
@@ -26,13 +27,15 @@ class CourseController extends Controller
     {
         $student_info = Student::find(currentUserId());
         $course = Course::paginate(10);
-        return view('backend.course.courses.index', compact('course', 'student_info'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courses.index', compact('course', 'student_info', 'enrollment'));
     }
 
     public function indexForAdmin()
     {
         $course = Course::paginate(10);
-        return view('backend.course.courses.indexForAdmin', compact('course'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courses.indexForAdmin', compact('course', 'enrollment'));
     }
 
     /**
@@ -43,7 +46,8 @@ class CourseController extends Controller
         $courseCategory = CourseCategory::get();
         $instructor = Instructor::get();
         $typepayment = Typepayment::get();
-        return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment', 'enrollment'));
     }
 
     /**
@@ -102,7 +106,8 @@ class CourseController extends Controller
     {
         $student_info = Student::find(currentUserId());
         $material = Material::where('id',$id)->paginate(10);
-        return view('backend.course.material.index', compact('material', 'student_info'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.material.index', compact('material', 'student_info', 'enrollment'));
     }
 
     public function frontShow($id)
@@ -114,8 +119,8 @@ class CourseController extends Controller
         $student_info = Student::find(currentUserId());
         $instructor = Instructor::where('id', $course->instructor_id)->where('status','1')->first();
         $instructor_count = Course::where('instructor_id', $instructor->id)->Count();
-
-        return view('frontend.courseDetails', compact('course','instructor_count','lessons','materials','CoursesCategory','student_info'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('frontend.courseDetails', compact('course','instructor_count','lessons','materials','CoursesCategory','student_info','enrollment'));
     }
 
 
@@ -128,7 +133,8 @@ class CourseController extends Controller
         $instructor = Instructor::get();
         $typepayment = Typepayment::get();
         $course = Course::findOrFail(encryptor('decrypt', $id));
-        return view('backend.course.courses.edit', compact('courseCategory', 'instructor', 'course', 'typepayment'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courses.edit', compact('courseCategory', 'instructor', 'course', 'typepayment', 'enrollment'));
     }
 
     /**

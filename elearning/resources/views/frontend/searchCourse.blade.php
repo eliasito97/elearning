@@ -211,17 +211,17 @@
             <div class="col-lg-8">
                 <div class="event-search-results">
                     <div class="event-search-results-heading">
-                        <div class="nice-select" tabindex="0">
-                            <span class="current">{{__('Most Viewed')}}</span>
-                            <ul class="list">
-                                <li data-value="Nothing" data-display="category" class="option selected focus">
-                                    {{__('Nothing')}}
-                                </li>
-                                <li data-value="1" class="option">{{__('Some option')}}</li>
-                                <li data-value="2" class="option">{{__('Another option')}}</li>
+{{--                        <div class="nice-select" tabindex="0">--}}
+{{--                            <span class="current">{{__('Most Viewed')}}</span>--}}
+{{--                            <ul class="list">--}}
+{{--                                <li data-value="Nothing" data-display="category" class="option selected focus">--}}
+{{--                                    {{__('Nothing')}}--}}
+{{--                                </li>--}}
+{{--                                <li data-value="1" class="option">{{__('Some option')}}</li>--}}
+{{--                                <li data-value="2" class="option">{{__('Another option')}}</li>--}}
 {{--                                <li data-value="4" class="option">Potato</li>--}}
-                            </ul>
-                        </div>
+{{--                            </ul>--}}
+{{--                        </div>--}}
                         <p>{{$course->count()}} {{__('results found.')}}</p>
                         <button class="button button-lg button--primary button--primary-filter d-lg-none" id="filter">
                             <span>

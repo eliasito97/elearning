@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Role\AddNewRequest;
@@ -16,7 +17,8 @@ class RoleController extends Controller
     public function index()
     {
         $data=Role::paginate(10);
-        return view('backend.role.index',compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.role.index',compact('data','enrollment'));
     }
 
     /**
@@ -24,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('backend.role.create');
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.role.create',compact('enrollment'));
     }
 
     /**
@@ -61,7 +64,8 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role=Role::findOrFail(encryptor('decrypt',$id));
-        return view('backend.role.edit',compact('role'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.role.edit',compact('role','enrollment'));
     }
 
     /**

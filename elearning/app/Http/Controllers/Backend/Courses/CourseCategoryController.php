@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Courses;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseCategory;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\CourseCategory\AddNewRequest;
 use App\Http\Requests\Backend\Course\CourseCategory\UpdateRequest;
@@ -19,7 +20,8 @@ class CourseCategoryController extends Controller
     public function index()
     {
         $data = CourseCategory::paginate(10);
-        return view('backend.course.courseCategory.index', compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courseCategory.index', compact('data', 'enrollment'));
     }
 
     /**
@@ -27,7 +29,8 @@ class CourseCategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.course.courseCategory.create');
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courseCategory.create', compact('enrollment'));
     }
 
     /**
@@ -69,7 +72,8 @@ class CourseCategoryController extends Controller
     public function edit($id)
     {
         $data = CourseCategory::findOrFail($id);
-        return view('backend.course.courseCategory.edit', compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.course.courseCategory.edit', compact('data', 'enrollment'));
     }
 
     /**

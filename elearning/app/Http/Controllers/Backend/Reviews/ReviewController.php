@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Reviews;
 
+use App\Models\Enrollment;
 use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class ReviewController extends Controller
     public function index()
     {
         $review=Review::paginate(10);
-        return view('backend.review.index', compact('review'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.review.index', compact('review', 'enrollment'));
     }
 
     /**

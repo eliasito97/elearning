@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Students;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Students\AddNewRequest;
@@ -20,7 +21,8 @@ class StudentController extends Controller
     public function index()
     {
         $data = Student::paginate();
-        return view('backend.student.index', compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.student.index', compact('data', 'enrollment'));
     }
 
     /**
@@ -29,7 +31,8 @@ class StudentController extends Controller
     public function create()
     {
         $role = Role::get();
-        return view('backend.student.create', compact('role'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.student.create', compact('role', 'enrollment'));
     }
 
     /**
@@ -84,8 +87,8 @@ class StudentController extends Controller
     {
         $role = Role::get();
         $student = Student::findOrFail(encryptor('decrypt', $id));
-
-        return view('backend.student.edit', compact('role', 'student'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.student.edit', compact('role', 'student', 'enrollment'));
     }
 
     /**
