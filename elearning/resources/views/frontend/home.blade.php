@@ -53,27 +53,32 @@
     <div class="container">
         <h2 class="font-title--md text-center mb-0">{{__('Browse Course with Top Categories')}}</h2>
         <div class="browse-categories__wrapper position-relative" style="height: 250px">
-            <div class="categories--box">
+
+            <div class="categories--box" >
                 @forelse ($category as $cat)
                 @php
                 // Fetch the count of courses for each category
                 $courseCount = $cat->course()->count();
                 @endphp
-                <div class="browse-categories-item default-item-one mb-2">
+                <div class="browse-categories-item default-item-one mb-2"  >
                     <div class="browse-categories-item-icon">
                         <div class="categories-one default-categories">
                             <img src="{{asset('public/uploads/courseCategories/'.$cat->category_image)}}"
                                 class="rounded-circle" width="80" height="80" alt="">
                         </div>
                     </div>
+
                     <div class="browse-categories-item-text">
-                        <h6 class="font-title--card"><a href="#">{{$cat->category_name}}</a></h6>
+
+                        <h6 class="font-title--card"> <a href="{{route('SearchCategory', ['id' => encryptor('encrypt', $cat->id)])}}">{{$cat->category_name}}</a></h6>
                         <p>{{ $courseCount }} {{__('Courses')}}</p>
+
                     </div>
                 </div>
                 @empty
                 @endforelse
             </div>
+
         </div>
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -147,7 +152,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$pc->image)}}" alt="images"
+                                    <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $pc->id)])}}"><img src="{{asset('public/uploads/courses/'.$pc->image)}}" alt="images"
                                             class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
@@ -238,7 +243,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$dc->image)}}" alt="images" class="img-fluid" /></a>
+                                    <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $dc->id)])}}"><img src="{{asset('public/uploads/courses/'.$dc->image)}}" alt="images" class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
                                     <h5>
@@ -324,7 +329,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$dv->image)}}" alt="images"
+                                    <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $dv->id)])}}"><img src="{{asset('public/uploads/courses/'.$dv->image)}}" alt="images"
                                             class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
@@ -411,7 +416,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$bc->image)}}" alt="images"
+                                    <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $bc->id)])}}"><img src="{{asset('public/uploads/courses/'.$bc->image)}}" alt="images"
                                             class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
@@ -498,7 +503,7 @@
                         <div class="col-xl-4 col-md-6">
                             <div class="contentCard contentCard--course">
                                 <div class="contentCard-top">
-                                    <a href="#"><img src="{{asset('public/uploads/courses/'.$ic->image)}}" alt="images"
+                                    <a href="{{route('courseDetails', ['id' => encryptor('encrypt', $ic->id)])}}"><img src="{{asset('public/uploads/courses/'.$ic->image)}}" alt="images"
                                             class="img-fluid" /></a>
                                 </div>
                                 <div class="contentCard-bottom">
@@ -705,7 +710,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="button button-lg button--primary">{{__('Start Learning')}}</a>
+                    <a href="{{route('searchCourse')}}" class="button button-lg button--primary">{{__('Start Learning')}}</a>
                 </div>
             </div>
             <div class="col-lg-6 order-1 order-lg-0">
@@ -740,18 +745,19 @@
             </div>
         </div>
         <div class="testimonial testimonial--one testimonial__slider--one"  style="height: 325px" >
+            @forelse ($reviews as $re)
             <div class="testimonial__item">
                 <p>
-                    {{__('iLearn Academy has transformed my learning experience. The classes are interactive, and the instructors are very professional. Thanks to them, I have improved my math skills and now feel more confident in my exams.')}}
+                    {{$re->comment}}
                 </p>
                 <div class="testimonial__user-wrapper d-flex justify-content-between">
                     <div class="testimonial__user d-flex align-items-center">
                         <div class="testimonial__user-img">
-                            <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-01.png')}}" alt="Client" />
+                            <img src="{{asset('public/uploads/students/'.$re->student->image)}}" style="height: 100px" alt="Client" />
                         </div>
                         <div class="testimonial__user-info">
-                            <h6>{{__('Juan Pérez')}}</h6>
-                            <span class="font-para--md">UI/UX Student</span>
+                            <h6>{{$re->student->name}} {{$re->student->lastname}}</h6>
+                            <span class="font-para--md">{{$re->course->title_en}}</span>
                         </div>
                     </div>
                     <ul class="testimonial__item-star d-flex align-items-center">
@@ -803,132 +809,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="testimonial__item">
-                <p>
-                    {{__('I highly recommend iLearn Academy. The platform is user-friendly, and the content is well-structured. I have learned a lot about programming and have been able to apply what I learned to real projects.')}}
-                </p>
-                <div class="testimonial__user-wrapper d-flex justify-content-between">
-                    <div class="testimonial__user d-flex align-items-center">
-                        <div class="testimonial__user-img">
-                            <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-02.png')}}" alt="Client" />
-                        </div>
-                        <div class="testimonial__user-info">
-                            <h6>{{__('Carlos López')}}</h6>
-                            <span class="font-para--md">UI/UX Student</span>
-                        </div>
-                    </div>
-                    <ul class="testimonial__item-star d-flex align-items-center">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="testimonial__item">
-                <p>
-                   {{__('The experience at iLearn Academy has been amazing. The resources available are abundant and diverse. Plus, the technical support is always there to help with any questions I have. I will definitely be back for more courses!')}}
-                </p>
-                <div class="testimonial__user-wrapper d-flex justify-content-between">
-                    <div class="testimonial__user d-flex align-items-center">
-                        <div class="testimonial__user-img">
-                            <img src="{{asset('public/frontend/dist/images/avatar/avatar-img-03.png')}}" alt="Client" />
-                        </div>
-                        <div class="testimonial__user-info">
-                            <h6>{{__('María González')}}</h6>
-                            <span class="font-para--md">UI/UX Student</span>
-                        </div>
-                    </div>
-                    <ul class="testimonial__item-star d-flex align-items-center">
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-star">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                                </polygon>
-                            </svg>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                @empty
+                @endforelse
         </div>
     </div>
     <div class="about-services-shape">

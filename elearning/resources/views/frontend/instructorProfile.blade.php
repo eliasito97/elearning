@@ -145,7 +145,7 @@
                                 </svg>
                             </div>
                             <div class="text text-center">
-                                <h6>29,874</h6>
+                                <h6>{{$student->count()}}</h6>
                                 <p>{{ __('Students Learning') }}</p>
                             </div>
                         </div>
@@ -170,59 +170,17 @@
                         </div>
                     </div>
                     <div class="about-instructor">
-                        <h6>About Me</h6>
-                        <p>{{$instructor->bio}}</p>
-                    </div>
-                    <div class="instructor-qualification">
-                        <h6>Education</h6>
-                        <div class="qualification-info">
-                            <div class="qualification-info-title">
-                                <h6>Bachelor Degree</h6>
-                                <p>2008 - 2010</p>
-                            </div>
-                            <p>
-                                Don Honorio Vectura Technological States University
-                            </p>
-                        </div>
-                        <div class="qualification-info">
-                            <div class="qualification-info-title">
-                                <h6>Vocation</h6>
-                                <p>2018 - 2011</p>
-                            </div>
-                            <p>
-                                Gonzalo Puyat School of Arts and Trades
-                            </p>
-                        </div>
-                        <div class="qualification-info pb-0 mb-0 border-0">
-                            <div class="qualification-info-title">
-                                <h6>Bachelor of Design</h6>
-                                <p>2012 - 2014</p>
-                            </div>
-                            <p>
-                                Don Honorio Vectura Technological States University
-                            </p>
-                        </div>
+                        <h6>{{ __('About Me') }}</h6>
+                        <p>{{$instructor->title}}</p>
                     </div>
                     <div class="instructor-qualification mb-0 pb-0 border-0">
-                        <h6>Experiences</h6>
+                        <h6>{{ __('Experiences') }}</h6>
                         <div class="qualification-info">
                             <div class="qualification-info-title">
-                                <h6>Typeface Design</h6>
-                                <p>2008 - 2010</p>
+                                <h6>{{$instructor->designation}}</h6>
                             </div>
                             <p>
-                                Integer ultricies a turpis ac mattis. Integer auctor eleifend diam vitae sodales. Nullam
-                                mollis semper rutrum. Vestibulum hendrerit nulla vitae velit semper.
-                            </p>
-                        </div>
-                        <div class="qualification-info pb-0 mb-0 border-0">
-                            <div class="qualification-info-title">
-                                <h6>Graphic Design</h6>
-                                <p>2018 - 2011</p>
-                            </div>
-                            <p>
-                                Integer ultricies a turpis ac mattis. Integer auctor eleifend diam vitae sodales. Nullam
-                                mollis semper rutrum. Vestibulum hendrerit nulla vitae velit semper.
+                                {{$instructor->bio}}
                             </p>
                         </div>
                     </div>

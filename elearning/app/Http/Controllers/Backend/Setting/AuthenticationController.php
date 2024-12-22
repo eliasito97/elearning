@@ -60,7 +60,7 @@ class AuthenticationController extends Controller
                     }
                 elseif ($user->status == 2)
                 {
-                    return redirect()->route('login')->with('error', 'You are not an active user! Please contact to Authority');
+                    return redirect()->route('login')->with('error', 'You are not an active user! Please contactController to Authority');
                 }
             } else
                 return redirect()->route('login')->with('error', 'Username or Password is wrong!');

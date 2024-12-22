@@ -55,7 +55,7 @@ class AuthController extends Controller
                     } else
                         return redirect()->back()->with('error', 'Username or Password is wrong!');
                 } else
-                    return redirect()->back()->with('error', 'You are not an active user! Please contact to Authority');
+                    return redirect()->back()->with('error', 'You are not an active user! Please contactController to Authority');
             } else
                 return redirect()->back()->with('error', 'Username or Password is wrong!');
         } catch (Exception $e) {

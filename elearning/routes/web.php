@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\Setting\AuthenticationController as auth;
 use App\Http\Controllers\Backend\Setting\UserController as user;
@@ -114,6 +115,7 @@ Route::middleware(['checkstudent'])->prefix('students')->group(function () {
 // frontend pages
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::post('searchCourse', [HomeController::class, 'Search'])->name('home.Search');
+Route::get('SearchCategory/{id}', [HomeController::class, 'SearchCategory'])->name('SearchCategory');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('searchCourse', [SearchCourseController::class, 'index'])->name('searchCourse');
 Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDetails');
@@ -148,6 +150,8 @@ Route::get('about', [AboutController::class, 'index'])->name('about');
 //    return view('frontend.about');
 //})->name('about');
 
-Route::get('/contact', function () {
-    return view('frontend.contact');
-})->name('contact');
+Route::get('/contact',[ContactController::class, 'index'])->name('contact');
+//
+//Route::get('/contact', function () {
+//    return view('frontend.contact');
+//})->name('contact');

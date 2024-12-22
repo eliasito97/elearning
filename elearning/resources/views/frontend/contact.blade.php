@@ -60,7 +60,7 @@
 
 <!-- Get in Touch Area Starts Here -->
 <section class="section getin-touch overflow-hidden"
-    style="background-image: url({{asset('public/frontend/dist/images/contact/bg.png')}});">
+    style="background-image: url({{asset('public/frontend/dist/images/contactController/bg.png')}});">
     <div class="container">
         <div class="row">
             <h2 class="font-title--md text-center">{{__('Get in Touch')}}</h2>

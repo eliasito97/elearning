@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Courses;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\Typepayment;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\Courses\AddNewRequest;
@@ -23,8 +24,9 @@ class CourseController extends Controller
      */
     public function index()
     {
+        $student_info = Student::find(currentUserId());
         $course = Course::paginate(10);
-        return view('backend.course.courses.index', compact('course'));
+        return view('backend.course.courses.index', compact('course', 'student_info'));
     }
 
     public function indexForAdmin()
@@ -98,8 +100,9 @@ class CourseController extends Controller
      */
     public function show($id)
     {
+        $student_info = Student::find(currentUserId());
         $material = Material::where('id',$id)->paginate(10);
-        return view('backend.course.material.index', compact('material'));
+        return view('backend.course.material.index', compact('material', 'student_info'));
     }
 
     public function frontShow($id)
@@ -108,11 +111,11 @@ class CourseController extends Controller
         $lessons = Lesson::where ('course_id', $course->id)->get();
         $CoursesCategory = Course::where('course_category_id', $course->course_category_id)->get();
         $materials = Material::whereIn('lesson_id', $lessons->pluck('id'))->get();
-//        dd($materials);
+        $student_info = Student::find(currentUserId());
         $instructor = Instructor::where('id', $course->instructor_id)->where('status','1')->first();
         $instructor_count = Course::where('instructor_id', $instructor->id)->Count();
 
-        return view('frontend.courseDetails', compact('course','instructor_count','lessons','materials','CoursesCategory'));
+        return view('frontend.courseDetails', compact('course','instructor_count','lessons','materials','CoursesCategory','student_info'));
     }
 
 

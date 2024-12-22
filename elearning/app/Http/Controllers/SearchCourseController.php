@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Payment;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Course;
@@ -17,7 +18,7 @@ class SearchCourseController extends Controller
         $selectedCategories = $request->input('categories', []);
         $selectedDifficulty = $request->input('difficulty', []);
         $selectedTypepayment = $request->input('typepayment', []);
-
+        $student_info = Student::find(currentUserId());
 
         $course = $this->getcourse($selectedCategories,$selectedDifficulty,$selectedTypepayment);
 
@@ -27,7 +28,7 @@ class SearchCourseController extends Controller
         return view('frontend.searchCourse', compact(
             'filteredCourses', 'category', 'selectedCategories',
             'allCourse', 'selectedDifficulty', 'course' ,
-            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment'
+            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment','student_info'
         ));
     }
     private function getpayments()

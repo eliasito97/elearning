@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkout;
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -13,7 +14,8 @@ class CheckoutController extends Controller
      */
     public function index()
     {
-        return view('frontend.checkout');
+        $student_info = Student::find(currentUserId());
+        return view('frontend.checkout', compact('student_info'));
     }
 
     /**
@@ -35,7 +37,7 @@ class CheckoutController extends Controller
            $checkout->payer_name = $request->payer_name;
            $checkout->payment_option = $request->payment_option;
            $checkout->status = $request->status;
-        
+
             if ($checkout->save())
                 return redirect()->route('instructor.index')->with('success', 'Data Saved');
             else

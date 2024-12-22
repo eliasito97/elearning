@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Coupon;
@@ -13,12 +14,14 @@ class CartController extends Controller
     {
         $course = Course::all();
         $category = CourseCategory::all();
-        return view('frontend.searchCourse', compact('course', 'category'));
+        $student_info = Student::find(currentUserId());
+        return view('frontend.searchCourse', compact('course', 'category', 'student_info'));
     }
 
     public function cart()
     {
-        return view('frontend.cart');
+        $student_info = Student::find(currentUserId());
+        return view('frontend.cart' , compact('student_info'));
     }
 
     public function addToCart($id)

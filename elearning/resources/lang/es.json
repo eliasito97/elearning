@@ -148,7 +148,6 @@
     "Our courses are designed to help you build deep expertise in your chosen field. From foundational knowledge to advanced skills, each course is crafted to give you the tools and insights you need to excel. Learn from experienced instructors and take advantage of resources that cater to your growth.": "Nuestros cursos están diseñados para ayudarte a desarrollar una profunda experiencia en tu área de interés. Desde conocimientos básicos hasta habilidades avanzadas, cada curso está creado para brindarte las herramientas e ideas que necesitas para sobresalir. Aprende de instructores experimentados y aprovecha recursos enfocados en tu crecimiento.",
     "Start Learning": "Empieza a aprender",
     "What Our Students Says About our Services": "Qué dicen nuestros estudiantes sobre nuestros servicios",
-    "iLearn Academy has transformed my learning experience. The classes are interactive, and the instructors are very professional. Thanks to them, I have improved my math skills and now feel more confident in my exams.": "iLearn Academy ha transformado mi forma de aprender. Las clases son interactivas y los profesores son muy profesionales. Gracias a ellos, he mejorado mis habilidades en matemáticas y ahora me siento más seguro en mis exámenes.",
     "I highly recommend iLearn Academy. The platform is user-friendly, and the content is well-structured. I have learned a lot about programming and have been able to apply what I learned to real projects.":"Recomiendo encarecidamente iLearn Academy. La plataforma es fácil de usar y el contenido está bien estructurado. He aprendido mucho sobre programación y he podido aplicar lo aprendido en proyectos reales.",
     "The experience at iLearn Academy has been amazing. The resources available are abundant and diverse. Plus, the technical support is always there to help with any questions I have. I will definitely be back for more courses!":"La experiencia en iLearn Academy ha sido increíble. Los recursos disponibles son abundantes y variados. Además, el soporte técnico siempre está disponible para ayudar con cualquier duda que tenga. ¡Sin duda volveré por más cursos!",
     "Over 30,000+ Schools & College Learning With Us." :"Más de 30,000 escuelas y colegios aprenden con nosotros.",
@@ -496,6 +495,9 @@
     "Enter your": "Ingrese su",
     "pagination.previous": "Pagina siguiente",
     "pagination.next": "Pagina anterior",
-    "Completed" : "Completado"
+    "Completed" : "Completado",
+    "Education": "Educación",
+    "Bachelor Degree": "Título universitario",
+    "Experiences": "Experiencias"
 }
 

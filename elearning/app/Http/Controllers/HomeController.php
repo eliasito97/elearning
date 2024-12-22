@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\Instructor;
@@ -15,7 +17,7 @@ class HomeController extends Controller
         $instructor = Instructor::get();
         $category = CourseCategory::get();
         $popularCourses = Course::where('tag', 'popular')->get();
-
+        $student_info = Student::find(currentUserId());
         $designCategories = CourseCategory::whereIn('category_name', ['Graphics Desgin', 'Web Design', 'Video Editing'])->pluck('id')->toArray();
         $designCourses = Course::whereIn('course_category_id', $designCategories)->where('tag', 'popular')->get();
 
@@ -28,9 +30,19 @@ class HomeController extends Controller
         $itCategories = CourseCategory::whereIn('category_name', ['Hardware', 'Network Technology', 'Software & Security', 'Operating System & Server', '2D Animation', '3D Animation'])->pluck('id')->toArray();
         $itCourses = Course::whereIn('course_category_id', $itCategories)->where('tag', 'popular')->get();
 
+        $reviews = Review::with('student') // Asegúrate de que la relación esté definida en el modelo
+        ->whereIn(
+            'id',
+            Review::selectRaw('MAX(id) as max_id')
+                ->groupBy('student_id')
+                ->pluck('max_id')
+        )
+            ->orderBy('id', 'asc')
+            ->get();
+
         return view(
             'frontend.home',
-            compact('course', 'instructor', 'category', 'popularCourses', 'designCourses', 'developmentCourses', 'businessCourses', 'itCourses')
+            compact('course', 'instructor', 'category', 'popularCourses', 'designCourses', 'developmentCourses', 'businessCourses', 'itCourses','reviews','student_info')
         );
     }
     public function Search(Request $request)
@@ -61,6 +73,29 @@ class HomeController extends Controller
             'filteredCourses', 'category', 'selectedCategories',
             'allCourse', 'selectedDifficulty', 'course',
             'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment', 'searchTerm'
+        ));
+    }
+    public function SearchCategory($id)
+    {
+        $searchTerm = CourseCategory::findOrFail(encryptor('decrypt', $id));
+        // Buscar cursos
+        $course = Course::where('course_category_id', '=', "$searchTerm->id")->get();
+        // Inicializar variables adicionales necesarias para la vista
+        $category = CourseCategory::get();
+
+        $allCourse = Course::where('status', 2)->get();
+        $selectedCategories = []; // Vacío porque no hay filtro de categorías en búsqueda
+        $selectedDifficulty = []; // Vacío porque no hay filtro de dificultad en búsqueda
+        $selectedTypepayment = []; // Vacío porque no hay filtro de tipo de pago en búsqueda
+        $DifficultyAll = $this->getdifficulty();
+        $TypepaymentAll = $this->getpayments();
+        $filteredCourses = $this->getprice($course); // Aplicar lógica de filtrado
+
+        // Retornar vista con los datos necesarios
+        return view('frontend.searchCourse', compact(
+            'filteredCourses', 'category', 'selectedCategories',
+            'allCourse', 'selectedDifficulty', 'course',
+            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment'
         ));
     }
     private function getpayments()

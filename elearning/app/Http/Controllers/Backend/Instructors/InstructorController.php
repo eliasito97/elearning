@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend\Instructors;
 
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\Instructor;
+use App\Models\Student;
 use App\Models\User;
 use App\Http\Requests\Backend\Instructors\AddNewRequest;
 use App\Http\Requests\Backend\Instructors\UpdateRequest;
@@ -103,11 +105,19 @@ class InstructorController extends Controller
 
     public function frontShow($id)
     {
+        $student_info = Student::find(currentUserId());
+
         $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
         $course = Course::where('instructor_id', $instructor->id)
             ->with('instructor')  // Cargar la relación 'instructor'
             ->get();
-        return view('frontend.instructorProfile', compact('instructor','course'));
+
+        foreach ($course as $row) {
+            $course_all[] = $row->id;
+        }
+        $student = Enrollment::whereIN('course_id', $course_all);
+
+        return view('frontend.instructorProfile', compact('instructor','course','student_info','student'));
     }
 
     /**

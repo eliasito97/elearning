@@ -13,10 +13,10 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb align-items-center bg-transparent p-0 mb-0">
                 <li class="breadcrumb-item">
-                    <a href="index.html" class="fs-6 text-secondary">{{ __('Homepage') }}</a>
+                    <a href="{{route('home')}}" class="fs-6 text-secondary">{{ __('Homepage') }}</a>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#" class="fs-6 text-secondary">{{ __('Courses') }}</a>
+                    <a href="{{route('searchCourse')}}" class="fs-6 text-secondary">{{ __('Courses') }}</a>
                 </li>
                 <li class="breadcrumb-item fs-6 text-secondary d-none d-lg-inline-block" aria-current="page">
                     {{ $course->title_en }}
