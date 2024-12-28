@@ -753,7 +753,7 @@
                 <div class="testimonial__user-wrapper d-flex justify-content-between">
                     <div class="testimonial__user d-flex align-items-center">
                         <div class="testimonial__user-img">
-                            <img src="{{asset('public/uploads/students/'.$re->student->image)}}" style="height: 100px" alt="Client" />
+                            <img src="{{asset('public/uploads/students/'.($re->student->image ? $re->student->image : 'user_Default.png'))}}" style="height: 100px" alt="Client" />
                         </div>
                         <div class="testimonial__user-info">
                             <h6>{{$re->student->name}} {{$re->student->lastname}}</h6>
