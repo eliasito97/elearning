@@ -25,7 +25,7 @@
                 <div>
                     <div class="students-info-intro-start">
                         <div class="image">
-                            <img src="{{ asset('public/uploads/students/' . $student_info->image) }}" alt="Student" />
+                            <img src="{{ asset('public/uploads/students/' . ($student_info->image ? $student_info->image : 'user_Default.png' ))  }}"  alt="Student" />
                         </div>
                         <div class="text">
                             <h5>{{$student_info->name}} {{$student_info->lastname}}</h5>
@@ -67,7 +67,7 @@
                                 </svg>
                             </div>
                             <div class="completed-courses-text">
-                                <h5 class="font-title--xs">0</h5>
+                                <h5 class="font-title--xs">{{$enrollment->filter(fn($a) => $a->progress >= 100)->count()}}</h5>
                                 <p class="fs-6 mt-1">{{ __('Completed Courses') }}</p>
                             </div>
                         </div>
@@ -299,8 +299,8 @@
                             <div class="white-bg">
                                 <div class="change-image-wizard">
                                     <div class="image mx-auto">
-                                        <img src="{{ asset('public/uploads/students/' . $student_info->image) }}"
-                                            alt="User" height="200" width="200">
+                                        <img src="{{ asset('public/uploads/students/' . ($student_info->image ? $student_info->image : 'user_Default.png' ))  }}"
+                                             alt="User" height="200" width="200">
                                     </div>
                                     <form id="changeImageForm" action="{{ route('change_image') }}" method="post"
                                         enctype="multipart/form-data">

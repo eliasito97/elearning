@@ -54,7 +54,7 @@
                                             @forelse ($enrollment as $e)
                                             <tr>
                                                 <td><img class="rounded-circle" width="35" height="35"
-                                                        src="{{asset('public/uploads/students/'.$e->student?->image)}}"
+                                                        src="{{asset('public/uploads/students/'. ($e->student?->image ? $e->student?->image : 'user_Default.png'))}}"
                                                         alt="">
                                                 </td>
                                                 <td><strong>{{$e->student?->name}} {{$e->student?->lastname}}</strong></td>

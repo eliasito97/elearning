@@ -22,7 +22,8 @@ class StudentController extends Controller
     {
         $data = Student::paginate();
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.student.index', compact('data', 'enrollment'));
+        $student_info = Student::find(currentUserId());
+        return view('backend.student.index', compact('data', 'enrollment', 'student_info'));
     }
 
     /**
@@ -30,9 +31,20 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $role = Role::get();
+
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.student.create', compact('role', 'enrollment'));
+
+        if(fullAccess())
+        {
+            $role = Role::get();
+            return view('backend.student.create', compact('role', 'enrollment'));
+        }
+        else
+        {
+            $role = Role::where('id','>','3')->get();
+            return view('backend.student.create', compact('role', 'enrollment'));
+        }
+
     }
 
     /**

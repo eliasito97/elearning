@@ -27,9 +27,11 @@ class DashboardController extends Controller
         $studentData = $this->getstudents();
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $acces = User::where('id',currentUserId())->get();
+        $student_info = Student::find(currentUserId());
         $instructor = Instructor::where('id',currentUserId());
+
          if (fullAccess())
-            return view('backend.adminDashboard', compact('user', 'student','course','totalAmount','payments','months','studentData','studentforstatus','enrollment','acces'));
+            return view('backend.adminDashboard', compact('user', 'student','course','totalAmount','payments','months','studentData','studentforstatus','enrollment','acces','student_info'));
         else
         if ($acces[0]->role_id == 3 or $acces[0]->role_id == 2 or $acces[0]->role_id == 1)
             return redirect()->route('student.index');

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Enrollment;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EnrollmentController extends Controller
@@ -14,7 +16,21 @@ class EnrollmentController extends Controller
     public function index()
     {
         $enrollment = Enrollment::get();
-        return view('backend.enrollment.index', compact('enrollment'));
+        if(fullAccess())
+        {
+            return view('backend.enrollment.index', compact('enrollment'));
+        }
+        else
+        {
+            $instructor_id = User::where('id', '=', currentUserId())->get();
+            $course = Course::where('instructor_id', '=', $instructor_id[0]->instructor_id)->get();
+            foreach($course as $c)
+            {
+                $enrollment = Enrollment::where('course_id', '=', $c->id)->get();
+            }
+            return view('backend.enrollment.index', compact('enrollment'));
+        }
+
     }
 
     /**

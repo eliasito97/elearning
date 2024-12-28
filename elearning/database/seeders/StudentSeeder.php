@@ -10,7 +10,7 @@ class StudentSeeder extends Seeder
     public function run()
     {
         DB::table('students')->insert([
-            'id' => 8,
+            'id' => 9,
             'name' => 'Safayet',
             'middlename' => NULL,
             'lastname' => 'Ullah',

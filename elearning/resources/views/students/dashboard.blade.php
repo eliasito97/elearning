@@ -25,7 +25,7 @@
                 <div>
                     <div class="students-info-intro-start">
                         <div class="image">
-                            <img src="{{ asset('public/uploads/students/' . $student_info->image) }}" alt="Student" />
+                            <img src="{{ asset('public/uploads/students/' . ($student_info->image ? $student_info->image : 'user_Default.png' ))  }}" alt="Student" />
                         </div>
                         <div class="text">
                             <h5>{{$student_info->name}} {{$student_info->lastname}}</h5>
@@ -401,23 +401,24 @@
 
                                         @if (!empty($courses))
                                             @foreach ($courses as $data)
+{{--                                                @dd($data)--}}
                                                 <div class="purchase-area-items-start d-flex align-items-lg-center flex-column flex-lg-row">
                                                     <div class="image">
-                                                        <a href="#">
+                                                        <a href="{{ route('courseDetails', encryptor('encrypt', $e->id)) }}">
                                                             <img src="{{ asset('public/uploads/courses/' . $data['image']) }}" alt="Image" />
                                                         </a>
                                                     </div>
                                                     <div class="text d-flex flex-column flex-lg-row">
                                                         <div class="text-main">
                                                             <h6>
-                                                                <a href="#">{{ $data['title_en'] }}</a>
+                                                                <a href="{{ route('courseDetails', encryptor('encrypt', $e->id)) }}">{{ $data['title_en'] }}</a>
                                                             </h6>
-                                                            <p>By
-                                                                <a href="#">{{ $data['instructor'] }}</a>
+                                                            <p>{{ __('Created by') }}
+                                                                <a href="{{ route('instructorProfile', encryptor('encrypt', $data['instructor_id'])) }}">{{ $data['instructor'] }}</a>
                                                             </p>
                                                         </div>
                                                         <p class="ms-2">
-                                                            {{ $data['price'] ? ('bs' . number_format($data['price'], 2)) : 'Free' }}
+                                                            {{ $data['price'] ? ('bs ' . number_format($data['price'], 2)) : 'Free' }}
                                                         </p>
                                                     </div>
                                                 </div>
@@ -430,15 +431,15 @@
                                     <div class="purchase-area-items-end">
                                         <p>{{ $e->created_at->format('d-m-Y') }}</p>
                                         <dl class="row">
-                                            <dt class="col-sm-4">Total</dt>
+                                            <dt class="col-sm-4">{{ __('Total') }}</dt>
                                             <dd class="col-sm-8">
-                                                ৳{{ number_format($cartDetails['total_amount'] ?? 0, 2) }}
+                                                bs {{ number_format($cartDetails['total_amount'] ?? 0, 2) }}
                                             </dd>
-                                            <dt class="col-sm-4">Total Courses</dt>
+                                            <dt class="col-sm-4">{{ __('Total Course') }}</dt>
                                             <dd class="col-sm-8">
                                                 {{ count($courses) }}
                                             </dd>
-                                            <dt class="col-sm-4">Payment Type</dt>
+                                            <dt class="col-sm-4">{{ __('Payment Type') }}</dt>
                                             <dd class="col-sm-8">
                                                 {{ $e->txnid ?? __('Not available') }}
                                             </dd>
@@ -455,7 +456,7 @@
                     <div class="row mt-lg-5 mt-4">
                         <div class="col-lg-12 text-center">
                             <p style="color: #42414b !important; font-size: 18px !important;">
-                                Yay! You have seen all your purchase history.
+                                {{ __('Yay! You have seen all your purchase history.') }}
                                 <svg width="31" height="31" viewBox="0 0 31 31" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <g filter="url(#filter0_d)">

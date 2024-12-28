@@ -525,7 +525,10 @@
     "coupon": "cupón",
     "enrollment": "inscripción",
     "permission": "permiso",
-    "list": "lista"
+    "list": "lista",
+    "Total": "Total",
+    "Payment Type": "Tipo de pago",
+    "Yay! You have seen all your purchase history.": "¡Genial! Has visto todo tu historial de compras."
 
 }
 

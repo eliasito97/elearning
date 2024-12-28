@@ -67,12 +67,12 @@ class HomeController extends Controller
         $DifficultyAll = $this->getdifficulty();
         $TypepaymentAll = $this->getpayments();
         $filteredCourses = $this->getprice($course); // Aplicar lógica de filtrado
-
+        $student_info = Student::find(currentUserId());
         // Retornar vista con los datos necesarios
         return view('frontend.searchCourse', compact(
             'filteredCourses', 'category', 'selectedCategories',
             'allCourse', 'selectedDifficulty', 'course',
-            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment', 'searchTerm'
+            'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment', 'searchTerm','student_info'
         ));
     }
     public function SearchCategory($id)

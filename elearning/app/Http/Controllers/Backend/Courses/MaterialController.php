@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend\Courses;
 
+use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Material;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\Materials\AddNewRequest;
 use App\Http\Requests\Backend\Course\Materials\UpdateRequest;
@@ -20,7 +22,26 @@ class MaterialController extends Controller
     {
         $material = Material::paginate(10);
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.course.material.index', compact('material', 'enrollment'));
+        if(fullAccess())
+        {
+
+            return view('backend.course.material.index', compact('material', 'enrollment'));
+        }
+        else
+        {
+            $instructor_id = User::where('id', '=', currentUserId())->get();
+            $course = Course::where('instructor_id', '=', $instructor_id[0]->instructor_id)->get();
+            foreach($course as $c)
+            {
+                $lesson = Lesson::where('course_id','=',$c->id)->get();
+            }
+            foreach($lesson as $l)
+            {
+                $material = Material::where('lesson_id','=',$l->id)->get();
+            }
+            return view('backend.course.material.index', compact('material', 'enrollment'));
+        }
+
     }
 
     /**
@@ -30,7 +51,22 @@ class MaterialController extends Controller
     {
         $lesson= Lesson::get();
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.course.material.create', compact('lesson', 'enrollment'));
+        if(fullAccess())
+        {
+
+            return view('backend.course.material.create', compact('lesson', 'enrollment'));
+        }
+        else
+        {
+            $instructor_id = User::where('id', '=', currentUserId())->get();
+            $course = Course::where('instructor_id', '=', $instructor_id[0]->instructor_id)->get();
+            foreach($course as $c)
+            {
+                $lesson = Lesson::where('course_id','=',$c->id)->paginate(10);
+            }
+            return view('backend.course.material.create', compact('lesson', 'enrollment'));
+        }
+
     }
 
     /**

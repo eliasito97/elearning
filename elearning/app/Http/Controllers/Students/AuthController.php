@@ -15,7 +15,8 @@ class AuthController extends Controller
 {
     public function signUpForm()
     {
-        return view('students.auth.register');
+        $student_info = Student::find(currentUserId());
+        return view('students.auth.register', compact('student_info'));
     }
 
     public function signUpStore(SignUpRequest $request,$back_route)
@@ -40,7 +41,8 @@ class AuthController extends Controller
 
     public function signInForm()
     {
-        return view('students.auth.login');
+        $student_info = Student::find(currentUserId());
+        return view('students.auth.login', compact('student_info'));
     }
 
     public function signInCheck(SignInRequest $request,$back_route)

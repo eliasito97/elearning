@@ -41,7 +41,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Title') }}</label>
-                                        <input type="text" class="form-control" name="courseTitle_en"
+                                        <input type="text" class="form-control" placeholder="curso practico de .." name="courseTitle_en"
                                             value="{{old('courseTitle_en')}}">
                                     </div>
                                     @if($errors->has('courseTitle_en'))
@@ -51,7 +51,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Description') }}</label>
-                                        <textarea class="form-control" name="courseDescription_en">{{old('courseDescription_en')}}</textarea>
+                                        <textarea class="form-control" placeholder="aqui veremos las primeras practicas introductorias" name="courseDescription_en">{{old('courseDescription_en')}}</textarea>
                                     </div>
                                     @if($errors->has('courseDescription_en'))
                                     <span class="text-danger"> {{ $errors->first('courseDescription_en') }}</span>
@@ -120,28 +120,28 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('full_course_subscription') }}</label>
-                                        <input type="number" class="form-control" name="courseFull_course_subscription"
+                                        <input type="number" class="form-control" placeholder="500" name="courseFull_course_subscription"
                                                value="{{old('courseFull_course_subscription')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('annual_subscription') }}</label>
-                                        <input type="number" class="form-control" name="courseAnnual_subscription"
+                                        <input type="number" class="form-control" placeholder="500" name="courseAnnual_subscription"
                                                value="{{old('courseAnnual_subscription')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('weekly_subscription') }}</label>
-                                        <input type="number" class="form-control" name="courseWeekly_subscription"
+                                        <input type="number" class="form-control" placeholder="500" name="courseWeekly_subscription"
                                                value="{{old('courseWeekly_subscription')}}">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Amount') }} {{ __('of the') }} {{ __('daily_subscription') }}</label>
-                                        <input type="number" class="form-control" name="courseDaily_subscription"
+                                        <input type="number" class="form-control" placeholder="500"  name="courseDaily_subscription"
                                                value="{{old('courseDaily_subscription')}}">
                                     </div>
                                 </div>
@@ -163,7 +163,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Price') }}</label>
-                                        <input type="number" class="form-control" name="coursePrice"
+                                        <input type="number" class="form-control"  placeholder="500" name="coursePrice"
                                             value="{{old('coursePrice')}}">
                                     </div>
                                     @if($errors->has('coursePrice'))
@@ -173,7 +173,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Old Price') }}</label>
-                                        <input type="number" class="form-control" name="courseOldPrice"
+                                        <input type="number" class="form-control" placeholder="500" name="courseOldPrice"
                                             value="{{old('courseOldPrice')}}">
                                     </div>
                                     @if($errors->has('courseOldPrice'))
@@ -183,7 +183,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Subscription Price') }}</label>
-                                        <input type="number" class="form-control" name="subscription_price"
+                                        <input type="number" class="form-control" placeholder="500" name="subscription_price"
                                             value="{{old('subscription_price')}}">
                                     </div>
                                     @if($errors->has('subscription_price'))
@@ -203,7 +203,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Duration') }}</label>
-                                        <input type="number" class="form-control" name="duration"
+                                        <input type="number" class="form-control" placeholder="20 horas" name="duration"
                                             value="{{old('duration')}}">
                                     </div>
                                     @if($errors->has('duration'))
@@ -213,7 +213,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Number of Lesson') }}</label>
-                                        <input type="number" class="form-control" name="lesson"
+                                        <input type="number" class="form-control" placeholder="10 lecciones" name="lesson"
                                             value="{{old('lesson')}}">
                                     </div>
                                     @if($errors->has('lesson'))
@@ -223,7 +223,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Prerequisites') }}</label>
-                                        <textarea class="form-control" name="prerequisites_en"
+                                        <textarea class="form-control" placeholder="haber realizado cursos previos en ....." name="prerequisites_en"
                                             value="{{old('prerequisites_en')}}"></textarea>
                                     </div>
                                     @if($errors->has('prerequisites_en'))
@@ -233,7 +233,7 @@
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">{{ __('Course Code') }}</label>
-                                        <input type="text" class="form-control" name="course_code"
+                                        <input type="text" class="form-control" placeholder="html-01" name="course_code"
                                             value="{{old('course_code')}}">
                                     </div>
                                     @if($errors->has('course_code'))

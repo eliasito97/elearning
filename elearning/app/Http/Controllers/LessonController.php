@@ -6,6 +6,7 @@ use App\Models\Enrollment;
 use App\Models\Lesson;
 use App\Models\Course;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -17,7 +18,22 @@ class LessonController extends Controller
     {
         $lesson = Lesson::paginate(10);
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.course.lesson.index', compact('lesson', 'enrollment'));
+        if(fullAccess())
+        {
+
+            return view('backend.course.lesson.index', compact('lesson', 'enrollment'));
+        }
+        else
+        {
+            $instructor_id = User::where('id', '=', currentUserId())->get();
+            $course = Course::where('instructor_id', '=', $instructor_id[0]->instructor_id)->get();
+            foreach($course as $c)
+            {
+                $lesson = Lesson::where('course_id','=',$c->id)->paginate(10);
+            }
+            return view('backend.course.lesson.index', compact('lesson', 'enrollment'));
+        }
+
     }
 
     /**
@@ -27,7 +43,19 @@ class LessonController extends Controller
     {
         $course = Course::get();
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.course.lesson.create', compact('course', 'enrollment'));
+        if(fullAccess())
+        {
+
+            return view('backend.course.lesson.create', compact('course', 'enrollment'));
+        }
+        else
+        {
+            $instructor_id = User::where('id', '=', currentUserId())->get();
+            $course = Course::where('instructor_id', '=', $instructor_id[0]->instructor_id)->get();
+
+            return view('backend.course.lesson.create', compact('course', 'enrollment'));
+        }
+
     }
 
     /**

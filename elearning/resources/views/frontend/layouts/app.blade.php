@@ -79,6 +79,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('contact')}}">{{__('Contact')}}</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('dashboard')}}">{{__('Admin')}}</a>
                         </li>
@@ -124,7 +125,7 @@
                         @if(request()->session()->get('studentLogin'))
                         <div class="dropdown user-image ms-3" id="imageDropdown">
                             <a href="{{route('studentdashboard')}}" onclick="toggleDropdown(event)">
-                                <img src="{{asset('public/uploads/students/'.$student_info->image)}}"
+                                <img src="{{ asset('public/uploads/students/' . ($student_info->image ? $student_info->image : 'user_Default.png'))}}"
                                     alt="Student Profile" height="48" width="48"/>
                             </a>
                             <div class="dropdown-content">

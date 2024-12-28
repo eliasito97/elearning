@@ -7,7 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\Student;
+use App\Models\User;
 use App\Models\Typepayment;
+use Database\Seeders\UserSeeder;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\Course\Courses\AddNewRequest;
 use App\Http\Requests\Backend\Course\Courses\UpdateRequest;
@@ -44,10 +46,20 @@ class CourseController extends Controller
     public function create()
     {
         $courseCategory = CourseCategory::get();
-        $instructor = Instructor::get();
+
         $typepayment = Typepayment::get();
         $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment', 'enrollment'));
+        if(fullAccess())
+        {
+            $instructor = Instructor::get();
+            return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment', 'enrollment'));
+        }
+        else
+        {
+            $instructor = User::where('id', '=', currentUserId())->get();
+            return view('backend.course.courses.create', compact('courseCategory', 'instructor','typepayment', 'enrollment'));
+        }
+
     }
 
     /**

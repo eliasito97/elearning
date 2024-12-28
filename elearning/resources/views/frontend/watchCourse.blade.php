@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <div class="topic-info-text">
-                            <h6 class="font-title--xs"><a href="#">{{$course->title_en}}</a></h6>
+                            <h6 class="font-title--xs"><a href="{{route('courseDetails', encryptor('encrypt', $course->id))}}">{{$course->title_en}}</a></h6>
                             <div class="lesson-hours">
                                 <div class="book-lesson">
                                     <i class="fas fa-book-open text-primary"></i>
@@ -164,7 +164,7 @@
                                             <div class="feedback-rating">
                                                 <div class="feedback-rating-start">
                                                     <div class="image">
-                                                        <img src="{{asset('public/uploads/students/'.$review->student->image)}}" alt="Image" />
+                                                        <img src="{{asset('public/uploads/students/'. ($review->student->image ? $review->student->image : 'user_Default.png')) }}" alt="Image" />
                                                     </div>
                                                     <div class="text">
                                                         <h6>
@@ -178,9 +178,6 @@
                                               {{$review->comment}}
                                             </p>
                                             @endforeach
-                                        </div>
-                                        <div class="pagination">
-                                            {{ $reviews->links('pagination::simple-bootstrap-4') }}
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +272,7 @@
                         <p> {{$progress}}% {{ __('Completed') }}</p>
                     </div>
                     <div class="videolist-area-bar">
-                        <span class="videolist-area-bar--progress"></span>
+                        <span class="videolist-area-bar--progress" style="width: {{$progress}}%"></span>
                     </div>
                     <div class="videolist-area-bar__wrapper">
                         @foreach($lessons as $lesson)
