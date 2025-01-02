@@ -8,13 +8,15 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use App\Models\CourseCategory;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class SearchCourseController extends Controller
 {
     public function index(Request $request)
     {
         $category = CourseCategory::get();
-        $allCourse = Course::where('status', 2)->get();
+        $allCourse = Course::where('status', 2)->paginate(10);
         $selectedCategories = $request->input('categories', []);
         $selectedDifficulty = $request->input('difficulty', []);
         $selectedTypepayment = $request->input('typepayment', []);
@@ -22,14 +24,43 @@ class SearchCourseController extends Controller
 
         $course = $this->getcourse($selectedCategories,$selectedDifficulty,$selectedTypepayment);
 
+        // Paginación manual
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $perPage = 4; // Número de resultados por página
+        $paginatedCourses = $this->paginateCollection($course, $perPage, $currentPage);
+
+        // Filtrar precios en los cursos paginados
+        $filteredCourses = $this->getprice($paginatedCourses->getCollection());
+
+        // Crear un nuevo paginador con los cursos filtrados
+        $filteredCourses = new LengthAwarePaginator(
+            $filteredCourses,
+            $paginatedCourses->total(),
+            $perPage,
+            $currentPage,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
+
         $TypepaymentAll= $this->getpayments();
         $DifficultyAll= $this->getdifficulty();
-        $filteredCourses = $this->getprice($course);
+
+
         return view('frontend.searchCourse', compact(
             'filteredCourses', 'category', 'selectedCategories',
             'allCourse', 'selectedDifficulty', 'course' ,
             'DifficultyAll', 'TypepaymentAll', 'selectedTypepayment','student_info'
         ));
+    }
+    private function paginateCollection(Collection $collection, int $perPage, int $currentPage)
+    {
+        $items = $collection->slice(($currentPage - 1) * $perPage, $perPage)->values();
+        return new LengthAwarePaginator(
+            $items,
+            $collection->count(),
+            $perPage,
+            $currentPage,
+            ['path' => LengthAwarePaginator::resolveCurrentPath()]
+        );
     }
     private function getpayments()
     {

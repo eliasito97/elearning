@@ -108,18 +108,25 @@ class InstructorController extends Controller
     public function frontShow($id)
     {
         $student_info = Student::find(currentUserId());
-        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
-        $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
-        $course = Course::where('instructor_id', $instructor->id)
-            ->with('instructor')  // Cargar la relación 'instructor'
-            ->get();
 
-        foreach ($course as $row) {
-            $course_all[] = $row->id;
-        }
+        // Paginación de las inscripciones (últimos 5)
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->paginate(5); // Paginación con 5 elementos por página
+
+        // Obtener el instructor usando el ID cifrado
+        $instructor = Instructor::findOrFail(encryptor('decrypt', $id));
+        // Paginación de los cursos del instructor
+        $course = Course::where('instructor_id', $instructor->id)
+            ->with('instructor') // Cargar la relación 'instructor'
+            ->paginate(4); // Cambia 4 por la cantidad de cursos que deseas mostrar por página
+        $courseall1 = Course::where('instructor_id', $instructor->id)
+            ->with('instructor'); // Cargar la relación 'instructor'
+        // Obtener los IDs de los cursos asociados al instructor
+        $course_all = $course->pluck('id')->toArray(); // Usamos pluck para extraer solo los IDs
+
+        // Paginación de los estudiantes asociados a los cursos del instructor
         $student = Enrollment::whereIN('course_id', $course_all);
 
-        return view('frontend.instructorProfile', compact('instructor','course','student_info','student','enrollment'));
+        return view('frontend.instructorProfile', compact('instructor', 'course','courseall1', 'student_info', 'student', 'enrollment'));
     }
 
     /**

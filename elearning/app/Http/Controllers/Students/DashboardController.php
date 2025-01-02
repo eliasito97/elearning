@@ -15,11 +15,21 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // Obtener información del estudiante
         $student_info = Student::find(currentUserId());
-        $enrollment = Enrollment::where('student_id', currentUserId())->get();
+        $enrollmentall = Enrollment::where('student_id', currentUserId())->get();
+        // Paginar las inscripciones
+        $enrollment = Enrollment::where('student_id', currentUserId())
+            ->with('course') // Asegúrate de cargar la relación 'course' para evitar consultas adicionales
+            ->paginate(3); // Cambia 4 por el número de elementos por página que desees
+
+        // Obtener los cursos (si es necesario)
         $course = Course::get();
+
+        // Obtener el historial de pagos
         $checkout = Checkout::where('student_id', currentUserId())->get();
 
+        // Calcular el progreso para cada inscripción paginada
         foreach ($enrollment as $a) {
             // Obtener el progreso de este curso
             $watchlist_true = Watchlist::where('student_id', currentUserId())
@@ -32,15 +42,10 @@ class DashboardController extends Controller
                 ->count();
 
             // Calcular el progreso como un porcentaje
-            if ($watchlist_all > 0) {
-                $a->progress = ($watchlist_true / $watchlist_all) * 100;
-            } else {
-                $a->progress = 0; // Si no hay materiales en el curso
-            }
-
+            $a->progress = $watchlist_all > 0 ? ($watchlist_true / $watchlist_all) * 100 : 0;
         }
 
-        // $purchaseHistory = Enrollment::with(['course', 'checkout'])->orderBy('enrollment_date', 'desc')->get();
-        return view('students.dashboard', compact('student_info','enrollment', 'course','checkout'));
+        // Pasar los datos a la vista
+        return view('students.dashboard', compact('student_info', 'enrollment', 'course', 'checkout', 'enrollmentall'));
     }
 }

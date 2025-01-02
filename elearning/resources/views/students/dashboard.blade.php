@@ -50,7 +50,7 @@
                                 </svg>
                             </div>
                             <div class="enrolled-courses-text">
-                                <h6 class="font-title--xs">{{$enrollment?$enrollment->count():0}}</h6>
+                                <h6 class="font-title--xs">{{$enrollmentall?$enrollmentall->count():0}}</h6>
                                 <p class="fs-6 mt-1">{{ __('Enrolled Courses') }}</p>
                             </div>
                         </div>
@@ -253,26 +253,7 @@
                         @endforelse
                         <div class="col-lg-12 mt-lg-5">
                             <div class="pagination justify-content-center pb-0">
-                                <div class="pagination-group">
-                                    <a href="#" class="p_prev">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="9.414" height="16.828"
-                                            viewBox="0 0 9.414 16.828">
-                                            <path data-name="Icon feather-chevron-left" d="M20.5,23l-7-7,7-7"
-                                                transform="translate(-12.5 -7.586)" fill="none" stroke="#1a2224"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="#!1" class="cdp_i active">01</a>
-                                    <a href="#!2" class="cdp_i">02</a>
-                                    <a href="#!3" class="cdp_i">03</a>
-                                    <a href="#!+1" class="p_next">
-                                        <svg width="10" height="16" viewBox="0 0 10 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.5 1L8.5 8L1.5 15" stroke="#35343E" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                                {{ $enrollment->links('vendor.pagination.custom') }}
                             </div>
                         </div>
                     </div>
@@ -347,26 +328,7 @@
                         @endif
                         <div class="col-lg-12 mt-lg-5">
                             <div class="pagination justify-content-center pb-0">
-                                <div class="pagination-group">
-                                    <a href="#" class="p_prev">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="9.414" height="16.828"
-                                            viewBox="0 0 9.414 16.828">
-                                            <path data-name="Icon feather-chevron-left" d="M20.5,23l-7-7,7-7"
-                                                transform="translate(-12.5 -7.586)" fill="none" stroke="#1a2224"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-                                        </svg>
-                                    </a>
-                                    <a href="#!1" class="cdp_i active">01</a>
-                                    <a href="#!2" class="cdp_i">02</a>
-                                    <a href="#!3" class="cdp_i">03</a>
-                                    <a href="#!+1" class="p_next">
-                                        <svg width="10" height="16" viewBox="0 0 10 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1.5 1L8.5 8L1.5 15" stroke="#35343E" stroke-width="2"
-                                                stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                                {{ $enrollment->links('vendor.pagination.custom') }}
                             </div>
                         </div>
                     </div>
