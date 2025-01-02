@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12">
                                     <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
-                                    <button type="submit" class="btn btn-light">{{ __('Cencel') }}</button>
+                                    <button type="submit" class="btn btn-light">{{ __('Cancel') }}</button>
                                 </div>
                             </div>
                         </form>

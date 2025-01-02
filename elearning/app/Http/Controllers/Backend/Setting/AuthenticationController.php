@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Setting;
 
 use App\Http\Controllers\Controller;
+use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\User;
@@ -96,6 +97,7 @@ class AuthenticationController extends Controller
 
     public function show(User $data)
     {
-        return view('backend.user.userProfile', compact('data'));
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
+        return view('backend.user.userProfile', compact('data', 'enrollment'));
     }
 }

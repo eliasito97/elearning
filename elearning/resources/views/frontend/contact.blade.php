@@ -10,7 +10,7 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb pb-0 mb-0">
                 <li class="breadcrumb-item"><a href="{{route('home')}}" class="fs-6 text-secondary">{{__('Homepage')}}</a></li>
-                <li class="breadcrumb-item active"><a href="{{route('contact')}}" class="fs-6 text-secondary">{{__('Contact')}}</a></li>
+                <li class="breadcrumb-item active"><a href="{{route('contact.index')}}" class="fs-6 text-secondary">{{__('Contact')}}</a></li>
             </ol>
         </nav>
     </div>
@@ -99,28 +99,29 @@
                     class="img-fluid contact-feature-shape" />
             </div>
             <div class="col-lg-7 form-area">
-                <form action="#">
+                <form action="{{route('contact.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="row g-3">
                         <div class="col-lg-6">
                             <label for="name">{{__('Name')}}</label>
                             <input type="text" class="form-control form-control--focused" placeholder="{{__('Type here...')}}"
-                                id="name" />
+                                id="name" name="name" />
                         </div>
                         <div class="col-lg-6">
                             <label for="email">{{__('Email')}}</label>
-                            <input type="email" class="form-control" placeholder="{{__('Type here...')}}" id="email" />
+                            <input type="email" name="email" class="form-control" placeholder="{{__('Type here...')}}" id="email" />
                         </div>
                     </div>
                     <div class="row my-lg-2 my-2">
                         <div class="col-12">
                             <label for="subject">{{__('Subject')}}</label>
-                            <input type="text" id="subject" class="form-control" placeholder="{{__('Type here...')}}" />
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="{{__('Type here...')}}" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
                             <label for="message">{{__('Messages')}}</label>
-                            <textarea id="message" placeholder="{{__('Type here...')}}" class="form-control"></textarea>
+                            <textarea id="message" name="message" placeholder="{{__('Type here...')}}" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="row">

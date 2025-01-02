@@ -77,7 +77,7 @@
 {{--                            <a class="nav-link" aria-current="page" href="{{route('event')}}">{{ __('Events') }}</a>--}}
 {{--                        </li>--}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('contact')}}">{{__('Contact')}}</a>
+                            <a class="nav-link" href="{{route('contact.index')}}">{{__('Contact')}}</a>
                         </li>
 
                         <li class="nav-item">
@@ -205,11 +205,11 @@
                                         <li><a href="{{route('searchCourse')}}">{{__('Courses')}} </a></li>
                                         <li><a href="{{route('student_profile')}}">{{__('Student Profile')}} </a></li>
                                         <li><a href="{{route('about')}}">{{__('About')}} </a></li>
-                                        <li><a href="{{route('contact')}}">{{__('Contact')}} </a></li>
+                                        <li><a href="{{route('contact.index')}}">{{__('Contact')}} </a></li>
                                     </ul>
                                 </li>
                                 <li class="navbar-mobile__menu-item">
-                                    <a href="{{route('contact')}}">
+                                    <a href="{{route('contact.index')}}">
                                         <span class="navbar-mobile__menu-link"> {{__('Contact')}} </span>
                                     </a>
                                 </li>
@@ -387,7 +387,7 @@
                             <li><a href="#">{{__('Help & Supports')}} </a></li>
                             <li><a href="#">{{__('Privacy Policy')}}</a></li>
                             <li><a href="faq.html">{{__('FAQs')}}</a></li>
-                            <li><a href="{{route('contact')}}">{{__('Contact Us')}}</a></li>
+                            <li><a href="{{route('contact.index')}}">{{__('Contact Us')}}</a></li>
                         </ul>
                     </div>
                 </div>

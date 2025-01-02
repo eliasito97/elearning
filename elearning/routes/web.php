@@ -150,8 +150,8 @@ Route::get('about', [AboutController::class, 'index'])->name('about');
 //    return view('frontend.about');
 //})->name('about');
 
-Route::get('/contact',[ContactController::class, 'index'])->name('contact');
-//
+Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 //Route::get('/contact', function () {
 //    return view('frontend.contact');
 //})->name('contact');

@@ -1033,7 +1033,7 @@
                         {{__('Join our community of passionate educators and share your expertise with learners around the world. As an instructor on our platform, you have the opportunity to create and deliver courses that inspire and empower students. Whether you are a seasoned educator or an expert in your field, we provide the tools and support you need to succeed.')}}
                         </p>
                         <div class="text-center">
-                                <a href="become-instructor.html" class="green-btn">{{__('Apply as Instructor')}}</a>
+                                <a href="{{route('contact.index')}}" class="green-btn">{{__('Apply as Instructor')}}</a>
                         </div>
                     </div>
                 </div>
@@ -1050,7 +1050,7 @@
                         {{__('Unlock the potential of your workforce with iLearn Academy for Business. Our platform offers tailored courses designed to enhance skills and drive performance across various industries. Whether you are looking to upskill your team or onboard new employees, our comprehensive curriculum provides the tools needed for success.')}}
                         </p>
                         <div class="text-center">
-                            <a href="#" class="green-btn">{{__('Get Ilearning Academy For Business')}}</a>
+                            <a href="{{route('contact.index')}}" class="green-btn">{{__('Get Ilearning Academy For Business')}}</a>
                         </div>
                     </div>
                 </div>
