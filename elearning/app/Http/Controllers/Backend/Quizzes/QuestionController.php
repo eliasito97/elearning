@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Quizzes; 
+namespace App\Http\Controllers\Backend\Quizzes;
 
+use App\Models\Enrollment;
 use App\Models\Question;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,8 +16,9 @@ class QuestionController extends Controller
      */
     public function index()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $question = Question::paginate(10);
-        return view('backend.quiz.question.index', compact('question'));
+        return view('backend.quiz.question.index', compact('question', 'enrollment'));
     }
 
     /**
@@ -24,8 +26,9 @@ class QuestionController extends Controller
      */
     public function create()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $quiz = Quiz::get();
-        return view('backend.quiz.question.create', compact('quiz'));
+        return view('backend.quiz.question.create', compact('quiz', 'enrollment'));
     }
 
     /**
@@ -43,6 +46,8 @@ class QuestionController extends Controller
             $question->option_c = $request->optionC;
             $question->option_d = $request->optionD;
             $question->correct_answer = $request->correctAnswer;
+
+
 
             if ($question->save()) {
                 $this->notice::success('Data Saved');
@@ -71,9 +76,10 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $quiz = Quiz::get();
         $question = Question::findOrFail(encryptor('decrypt',$id));
-        return view('backend.quiz.question.edit', compact('quiz', 'question'));
+        return view('backend.quiz.question.edit', compact('quiz', 'question', 'enrollment'));
     }
 
     /**

@@ -1,6 +1,7 @@
 @php use App\Models\Watchlist; @endphp
+@php use App\Models\Quiz; @endphp
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="UTF-8" />
@@ -319,6 +320,16 @@
                         @endforeach
 
                     </div>
+
+                    @if ($quizzes->isNotEmpty() && $progress >= 100)
+                        <form action="{{ route('quiz.show', $course->id) }}" method="get" class="d-flex justify-content-center align-items-center mt-4">
+                            <div>
+                                <button class="btn btn-primary" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
+                                    Iniciar Examen
+                                </button>
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>

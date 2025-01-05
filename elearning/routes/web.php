@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\Quizzes\AnswerController as answer;
 use App\Http\Controllers\Backend\Reviews\ReviewController as review;
 use App\Http\Controllers\Backend\Communication\DiscussionController as discussion;
 use App\Http\Controllers\Backend\Communication\MessageController as message;
+use App\Http\Controllers\CertificateController as certify;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchCourseController;
@@ -122,6 +123,12 @@ Route::get('courseDetails/{id}', [course::class, 'frontShow'])->name('courseDeta
 Route::get('watchCourse/{id}', [watchCourse::class, 'watchCourse'])->name('watchCourse');
 Route::post('watchCourse', [watchlist::class, 'store'])->name('watchlist.store');
 Route::post('/watchlist/update', [watchlist::class, 'update'])->name('watchlist.update');
+
+Route::get('/quiz/show{quiz}', [quiz::class, 'show'])->name('quiz.show');
+Route::post('/quiz/{quiz}/submit', [quiz::class, 'submit'])->name('quiz.submit');
+Route::get('/quiz/{quiz}/result', [quiz::class, 'result'])->name('quiz.result');
+Route::get('/certificate/{quizId}', [certify::class, 'show'])->name('certificate.show');
+
 
 
 Route::get('instructorProfile/{id}', [instructor::class, 'frontShow'])->name('instructorProfile');

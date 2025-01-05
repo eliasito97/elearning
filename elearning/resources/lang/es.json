@@ -528,7 +528,16 @@
     "list": "lista",
     "Total": "Total",
     "Payment Type": "Tipo de pago",
-    "Yay! You have seen all your purchase history.": "¡Genial! Has visto todo tu historial de compras."
-
+    "Yay! You have seen all your purchase history.": "¡Genial! Has visto todo tu historial de compras.",
+    "All Quizzes": "Todos los cuestionarios",
+    "Congratulations! You passed the exam.":  "¡Felicidades! Aprobaste el examen.",
+    "Sorry, you did not pass. Try again.": "Lo siento, no aprobaste. Intenta de nuevo.",
+    "Go Back":  "Regresar",
+    "Submit Answers" : "Enviar Respuestas",
+    "Print Certificate" : "Imprimir certificado",
+    "Completion Certificate": "Certificado de Finalización",
+    "You have successfully completed the course:": "Ha completado satisfactoriamente el curso:",
+    "Issue Date:": "Fecha de emisión:",
+    "Course Certificate": "Certificado de Curso"
 }
 

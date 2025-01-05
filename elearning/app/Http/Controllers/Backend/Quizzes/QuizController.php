@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Backend\Quizzes;
 
+use App\Models\Enrollment;
+use App\Models\Option;
+use App\Models\Question;
 use App\Models\Quiz;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,13 +13,14 @@ use Exception;
 
 class QuizController extends Controller
 {
-    /**  
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $quiz = Quiz::paginate(10);
-        return view('backend.quiz.quizzes.index', compact('quiz'));
+        return view('backend.quiz.quizzes.index', compact('quiz','enrollment'));
     }
 
     /**
@@ -24,8 +28,9 @@ class QuizController extends Controller
      */
     public function create()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $course = Course::get();
-        return view('backend.quiz.quizzes.create', compact('course'));
+        return view('backend.quiz.quizzes.create', compact('course','enrollment'));
     }
 
     /**
@@ -55,19 +60,72 @@ class QuizController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Quiz $quiz)
+    public function show(Course $quiz)
     {
-        //
+        $course = $quiz->title_en;
+        $quizzes = Quiz::with(['question.option'])
+            ->where('course_id', $quiz->id)
+            ->get();
+
+        if ($quizzes->isEmpty()) {
+            return back()->with('error', 'No hay quizzes disponibles para este curso.');
+        }
+        return view('backend.quiz.show', compact('quizzes','course'));
+    }
+    public function submit(Request $request, Quiz $quiz)
+    {
+        $course = $quiz->title_en;
+        // Obtener respuestas enviadas
+        $answers = $request->input('answers');
+
+        // Inicializar variables para cálculo
+        $score = 0; // Puntaje del usuario
+        $totalQuestions = $quiz->question->count(); // Total de preguntas en el quiz
+
+        // Recorrer las preguntas y verificar respuestas
+        foreach ($quiz->question as $question) {
+            if (isset($answers[$question->id])) {
+                // Verificar si la opción seleccionada es correcta
+                $selectedOptionId = $answers[$question->id];
+                $correctOption = $question->option->where('is_correct', true)->first();
+
+                if ($correctOption && $correctOption->id == $selectedOptionId) {
+                    $score++; // Incrementar puntaje si es correcta
+                }
+            }
+        }
+
+        // Calcular porcentaje
+        $percentage = ($totalQuestions > 0) ? ($score / $totalQuestions) * 100 : 0;
+
+        // Redirigir a la página de resultados con datos
+        return view('backend.quiz.result', [
+            'course' => $course,
+            'quiz' => $quiz,
+            'score' => $score,
+            'totalQuestions' => $totalQuestions,
+            'percentage' => round($percentage, 2), // Redondear porcentaje
+        ]);
     }
 
+    public function result(Quiz $quiz)
+    {
+        return view('quiz.result', [
+            'quiz' => $quiz,
+            'score' => session('score'),
+            'percentage' => session('percentage'),
+            'totalQuestions' => session('totalQuestions'),
+        ]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $course = Course::get();
         $quiz = Quiz::findOrFail(encryptor('decrypt', $id));
-        return view('backend.quiz.quizzes.edit', compact('course', 'quiz'));
+        return view('backend.quiz.quizzes.edit', compact('course', 'quiz','enrollment'));
     }
 
     /**

@@ -214,46 +214,50 @@
                             <span class="nav-text">{{__('Coupons')}}</span>
                         </a>
                     </li>
-                    {{-- <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
                             <i class="las la-tasks"></i>
-                            <span class="nav-text">Quizzes</span>
+                            <span class="nav-text">{{ __('Quizzes') }}</span>
                         </a>
                         <ul aria-expanded="false">
-                            <li><a href="{{route('quiz.index')}}"><i class="las la-icons"></i>All Quizzes</a></li>
+                            <li><a href="{{route('quiz.index')}}"><i class="las la-icons"></i>{{ __('All Quizzes') }}</a></li>
                             <li><a href="{{route('question.index')}}"><i
-                                        class="las la-question-circle"></i>Questions</a></li>
+                                        class="las la-question-circle"></i>{{ __('Questions') }}</a></li>
+                            <li><a href="{{route('option.index')}}"><i
+                                        class="las la-question-circle"></i>{{ __('Option') }}</a></li>
+                            <li><a href="{{route('answer.index')}}"><i
+                                        class="las la-question-circle"></i>{{ __('Answer') }}</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="las la-star-half-alt"></i>
-                            <span class="nav-text">Reviews</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{route('review.index')}}"><i class="las la-wave-square"></i>All Review</a>
-                            </li>
-                            <li><a href="{{route('review.index')}}"><i class="las la-star"></i>Ratings</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="las la-comment"></i>
-                            <span class="nav-text">Forum</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{route('discussion.index')}}"><i class="las la-comment-alt"></i>Discussion</a>
-                            </li>
-                            <li><a href="{{route('message.index')}}"><i class="las la-envelope"></i>Messages</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="las la-money-check"></i>
-                            <span class="nav-text">Payments</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="javascript:void()"><i class="las la-money-bill"></i>Course Fees</a></li>
-                            <li><a href="javascript:void()"><i class="lab la-gg-circle"></i>Subscription Fees</a></li>
-                            <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>Coupons</a></li>
-                        </ul>
-                    </li> --}}
+{{--                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">--}}
+{{--                            <i class="las la-star-half-alt"></i>--}}
+{{--                            <span class="nav-text">Reviews</span>--}}
+{{--                        </a>--}}
+{{--                        <ul aria-expanded="false">--}}
+{{--                            <li><a href="{{route('review.index')}}"><i class="las la-wave-square"></i>All Review</a>--}}
+{{--                            </li>--}}
+{{--                            <li><a href="{{route('review.index')}}"><i class="las la-star"></i>Ratings</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">--}}
+{{--                            <i class="las la-comment"></i>--}}
+{{--                            <span class="nav-text">Forum</span>--}}
+{{--                        </a>--}}
+{{--                        <ul aria-expanded="false">--}}
+{{--                            <li><a href="{{route('discussion.index')}}"><i class="las la-comment-alt"></i>Discussion</a>--}}
+{{--                            </li>--}}
+{{--                            <li><a href="{{route('message.index')}}"><i class="las la-envelope"></i>Messages</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">--}}
+{{--                            <i class="las la-money-check"></i>--}}
+{{--                            <span class="nav-text">Payments</span>--}}
+{{--                        </a>--}}
+{{--                        <ul aria-expanded="false">--}}
+{{--                            <li><a href="javascript:void()"><i class="las la-money-bill"></i>Course Fees</a></li>--}}
+{{--                            <li><a href="javascript:void()"><i class="lab la-gg-circle"></i>Subscription Fees</a></li>--}}
+{{--                            <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>Coupons</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li> --}}
                 </ul>
             </div>
         </div>
@@ -284,6 +288,18 @@
                 <li><a href="{{route('material.index')}}"><i class="las la-atom"></i></i>{{__('Course Materials')}}</a></li>
 {{--                <li><a href="{{route('coupon.index')}}"><i class="las la-tags"></i>{{__('Coupons')}}</a></li>--}}
                 <li><a href="{{route('enrollment.index')}}"><i class="las la-bullseye"></i>{{__('Enrollments')}}</a></li>
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                        <i class="las la-tasks"></i>
+                        <span class="nav-text">{{ __('Quizzes') }}</span>
+                    </a>
+                    <ul aria-expanded="false">
+                        <li><a href="{{route('quiz.index')}}"><i class="las la-icons"></i>{{ __('All Quizzes') }}</a></li>
+                        <li><a href="{{route('question.index')}}"><i
+                                    class="las la-question-circle"></i>{{ __('Questions') }}</a></li>
+                        <li><a href="{{route('option.index')}}"><i
+                                    class="las la-question-circle"></i>{{ __('Option') }}</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
         </div>

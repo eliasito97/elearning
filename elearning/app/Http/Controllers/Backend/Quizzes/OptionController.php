@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Quizzes;
 
+use App\Models\Enrollment;
 use App\Models\Option;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,8 +16,9 @@ class OptionController extends Controller
      */
     public function index()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $option = Option::paginate(20);
-        return view('backend.quiz.option.index', compact('option'));
+        return view('backend.quiz.option.index', compact('option','enrollment'));
     }
 
     /**
@@ -24,8 +26,9 @@ class OptionController extends Controller
      */
     public function create()
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $question = Question::get();
-        return view('backend.quiz.option.create', compact('question'));
+        return view('backend.quiz.option.create', compact('question','enrollment'));
     }
 
     /**
@@ -66,9 +69,10 @@ class OptionController extends Controller
      */
     public function edit($id)
     {
+        $enrollment = Enrollment::OrderBy('enrollment_date', 'DESC')->limit(5)->get();
         $question = Question::get();
         $option = Option::findOrFail(encryptor('decrypt', $id));
-        return view('backend.quiz.option.edit', compact('question', 'option'));
+        return view('backend.quiz.option.edit', compact('question', 'option','enrollment'));
     }
 
     /**

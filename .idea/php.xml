@@ -129,6 +129,12 @@
       <path value="$PROJECT_DIR$/elearning/vendor/carbonphp/carbon-doctrine-types" />
       <path value="$PROJECT_DIR$/elearning/vendor/spatie/error-solutions" />
       <path value="$PROJECT_DIR$/elearning/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/elearning/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/elearning/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/elearning/vendor/dompdf/php-font-lib" />
+      <path value="$PROJECT_DIR$/elearning/vendor/dompdf/php-svg-lib" />
+      <path value="$PROJECT_DIR$/elearning/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/elearning/vendor/sabberworm/php-css-parser" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.1" />

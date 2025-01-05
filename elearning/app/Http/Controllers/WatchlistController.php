@@ -77,7 +77,6 @@ class WatchlistController extends Controller
                 'material_id' => 'required|integer',
                 'is_checked' => 'required|boolean',
             ]);
-
             // Buscar el registro en la tabla Watchlist
             $watchlist = Watchlist::where('student_id', $validated['student_id'])
                 ->where('course_id', $validated['course_id'])
