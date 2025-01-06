@@ -17,7 +17,7 @@ class EnrollmentSeeder extends Seeder
         DB::table('enrollments')->insert([
             [
                 'id' => 1,
-                'student_id' => 8,
+                'student_id' => 9,
                 'course_id' => 4,
                 'enrollment_date' => '2023-12-31 18:00:00',
                 'created_at' => '2024-01-01 11:43:52',
