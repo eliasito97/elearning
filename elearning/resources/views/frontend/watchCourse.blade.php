@@ -322,7 +322,7 @@
                     </div>
 
                     @if ($quizzes->isNotEmpty() && $progress >= 100)
-                        <form action="{{ route('quiz.show', $course->id) }}" method="get" class="d-flex justify-content-center align-items-center mt-4">
+                        <form action="{{ route('quiz.show', $course->id) }}" method="get" class="d-flex justify-content-center align-items-center mt-4" target="_blank">
                             <div>
                                 <button class="btn btn-primary" style="background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
                                     Iniciar Examen
